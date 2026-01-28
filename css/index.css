@@ -7,7 +7,12 @@
   box-sizing: border-box;
 }
 
-html,
+html {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  width: 100%;
+}
+
 body {
   overflow-x: hidden;
   width: 100%;
@@ -95,19 +100,54 @@ body.dark-mode .resource-link {
   color: #e0e0e0;
 }
 
-/* Scrollbar Neon para Modo Oscuro */
-body.dark-mode ::-webkit-scrollbar {
-  width: 12px;
+/* Scrollbar Neon Azul para Modo Oscuro */
+body.dark-mode {
+  scrollbar-color: #00f2ff #0a0a1a;
+  scrollbar-width: thin;
 }
 
-body.dark-mode ::-webkit-scrollbar-track {
+/* Chrome, Edge, Safari */
+body.dark-mode::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+body.dark-mode::-webkit-scrollbar-track {
   background: #0a0a1a;
 }
 
-body.dark-mode ::-webkit-scrollbar-thumb {
-  background-color: #39ff14;
-  border-radius: 6px;
-  border: 3px solid #0a0a1a;
+body.dark-mode::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00f2ff, #007acc);
+  border-radius: 10px;
+  border: 2px solid #0a0a1a;
+}
+
+body.dark-mode::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #66ffff, #00f2ff);
+}
+
+html.dark-mode {
+  scrollbar-color: #00f2ff #0a0a1a;
+  scrollbar-width: thin;
+}
+
+html.dark-mode::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+html.dark-mode::-webkit-scrollbar-track {
+  background: #0a0a1a;
+}
+
+html.dark-mode::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00f2ff, #007acc);
+  border-radius: 10px;
+  border: 2px solid #0a0a1a;
+}
+
+html.dark-mode::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #66ffff, #00f2ff);
 }
 
 body.dark-mode .card h2,
@@ -261,6 +301,58 @@ body.dark-mode .chart-bar {
 
 body.dark-mode footer {
   background: linear-gradient(135deg, #0a0a1a, #16213e);
+}
+
+/* Callouts con links alineados */
+.content-grid .callout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.content-grid .callout a {
+  align-self: flex-start;
+  margin-top: 10px;
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  padding: 6px 18px;
+  background: linear-gradient(135deg, #2196f3, #1976d2);
+  border: none;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.content-grid .callout a:hover {
+  background: linear-gradient(135deg, #1976d2, #0d47a1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.4);
+}
+
+/* Links "Saber más" en modo oscuro */
+body.dark-mode .callout a,
+body.dark-mode .content-grid .callout a {
+  display: inline-block;
+  color: #00e5ff;
+  text-decoration: none;
+  padding: 6px 16px;
+  border: 1px solid #00e5ff;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-shadow: 0 0 8px rgba(0, 229, 255, 0.5);
+}
+
+body.dark-mode .callout a:hover,
+body.dark-mode .content-grid .callout a:hover {
+  background: #00e5ff;
+  color: #0a0a1a;
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.6), 0 0 30px rgba(0, 229, 255, 0.3);
+  text-shadow: none;
+  transform: translateY(-2px);
 }
 
 body.dark-mode .energy-chart .chart-row {
