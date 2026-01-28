@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Trabajo en Física</title>
-  <meta name="description" content="Concepto de trabajo en física: fórmula, unidades, ejemplos resueltos y aplicaciones para secundaria.">
+  <meta name="description"
+    content="Concepto de trabajo en física: fórmula, unidades, ejemplos resueltos y aplicaciones para secundaria.">
   <link rel="stylesheet" href="css/index.css">
 
   <!-- Polyfill y MathJax -->
@@ -14,7 +16,7 @@
     MathJax = {
       tex: {
         inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$','$$'], ['\\[','\\]']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: ['base', 'ams', 'noerrors', 'noundefined']
       },
       svg: {
@@ -23,6 +25,7 @@
     };
   </script>
 </head>
+
 <body>
   <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
   <header>
@@ -157,13 +160,15 @@
       <h2>Ejemplos de Problemas Resueltos</h2>
 
       <h3>Ejemplo 1: Trabajo con fuerza horizontal</h3>
-      <p>Una persona empuja una caja con una fuerza de 50 N durante 10 m en la misma dirección del movimiento. ¿Cuánto trabajo realiza?</p>
+      <p>Una persona empuja una caja con una fuerza de 50 N durante 10 m en la misma dirección del movimiento. ¿Cuánto
+        trabajo realiza?</p>
       <div class="equation">
         $$W = 50 \, \text{N} \cdot 10 \, \text{m} \cdot \cos(0°) = 500 \, \text{J}$$
       </div>
 
       <h3>Ejemplo 2: Trabajo con ángulo</h3>
-      <p>Se aplica una fuerza de 80 N a 60° respecto al suelo para arrastrar un objeto 5 m. ¿Cuál es el trabajo realizado?</p>
+      <p>Se aplica una fuerza de 80 N a 60° respecto al suelo para arrastrar un objeto 5 m. ¿Cuál es el trabajo
+        realizado?</p>
       <div class="equation">
         $$W = 80 \, \text{N} \cdot 5 \, \text{m} \cdot \cos(60°) = 400 \cdot 0.5 = 200 \, \text{J}$$
       </div>
@@ -171,7 +176,8 @@
       <h3>Ejemplo 3: Trabajo contra la gravedad</h3>
       <p>Se levanta un objeto de 3 kg a una altura de 4 m. ¿Cuánto trabajo se realiza contra la gravedad?</p>
       <div class="equation">
-        $$W = m \cdot g \cdot h = 3 \, \text{kg} \cdot 9.8 \, \frac{\text{m}}{\text{s}^2} \cdot 4 \, \text{m} = 117.6 \, \text{J}$$
+        $$W = m \cdot g \cdot h = 3 \, \text{kg} \cdot 9.8 \, \frac{\text{m}}{\text{s}^2} \cdot 4 \, \text{m} = 117.6 \,
+        \text{J}$$
       </div>
     </section>
 
@@ -208,59 +214,60 @@
       <div class="quiz-results" id="quiz-results-trabajo" style="display: none;">
         <h3>🎉 ¡Quiz Completado!</h3>
         <div class="score-display">
-          <p class="score-text">Respondiste correctamente <span id="correct-count-trabajo">0</span> de <span id="total-count-trabajo">4</span> preguntas</p>
+          <p class="score-text">Respondiste correctamente <span id="correct-count-trabajo">0</span> de <span
+              id="total-count-trabajo">4</span> preguntas</p>
         </div>
         <button class="retry-button" onclick="restartQuizTrabajo()">Intentar de Nuevo</button>
       </div>
     </section>
 
     <script>
-    const quizDataTrabajo = [
-      {
-        question: "Si empujas una pared con 500 N pero no se mueve, ¿cuánto trabajo realizas?",
-        equation: "$$W = F \\cdot d \\cdot \\cos(\\theta)$$",
-        options: ["500 J", "0 J", "250 J", "Depende del ángulo"],
-        correct: 1,
-        explanation: "Si no hay desplazamiento (d = 0), el trabajo es cero, sin importar la fuerza aplicada."
-      },
-      {
-        question: "Una persona arrastra una caja con 80 N a 60° respecto al suelo durante 4 m. ¿Cuál es el trabajo realizado?",
-        equation: "$$W = F \\cdot d \\cdot \\cos(\\theta)$$",
-        options: ["320 J", "160 J", "277 J", "80 J"],
-        correct: 1,
-        explanation: "W = 80 N × 4 m × cos(60°) = 320 × 0.5 = 160 J"
-      },
-      {
-        question: "¿Cuándo el trabajo es negativo?",
-        equation: "",
-        options: ["Cuando la fuerza es perpendicular al movimiento", "Cuando la fuerza se opone al movimiento", "Cuando no hay fricción", "Nunca puede ser negativo"],
-        correct: 1,
-        explanation: "El trabajo es negativo cuando el ángulo entre la fuerza y el desplazamiento es mayor a 90°, es decir, cuando la fuerza se opone al movimiento (ej: fricción)."
-      },
-      {
-        question: "Según el teorema trabajo-energía, el trabajo neto sobre un objeto es igual a:",
-        equation: "$$W_{neto} = \\Delta E_c$$",
-        options: ["El cambio en energía potencial", "El cambio en energía cinética", "La energía mecánica total", "La fuerza por la masa"],
-        correct: 1,
-        explanation: "El teorema trabajo-energía establece que el trabajo neto es igual a la variación de la energía cinética del objeto."
+      const quizDataTrabajo = [
+        {
+          question: "Si empujas una pared con 500 N pero no se mueve, ¿cuánto trabajo realizas?",
+          equation: "$$W = F \\cdot d \\cdot \\cos(\\theta)$$",
+          options: ["500 J", "0 J", "250 J", "Depende del ángulo"],
+          correct: 1,
+          explanation: "Si no hay desplazamiento (d = 0), el trabajo es cero, sin importar la fuerza aplicada."
+        },
+        {
+          question: "Una persona arrastra una caja con 80 N a 60° respecto al suelo durante 4 m. ¿Cuál es el trabajo realizado?",
+          equation: "$$W = F \\cdot d \\cdot \\cos(\\theta)$$",
+          options: ["320 J", "160 J", "277 J", "80 J"],
+          correct: 1,
+          explanation: "W = 80 N × 4 m × cos(60°) = 320 × 0.5 = 160 J"
+        },
+        {
+          question: "¿Cuándo el trabajo es negativo?",
+          equation: "",
+          options: ["Cuando la fuerza es perpendicular al movimiento", "Cuando la fuerza se opone al movimiento", "Cuando no hay fricción", "Nunca puede ser negativo"],
+          correct: 1,
+          explanation: "El trabajo es negativo cuando el ángulo entre la fuerza y el desplazamiento es mayor a 90°, es decir, cuando la fuerza se opone al movimiento (ej: fricción)."
+        },
+        {
+          question: "Según el teorema trabajo-energía, el trabajo neto sobre un objeto es igual a:",
+          equation: "$$W_{neto} = \\Delta E_c$$",
+          options: ["El cambio en energía potencial", "El cambio en energía cinética", "La energía mecánica total", "La fuerza por la masa"],
+          correct: 1,
+          explanation: "El teorema trabajo-energía establece que el trabajo neto es igual a la variación de la energía cinética del objeto."
+        }
+      ];
+
+      let currentQuestionTrabajo = 0;
+      let scoreTrabajo = 0;
+      let answeredTrabajo = false;
+
+      function initQuizTrabajo() {
+        document.getElementById('total-count-trabajo').textContent = quizDataTrabajo.length;
+        showQuestionTrabajo();
       }
-    ];
 
-    let currentQuestionTrabajo = 0;
-    let scoreTrabajo = 0;
-    let answeredTrabajo = false;
+      function showQuestionTrabajo() {
+        answeredTrabajo = false;
+        const question = quizDataTrabajo[currentQuestionTrabajo];
+        const quizContent = document.getElementById('quiz-content-trabajo');
 
-    function initQuizTrabajo() {
-      document.getElementById('total-count-trabajo').textContent = quizDataTrabajo.length;
-      showQuestionTrabajo();
-    }
-
-    function showQuestionTrabajo() {
-      answeredTrabajo = false;
-      const question = quizDataTrabajo[currentQuestionTrabajo];
-      const quizContent = document.getElementById('quiz-content-trabajo');
-
-      quizContent.innerHTML = `
+        quizContent.innerHTML = `
         <div class="question-card">
           <h3>📝 Pregunta ${currentQuestionTrabajo + 1} de ${quizDataTrabajo.length}</h3>
           <p class="question-text">${question.question}</p>
@@ -278,53 +285,56 @@
           </div>
           <div class="navigation-buttons" id="nav-trabajo" style="display: none;">
             ${currentQuestionTrabajo < quizDataTrabajo.length - 1 ?
-              '<button class="nav-button" onclick="nextQuestionTrabajo()">Siguiente →</button>' :
-              '<button class="nav-button" onclick="showResultsTrabajo()">Ver Resultados →</button>'}
+            '<button class="nav-button" onclick="nextQuestionTrabajo()">Siguiente →</button>' :
+            '<button class="nav-button" onclick="showResultsTrabajo()">Ver Resultados →</button>'}
           </div>
         </div>
       `;
-      MathJax.typesetPromise();
-    }
-
-    function selectOptionTrabajo(optionIndex) {
-      if (answeredTrabajo) return;
-      answeredTrabajo = true;
-      const question = quizDataTrabajo[currentQuestionTrabajo];
-      const buttons = document.querySelectorAll('#quiz-content-trabajo .option-button');
-
-      buttons[question.correct].classList.add('correct');
-      if (optionIndex !== question.correct) {
-        buttons[optionIndex].classList.add('incorrect');
-      } else {
-        scoreTrabajo++;
+        MathJax.typesetPromise();
       }
 
-      document.getElementById('explanation-trabajo').style.display = 'block';
-      document.getElementById('nav-trabajo').style.display = 'flex';
-      buttons.forEach(button => button.disabled = true);
-    }
+      function selectOptionTrabajo(optionIndex) {
+        if (answeredTrabajo) return;
+        answeredTrabajo = true;
+        const question = quizDataTrabajo[currentQuestionTrabajo];
+        const buttons = document.querySelectorAll('#quiz-content-trabajo .option-button');
 
-    function nextQuestionTrabajo() {
-      currentQuestionTrabajo++;
-      showQuestionTrabajo();
-    }
+        buttons[question.correct].classList.add('correct');
+        if (optionIndex !== question.correct) {
+          buttons[optionIndex].classList.add('incorrect');
+        } else {
+          scoreTrabajo++;
+        }
 
-    function showResultsTrabajo() {
-      document.getElementById('quiz-content-trabajo').style.display = 'none';
-      document.getElementById('quiz-results-trabajo').style.display = 'block';
-      document.getElementById('correct-count-trabajo').textContent = scoreTrabajo;
-    }
+        document.getElementById('explanation-trabajo').style.display = 'block';
+        document.getElementById('nav-trabajo').style.display = 'flex';
+        buttons.forEach(button => button.disabled = true);
+      }
 
-    function restartQuizTrabajo() {
-      currentQuestionTrabajo = 0;
-      scoreTrabajo = 0;
-      document.getElementById('quiz-content-trabajo').style.display = 'block';
-      document.getElementById('quiz-results-trabajo').style.display = 'none';
-      showQuestionTrabajo();
-    }
+      function nextQuestionTrabajo() {
+        currentQuestionTrabajo++;
+        showQuestionTrabajo();
+      }
 
-    document.addEventListener('DOMContentLoaded', initQuizTrabajo);
+      function showResultsTrabajo() {
+        document.getElementById('quiz-content-trabajo').style.display = 'none';
+        document.getElementById('quiz-results-trabajo').style.display = 'block';
+        document.getElementById('correct-count-trabajo').textContent = scoreTrabajo;
+      }
+
+      function restartQuizTrabajo() {
+        currentQuestionTrabajo = 0;
+        scoreTrabajo = 0;
+        document.getElementById('quiz-content-trabajo').style.display = 'block';
+        document.getElementById('quiz-results-trabajo').style.display = 'none';
+        showQuestionTrabajo();
+      }
+
+      document.addEventListener('DOMContentLoaded', initQuizTrabajo);
     </script>
+    <div class="back-button-container">
+      <a href="javascript:history.back()" class="back-button">← Volver</a>
+    </div>
   </main>
 
   <footer>
@@ -348,5 +358,5 @@
   </footer>
   <script src="js/dark-mode.js"></script>
 </body>
-</html>
 
+</html>

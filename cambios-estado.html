@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cambios de Estado de la Materia</title>
-  <meta name="description" content="Cambios de estado: fusión, vaporización, condensación, solidificación, sublimación, calor latente y curvas de calentamiento.">
+  <meta name="description"
+    content="Cambios de estado: fusión, vaporización, condensación, solidificación, sublimación, calor latente y curvas de calentamiento.">
   <link rel="stylesheet" href="css/index.css">
 
   <!-- Polyfill y MathJax -->
@@ -14,7 +16,7 @@
     MathJax = {
       tex: {
         inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$','$$'], ['\\[','\\]']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: ['base', 'ams', 'noerrors', 'noundefined']
       },
       svg: {
@@ -23,6 +25,7 @@
     };
   </script>
 </head>
+
 <body>
   <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
   <header>
@@ -242,7 +245,8 @@
       <h3>Ejemplo 1: Fundir hielo</h3>
       <p>¿Cuánto calor se necesita para fundir 500 g de hielo a 0°C?</p>
       <div class="equation">
-        $$Q = 0.5 \, \text{kg} \cdot 334{,}000 \, \frac{\text{J}}{\text{kg}} = 167{,}000 \, \text{J} = 167 \, \text{kJ}$$
+        $$Q = 0.5 \, \text{kg} \cdot 334{,}000 \, \frac{\text{J}}{\text{kg}} = 167{,}000 \, \text{J} = 167 \,
+        \text{kJ}$$
       </div>
 
       <h3>Ejemplo 2: Calentar hielo hasta vapor</h3>
@@ -293,59 +297,60 @@
       <div class="quiz-results" id="quiz-results-estado" style="display: none;">
         <h3>🎉 ¡Quiz Completado!</h3>
         <div class="score-display">
-          <p class="score-text">Respondiste correctamente <span id="correct-count-estado">0</span> de <span id="total-count-estado">4</span> preguntas</p>
+          <p class="score-text">Respondiste correctamente <span id="correct-count-estado">0</span> de <span
+              id="total-count-estado">4</span> preguntas</p>
         </div>
         <button class="retry-button" onclick="restartQuizEstado()">Intentar de Nuevo</button>
       </div>
     </section>
 
     <script>
-    const quizDataEstado = [
-      {
-        question: "¿Por qué la ropa mojada se seca en invierno aunque la temperatura esté bajo cero?",
-        equation: "",
-        options: ["Por evaporación del agua líquida", "Por sublimación del hielo", "Por condensación del vapor", "No se seca bajo cero"],
-        correct: 1,
-        explanation: "El agua congelada en la ropa pasa directamente de sólido (hielo) a gas (vapor) por sublimación, sin pasar por líquido."
-      },
-      {
-        question: "¿Cuánto calor se necesita para fundir 0,5 kg de hielo a 0°C? (Lf = 334.000 J/kg)",
-        equation: "$$Q = m \\cdot L_f$$",
-        options: ["167.000 J", "334.000 J", "668.000 J", "83.500 J"],
-        correct: 0,
-        explanation: "Q = 0,5 kg × 334.000 J/kg = 167.000 J"
-      },
-      {
-        question: "¿Por qué las quemaduras con vapor son más graves que con agua hirviendo?",
-        equation: "",
-        options: ["El vapor está más caliente", "El vapor libera calor latente al condensarse", "El agua hirviendo enfría más rápido", "No hay diferencia"],
-        correct: 1,
-        explanation: "El vapor libera Lv = 2.260.000 J/kg al condensarse, además del calor por enfriamiento. Es casi 7 veces más energía que el calor de fusión."
-      },
-      {
-        question: "Durante un cambio de estado, ¿qué sucede con la temperatura?",
-        equation: "",
-        options: ["Aumenta constantemente", "Disminuye constantemente", "Permanece constante", "Oscila"],
-        correct: 2,
-        explanation: "Durante el cambio de estado, toda la energía se usa para romper/formar enlaces moleculares, no para cambiar la temperatura."
+      const quizDataEstado = [
+        {
+          question: "¿Por qué la ropa mojada se seca en invierno aunque la temperatura esté bajo cero?",
+          equation: "",
+          options: ["Por evaporación del agua líquida", "Por sublimación del hielo", "Por condensación del vapor", "No se seca bajo cero"],
+          correct: 1,
+          explanation: "El agua congelada en la ropa pasa directamente de sólido (hielo) a gas (vapor) por sublimación, sin pasar por líquido."
+        },
+        {
+          question: "¿Cuánto calor se necesita para fundir 0,5 kg de hielo a 0°C? (Lf = 334.000 J/kg)",
+          equation: "$$Q = m \\cdot L_f$$",
+          options: ["167.000 J", "334.000 J", "668.000 J", "83.500 J"],
+          correct: 0,
+          explanation: "Q = 0,5 kg × 334.000 J/kg = 167.000 J"
+        },
+        {
+          question: "¿Por qué las quemaduras con vapor son más graves que con agua hirviendo?",
+          equation: "",
+          options: ["El vapor está más caliente", "El vapor libera calor latente al condensarse", "El agua hirviendo enfría más rápido", "No hay diferencia"],
+          correct: 1,
+          explanation: "El vapor libera Lv = 2.260.000 J/kg al condensarse, además del calor por enfriamiento. Es casi 7 veces más energía que el calor de fusión."
+        },
+        {
+          question: "Durante un cambio de estado, ¿qué sucede con la temperatura?",
+          equation: "",
+          options: ["Aumenta constantemente", "Disminuye constantemente", "Permanece constante", "Oscila"],
+          correct: 2,
+          explanation: "Durante el cambio de estado, toda la energía se usa para romper/formar enlaces moleculares, no para cambiar la temperatura."
+        }
+      ];
+
+      let currentQuestionEstado = 0;
+      let scoreEstado = 0;
+      let answeredEstado = false;
+
+      function initQuizEstado() {
+        document.getElementById('total-count-estado').textContent = quizDataEstado.length;
+        showQuestionEstado();
       }
-    ];
 
-    let currentQuestionEstado = 0;
-    let scoreEstado = 0;
-    let answeredEstado = false;
+      function showQuestionEstado() {
+        answeredEstado = false;
+        const question = quizDataEstado[currentQuestionEstado];
+        const quizContent = document.getElementById('quiz-content-estado');
 
-    function initQuizEstado() {
-      document.getElementById('total-count-estado').textContent = quizDataEstado.length;
-      showQuestionEstado();
-    }
-
-    function showQuestionEstado() {
-      answeredEstado = false;
-      const question = quizDataEstado[currentQuestionEstado];
-      const quizContent = document.getElementById('quiz-content-estado');
-
-      quizContent.innerHTML = `
+        quizContent.innerHTML = `
         <div class="question-card">
           <h3>📝 Pregunta ${currentQuestionEstado + 1} de ${quizDataEstado.length}</h3>
           <p class="question-text">${question.question}</p>
@@ -363,53 +368,56 @@
           </div>
           <div class="navigation-buttons" id="nav-estado" style="display: none;">
             ${currentQuestionEstado < quizDataEstado.length - 1 ?
-              '<button class="nav-button" onclick="nextQuestionEstado()">Siguiente →</button>' :
-              '<button class="nav-button" onclick="showResultsEstado()">Ver Resultados →</button>'}
+            '<button class="nav-button" onclick="nextQuestionEstado()">Siguiente →</button>' :
+            '<button class="nav-button" onclick="showResultsEstado()">Ver Resultados →</button>'}
           </div>
         </div>
       `;
-      MathJax.typesetPromise();
-    }
-
-    function selectOptionEstado(optionIndex) {
-      if (answeredEstado) return;
-      answeredEstado = true;
-      const question = quizDataEstado[currentQuestionEstado];
-      const buttons = document.querySelectorAll('#quiz-content-estado .option-button');
-
-      buttons[question.correct].classList.add('correct');
-      if (optionIndex !== question.correct) {
-        buttons[optionIndex].classList.add('incorrect');
-      } else {
-        scoreEstado++;
+        MathJax.typesetPromise();
       }
 
-      document.getElementById('explanation-estado').style.display = 'block';
-      document.getElementById('nav-estado').style.display = 'flex';
-      buttons.forEach(button => button.disabled = true);
-    }
+      function selectOptionEstado(optionIndex) {
+        if (answeredEstado) return;
+        answeredEstado = true;
+        const question = quizDataEstado[currentQuestionEstado];
+        const buttons = document.querySelectorAll('#quiz-content-estado .option-button');
 
-    function nextQuestionEstado() {
-      currentQuestionEstado++;
-      showQuestionEstado();
-    }
+        buttons[question.correct].classList.add('correct');
+        if (optionIndex !== question.correct) {
+          buttons[optionIndex].classList.add('incorrect');
+        } else {
+          scoreEstado++;
+        }
 
-    function showResultsEstado() {
-      document.getElementById('quiz-content-estado').style.display = 'none';
-      document.getElementById('quiz-results-estado').style.display = 'block';
-      document.getElementById('correct-count-estado').textContent = scoreEstado;
-    }
+        document.getElementById('explanation-estado').style.display = 'block';
+        document.getElementById('nav-estado').style.display = 'flex';
+        buttons.forEach(button => button.disabled = true);
+      }
 
-    function restartQuizEstado() {
-      currentQuestionEstado = 0;
-      scoreEstado = 0;
-      document.getElementById('quiz-content-estado').style.display = 'block';
-      document.getElementById('quiz-results-estado').style.display = 'none';
-      showQuestionEstado();
-    }
+      function nextQuestionEstado() {
+        currentQuestionEstado++;
+        showQuestionEstado();
+      }
 
-    document.addEventListener('DOMContentLoaded', initQuizEstado);
+      function showResultsEstado() {
+        document.getElementById('quiz-content-estado').style.display = 'none';
+        document.getElementById('quiz-results-estado').style.display = 'block';
+        document.getElementById('correct-count-estado').textContent = scoreEstado;
+      }
+
+      function restartQuizEstado() {
+        currentQuestionEstado = 0;
+        scoreEstado = 0;
+        document.getElementById('quiz-content-estado').style.display = 'block';
+        document.getElementById('quiz-results-estado').style.display = 'none';
+        showQuestionEstado();
+      }
+
+      document.addEventListener('DOMContentLoaded', initQuizEstado);
     </script>
+    <div class="back-button-container">
+      <a href="javascript:history.back()" class="back-button">← Volver</a>
+    </div>
   </main>
 
   <footer>
@@ -433,5 +441,5 @@
   </footer>
   <script src="js/dark-mode.js"></script>
 </body>
-</html>
 
+</html>

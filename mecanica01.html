@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Energía Mecánica</title>
-  <meta name="description" content="Energía mecánica: suma de cinética y potencial, conservación y ejemplos resueltos para secundaria.">
+  <meta name="description"
+    content="Energía mecánica: suma de cinética y potencial, conservación y ejemplos resueltos para secundaria.">
   <link rel="stylesheet" href="css/index.css">
 
   <!-- Polyfill y MathJax -->
@@ -14,7 +16,7 @@
     MathJax = {
       tex: {
         inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$','$$'], ['\\[','\\]']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: ['base', 'ams', 'noerrors', 'noundefined']
       },
       svg: {
@@ -23,6 +25,7 @@
     };
   </script>
 </head>
+
 <body>
   <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
   <header>
@@ -132,7 +135,8 @@
         ¿Cuál es su energía mecánica total?
       </p>
       <div class="equation">
-        $$E_m = \frac{1}{2} \cdot 5 \, \text{kg} \cdot (4 \, \text{m/s})^2 + 5 \, \text{kg} \cdot 9.8 \, \text{m/s}^2 \cdot 10 \, \text{m} = 508 \, \text{J}$$
+        $$E_m = \frac{1}{2} \cdot 5 \, \text{kg} \cdot (4 \, \text{m/s})^2 + 5 \, \text{kg} \cdot 9.8 \, \text{m/s}^2
+        \cdot 10 \, \text{m} = 508 \, \text{J}$$
       </div>
 
       <h3>Ejemplo 2: Conservación de la Energía Mecánica</h3>
@@ -144,14 +148,16 @@
         $$\Delta E_m = 0 \, \text{J}$$
       </div>
       <p>
-        La energía mecánica total se conserva, ya que la energía potencial gravitatoria se convierte en energía cinética y viceversa.
+        La energía mecánica total se conserva, ya que la energía potencial gravitatoria se convierte en energía cinética
+        y viceversa.
       </p>
     </section>
     <section class="cards">
       <div class="card">
         <h2>🧩 Ejemplo resuelto</h2>
         <p>Una pelota de 2 kg está a 5 m de altura y se mueve a 4 m/s. Calcula su energía mecánica.</p>
-        <div class="equation">$$E_m = \frac{1}{2} \cdot 2 \cdot 4^2 + 2 \cdot 9.8 \cdot 5 = 16 + 98 = 114\ \text{J}$$</div>
+        <div class="equation">$$E_m = \frac{1}{2} \cdot 2 \cdot 4^2 + 2 \cdot 9.8 \cdot 5 = 16 + 98 = 114\ \text{J}$$
+        </div>
         <div class="example">
           <strong>Conclusión:</strong> la energía total suma movimiento y posición.
         </div>
@@ -176,59 +182,60 @@
       <div class="quiz-results" id="quiz-results-mecanica" style="display: none;">
         <h3>🎉 ¡Quiz Completado!</h3>
         <div class="score-display">
-          <p class="score-text">Respondiste correctamente <span id="correct-count-mecanica">0</span> de <span id="total-count-mecanica">4</span> preguntas</p>
+          <p class="score-text">Respondiste correctamente <span id="correct-count-mecanica">0</span> de <span
+              id="total-count-mecanica">4</span> preguntas</p>
         </div>
         <button class="retry-button" onclick="restartQuizMecanica()">Intentar de Nuevo</button>
       </div>
     </section>
 
     <script>
-    const quizDataMecanica = [
-      {
-        question: "Si $E_c = 30\\,\\text{J}$ y $E_p = 50\\,\\text{J}$, ¿cuál es la energía mecánica total?",
-        equation: "$$E_m = E_c + E_p$$",
-        options: ["20 J", "80 J", "150 J", "1500 J"],
-        correct: 1,
-        explanation: "Em = Ec + Ep = 30 J + 50 J = 80 J"
-      },
-      {
-        question: "Un objeto de 2 kg está a 5 m de altura y se mueve a 3 m/s. ¿Cuál es su energía mecánica?",
-        equation: "$$E_m = \\frac{1}{2}mv^2 + mgh$$",
-        options: ["98 J", "107 J", "9 J", "89 J"],
-        correct: 1,
-        explanation: "Ec = ½ × 2 × 3² = 9 J; Ep = 2 × 9.8 × 5 = 98 J; Em = 9 + 98 = 107 J"
-      },
-      {
-        question: "¿Qué tipos de energía componen la energía mecánica?",
-        equation: "",
-        options: ["Cinética y térmica", "Potencial y eléctrica", "Cinética y potencial", "Nuclear y química"],
-        correct: 2,
-        explanation: "La energía mecánica es la suma de la energía cinética (movimiento) y la energía potencial (posición)."
-      },
-      {
-        question: "En un péndulo en el punto más bajo, ¿cómo está distribuida la energía mecánica?",
-        equation: "",
-        options: ["Toda es potencial", "Toda es cinética", "Mitad y mitad", "No hay energía"],
-        correct: 1,
-        explanation: "En el punto más bajo, la altura es mínima (Ep mínima) y la velocidad es máxima (Ec máxima). Si tomamos h=0 en ese punto, toda la Em es cinética."
+      const quizDataMecanica = [
+        {
+          question: "Si $E_c = 30\\,\\text{J}$ y $E_p = 50\\,\\text{J}$, ¿cuál es la energía mecánica total?",
+          equation: "$$E_m = E_c + E_p$$",
+          options: ["20 J", "80 J", "150 J", "1500 J"],
+          correct: 1,
+          explanation: "Em = Ec + Ep = 30 J + 50 J = 80 J"
+        },
+        {
+          question: "Un objeto de 2 kg está a 5 m de altura y se mueve a 3 m/s. ¿Cuál es su energía mecánica?",
+          equation: "$$E_m = \\frac{1}{2}mv^2 + mgh$$",
+          options: ["98 J", "107 J", "9 J", "89 J"],
+          correct: 1,
+          explanation: "Ec = ½ × 2 × 3² = 9 J; Ep = 2 × 9.8 × 5 = 98 J; Em = 9 + 98 = 107 J"
+        },
+        {
+          question: "¿Qué tipos de energía componen la energía mecánica?",
+          equation: "",
+          options: ["Cinética y térmica", "Potencial y eléctrica", "Cinética y potencial", "Nuclear y química"],
+          correct: 2,
+          explanation: "La energía mecánica es la suma de la energía cinética (movimiento) y la energía potencial (posición)."
+        },
+        {
+          question: "En un péndulo en el punto más bajo, ¿cómo está distribuida la energía mecánica?",
+          equation: "",
+          options: ["Toda es potencial", "Toda es cinética", "Mitad y mitad", "No hay energía"],
+          correct: 1,
+          explanation: "En el punto más bajo, la altura es mínima (Ep mínima) y la velocidad es máxima (Ec máxima). Si tomamos h=0 en ese punto, toda la Em es cinética."
+        }
+      ];
+
+      let currentQuestionMecanica = 0;
+      let scoreMecanica = 0;
+      let answeredMecanica = false;
+
+      function initQuizMecanica() {
+        document.getElementById('total-count-mecanica').textContent = quizDataMecanica.length;
+        showQuestionMecanica();
       }
-    ];
 
-    let currentQuestionMecanica = 0;
-    let scoreMecanica = 0;
-    let answeredMecanica = false;
+      function showQuestionMecanica() {
+        answeredMecanica = false;
+        const question = quizDataMecanica[currentQuestionMecanica];
+        const quizContent = document.getElementById('quiz-content-mecanica');
 
-    function initQuizMecanica() {
-      document.getElementById('total-count-mecanica').textContent = quizDataMecanica.length;
-      showQuestionMecanica();
-    }
-
-    function showQuestionMecanica() {
-      answeredMecanica = false;
-      const question = quizDataMecanica[currentQuestionMecanica];
-      const quizContent = document.getElementById('quiz-content-mecanica');
-
-      quizContent.innerHTML = `
+        quizContent.innerHTML = `
         <div class="question-card">
           <h3>📝 Pregunta ${currentQuestionMecanica + 1} de ${quizDataMecanica.length}</h3>
           <p class="question-text">${question.question}</p>
@@ -246,53 +253,56 @@
           </div>
           <div class="navigation-buttons" id="nav-mecanica" style="display: none;">
             ${currentQuestionMecanica < quizDataMecanica.length - 1 ?
-              '<button class="nav-button" onclick="nextQuestionMecanica()">Siguiente →</button>' :
-              '<button class="nav-button" onclick="showResultsMecanica()">Ver Resultados →</button>'}
+            '<button class="nav-button" onclick="nextQuestionMecanica()">Siguiente →</button>' :
+            '<button class="nav-button" onclick="showResultsMecanica()">Ver Resultados →</button>'}
           </div>
         </div>
       `;
-      MathJax.typesetPromise();
-    }
-
-    function selectOptionMecanica(optionIndex) {
-      if (answeredMecanica) return;
-      answeredMecanica = true;
-      const question = quizDataMecanica[currentQuestionMecanica];
-      const buttons = document.querySelectorAll('#quiz-content-mecanica .option-button');
-
-      buttons[question.correct].classList.add('correct');
-      if (optionIndex !== question.correct) {
-        buttons[optionIndex].classList.add('incorrect');
-      } else {
-        scoreMecanica++;
+        MathJax.typesetPromise();
       }
 
-      document.getElementById('explanation-mecanica').style.display = 'block';
-      document.getElementById('nav-mecanica').style.display = 'flex';
-      buttons.forEach(button => button.disabled = true);
-    }
+      function selectOptionMecanica(optionIndex) {
+        if (answeredMecanica) return;
+        answeredMecanica = true;
+        const question = quizDataMecanica[currentQuestionMecanica];
+        const buttons = document.querySelectorAll('#quiz-content-mecanica .option-button');
 
-    function nextQuestionMecanica() {
-      currentQuestionMecanica++;
-      showQuestionMecanica();
-    }
+        buttons[question.correct].classList.add('correct');
+        if (optionIndex !== question.correct) {
+          buttons[optionIndex].classList.add('incorrect');
+        } else {
+          scoreMecanica++;
+        }
 
-    function showResultsMecanica() {
-      document.getElementById('quiz-content-mecanica').style.display = 'none';
-      document.getElementById('quiz-results-mecanica').style.display = 'block';
-      document.getElementById('correct-count-mecanica').textContent = scoreMecanica;
-    }
+        document.getElementById('explanation-mecanica').style.display = 'block';
+        document.getElementById('nav-mecanica').style.display = 'flex';
+        buttons.forEach(button => button.disabled = true);
+      }
 
-    function restartQuizMecanica() {
-      currentQuestionMecanica = 0;
-      scoreMecanica = 0;
-      document.getElementById('quiz-content-mecanica').style.display = 'block';
-      document.getElementById('quiz-results-mecanica').style.display = 'none';
-      showQuestionMecanica();
-    }
+      function nextQuestionMecanica() {
+        currentQuestionMecanica++;
+        showQuestionMecanica();
+      }
 
-    document.addEventListener('DOMContentLoaded', initQuizMecanica);
+      function showResultsMecanica() {
+        document.getElementById('quiz-content-mecanica').style.display = 'none';
+        document.getElementById('quiz-results-mecanica').style.display = 'block';
+        document.getElementById('correct-count-mecanica').textContent = scoreMecanica;
+      }
+
+      function restartQuizMecanica() {
+        currentQuestionMecanica = 0;
+        scoreMecanica = 0;
+        document.getElementById('quiz-content-mecanica').style.display = 'block';
+        document.getElementById('quiz-results-mecanica').style.display = 'none';
+        showQuestionMecanica();
+      }
+
+      document.addEventListener('DOMContentLoaded', initQuizMecanica);
     </script>
+    <div class="back-button-container">
+      <a href="javascript:history.back()" class="back-button">← Volver</a>
+    </div>
   </main>
 
   <footer>
@@ -316,5 +326,5 @@
   </footer>
   <script src="js/dark-mode.js"></script>
 </body>
-</html>
 
+</html>

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Temperatura - Escalas y Conversiones</title>
-  <meta name="description" content="Temperatura en física: escalas Celsius, Fahrenheit y Kelvin, ecuaciones de conversión, termómetros y cero absoluto.">
+  <meta name="description"
+    content="Temperatura en física: escalas Celsius, Fahrenheit y Kelvin, ecuaciones de conversión, termómetros y cero absoluto.">
   <link rel="stylesheet" href="css/index.css">
 
   <!-- Polyfill y MathJax -->
@@ -14,7 +16,7 @@
     MathJax = {
       tex: {
         inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$','$$'], ['\\[','\\]']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: ['base', 'ams', 'noerrors', 'noundefined']
       },
       svg: {
@@ -23,6 +25,7 @@
     };
   </script>
 </head>
+
 <body>
   <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
   <header>
@@ -261,7 +264,8 @@
       </div>
 
       <h3>Ejemplo 4: Dilatación</h3>
-      <p>Una barra de acero de 10 m se calienta de 20°C a 50°C. Si $\alpha = 12 \times 10^{-6}\,\text{°C}^{-1}$, ¿cuánto se alarga?</p>
+      <p>Una barra de acero de 10 m se calienta de 20°C a 50°C. Si $\alpha = 12 \times 10^{-6}\,\text{°C}^{-1}$, ¿cuánto
+        se alarga?</p>
       <div class="equation">
         $$\Delta L = 10 \cdot 12 \times 10^{-6} \cdot 30 = 3.6 \times 10^{-3}\,\text{m} = 3.6\,\text{mm}$$
       </div>
@@ -274,7 +278,8 @@
         <p>¿A qué temperatura las escalas Celsius y Fahrenheit coinciden?</p>
         <div class="equation">$$x = \frac{9}{5}x + 32 \implies -\frac{4}{5}x = 32 \implies x = -40$$</div>
         <div class="example">
-          <strong>Conclusión:</strong> $-40\,°\text{C} = -40\,°\text{F}$ es el único punto donde ambas escalas coinciden.
+          <strong>Conclusión:</strong> $-40\,°\text{C} = -40\,°\text{F}$ es el único punto donde ambas escalas
+          coinciden.
         </div>
       </div>
       <div class="card">
@@ -297,59 +302,60 @@
       <div class="quiz-results" id="quiz-results-temperatura" style="display: none;">
         <h3>🎉 ¡Quiz Completado!</h3>
         <div class="score-display">
-          <p class="score-text">Respondiste correctamente <span id="correct-count-temperatura">0</span> de <span id="total-count-temperatura">4</span> preguntas</p>
+          <p class="score-text">Respondiste correctamente <span id="correct-count-temperatura">0</span> de <span
+              id="total-count-temperatura">4</span> preguntas</p>
         </div>
         <button class="retry-button" onclick="restartQuizTemperatura()">Intentar de Nuevo</button>
       </div>
     </section>
 
     <script>
-    const quizDataTemperatura = [
-      {
-        question: "¿Es posible tener una temperatura de -300°C?",
-        equation: "",
-        options: ["Sí, es posible", "No, porque el cero absoluto es -273,15°C", "Sí, pero solo en el espacio", "Depende del material"],
-        correct: 1,
-        explanation: "El cero absoluto es -273,15°C. No es posible tener temperaturas menores porque representaría energía cinética negativa."
-      },
-      {
-        question: "Convierte 25°C a Kelvin:",
-        equation: "$$K = \\,^{\\circ}C + 273.15$$",
-        options: ["248,15 K", "298,15 K", "25 K", "300 K"],
-        correct: 1,
-        explanation: "K = 25 + 273,15 = 298,15 K"
-      },
-      {
-        question: "¿A qué temperatura Celsius y Fahrenheit tienen el mismo valor numérico?",
-        equation: "",
-        options: ["0°", "32°", "-40°", "100°"],
-        correct: 2,
-        explanation: "Resolviendo x = (9/5)x + 32, obtenemos x = -40. Es el único punto donde -40°C = -40°F."
-      },
-      {
-        question: "¿Cuánto es 98,6°F (temperatura corporal) en Celsius?",
-        equation: "$$^{\\circ}C = \\frac{5}{9}(^{\\circ}F - 32)$$",
-        options: ["37°C", "36°C", "38°C", "35°C"],
-        correct: 0,
-        explanation: "°C = (5/9) × (98,6 - 32) = (5/9) × 66,6 = 37°C"
+      const quizDataTemperatura = [
+        {
+          question: "¿Es posible tener una temperatura de -300°C?",
+          equation: "",
+          options: ["Sí, es posible", "No, porque el cero absoluto es -273,15°C", "Sí, pero solo en el espacio", "Depende del material"],
+          correct: 1,
+          explanation: "El cero absoluto es -273,15°C. No es posible tener temperaturas menores porque representaría energía cinética negativa."
+        },
+        {
+          question: "Convierte 25°C a Kelvin:",
+          equation: "$$K = \\,^{\\circ}C + 273.15$$",
+          options: ["248,15 K", "298,15 K", "25 K", "300 K"],
+          correct: 1,
+          explanation: "K = 25 + 273,15 = 298,15 K"
+        },
+        {
+          question: "¿A qué temperatura Celsius y Fahrenheit tienen el mismo valor numérico?",
+          equation: "",
+          options: ["0°", "32°", "-40°", "100°"],
+          correct: 2,
+          explanation: "Resolviendo x = (9/5)x + 32, obtenemos x = -40. Es el único punto donde -40°C = -40°F."
+        },
+        {
+          question: "¿Cuánto es 98,6°F (temperatura corporal) en Celsius?",
+          equation: "$$^{\\circ}C = \\frac{5}{9}(^{\\circ}F - 32)$$",
+          options: ["37°C", "36°C", "38°C", "35°C"],
+          correct: 0,
+          explanation: "°C = (5/9) × (98,6 - 32) = (5/9) × 66,6 = 37°C"
+        }
+      ];
+
+      let currentQuestionTemperatura = 0;
+      let scoreTemperatura = 0;
+      let answeredTemperatura = false;
+
+      function initQuizTemperatura() {
+        document.getElementById('total-count-temperatura').textContent = quizDataTemperatura.length;
+        showQuestionTemperatura();
       }
-    ];
 
-    let currentQuestionTemperatura = 0;
-    let scoreTemperatura = 0;
-    let answeredTemperatura = false;
+      function showQuestionTemperatura() {
+        answeredTemperatura = false;
+        const question = quizDataTemperatura[currentQuestionTemperatura];
+        const quizContent = document.getElementById('quiz-content-temperatura');
 
-    function initQuizTemperatura() {
-      document.getElementById('total-count-temperatura').textContent = quizDataTemperatura.length;
-      showQuestionTemperatura();
-    }
-
-    function showQuestionTemperatura() {
-      answeredTemperatura = false;
-      const question = quizDataTemperatura[currentQuestionTemperatura];
-      const quizContent = document.getElementById('quiz-content-temperatura');
-
-      quizContent.innerHTML = `
+        quizContent.innerHTML = `
         <div class="question-card">
           <h3>📝 Pregunta ${currentQuestionTemperatura + 1} de ${quizDataTemperatura.length}</h3>
           <p class="question-text">${question.question}</p>
@@ -367,53 +373,56 @@
           </div>
           <div class="navigation-buttons" id="nav-temperatura" style="display: none;">
             ${currentQuestionTemperatura < quizDataTemperatura.length - 1 ?
-              '<button class="nav-button" onclick="nextQuestionTemperatura()">Siguiente →</button>' :
-              '<button class="nav-button" onclick="showResultsTemperatura()">Ver Resultados →</button>'}
+            '<button class="nav-button" onclick="nextQuestionTemperatura()">Siguiente →</button>' :
+            '<button class="nav-button" onclick="showResultsTemperatura()">Ver Resultados →</button>'}
           </div>
         </div>
       `;
-      MathJax.typesetPromise();
-    }
-
-    function selectOptionTemperatura(optionIndex) {
-      if (answeredTemperatura) return;
-      answeredTemperatura = true;
-      const question = quizDataTemperatura[currentQuestionTemperatura];
-      const buttons = document.querySelectorAll('#quiz-content-temperatura .option-button');
-
-      buttons[question.correct].classList.add('correct');
-      if (optionIndex !== question.correct) {
-        buttons[optionIndex].classList.add('incorrect');
-      } else {
-        scoreTemperatura++;
+        MathJax.typesetPromise();
       }
 
-      document.getElementById('explanation-temperatura').style.display = 'block';
-      document.getElementById('nav-temperatura').style.display = 'flex';
-      buttons.forEach(button => button.disabled = true);
-    }
+      function selectOptionTemperatura(optionIndex) {
+        if (answeredTemperatura) return;
+        answeredTemperatura = true;
+        const question = quizDataTemperatura[currentQuestionTemperatura];
+        const buttons = document.querySelectorAll('#quiz-content-temperatura .option-button');
 
-    function nextQuestionTemperatura() {
-      currentQuestionTemperatura++;
-      showQuestionTemperatura();
-    }
+        buttons[question.correct].classList.add('correct');
+        if (optionIndex !== question.correct) {
+          buttons[optionIndex].classList.add('incorrect');
+        } else {
+          scoreTemperatura++;
+        }
 
-    function showResultsTemperatura() {
-      document.getElementById('quiz-content-temperatura').style.display = 'none';
-      document.getElementById('quiz-results-temperatura').style.display = 'block';
-      document.getElementById('correct-count-temperatura').textContent = scoreTemperatura;
-    }
+        document.getElementById('explanation-temperatura').style.display = 'block';
+        document.getElementById('nav-temperatura').style.display = 'flex';
+        buttons.forEach(button => button.disabled = true);
+      }
 
-    function restartQuizTemperatura() {
-      currentQuestionTemperatura = 0;
-      scoreTemperatura = 0;
-      document.getElementById('quiz-content-temperatura').style.display = 'block';
-      document.getElementById('quiz-results-temperatura').style.display = 'none';
-      showQuestionTemperatura();
-    }
+      function nextQuestionTemperatura() {
+        currentQuestionTemperatura++;
+        showQuestionTemperatura();
+      }
 
-    document.addEventListener('DOMContentLoaded', initQuizTemperatura);
+      function showResultsTemperatura() {
+        document.getElementById('quiz-content-temperatura').style.display = 'none';
+        document.getElementById('quiz-results-temperatura').style.display = 'block';
+        document.getElementById('correct-count-temperatura').textContent = scoreTemperatura;
+      }
+
+      function restartQuizTemperatura() {
+        currentQuestionTemperatura = 0;
+        scoreTemperatura = 0;
+        document.getElementById('quiz-content-temperatura').style.display = 'block';
+        document.getElementById('quiz-results-temperatura').style.display = 'none';
+        showQuestionTemperatura();
+      }
+
+      document.addEventListener('DOMContentLoaded', initQuizTemperatura);
     </script>
+    <div class="back-button-container">
+      <a href="javascript:history.back()" class="back-button">← Volver</a>
+    </div>
   </main>
 
   <footer>
@@ -437,5 +446,5 @@
   </footer>
   <script src="js/dark-mode.js"></script>
 </body>
-</html>
 
+</html>

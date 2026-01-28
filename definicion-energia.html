@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>¿Qué es la Energía?</title>
-  <meta name="description" content="Definición de energía en física: tipos, principio de conservación, unidades y formas de energía para secundaria.">
+  <meta name="description"
+    content="Definición de energía en física: tipos, principio de conservación, unidades y formas de energía para secundaria.">
   <link rel="stylesheet" href="css/index.css">
 
   <!-- Polyfill y MathJax -->
@@ -14,7 +16,7 @@
     MathJax = {
       tex: {
         inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$','$$'], ['\\[','\\]']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: ['base', 'ams', 'noerrors', 'noundefined']
       },
       svg: {
@@ -23,6 +25,7 @@
     };
   </script>
 </head>
+
 <body>
   <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
   <header>
@@ -208,7 +211,8 @@
       <div class="card">
         <h2>🧩 Ejemplo resuelto</h2>
         <p>Una lámpara de 60 W funciona durante 5 horas. ¿Cuánta energía consume?</p>
-        <div class="equation">$$E = P \cdot t = 60 \, \text{W} \cdot 5 \cdot 3600 \, \text{s} = 1{,}080{,}000 \, \text{J} = 0.3 \, \text{kWh}$$</div>
+        <div class="equation">$$E = P \cdot t = 60 \, \text{W} \cdot 5 \cdot 3600 \, \text{s} = 1{,}080{,}000 \,
+          \text{J} = 0.3 \, \text{kWh}$$</div>
         <div class="example">
           <strong>Conclusión:</strong> la energía eléctrica se mide en kWh para uso doméstico.
         </div>
@@ -233,59 +237,60 @@
       <div class="quiz-results" id="quiz-results-energia" style="display: none;">
         <h3>🎉 ¡Quiz Completado!</h3>
         <div class="score-display">
-          <p class="score-text">Respondiste correctamente <span id="correct-count-energia">0</span> de <span id="total-count-energia">4</span> preguntas</p>
+          <p class="score-text">Respondiste correctamente <span id="correct-count-energia">0</span> de <span
+              id="total-count-energia">4</span> preguntas</p>
         </div>
         <button class="retry-button" onclick="restartQuizEnergia()">Intentar de Nuevo</button>
       </div>
     </section>
 
     <script>
-    const quizDataEnergia = [
-      {
-        question: "¿Qué tipo de energía tiene una pelota en el punto más alto de su trayectoria (lanzada hacia arriba)?",
-        equation: "",
-        options: ["Solo energía cinética", "Solo energía potencial", "Ambas energías", "Ninguna energía"],
-        correct: 1,
-        explanation: "En el punto más alto, la velocidad es cero (Ec = 0) y la altura es máxima, por lo que solo tiene energía potencial gravitatoria."
-      },
-      {
-        question: "¿Cuál es la unidad de energía en el Sistema Internacional?",
-        equation: "",
-        options: ["Watt (W)", "Newton (N)", "Joule (J)", "Pascal (Pa)"],
-        correct: 2,
-        explanation: "El Joule (J) es la unidad de energía y trabajo en el SI. 1 J = 1 N·m = 1 kg·m²/s²"
-      },
-      {
-        question: "Según el principio de conservación de la energía:",
-        equation: "$$E_{\\text{total,inicial}} = E_{\\text{total,final}}$$",
-        options: ["La energía puede crearse pero no destruirse", "La energía puede destruirse pero no crearse", "La energía no se crea ni se destruye, solo se transforma", "La energía siempre aumenta"],
-        correct: 2,
-        explanation: "El principio de conservación establece que la energía total de un sistema aislado permanece constante, solo cambia de forma."
-      },
-      {
-        question: "¿Qué transformación de energía ocurre en una central hidroeléctrica?",
-        equation: "",
-        options: ["Cinética → Térmica", "Potencial → Eléctrica", "Nuclear → Térmica", "Química → Cinética"],
-        correct: 1,
-        explanation: "El agua almacenada en altura tiene energía potencial que se convierte en energía cinética al caer, y luego en eléctrica mediante turbinas y generadores."
+      const quizDataEnergia = [
+        {
+          question: "¿Qué tipo de energía tiene una pelota en el punto más alto de su trayectoria (lanzada hacia arriba)?",
+          equation: "",
+          options: ["Solo energía cinética", "Solo energía potencial", "Ambas energías", "Ninguna energía"],
+          correct: 1,
+          explanation: "En el punto más alto, la velocidad es cero (Ec = 0) y la altura es máxima, por lo que solo tiene energía potencial gravitatoria."
+        },
+        {
+          question: "¿Cuál es la unidad de energía en el Sistema Internacional?",
+          equation: "",
+          options: ["Watt (W)", "Newton (N)", "Joule (J)", "Pascal (Pa)"],
+          correct: 2,
+          explanation: "El Joule (J) es la unidad de energía y trabajo en el SI. 1 J = 1 N·m = 1 kg·m²/s²"
+        },
+        {
+          question: "Según el principio de conservación de la energía:",
+          equation: "$$E_{\\text{total,inicial}} = E_{\\text{total,final}}$$",
+          options: ["La energía puede crearse pero no destruirse", "La energía puede destruirse pero no crearse", "La energía no se crea ni se destruye, solo se transforma", "La energía siempre aumenta"],
+          correct: 2,
+          explanation: "El principio de conservación establece que la energía total de un sistema aislado permanece constante, solo cambia de forma."
+        },
+        {
+          question: "¿Qué transformación de energía ocurre en una central hidroeléctrica?",
+          equation: "",
+          options: ["Cinética → Térmica", "Potencial → Eléctrica", "Nuclear → Térmica", "Química → Cinética"],
+          correct: 1,
+          explanation: "El agua almacenada en altura tiene energía potencial que se convierte en energía cinética al caer, y luego en eléctrica mediante turbinas y generadores."
+        }
+      ];
+
+      let currentQuestionEnergia = 0;
+      let scoreEnergia = 0;
+      let answeredEnergia = false;
+
+      function initQuizEnergia() {
+        document.getElementById('total-count-energia').textContent = quizDataEnergia.length;
+        showQuestionEnergia();
       }
-    ];
 
-    let currentQuestionEnergia = 0;
-    let scoreEnergia = 0;
-    let answeredEnergia = false;
+      function showQuestionEnergia() {
+        answeredEnergia = false;
+        const question = quizDataEnergia[currentQuestionEnergia];
+        const quizContent = document.getElementById('quiz-content-energia');
 
-    function initQuizEnergia() {
-      document.getElementById('total-count-energia').textContent = quizDataEnergia.length;
-      showQuestionEnergia();
-    }
-
-    function showQuestionEnergia() {
-      answeredEnergia = false;
-      const question = quizDataEnergia[currentQuestionEnergia];
-      const quizContent = document.getElementById('quiz-content-energia');
-
-      quizContent.innerHTML = `
+        quizContent.innerHTML = `
         <div class="question-card">
           <h3>📝 Pregunta ${currentQuestionEnergia + 1} de ${quizDataEnergia.length}</h3>
           <p class="question-text">${question.question}</p>
@@ -303,53 +308,56 @@
           </div>
           <div class="navigation-buttons" id="nav-energia" style="display: none;">
             ${currentQuestionEnergia < quizDataEnergia.length - 1 ?
-              '<button class="nav-button" onclick="nextQuestionEnergia()">Siguiente →</button>' :
-              '<button class="nav-button" onclick="showResultsEnergia()">Ver Resultados →</button>'}
+            '<button class="nav-button" onclick="nextQuestionEnergia()">Siguiente →</button>' :
+            '<button class="nav-button" onclick="showResultsEnergia()">Ver Resultados →</button>'}
           </div>
         </div>
       `;
-      MathJax.typesetPromise();
-    }
-
-    function selectOptionEnergia(optionIndex) {
-      if (answeredEnergia) return;
-      answeredEnergia = true;
-      const question = quizDataEnergia[currentQuestionEnergia];
-      const buttons = document.querySelectorAll('#quiz-content-energia .option-button');
-
-      buttons[question.correct].classList.add('correct');
-      if (optionIndex !== question.correct) {
-        buttons[optionIndex].classList.add('incorrect');
-      } else {
-        scoreEnergia++;
+        MathJax.typesetPromise();
       }
 
-      document.getElementById('explanation-energia').style.display = 'block';
-      document.getElementById('nav-energia').style.display = 'flex';
-      buttons.forEach(button => button.disabled = true);
-    }
+      function selectOptionEnergia(optionIndex) {
+        if (answeredEnergia) return;
+        answeredEnergia = true;
+        const question = quizDataEnergia[currentQuestionEnergia];
+        const buttons = document.querySelectorAll('#quiz-content-energia .option-button');
 
-    function nextQuestionEnergia() {
-      currentQuestionEnergia++;
-      showQuestionEnergia();
-    }
+        buttons[question.correct].classList.add('correct');
+        if (optionIndex !== question.correct) {
+          buttons[optionIndex].classList.add('incorrect');
+        } else {
+          scoreEnergia++;
+        }
 
-    function showResultsEnergia() {
-      document.getElementById('quiz-content-energia').style.display = 'none';
-      document.getElementById('quiz-results-energia').style.display = 'block';
-      document.getElementById('correct-count-energia').textContent = scoreEnergia;
-    }
+        document.getElementById('explanation-energia').style.display = 'block';
+        document.getElementById('nav-energia').style.display = 'flex';
+        buttons.forEach(button => button.disabled = true);
+      }
 
-    function restartQuizEnergia() {
-      currentQuestionEnergia = 0;
-      scoreEnergia = 0;
-      document.getElementById('quiz-content-energia').style.display = 'block';
-      document.getElementById('quiz-results-energia').style.display = 'none';
-      showQuestionEnergia();
-    }
+      function nextQuestionEnergia() {
+        currentQuestionEnergia++;
+        showQuestionEnergia();
+      }
 
-    document.addEventListener('DOMContentLoaded', initQuizEnergia);
+      function showResultsEnergia() {
+        document.getElementById('quiz-content-energia').style.display = 'none';
+        document.getElementById('quiz-results-energia').style.display = 'block';
+        document.getElementById('correct-count-energia').textContent = scoreEnergia;
+      }
+
+      function restartQuizEnergia() {
+        currentQuestionEnergia = 0;
+        scoreEnergia = 0;
+        document.getElementById('quiz-content-energia').style.display = 'block';
+        document.getElementById('quiz-results-energia').style.display = 'none';
+        showQuestionEnergia();
+      }
+
+      document.addEventListener('DOMContentLoaded', initQuizEnergia);
     </script>
+    <div class="back-button-container">
+      <a href="javascript:history.back()" class="back-button">← Volver</a>
+    </div>
   </main>
 
   <footer>
@@ -373,5 +381,5 @@
   </footer>
   <script src="js/dark-mode.js"></script>
 </body>
-</html>
 
+</html>

@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Física para Secundaria - Quiz Interactivo</title>
-  <meta name="description" content="Quiz interactivo de física: evalúa tu conocimiento sobre energía, trabajo, electricidad y calor.">
+  <meta name="description"
+    content="Quiz interactivo de física: evalúa tu conocimiento sobre energía, trabajo, electricidad y calor.">
   <link rel="stylesheet" href="css/index.css">
-  
+
   <!-- Polyfill y MathJax -->
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -14,7 +16,7 @@
     MathJax = {
       tex: {
         inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$','$$'], ['\\[','\\]']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: ['base', 'ams', 'noerrors', 'noundefined']
       },
       svg: {
@@ -23,6 +25,7 @@
     };
   </script>
 </head>
+
 <body>
   <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
   <header>
@@ -67,7 +70,8 @@
         <div class="score-circle">
           <span class="score-percentage" id="score-percentage">0%</span>
         </div>
-        <p class="score-text">Respondiste correctamente <span id="correct-count">0</span> de <span id="total-count">10</span> preguntas</p>
+        <p class="score-text">Respondiste correctamente <span id="correct-count">0</span> de <span
+            id="total-count">10</span> preguntas</p>
       </div>
       <div class="result-message" id="result-message"></div>
       <div class="action-buttons">
@@ -75,6 +79,9 @@
         <button class="study-button" onclick="window.location.href='guia.html'">Repasar Guía</button>
       </div>
     </section>
+    <div class="back-button-container">
+      <a href="javascript:history.back()" class="back-button">← Volver</a>
+    </div>
   </main>
 
   <footer>
@@ -160,7 +167,7 @@
         equation: "$$E_m = E_c + E_p$$",
         options: [
           "Aumenta constantemente",
-          "Disminuye constantemente", 
+          "Disminuye constantemente",
           "Se mantiene constante",
           "Oscila entre valores"
         ],
@@ -290,7 +297,7 @@
       answered = false;
       const question = quizData[currentQuestion];
       const quizContent = document.getElementById('quiz-content');
-      
+
       quizContent.innerHTML = `
         <div class="question-card">
           <h3>📝 Pregunta ${currentQuestion + 1}</h3>
@@ -321,27 +328,27 @@
 
     function selectOption(optionIndex) {
       if (answered) return;
-      
+
       answered = true;
       const question = quizData[currentQuestion];
       const buttons = document.querySelectorAll('.option-button');
       const explanation = document.getElementById('explanation');
       const navigationButtons = document.getElementById('navigation-buttons');
-      
+
       // Marcar la respuesta correcta
       buttons[question.correct].classList.add('correct');
-      
+
       // Si la respuesta es incorrecta, marcarla
       if (optionIndex !== question.correct) {
         buttons[optionIndex].classList.add('incorrect');
       } else {
         score++;
       }
-      
+
       // Mostrar explicación y navegación
       explanation.style.display = 'block';
       navigationButtons.style.display = 'flex';
-      
+
       // Deshabilitar todos los botones
       buttons.forEach(button => button.disabled = true);
     }
@@ -368,17 +375,17 @@
 
     function showResults() {
       const percentage = Math.round((score / quizData.length) * 100);
-      
+
       document.getElementById('quiz-content').style.display = 'none';
       document.getElementById('quiz-results').style.display = 'block';
       document.getElementById('score-percentage').textContent = percentage + '%';
       document.getElementById('correct-count').textContent = score;
       document.getElementById('total-count').textContent = quizData.length;
-      
+
       const resultMessage = document.getElementById('result-message');
       let message = '';
       let emoji = '';
-      
+
       if (percentage >= 90) {
         message = '¡Excelente! Tienes un dominio excepcional de los conceptos.';
         emoji = '🏆';
@@ -392,7 +399,7 @@
         message = 'Necesitas repasar más los conceptos fundamentales.';
         emoji = '💪';
       }
-      
+
       resultMessage.innerHTML = `<p>${emoji} ${message}</p>`;
     }
 
@@ -400,10 +407,10 @@
       currentQuestion = 0;
       score = 0;
       answered = false;
-      
+
       document.getElementById('quiz-content').style.display = 'block';
       document.getElementById('quiz-results').style.display = 'none';
-      
+
       showQuestion();
     }
 
@@ -412,5 +419,5 @@
   </script>
   <script src="js/dark-mode.js"></script>
 </body>
-</html>
 
+</html>

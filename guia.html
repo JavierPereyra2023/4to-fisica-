@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Física para Secundaria - Guía de Estudio</title>
-  <meta name="description" content="Guía de estudio de física: fórmulas esenciales, consejos y problemas resueltos para secundaria.">
+  <meta name="description"
+    content="Guía de estudio de física: fórmulas esenciales, consejos y problemas resueltos para secundaria.">
   <link rel="stylesheet" href="css/index.css">
 
   <!-- Polyfill y MathJax -->
@@ -14,7 +16,7 @@
     MathJax = {
       tex: {
         inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$','$$'], ['\\[','\\]']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: ['base', 'ams', 'noerrors', 'noundefined']
       },
       svg: {
@@ -23,6 +25,7 @@
     };
   </script>
 </head>
+
 <body>
   <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
   <header>
@@ -197,7 +200,8 @@
         </div>
         <div class="tip-card">
           <h3>🧮 Resuelve paso a paso</h3>
-          <p>1. Identifica lo que buscas<br>2. Escribe la fórmula<br>3. Reemplaza los valores<br>4. Calcula con cuidado</p>
+          <p>1. Identifica lo que buscas<br>2. Escribe la fórmula<br>3. Reemplaza los valores<br>4. Calcula con cuidado
+          </p>
         </div>
         <div class="tip-card">
           <h3>📝 Verifica las unidades</h3>
@@ -214,7 +218,8 @@
       <h2>📝 Problemas de Práctica</h2>
       <div class="problem-card">
         <h3>Problema 1: Trabajo</h3>
-        <p>Una persona empuja una caja con una fuerza de 50 N durante 10 metros. El ángulo entre la fuerza y el movimiento es de 30°. ¿Cuánto trabajo realiza?</p>
+        <p>Una persona empuja una caja con una fuerza de 50 N durante 10 metros. El ángulo entre la fuerza y el
+          movimiento es de 30°. ¿Cuánto trabajo realiza?</p>
         <button class="solution-button" onclick="toggleSolution(1)">Ver Solución</button>
         <div id="solution-1" class="solution" style="display: none;">
           <h4>Solución:</h4>
@@ -242,6 +247,9 @@
         </div>
       </div>
     </section>
+    <div class="back-button-container">
+      <a href="javascript:history.back()" class="back-button">← Volver</a>
+    </div>
   </main>
 
   <footer>
@@ -276,5 +284,5 @@
   </script>
   <script src="js/dark-mode.js"></script>
 </body>
-</html>
 
+</html>
