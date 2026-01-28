@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Energía Mecánica</title>
+  <meta name="description" content="Energía mecánica: suma de cinética y potencial, conservación y ejemplos resueltos para secundaria.">
+  <link rel="stylesheet" href="css/index.css">
+
+  <!-- Polyfill y MathJax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$','$$'], ['\\[','\\]']],
+        packages: ['base', 'ams', 'noerrors', 'noundefined']
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+</head>
+<body>
+  <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
+  <header>
+    <h1>⚙️ Energía Mecánica</h1>
+    <p>La suma de todas las formas de energía mecánica</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="guia.html">Guía</a></li>
+        <li><a href="definicion-energia.html">Energía</a></li>
+        <li><a href="trabajo.html">Trabajo</a></li>
+        <li><a href="cinetica.html">E. Cinética</a></li>
+        <li><a href="gravitatoria.html">E. Potencial</a></li>
+        <li><a href="mecanica01.html" class="active">E. Mecánica</a></li>
+        <li><a href="mecanica02.html">Conservación</a></li>
+        <li><a href="electricidad.html">Electricidad</a></li>
+        <li><a href="calor.html">Calor</a></li>
+        <li><a href="temperatura.html">Temperatura</a></li>
+        <li><a href="cambios-estado.html">Cambios de Estado</a></li>
+        <li><a href="fuentes-energia-argentina.html">Energía Argentina</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="content-main">
+    <!-- Introducción -->
+    <section class="content-section intro">
+      <h2>¿Qué es la Energía Mecánica?</h2>
+      <p>
+        La energía mecánica es la suma de la energía cinética y la energía potencial de un objeto.
+        Es una medida de la capacidad del objeto para realizar trabajo mecánico. Depende de la masa,
+        la velocidad y la posición del objeto en un campo de fuerzas.
+      </p>
+      <div class="key-points">
+        <strong>Idea clave:</strong> $E_m = E_c + E_p$ y se conserva si no hay rozamiento.
+      </div>
+    </section>
+
+    <!-- Fórmula -->
+    <section class="content-section formula">
+      <h2>Fórmula de la Energía Mecánica</h2>
+      <div class="equation">
+        $$E_m = E_c + E_p$$
+      </div>
+      <p>Donde:</p>
+      <ul>
+        <li><strong>$E_m$:</strong> Energía mecánica total (en julios, J).</li>
+        <li><strong>$E_c$:</strong> Energía cinética (en julios, J).</li>
+        <li><strong>$E_p$:</strong> Energía potencial (en julios, J).</li>
+      </ul>
+    </section>
+
+    <!-- Unidades -->
+    <section class="content-section unidades">
+      <h2>Unidades en el Sistema Internacional (SI - MKS)</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Magnitud</th>
+            <th>Símbolo</th>
+            <th>Unidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Energía Mecánica</td>
+            <td>$E_m$</td>
+            <td>Julios (J)</td>
+          </tr>
+          <tr>
+            <td>Energía Cinética</td>
+            <td>$E_c$</td>
+            <td>Julios (J)</td>
+          </tr>
+          <tr>
+            <td>Energía Potencial</td>
+            <td>$E_p$</td>
+            <td>Julios (J)</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Conservación de la Energía Mecánica -->
+    <section class="content-section conservacion">
+      <h2>Conservación de la Energía Mecánica</h2>
+      <p>
+        En un sistema cerrado sin fuerzas disipativas (como la fricción), la energía mecánica total se conserva.
+        Esto significa que la suma de la energía cinética y la energía potencial permanece constante.
+      </p>
+      <div class="equation">
+        $$E_{m_i} = E_{m_f}$$
+      </div>
+      <p>
+        Donde $E_{m_i}$ es la energía mecánica inicial y $E_{m_f}$ es la energía mecánica final.
+      </p>
+    </section>
+
+    <!-- Ejemplos -->
+    <section class="content-section ejemplos">
+      <h2>Ejemplos de Problemas Resueltos</h2>
+
+      <h3>Ejemplo 1: Energía Mecánica Total</h3>
+      <p>
+        Un objeto de 5 kg se encuentra a una altura de 10 m y se mueve a una velocidad de 4 m/s.
+        ¿Cuál es su energía mecánica total?
+      </p>
+      <div class="equation">
+        $$E_m = \frac{1}{2} \cdot 5 \, \text{kg} \cdot (4 \, \text{m/s})^2 + 5 \, \text{kg} \cdot 9.8 \, \text{m/s}^2 \cdot 10 \, \text{m} = 508 \, \text{J}$$
+      </div>
+
+      <h3>Ejemplo 2: Conservación de la Energía Mecánica</h3>
+      <p>
+        Un péndulo de 2 kg se balancea desde una altura máxima de 0.5 m hasta su punto más bajo.
+        ¿Cuál es la variación de su energía mecánica?
+      </p>
+      <div class="equation">
+        $$\Delta E_m = 0 \, \text{J}$$
+      </div>
+      <p>
+        La energía mecánica total se conserva, ya que la energía potencial gravitatoria se convierte en energía cinética y viceversa.
+      </p>
+    </section>
+    <section class="cards">
+      <div class="card">
+        <h2>🧩 Ejemplo resuelto</h2>
+        <p>Una pelota de 2 kg está a 5 m de altura y se mueve a 4 m/s. Calcula su energía mecánica.</p>
+        <div class="equation">$$E_m = \frac{1}{2} \cdot 2 \cdot 4^2 + 2 \cdot 9.8 \cdot 5 = 16 + 98 = 114\ \text{J}$$</div>
+        <div class="example">
+          <strong>Conclusión:</strong> la energía total suma movimiento y posición.
+        </div>
+      </div>
+      <div class="card">
+        <h2>✅ Autoevaluación</h2>
+        <p>Si $E_c = 30\,\text{J}$ y $E_p = 50\,\text{J}$, ¿cuál es $E_m$?</p>
+        <div class="example">
+          <strong>Pista:</strong> suma ambas energías.
+        </div>
+      </div>
+    </section>
+
+    <!-- Quiz específico de Energía Mecánica -->
+    <section class="content-section">
+      <h2>🎮 Quiz: Energía Mecánica</h2>
+      <p>Pon a prueba tu conocimiento sobre energía mecánica:</p>
+    </section>
+
+    <section class="quiz-container" id="quiz-mecanica">
+      <div class="quiz-content" id="quiz-content-mecanica"></div>
+      <div class="quiz-results" id="quiz-results-mecanica" style="display: none;">
+        <h3>🎉 ¡Quiz Completado!</h3>
+        <div class="score-display">
+          <p class="score-text">Respondiste correctamente <span id="correct-count-mecanica">0</span> de <span id="total-count-mecanica">4</span> preguntas</p>
+        </div>
+        <button class="retry-button" onclick="restartQuizMecanica()">Intentar de Nuevo</button>
+      </div>
+    </section>
+
+    <script>
+    const quizDataMecanica = [
+      {
+        question: "Si $E_c = 30\\,\\text{J}$ y $E_p = 50\\,\\text{J}$, ¿cuál es la energía mecánica total?",
+        equation: "$$E_m = E_c + E_p$$",
+        options: ["20 J", "80 J", "150 J", "1500 J"],
+        correct: 1,
+        explanation: "Em = Ec + Ep = 30 J + 50 J = 80 J"
+      },
+      {
+        question: "Un objeto de 2 kg está a 5 m de altura y se mueve a 3 m/s. ¿Cuál es su energía mecánica?",
+        equation: "$$E_m = \\frac{1}{2}mv^2 + mgh$$",
+        options: ["98 J", "107 J", "9 J", "89 J"],
+        correct: 1,
+        explanation: "Ec = ½ × 2 × 3² = 9 J; Ep = 2 × 9.8 × 5 = 98 J; Em = 9 + 98 = 107 J"
+      },
+      {
+        question: "¿Qué tipos de energía componen la energía mecánica?",
+        equation: "",
+        options: ["Cinética y térmica", "Potencial y eléctrica", "Cinética y potencial", "Nuclear y química"],
+        correct: 2,
+        explanation: "La energía mecánica es la suma de la energía cinética (movimiento) y la energía potencial (posición)."
+      },
+      {
+        question: "En un péndulo en el punto más bajo, ¿cómo está distribuida la energía mecánica?",
+        equation: "",
+        options: ["Toda es potencial", "Toda es cinética", "Mitad y mitad", "No hay energía"],
+        correct: 1,
+        explanation: "En el punto más bajo, la altura es mínima (Ep mínima) y la velocidad es máxima (Ec máxima). Si tomamos h=0 en ese punto, toda la Em es cinética."
+      }
+    ];
+
+    let currentQuestionMecanica = 0;
+    let scoreMecanica = 0;
+    let answeredMecanica = false;
+
+    function initQuizMecanica() {
+      document.getElementById('total-count-mecanica').textContent = quizDataMecanica.length;
+      showQuestionMecanica();
+    }
+
+    function showQuestionMecanica() {
+      answeredMecanica = false;
+      const question = quizDataMecanica[currentQuestionMecanica];
+      const quizContent = document.getElementById('quiz-content-mecanica');
+
+      quizContent.innerHTML = `
+        <div class="question-card">
+          <h3>📝 Pregunta ${currentQuestionMecanica + 1} de ${quizDataMecanica.length}</h3>
+          <p class="question-text">${question.question}</p>
+          ${question.equation ? `<div class="question-equation">${question.equation}</div>` : ''}
+          <div class="options-grid">
+            ${question.options.map((option, index) => `
+              <button class="option-button" onclick="selectOptionMecanica(${index})">
+                ${option}
+              </button>
+            `).join('')}
+          </div>
+          <div class="explanation" id="explanation-mecanica" style="display: none;">
+            <h4>💡 Explicación:</h4>
+            <p>${question.explanation}</p>
+          </div>
+          <div class="navigation-buttons" id="nav-mecanica" style="display: none;">
+            ${currentQuestionMecanica < quizDataMecanica.length - 1 ?
+              '<button class="nav-button" onclick="nextQuestionMecanica()">Siguiente →</button>' :
+              '<button class="nav-button" onclick="showResultsMecanica()">Ver Resultados →</button>'}
+          </div>
+        </div>
+      `;
+      MathJax.typesetPromise();
+    }
+
+    function selectOptionMecanica(optionIndex) {
+      if (answeredMecanica) return;
+      answeredMecanica = true;
+      const question = quizDataMecanica[currentQuestionMecanica];
+      const buttons = document.querySelectorAll('#quiz-content-mecanica .option-button');
+
+      buttons[question.correct].classList.add('correct');
+      if (optionIndex !== question.correct) {
+        buttons[optionIndex].classList.add('incorrect');
+      } else {
+        scoreMecanica++;
+      }
+
+      document.getElementById('explanation-mecanica').style.display = 'block';
+      document.getElementById('nav-mecanica').style.display = 'flex';
+      buttons.forEach(button => button.disabled = true);
+    }
+
+    function nextQuestionMecanica() {
+      currentQuestionMecanica++;
+      showQuestionMecanica();
+    }
+
+    function showResultsMecanica() {
+      document.getElementById('quiz-content-mecanica').style.display = 'none';
+      document.getElementById('quiz-results-mecanica').style.display = 'block';
+      document.getElementById('correct-count-mecanica').textContent = scoreMecanica;
+    }
+
+    function restartQuizMecanica() {
+      currentQuestionMecanica = 0;
+      scoreMecanica = 0;
+      document.getElementById('quiz-content-mecanica').style.display = 'block';
+      document.getElementById('quiz-results-mecanica').style.display = 'none';
+      showQuestionMecanica();
+    }
+
+    document.addEventListener('DOMContentLoaded', initQuizMecanica);
+    </script>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>📚 Aprende Física</h3>
+        <p>Material educativo para estudiantes de secundaria</p>
+      </div>
+      <div class="footer-section">
+        <h3>👨‍🏫 Creado por</h3>
+        <p>Prof. Javier Pereyra</p>
+      </div>
+      <div class="footer-section">
+        <h3>📧 Contacto</h3>
+        <p>Para dudas y sugerencias</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Portal de Física para Secundaria - Educación para todos</p>
+    </div>
+  </footer>
+  <script src="js/dark-mode.js"></script>
+</body>
+</html>
+

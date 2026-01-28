@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fuentes de Energía en Argentina</title>
+  <meta name="description" content="Matriz energética argentina: renovables, no renovables y tendencias.">
+  <link rel="stylesheet" href="css/index.css">
+
+  <!-- Polyfill y MathJax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        packages: ['base', 'ams', 'noerrors', 'noundefined']
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+</head>
+
+<body>
+  <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
+  <header>
+    <h1>🇦🇷 Fuentes de Energía en Argentina</h1>
+    <p>Matriz energética, renovables y desafíos del futuro</p>
+    <div class="search-container">
+      <div class="search-input-wrapper">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="grokSearch" placeholder="Grokipedia: Busca temas de física...">
+      </div>
+      <div id="searchResults" class="search-results"></div>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="fuentes-energia-argentina.html" class="active">Energía Argentina</a></li>
+        <li><a href="eolica.html">Eólica</a></li>
+        <li><a href="solar.html">Solar</a></li>
+        <li><a href="hidroelectrica.html">Hidro</a></li>
+        <li><a href="biomasa.html">Biomasa</a></li>
+        <li><a href="geotermica.html">Geotérmica</a></li>
+      </ul>
+    </nav>
+
+  </header>
+
+  <main class="content-main">
+    <section class="content-section">
+      <h2>Panorama general</h2>
+      <p>
+        Argentina combina fuentes no renovables (principalmente gas natural) con energías
+        renovables que crecen cada año. La matriz eléctrica cambia con nuevas inversiones
+        eólicas y solares.
+      </p>
+      <div class="key-points">
+        <strong>Idea clave:</strong> la diversificación mejora la seguridad energética y reduce emisiones.
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>Matriz eléctrica aproximada</h2>
+      <p>Distribución estimada de generación eléctrica por tipo de fuente.</p>
+      <div class="energy-chart">
+        <div class="chart-row">
+          <div class="chart-label">Gas natural</div>
+          <div class="chart-bar">
+            <div class="chart-fill" style="width: 51%; background: #ff7043;"></div>
+          </div>
+          <div class="chart-value">51%</div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-label">Hidroeléctrica</div>
+          <div class="chart-bar">
+            <div class="chart-fill" style="width: 16%; background: #42a5f5;"></div>
+          </div>
+          <div class="chart-value">16%</div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-label">Eólica</div>
+          <div class="chart-bar">
+            <div class="chart-fill" style="width: 10%; background: #66bb6a;"></div>
+          </div>
+          <div class="chart-value">10%</div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-label">Nuclear</div>
+          <div class="chart-bar">
+            <div class="chart-fill" style="width: 7%; background: #ab47bc;"></div>
+          </div>
+          <div class="chart-value">7%</div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-label">Solar</div>
+          <div class="chart-bar">
+            <div class="chart-fill" style="width: 3%; background: #fbc02d;"></div>
+          </div>
+          <div class="chart-value">3%</div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-label">Otros</div>
+          <div class="chart-bar">
+            <div class="chart-fill" style="width: 13%; background: #90a4ae;"></div>
+          </div>
+          <div class="chart-value">13%</div>
+        </div>
+      </div>
+      <div class="callout">
+        <strong>Nota:</strong> valores aproximados para fines educativos. Pueden variar por año y fuente.
+      </div>
+    </section>
+
+    <section class="cards">
+      <div class="card">
+        <h2>✅ Ventajas renovables</h2>
+        <ul class="info-list">
+          <li>Menor emisión de gases de efecto invernadero.</li>
+          <li>Recursos inagotables (viento, sol, agua).</li>
+          <li>Mayor independencia energética a largo plazo.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>⚠️ Desafíos renovables</h2>
+        <ul class="info-list">
+          <li>Variabilidad en la generación (clima).</li>
+          <li>Necesidad de almacenamiento o respaldo.</li>
+          <li>Infraestructura inicial costosa.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>🔧 No renovables</h2>
+        <ul class="info-list">
+          <li>Alta densidad energética.</li>
+          <li>Emisiones contaminantes.</li>
+          <li>Recursos finitos a largo plazo.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>Funcionamiento básico de cada fuente</h2>
+      <div class="content-grid">
+        <div class="callout">
+          <strong>Hidroeléctrica:</strong> el agua en altura mueve turbinas generadoras. <a
+            href="hidroelectrica.html">Saber más &raquo;</a>
+        </div>
+        <div class="callout">
+          <strong>Eólica:</strong> el viento hace girar aerogeneradores. <a href="eolica.html">Saber más &raquo;</a>
+        </div>
+        <div class="callout">
+          <strong>Solar:</strong> paneles fotovoltaicos convierten luz en electricidad. <a href="solar.html">Saber más
+            &raquo;</a>
+        </div>
+        <div class="callout">
+          <strong>Biomasa:</strong> energía a partir de materia orgánica y residuos. <a href="biomasa.html">Saber más
+            &raquo;</a>
+        </div>
+        <div class="callout">
+          <strong>Geotérmica:</strong> aprovechamiento del calor interno de la Tierra. <a href="geotermica.html">Saber
+            más
+            &raquo;</a>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="content-section">
+      <img src="fuentes.png" alt="Fuentes de energía en Argentina">
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>📚 Aprende Física</h3>
+        <p>Material educativo para estudiantes de secundaria</p>
+      </div>
+      <div class="footer-section">
+        <h3>👨‍🏫 Creado por</h3>
+        <p>Prof. Javier Pereyra</p>
+      </div>
+      <div class="footer-section">
+        <h3>📧 Contacto</h3>
+        <p>Para dudas y sugerencias</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Portal de Física para Secundaria - Educación para todos</p>
+    </div>
+  </footer>
+  <script src="js/dark-mode.js"></script>
+  <script src="js/search.js"></script>
+</body>
+
+
+</html>

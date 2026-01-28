@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biomasa en Argentina - Física Secundaria</title>
+    <style>
+        :root {
+            --neon-green: #39ff14;
+        }
+
+        body.dark-mode .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('central-biomasa.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('central-biomasa.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 20px;
+            text-align: center;
+        }
+    </style>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
+    <header>
+        <h1>🌿 Biomasa y Biocombustibles</h1>
+        <p>Energía a partir de materia orgánica</p>
+        <div class="search-container">
+            <div class="search-input-wrapper">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="grokSearch" placeholder="Grokipedia: Busca temas de física...">
+            </div>
+            <div id="searchResults" class="search-results"></div>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="fuentes-energia-argentina.html">Energía Argentina</a></li>
+                <li><a href="eolica.html">Eólica</a></li>
+                <li><a href="solar.html">Solar</a></li>
+                <li><a href="biomasa.html" class="active">Biomasa</a></li>
+                <li><a href="geotermica.html">Geotérmica</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+    <main class="content-main">
+        <section class="hero-section">
+            <h2 style="font-size: 3rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.5);">Energía del Campo</h2>
+            <p style="font-size: 1.5rem;">Aprovechando residuos agrícolas y forestales</p>
+        </section>
+
+        <section class="content-section">
+            <h2>¿Qué es la Biomasa?</h2>
+            <p>Es toda materia orgánica que puede utilizarse como fuente de energía. Puede provenir de residuos de
+                cosecha (chala de maíz, cáscara de maní), aserraderos o incluso residuos urbanos.</p>
+
+            <div class="callout" style="border-left-color: var(--neon-green);">
+                <h3>🚜 Biocombustibles en Argentina</h3>
+                <p>Argentina es líder mundial en la producción de <strong>Biodiesel</strong> a partir de aceite de soja
+                    y <strong>Bioetanol</strong> de caña de azúcar y maíz. Estos se mezclan con las naftas y el diesel
+                    fósil para reducir la huella de carbono.</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Potencial de Biomasa por Región</h2>
+            <p>La zona núcleo y el norte argentino lideran este recurso.</p>
+            <div class="energy-chart">
+                <div class="chart-row">
+                    <div class="chart-label">Región Pampeana</div>
+                    <div class="chart-bar">
+                        <div class="chart-fill" style="width: 85%; background: var(--neon-green);"></div>
+                    </div>
+                    <div class="chart-value">Alto</div>
+                </div>
+                <div class="chart-row">
+                    <div class="chart-label">NEA / NOA</div>
+                    <div class="chart-bar">
+                        <div class="chart-fill" style="width: 70%; background: #4caf50;"></div>
+                    </div>
+                    <div class="chart-value">Muy Bueno</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Portal de Física - Biomasa en Argentina</p>
+        </div>
+    </footer>
+    <script src="js/dark-mode.js"></script>
+    <script src="js/search.js"></script>
+</body>
+
+
+</html>

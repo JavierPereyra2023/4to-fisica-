@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Física para Secundaria - Energía Mecánica</title>
+  <meta name="description"
+    content="Portal educativo de física para estudiantes de secundaria. Aprende sobre energía mecánica, cinética, potencial y más.">
+  <link rel="stylesheet" href="css/index.css">
+
+  <!-- Polyfill y MathJax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        packages: ['base', 'ams', 'noerrors', 'noundefined']
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+</head>
+
+<body>
+  <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
+  <header>
+    <h1>🔬 Física para Secundaria</h1>
+    <p>Explora los conceptos fundamentales de la física</p>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="active">Inicio</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="guia.html">Guía</a></li>
+        <li><a href="definicion-energia.html">Energía</a></li>
+        <li><a href="trabajo.html">Trabajo</a></li>
+        <li><a href="cinetica.html">E. Cinética</a></li>
+        <li><a href="gravitatoria.html">E. Potencial</a></li>
+        <li><a href="mecanica01.html">E. Mecánica</a></li>
+        <li><a href="mecanica02.html">Conservación</a></li>
+        <li><a href="electricidad.html">Electricidad</a></li>
+        <li><a href="calor.html">Calor</a></li>
+        <li><a href="temperatura.html">Temperatura</a></li>
+        <li><a href="cambios-estado.html">Cambios de Estado</a></li>
+        <li><a href="fuentes-energia-argentina.html">Energía Argentina</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro-section">
+      <h2>🌟 Bienvenido al Mundo de la Energía</h2>
+      <p>La energía está presente en todo lo que nos rodea. Desde un simple lanzamiento de una pelota hasta el
+        funcionamiento de las centrales eléctricas, comprender la energía nos ayuda a entender cómo funciona nuestro
+        universo.</p>
+      <div class="highlight-box">
+        <h3>🎯 ¿Qué aprenderás?</h3>
+        <ul>
+          <li>Definición de energía y sus formas</li>
+          <li>Trabajo, energía cinética y potencial</li>
+          <li>Conservación de la energía mecánica</li>
+          <li>Electricidad, calor, temperatura y cambios de estado</li>
+          <li>Fuentes de energía en Argentina</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="cards">
+      <!-- Definición de Energía -->
+      <div class="card">
+        <h2>🔋 ¿Qué es la Energía?</h2>
+        <p>El concepto fundamental que conecta toda la física</p>
+        <div class="equation">$$E_{\text{total,inicial}} = E_{\text{total,final}}$$</div>
+        <div class="example">
+          <strong>💡 Principio clave:</strong><br>
+          La energía no se crea ni se destruye, solo se transforma
+        </div>
+        <a href="definicion-energia.html" class="read-button">Aprender</a>
+      </div>
+
+      <!-- Trabajo -->
+      <div class="card">
+        <h2>💪 Trabajo</h2>
+        <p>¿Sabías que en física "trabajar" tiene un significado especial?</p>
+        <div class="equation">$$W = F \cdot d \cdot \cos(\theta)$$</div>
+        <div class="example">
+          <strong>📝 Ejemplo práctico:</strong><br>
+          ¿Cuánto trabajo realiza una persona que empuja una caja con 50N durante 10m?
+        </div>
+        <img src="trabajo.jpg" alt="Imagen de trabajo">
+        <a href="trabajo.html" class="read-button">Explorar más</a>
+      </div>
+
+      <!-- Energía Cinética -->
+      <div class="card">
+        <h2>🏃 Energía Cinética</h2>
+        <p>La energía del movimiento ¡Todo lo que se mueve tiene energía!</p>
+        <div class="equation">$$E_c = \frac{1}{2} m v^2$$</div>
+        <div class="example">
+          <strong>🚗 Aplicación real:</strong><br>
+          Los autos utilizan la energía cinética para moverse
+        </div>
+        <img src="f35.jpg" alt="Imagen del F-35">
+        <a href="cinetica.html" class="read-button">Aprender más</a>
+      </div>
+
+      <!-- Energía Potencial -->
+      <div class="card">
+        <h2>⚡ Energía Potencial</h2>
+        <p>Energía almacenada que puede convertirse en movimiento</p>
+        <div class="equation">$$E_p = m g h$$</div>
+        <div class="example">
+          <strong>🎪 Ejemplo:</strong><br>
+          Una montaña rusa en su punto más alto
+        </div>
+        <img src="gravitatoria.jpg" alt="Imagen de energía potencial">
+        <a href="gravitatoria.html" class="read-button">Descubrir</a>
+      </div>
+
+      <!-- Energía Mecánica -->
+      <div class="card">
+        <h2>⚙️ Energía Mecánica</h2>
+        <p>La suma de todas las energías mecánicas de un sistema</p>
+        <div class="equation">$$E_m = E_c + E_p$$</div>
+        <div class="example">
+          <strong>🎾 Concepto clave:</strong><br>
+          La energía total se mantiene constante (sin fricción)
+        </div>
+        <img src="mecanica.webp" alt="Imagen de energía mecánica">
+        <a href="mecanica01.html" class="read-button">Estudiar</a>
+      </div>
+
+      <!-- Conservación de la Energía Mecánica -->
+      <div class="card">
+        <h2>🔄 Conservación</h2>
+        <p>Uno de los principios más importantes de la física</p>
+        <div class="equation">$$E_{m_i} = E_{m_f}$$</div>
+        <div class="example">
+          <strong>🎯 Ley fundamental:</strong><br>
+          La energía no se crea ni se destruye, solo se transforma
+        </div>
+        <img src="burbuja.webp" alt="Burbuja de agua flotando en la estación espacial - conservación de energía">
+        <a href="mecanica02.html" class="read-button">Comprender</a>
+      </div>
+
+      <!-- Electricidad -->
+      <div class="card">
+        <h2>⚡ Electricidad</h2>
+        <p>Electrostática, magnetismo y circuitos eléctricos</p>
+        <div class="equation">$$F = k \frac{q_1 q_2}{r^2}$$</div>
+        <div class="example">
+          <strong>🔌 Aplicación:</strong><br>
+          Desde cargadores de celular hasta motores eléctricos
+        </div>
+        <img src="circuito_serie.png" alt="Circuito eléctrico en serie">
+        <a href="electricidad.html" class="read-button">Explorar</a>
+      </div>
+
+      <!-- Calor -->
+      <div class="card">
+        <h2>🔥 Calor</h2>
+        <p>Transferencia de energía térmica entre cuerpos</p>
+        <div class="equation">$$Q = m \cdot c \cdot \Delta T$$</div>
+        <div class="example">
+          <strong>☕ Ejemplo:</strong><br>
+          ¿Por qué el metal se calienta más rápido que el agua?
+        </div>
+        <img src="calor.jpg" alt="Transferencia de calor">
+        <a href="calor.html" class="read-button">Explorar</a>
+      </div>
+
+      <!-- Temperatura -->
+      <div class="card">
+        <h2>🌡️ Temperatura</h2>
+        <p>Escalas térmicas y ecuaciones de conversión</p>
+        <div class="equation">$$^{\circ}F = \frac{9}{5} \cdot \,^{\circ}C + 32$$</div>
+        <div class="example">
+          <strong>🌍 Dato:</strong><br>
+          -40° es el único punto donde Celsius y Fahrenheit coinciden
+        </div>
+        <img src="temperatura.jpg" alt="Escalas de temperatura">
+        <a href="temperatura.html" class="read-button">Descubrir</a>
+      </div>
+
+      <!-- Cambios de Estado -->
+      <div class="card">
+        <h2>🧊 Cambios de Estado</h2>
+        <p>Transformaciones entre sólido, líquido y gaseoso</p>
+        <div class="equation">$$Q = m \cdot L$$</div>
+        <div class="example">
+          <strong>❄️ Ejemplo:</strong><br>
+          Vaporizar agua necesita 7 veces más energía que fundirla
+        </div>
+        <img src="cambio_estado.jpg" alt="Cambios de estado de la materia">
+        <a href="cambios-estado.html" class="read-button">Estudiar</a>
+      </div>
+
+      <!-- Fuentes de Energía en Argentina -->
+      <div class="card">
+        <h2>🇦🇷 Energía en Argentina</h2>
+        <p>Matriz energética, renovables y no renovables</p>
+        <div class="example">
+          <strong>📊 Datos clave:</strong><br>
+          Predomina el gas natural y crecen las renovables
+        </div>
+        <img src="fuentes.png" alt="Fuentes de energía en Argentina">
+        <a href="fuentes-energia-argentina.html" class="read-button">Analizar</a>
+      </div>
+
+      <!-- Actividad Interactiva -->
+      <div class="card">
+        <h2>🎮 ¡Prueba tu conocimiento!</h2>
+        <p>Pon a prueba lo que has aprendido con ejercicios interactivos</p>
+        <div class="example">
+          <strong>📊 Pregunta ejemplo:</strong><br>
+          Si un objeto de 2kg se mueve a 3m/s, ¿cuál es su energía cinética?
+        </div>
+        <img src="quiz.png" alt="Quiz interactivo de física">
+        <a href="quiz.html" class="read-button">Comenzar Quiz</a>
+      </div>
+    </section>
+  </main>
+
+  <section class="resources-section">
+    <h2>📚 Recursos Adicionales</h2>
+    <div class="resource-links">
+      <a href="guia.html" class="resource-link">
+        <span class="icon">📖</span>
+        <div>
+          <h3>Guía de estudio</h3>
+          <p>Resumen completo con fórmulas clave</p>
+        </div>
+      </a>
+      <a href="#" class="resource-link">
+        <span class="icon">🎥</span>
+        <div>
+          <h3>Videos explicativos</h3>
+          <p>Tutoriales visuales de conceptos</p>
+        </div>
+      </a>
+      <a href="#" class="resource-link">
+        <span class="icon">🧮</span>
+        <div>
+          <h3>Calculadora física</h3>
+          <p>Herramienta para resolver problemas</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>📚 Aprende Física</h3>
+        <p>Material educativo para estudiantes de secundaria</p>
+      </div>
+      <div class="footer-section">
+        <h3>👨‍🏫 Creado por</h3>
+        <p>Prof. Javier Pereyra</p>
+      </div>
+      <div class="footer-section">
+        <h3>📧 Contacto</h3>
+        <p>Para dudas y sugerencias</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Portal de Física para Secundaria - Educación para todos</p>
+    </div>
+  </footer>
+
+  <script src="js/dark-mode.js"></script>
+</body>
+
+</html>

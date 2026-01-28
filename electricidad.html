@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electricidad</title>
+  <meta name="description" content="Electrostática, magnetismo y circuitos eléctricos para secundaria.">
+  <link rel="stylesheet" href="css/index.css">
+
+  <!-- Polyfill y MathJax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        packages: ['base', 'ams', 'noerrors', 'noundefined']
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+</head>
+
+<body>
+  <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
+  <header>
+    <h1>⚡ Electricidad</h1>
+    <p>Electrostática, magnetismo y circuitos eléctricos</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="guia.html">Guía</a></li>
+        <li><a href="definicion-energia.html">Energía</a></li>
+        <li><a href="trabajo.html">Trabajo</a></li>
+        <li><a href="cinetica.html">E. Cinética</a></li>
+        <li><a href="gravitatoria.html">E. Potencial</a></li>
+        <li><a href="mecanica01.html">E. Mecánica</a></li>
+        <li><a href="mecanica02.html">Conservación</a></li>
+        <li><a href="electricidad.html" class="active">Electricidad</a></li>
+        <li><a href="calor.html">Calor</a></li>
+        <li><a href="temperatura.html">Temperatura</a></li>
+        <li><a href="cambios-estado.html">Cambios de Estado</a></li>
+        <li><a href="fuentes-energia-argentina.html">Energía Argentina</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="content-main">
+    <section class="content-section">
+      <h2>¿Qué es la electricidad?</h2>
+      <p>
+        La electricidad estudia la presencia y el movimiento de las cargas eléctricas. Este tema
+        conecta tres grandes ideas: cómo se atraen o repelen las cargas (electrostática), cómo se
+        producen los campos magnéticos (magnetismo) y cómo circula la corriente en un circuito.
+      </p>
+      <div class="key-points">
+        <strong>Idea clave:</strong> las cargas eléctricas generan campos eléctricos y, si se mueven, también campos
+        magnéticos.
+      </div>
+    </section>
+
+    <section class="cards">
+      <div class="card">
+        <h2>⚡ Electrostática</h2>
+        <p>Estudia las fuerzas entre cargas eléctricas en reposo.</p>
+        <div class="equation">$$F = k \frac{q_1 q_2}{r^2}$$</div>
+        <div class="example">
+          <strong>Ejemplo:</strong> un globo frotado atrae pequeños papeles por carga eléctrica.
+        </div>
+      </div>
+      <div class="card">
+        <h2>🧲 Magnetismo</h2>
+        <p>Las corrientes eléctricas generan campos magnéticos.</p>
+        <div class="equation">$$B = \mu_0 \frac{I}{2\pi r}$$</div>
+        <div class="example">
+          <strong>Ejemplo:</strong> un electroimán en timbres y relés.
+        </div>
+      </div>
+      <div class="card">
+        <h2>🔌 Circuitos eléctricos</h2>
+        <p>La corriente se produce cuando hay una diferencia de potencial.</p>
+        <div class="equation">$$V = I \cdot R$$</div>
+        <div class="example">
+          <strong>Ejemplo:</strong> en serie aumenta la resistencia, en paralelo aumenta la corriente.
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>Aplicaciones en la vida cotidiana</h2>
+      <div class="content-grid">
+        <div class="callout">
+          <strong>Hogar:</strong> iluminación, cargadores, electrodomésticos y paneles solares.
+        </div>
+        <div class="callout">
+          <strong>Transporte:</strong> motores eléctricos, trenes y autos híbridos.
+        </div>
+        <div class="callout">
+          <strong>Comunicación:</strong> señales eléctricas en teléfonos y computadoras.
+        </div>
+      </div>
+    </section>
+
+    <section class="cards">
+      <div class="card">
+        <h2>🧩 Ejemplo resuelto</h2>
+        <p>Si un circuito tiene 12 V y una resistencia de 4 Ω, ¿qué corriente circula?</p>
+        <div class="equation">$$I = \frac{V}{R} = \frac{12}{4} = 3\ \text{A}$$</div>
+        <div class="example">
+          <strong>Conclusión:</strong> a mayor resistencia, menor corriente.
+        </div>
+      </div>
+      <div class="card">
+        <h2>✅ Autoevaluación</h2>
+        <p>Dos cargas iguales se repelen. ¿Qué pasa si duplicas la distancia?</p>
+        <div class="example">
+          <strong>Pista:</strong> observa el denominador $r^2$.
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <img src="circuito_serie.png" alt="Circuito eléctrico en serie">
+    </section>
+
+    <!-- Quiz específico de Electricidad -->
+    <section class="content-section">
+      <h2>🎮 Quiz: Electricidad</h2>
+      <p>Pon a prueba tu conocimiento sobre electricidad:</p>
+    </section>
+
+    <section class="quiz-container" id="quiz-electricidad">
+      <div class="quiz-content" id="quiz-content-electricidad"></div>
+      <div class="quiz-results" id="quiz-results-electricidad" style="display: none;">
+        <h3>🎉 ¡Quiz Completado!</h3>
+        <div class="score-display">
+          <p class="score-text">Respondiste correctamente <span id="correct-count-electricidad">0</span> de <span
+              id="total-count-electricidad">4</span> preguntas</p>
+        </div>
+        <button class="retry-button" onclick="restartQuizElectricidad()">Intentar de Nuevo</button>
+      </div>
+    </section>
+
+    <script>
+      const quizDataElectricidad = [
+        {
+          question: "Dos cargas iguales se repelen. ¿Qué pasa con la fuerza si duplicas la distancia?",
+          equation: "$$F = k \\frac{q_1 q_2}{r^2}$$",
+          options: ["Se duplica", "Se reduce a la mitad", "Se reduce a la cuarta parte", "No cambia"],
+          correct: 2,
+          explanation: "Como F ∝ 1/r², si r se duplica, r² se cuadruplica, entonces F se reduce a ¼ del valor original."
+        },
+        {
+          question: "Un circuito tiene 24 V y una resistencia de 8 Ω. ¿Cuánta corriente circula?",
+          equation: "$$V = I \\cdot R$$",
+          options: ["192 A", "32 A", "3 A", "0.33 A"],
+          correct: 2,
+          explanation: "De V = IR → I = V/R = 24 V / 8 Ω = 3 A"
+        },
+        {
+          question: "¿Qué genera un campo magnético?",
+          equation: "",
+          options: ["Cargas eléctricas en reposo", "Cargas eléctricas en movimiento (corriente)", "Solo imanes permanentes", "El vacío"],
+          correct: 1,
+          explanation: "Las cargas eléctricas en movimiento (corriente eléctrica) generan campos magnéticos. Es la base del electromagnetismo."
+        },
+        {
+          question: "En un circuito en serie, si agregas más resistencias, la resistencia total:",
+          equation: "$$R_T = R_1 + R_2 + R_3 + ...$$",
+          options: ["Disminuye", "Aumenta", "Permanece igual", "Se vuelve cero"],
+          correct: 1,
+          explanation: "En serie, las resistencias se suman directamente, por lo que agregar más resistencias aumenta la resistencia total."
+        }
+      ];
+
+      let currentQuestionElectricidad = 0;
+      let scoreElectricidad = 0;
+      let answeredElectricidad = false;
+
+      function initQuizElectricidad() {
+        document.getElementById('total-count-electricidad').textContent = quizDataElectricidad.length;
+        showQuestionElectricidad();
+      }
+
+      function showQuestionElectricidad() {
+        answeredElectricidad = false;
+        const question = quizDataElectricidad[currentQuestionElectricidad];
+        const quizContent = document.getElementById('quiz-content-electricidad');
+
+        quizContent.innerHTML = `
+        <div class="question-card">
+          <h3>📝 Pregunta ${currentQuestionElectricidad + 1} de ${quizDataElectricidad.length}</h3>
+          <p class="question-text">${question.question}</p>
+          ${question.equation ? `<div class="question-equation">${question.equation}</div>` : ''}
+          <div class="options-grid">
+            ${question.options.map((option, index) => `
+              <button class="option-button" onclick="selectOptionElectricidad(${index})">
+                ${option}
+              </button>
+            `).join('')}
+          </div>
+          <div class="explanation" id="explanation-electricidad" style="display: none;">
+            <h4>💡 Explicación:</h4>
+            <p>${question.explanation}</p>
+          </div>
+          <div class="navigation-buttons" id="nav-electricidad" style="display: none;">
+            ${currentQuestionElectricidad < quizDataElectricidad.length - 1 ?
+            '<button class="nav-button" onclick="nextQuestionElectricidad()">Siguiente →</button>' :
+            '<button class="nav-button" onclick="showResultsElectricidad()">Ver Resultados →</button>'}
+          </div>
+        </div>
+      `;
+        MathJax.typesetPromise();
+      }
+
+      function selectOptionElectricidad(optionIndex) {
+        if (answeredElectricidad) return;
+        answeredElectricidad = true;
+        const question = quizDataElectricidad[currentQuestionElectricidad];
+        const buttons = document.querySelectorAll('#quiz-content-electricidad .option-button');
+
+        buttons[question.correct].classList.add('correct');
+        if (optionIndex !== question.correct) {
+          buttons[optionIndex].classList.add('incorrect');
+        } else {
+          scoreElectricidad++;
+        }
+
+        document.getElementById('explanation-electricidad').style.display = 'block';
+        document.getElementById('nav-electricidad').style.display = 'flex';
+        buttons.forEach(button => button.disabled = true);
+      }
+
+      function nextQuestionElectricidad() {
+        currentQuestionElectricidad++;
+        showQuestionElectricidad();
+      }
+
+      function showResultsElectricidad() {
+        document.getElementById('quiz-content-electricidad').style.display = 'none';
+        document.getElementById('quiz-results-electricidad').style.display = 'block';
+        document.getElementById('correct-count-electricidad').textContent = scoreElectricidad;
+      }
+
+      function restartQuizElectricidad() {
+        currentQuestionElectricidad = 0;
+        scoreElectricidad = 0;
+        document.getElementById('quiz-content-electricidad').style.display = 'block';
+        document.getElementById('quiz-results-electricidad').style.display = 'none';
+        showQuestionElectricidad();
+      }
+
+      document.addEventListener('DOMContentLoaded', initQuizElectricidad);
+    </script>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>📚 Aprende Física</h3>
+        <p>Material educativo para estudiantes de secundaria</p>
+      </div>
+      <div class="footer-section">
+        <h3>👨‍🏫 Creado por</h3>
+        <p>Prof. Javier Pereyra</p>
+      </div>
+      <div class="footer-section">
+        <h3>📧 Contacto</h3>
+        <p>Para dudas y sugerencias</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Portal de Física para Secundaria - Educación para todos</p>
+    </div>
+  </footer>
+  <script src="js/dark-mode.js"></script>
+</body>
+
+</html>

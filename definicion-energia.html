@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Qué es la Energía?</title>
+  <meta name="description" content="Definición de energía en física: tipos, principio de conservación, unidades y formas de energía para secundaria.">
+  <link rel="stylesheet" href="css/index.css">
+
+  <!-- Polyfill y MathJax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$','$$'], ['\\[','\\]']],
+        packages: ['base', 'ams', 'noerrors', 'noundefined']
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+</head>
+<body>
+  <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
+  <header>
+    <h1>🔋 ¿Qué es la Energía?</h1>
+    <p>El concepto fundamental que conecta toda la física</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="guia.html">Guía</a></li>
+        <li><a href="definicion-energia.html" class="active">Energía</a></li>
+        <li><a href="trabajo.html">Trabajo</a></li>
+        <li><a href="cinetica.html">E. Cinética</a></li>
+        <li><a href="gravitatoria.html">E. Potencial</a></li>
+        <li><a href="mecanica01.html">E. Mecánica</a></li>
+        <li><a href="mecanica02.html">Conservación</a></li>
+        <li><a href="electricidad.html">Electricidad</a></li>
+        <li><a href="calor.html">Calor</a></li>
+        <li><a href="temperatura.html">Temperatura</a></li>
+        <li><a href="cambios-estado.html">Cambios de Estado</a></li>
+        <li><a href="fuentes-energia-argentina.html">Energía Argentina</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="content-main">
+    <!-- Definición formal -->
+    <section class="content-section">
+      <h2>Definición de Energía</h2>
+      <p>
+        En física, la <strong>energía</strong> es una magnitud escalar que mide la capacidad de un
+        sistema para producir cambios, ya sea realizando trabajo, generando calor o produciendo
+        radiación. Es una propiedad fundamental de la naturaleza: no se puede crear ni destruir,
+        solo transformar de una forma a otra.
+      </p>
+      <div class="key-points">
+        <strong>Definición formal:</strong> la energía es la capacidad de un sistema para realizar
+        trabajo. Su unidad en el Sistema Internacional es el <strong>julio (J)</strong>.
+      </div>
+    </section>
+
+    <!-- Unidades -->
+    <section class="content-section">
+      <h2>Unidades de Energía</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Unidad</th>
+            <th>Símbolo</th>
+            <th>Equivalencia</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Julio</td>
+            <td>J</td>
+            <td>1 J = 1 N·m = 1 kg·m²/s²</td>
+          </tr>
+          <tr>
+            <td>Kilovatio-hora</td>
+            <td>kWh</td>
+            <td>1 kWh = 3.600.000 J</td>
+          </tr>
+          <tr>
+            <td>Caloría</td>
+            <td>cal</td>
+            <td>1 cal = 4,186 J</td>
+          </tr>
+          <tr>
+            <td>Electronvoltio</td>
+            <td>eV</td>
+            <td>1 eV = 1,602 × 10⁻¹⁹ J</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <strong>Dato:</strong> la factura de electricidad se mide en kWh. Un hogar promedio en
+        Argentina consume alrededor de 200-300 kWh por mes.
+      </div>
+    </section>
+
+    <!-- Principio de conservación -->
+    <section class="content-section">
+      <h2>Principio de Conservación de la Energía</h2>
+      <p>
+        Este es uno de los principios más importantes de toda la física. Fue formulado en el
+        siglo XIX y establece que:
+      </p>
+      <div class="equation">
+        $$E_{\text{total,inicial}} = E_{\text{total,final}}$$
+      </div>
+      <p>
+        La energía total de un sistema aislado permanece constante. No se crea ni se destruye,
+        solo se transforma de una forma a otra o se transfiere de un cuerpo a otro.
+      </p>
+      <div class="key-points">
+        <strong>Idea clave:</strong> cuando parece que la energía "desaparece" (por ejemplo, al
+        frenar un auto), en realidad se transforma en calor por fricción.
+      </div>
+    </section>
+
+    <!-- Formas de energía -->
+    <section class="content-section">
+      <h2>Formas de Energía</h2>
+    </section>
+
+    <section class="cards">
+      <div class="card">
+        <h2>🏃 Cinética</h2>
+        <p>Energía asociada al movimiento de un cuerpo.</p>
+        <div class="equation">$$E_c = \frac{1}{2} m v^2$$</div>
+        <div class="example">
+          <strong>Ejemplo:</strong> un auto en movimiento, el viento, una pelota lanzada.
+        </div>
+      </div>
+      <div class="card">
+        <h2>⬆️ Potencial gravitatoria</h2>
+        <p>Energía almacenada por la posición en un campo gravitatorio.</p>
+        <div class="equation">$$E_p = m \, g \, h$$</div>
+        <div class="example">
+          <strong>Ejemplo:</strong> un objeto en altura, agua en una represa.
+        </div>
+      </div>
+      <div class="card">
+        <h2>⚡ Potencial elástica</h2>
+        <p>Energía almacenada en un resorte o material elástico deformado.</p>
+        <div class="equation">$$E_{pe} = \frac{1}{2} k \, x^2$$</div>
+        <div class="example">
+          <strong>Ejemplo:</strong> un resorte comprimido, un arco tensado, una gomita estirada.
+        </div>
+      </div>
+      <div class="card">
+        <h2>🔥 Térmica</h2>
+        <p>Energía interna asociada a la agitación de las partículas.</p>
+        <div class="equation">$$Q = m \, c \, \Delta T$$</div>
+        <div class="example">
+          <strong>Ejemplo:</strong> el calor de una estufa, una taza de café caliente.
+        </div>
+      </div>
+      <div class="card">
+        <h2>🔌 Eléctrica</h2>
+        <p>Energía producida por el movimiento de cargas eléctricas.</p>
+        <div class="equation">$$P = V \cdot I$$</div>
+        <div class="example">
+          <strong>Ejemplo:</strong> la corriente en un circuito, un rayo, una batería.
+        </div>
+      </div>
+      <div class="card">
+        <h2>☢️ Nuclear</h2>
+        <p>Energía contenida en el núcleo de los átomos.</p>
+        <div class="equation">$$E = m \, c^2$$</div>
+        <div class="example">
+          <strong>Ejemplo:</strong> centrales nucleares, el Sol (fusión nuclear).
+        </div>
+      </div>
+    </section>
+
+    <!-- Transformaciones -->
+    <section class="content-section">
+      <h2>Transformaciones de Energía</h2>
+      <p>
+        En la naturaleza y en la tecnología, la energía se transforma constantemente de una forma
+        a otra. Algunos ejemplos cotidianos:
+      </p>
+      <div class="content-grid">
+        <div class="callout">
+          <strong>Caída libre:</strong> energía potencial gravitatoria se convierte en energía cinética.
+          $$E_p \rightarrow E_c$$
+        </div>
+        <div class="callout">
+          <strong>Frenado:</strong> energía cinética se convierte en energía térmica (calor por fricción).
+          $$E_c \rightarrow Q$$
+        </div>
+        <div class="callout">
+          <strong>Central hidroeléctrica:</strong> energía potencial del agua se convierte en eléctrica.
+          $$E_p \rightarrow E_{\text{eléctrica}}$$
+        </div>
+      </div>
+    </section>
+
+    <!-- Ejemplo y autoevaluación -->
+    <section class="cards">
+      <div class="card">
+        <h2>🧩 Ejemplo resuelto</h2>
+        <p>Una lámpara de 60 W funciona durante 5 horas. ¿Cuánta energía consume?</p>
+        <div class="equation">$$E = P \cdot t = 60 \, \text{W} \cdot 5 \cdot 3600 \, \text{s} = 1{,}080{,}000 \, \text{J} = 0.3 \, \text{kWh}$$</div>
+        <div class="example">
+          <strong>Conclusión:</strong> la energía eléctrica se mide en kWh para uso doméstico.
+        </div>
+      </div>
+      <div class="card">
+        <h2>✅ Autoevaluación</h2>
+        <p>¿Qué tipo de energía tiene una pelota en el punto más alto de su trayectoria?</p>
+        <div class="example">
+          <strong>Pista:</strong> piensa en su velocidad y su altura en ese instante.
+        </div>
+      </div>
+    </section>
+
+    <!-- Quiz específico de Definición de Energía -->
+    <section class="content-section">
+      <h2>🎮 Quiz: ¿Qué es la Energía?</h2>
+      <p>Pon a prueba tu conocimiento sobre los conceptos fundamentales de energía:</p>
+    </section>
+
+    <section class="quiz-container" id="quiz-energia">
+      <div class="quiz-content" id="quiz-content-energia"></div>
+      <div class="quiz-results" id="quiz-results-energia" style="display: none;">
+        <h3>🎉 ¡Quiz Completado!</h3>
+        <div class="score-display">
+          <p class="score-text">Respondiste correctamente <span id="correct-count-energia">0</span> de <span id="total-count-energia">4</span> preguntas</p>
+        </div>
+        <button class="retry-button" onclick="restartQuizEnergia()">Intentar de Nuevo</button>
+      </div>
+    </section>
+
+    <script>
+    const quizDataEnergia = [
+      {
+        question: "¿Qué tipo de energía tiene una pelota en el punto más alto de su trayectoria (lanzada hacia arriba)?",
+        equation: "",
+        options: ["Solo energía cinética", "Solo energía potencial", "Ambas energías", "Ninguna energía"],
+        correct: 1,
+        explanation: "En el punto más alto, la velocidad es cero (Ec = 0) y la altura es máxima, por lo que solo tiene energía potencial gravitatoria."
+      },
+      {
+        question: "¿Cuál es la unidad de energía en el Sistema Internacional?",
+        equation: "",
+        options: ["Watt (W)", "Newton (N)", "Joule (J)", "Pascal (Pa)"],
+        correct: 2,
+        explanation: "El Joule (J) es la unidad de energía y trabajo en el SI. 1 J = 1 N·m = 1 kg·m²/s²"
+      },
+      {
+        question: "Según el principio de conservación de la energía:",
+        equation: "$$E_{\\text{total,inicial}} = E_{\\text{total,final}}$$",
+        options: ["La energía puede crearse pero no destruirse", "La energía puede destruirse pero no crearse", "La energía no se crea ni se destruye, solo se transforma", "La energía siempre aumenta"],
+        correct: 2,
+        explanation: "El principio de conservación establece que la energía total de un sistema aislado permanece constante, solo cambia de forma."
+      },
+      {
+        question: "¿Qué transformación de energía ocurre en una central hidroeléctrica?",
+        equation: "",
+        options: ["Cinética → Térmica", "Potencial → Eléctrica", "Nuclear → Térmica", "Química → Cinética"],
+        correct: 1,
+        explanation: "El agua almacenada en altura tiene energía potencial que se convierte en energía cinética al caer, y luego en eléctrica mediante turbinas y generadores."
+      }
+    ];
+
+    let currentQuestionEnergia = 0;
+    let scoreEnergia = 0;
+    let answeredEnergia = false;
+
+    function initQuizEnergia() {
+      document.getElementById('total-count-energia').textContent = quizDataEnergia.length;
+      showQuestionEnergia();
+    }
+
+    function showQuestionEnergia() {
+      answeredEnergia = false;
+      const question = quizDataEnergia[currentQuestionEnergia];
+      const quizContent = document.getElementById('quiz-content-energia');
+
+      quizContent.innerHTML = `
+        <div class="question-card">
+          <h3>📝 Pregunta ${currentQuestionEnergia + 1} de ${quizDataEnergia.length}</h3>
+          <p class="question-text">${question.question}</p>
+          ${question.equation ? `<div class="question-equation">${question.equation}</div>` : ''}
+          <div class="options-grid">
+            ${question.options.map((option, index) => `
+              <button class="option-button" onclick="selectOptionEnergia(${index})">
+                ${option}
+              </button>
+            `).join('')}
+          </div>
+          <div class="explanation" id="explanation-energia" style="display: none;">
+            <h4>💡 Explicación:</h4>
+            <p>${question.explanation}</p>
+          </div>
+          <div class="navigation-buttons" id="nav-energia" style="display: none;">
+            ${currentQuestionEnergia < quizDataEnergia.length - 1 ?
+              '<button class="nav-button" onclick="nextQuestionEnergia()">Siguiente →</button>' :
+              '<button class="nav-button" onclick="showResultsEnergia()">Ver Resultados →</button>'}
+          </div>
+        </div>
+      `;
+      MathJax.typesetPromise();
+    }
+
+    function selectOptionEnergia(optionIndex) {
+      if (answeredEnergia) return;
+      answeredEnergia = true;
+      const question = quizDataEnergia[currentQuestionEnergia];
+      const buttons = document.querySelectorAll('#quiz-content-energia .option-button');
+
+      buttons[question.correct].classList.add('correct');
+      if (optionIndex !== question.correct) {
+        buttons[optionIndex].classList.add('incorrect');
+      } else {
+        scoreEnergia++;
+      }
+
+      document.getElementById('explanation-energia').style.display = 'block';
+      document.getElementById('nav-energia').style.display = 'flex';
+      buttons.forEach(button => button.disabled = true);
+    }
+
+    function nextQuestionEnergia() {
+      currentQuestionEnergia++;
+      showQuestionEnergia();
+    }
+
+    function showResultsEnergia() {
+      document.getElementById('quiz-content-energia').style.display = 'none';
+      document.getElementById('quiz-results-energia').style.display = 'block';
+      document.getElementById('correct-count-energia').textContent = scoreEnergia;
+    }
+
+    function restartQuizEnergia() {
+      currentQuestionEnergia = 0;
+      scoreEnergia = 0;
+      document.getElementById('quiz-content-energia').style.display = 'block';
+      document.getElementById('quiz-results-energia').style.display = 'none';
+      showQuestionEnergia();
+    }
+
+    document.addEventListener('DOMContentLoaded', initQuizEnergia);
+    </script>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>📚 Aprende Física</h3>
+        <p>Material educativo para estudiantes de secundaria</p>
+      </div>
+      <div class="footer-section">
+        <h3>👨‍🏫 Creado por</h3>
+        <p>Prof. Javier Pereyra</p>
+      </div>
+      <div class="footer-section">
+        <h3>📧 Contacto</h3>
+        <p>Para dudas y sugerencias</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Portal de Física para Secundaria - Educación para todos</p>
+    </div>
+  </footer>
+  <script src="js/dark-mode.js"></script>
+</body>
+</html>
+

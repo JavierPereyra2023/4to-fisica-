@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Física para Secundaria - Guía de Estudio</title>
+  <meta name="description" content="Guía de estudio de física: fórmulas esenciales, consejos y problemas resueltos para secundaria.">
+  <link rel="stylesheet" href="css/index.css">
+
+  <!-- Polyfill y MathJax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$','$$'], ['\\[','\\]']],
+        packages: ['base', 'ams', 'noerrors', 'noundefined']
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+</head>
+<body>
+  <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
+  <header>
+    <h1>📖 Guía de Estudio</h1>
+    <p>Resumen completo con fórmulas y conceptos clave</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="guia.html" class="active">Guía</a></li>
+        <li><a href="definicion-energia.html">Energía</a></li>
+        <li><a href="trabajo.html">Trabajo</a></li>
+        <li><a href="cinetica.html">E. Cinética</a></li>
+        <li><a href="gravitatoria.html">E. Potencial</a></li>
+        <li><a href="mecanica01.html">E. Mecánica</a></li>
+        <li><a href="mecanica02.html">Conservación</a></li>
+        <li><a href="electricidad.html">Electricidad</a></li>
+        <li><a href="calor.html">Calor</a></li>
+        <li><a href="temperatura.html">Temperatura</a></li>
+        <li><a href="cambios-estado.html">Cambios de Estado</a></li>
+        <li><a href="fuentes-energia-argentina.html">Energía Argentina</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="study-guide">
+    <section class="intro-section">
+      <h2>📚 Fórmulas Esenciales</h2>
+      <p>Aquí encontrarás todas las fórmulas importantes que necesitas memorizar</p>
+    </section>
+
+    <section class="formulas-grid">
+      <div class="formula-card">
+        <h3>💪 Trabajo</h3>
+        <div class="equation">$$W = F \cdot d \cdot \cos(\theta)$$</div>
+        <div class="formula-info">
+          <p><strong>Donde:</strong></p>
+          <ul>
+            <li>W = Trabajo (Julios)</li>
+            <li>F = Fuerza (Newton)</li>
+            <li>d = Distancia (metros)</li>
+            <li>θ = Ángulo entre fuerza y movimiento</li>
+          </ul>
+          <p><strong>Unidad:</strong> Joule (J)</p>
+        </div>
+      </div>
+
+      <div class="formula-card">
+        <h3>🏃 Energía Cinética</h3>
+        <div class="equation">$$E_c = \frac{1}{2} m v^2$$</div>
+        <div class="formula-info">
+          <p><strong>Donde:</strong></p>
+          <ul>
+            <li>Ec = Energía cinética (Julios)</li>
+            <li>m = Masa (kg)</li>
+            <li>v = Velocidad (m/s)</li>
+          </ul>
+          <p><strong>Unidad:</strong> Joule (J)</p>
+        </div>
+      </div>
+
+      <div class="formula-card">
+        <h3>⚡ Energía Potencial Gravitatoria</h3>
+        <div class="equation">$$E_p = m g h$$</div>
+        <div class="formula-info">
+          <p><strong>Donde:</strong></p>
+          <ul>
+            <li>Ep = Energía potencial (Julios)</li>
+            <li>m = Masa (kg)</li>
+            <li>g = Aceleración gravitatoria (9.8 m/s²)</li>
+            <li>h = Altura (metros)</li>
+          </ul>
+          <p><strong>Unidad:</strong> Joule (J)</p>
+        </div>
+      </div>
+
+      <div class="formula-card">
+        <h3>⚙️ Energía Mecánica</h3>
+        <div class="equation">$$E_m = E_c + E_p$$</div>
+        <div class="formula-info">
+          <p><strong>Donde:</strong></p>
+          <ul>
+            <li>Em = Energía mecánica total (Julios)</li>
+            <li>Ec = Energía cinética (Julios)</li>
+            <li>Ep = Energía potencial (Julios)</li>
+          </ul>
+          <p><strong>Principio:</strong> Sin fricción, Em es constante</p>
+        </div>
+      </div>
+
+      <div class="formula-card">
+        <h3>⚡ Ley de Coulomb</h3>
+        <div class="equation">$$F = k \frac{q_1 q_2}{r^2}$$</div>
+        <div class="formula-info">
+          <p><strong>Donde:</strong></p>
+          <ul>
+            <li>F = Fuerza eléctrica (Newton)</li>
+            <li>k = 9 × 10⁹ N·m²/C²</li>
+            <li>q₁, q₂ = Cargas (Coulombs)</li>
+            <li>r = Distancia entre cargas (m)</li>
+          </ul>
+          <p><strong>Unidad:</strong> Newton (N)</p>
+        </div>
+      </div>
+
+      <div class="formula-card">
+        <h3>🔌 Ley de Ohm</h3>
+        <div class="equation">$$V = I \cdot R$$</div>
+        <div class="formula-info">
+          <p><strong>Donde:</strong></p>
+          <ul>
+            <li>V = Voltaje (Volts)</li>
+            <li>I = Corriente (Amperes)</li>
+            <li>R = Resistencia (Ohms, Ω)</li>
+          </ul>
+          <p><strong>Relación:</strong> I = V/R, R = V/I</p>
+        </div>
+      </div>
+
+      <div class="formula-card">
+        <h3>🔥 Calor</h3>
+        <div class="equation">$$Q = m \, c \, \Delta T$$</div>
+        <div class="formula-info">
+          <p><strong>Donde:</strong></p>
+          <ul>
+            <li>Q = Calor (Julios)</li>
+            <li>m = Masa (kg)</li>
+            <li>c = Calor específico (J/kg·°C)</li>
+            <li>ΔT = Variación de temperatura (°C)</li>
+          </ul>
+          <p><strong>Dato:</strong> c del agua = 4186 J/kg·°C</p>
+        </div>
+      </div>
+
+      <div class="formula-card">
+        <h3>🌡️ Escalas de Temperatura</h3>
+        <div class="equation">$$^{\circ}F = \frac{9}{5} \cdot \,^{\circ}C + 32$$</div>
+        <div class="equation">$$K = \,^{\circ}C + 273{,}15$$</div>
+        <div class="formula-info">
+          <p><strong>Conversiones:</strong></p>
+          <ul>
+            <li>°C a °F: multiplicar por 9/5 y sumar 32</li>
+            <li>°F a °C: restar 32 y multiplicar por 5/9</li>
+            <li>°C a K: sumar 273,15</li>
+            <li>K a °C: restar 273,15</li>
+          </ul>
+          <p><strong>Dato:</strong> -40° es igual en °C y °F</p>
+        </div>
+      </div>
+
+      <div class="formula-card">
+        <h3>🧊 Cambios de Estado</h3>
+        <div class="equation">$$Q = m \cdot L$$</div>
+        <div class="formula-info">
+          <p><strong>Donde:</strong></p>
+          <ul>
+            <li>Q = Calor absorbido o liberado (J)</li>
+            <li>m = Masa (kg)</li>
+            <li>L = Calor latente específico (J/kg)</li>
+          </ul>
+          <p><strong>Agua:</strong> L<sub>f</sub> = 334.000 J/kg, L<sub>v</sub> = 2.260.000 J/kg</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="tips-section">
+      <h2>💡 Consejos para el Estudio</h2>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <h3>🎯 Practica con ejemplos reales</h3>
+          <p>Usa situaciones cotidianas: una pelota que cae, un automóvil que frena, una montaña rusa.</p>
+        </div>
+        <div class="tip-card">
+          <h3>🧮 Resuelve paso a paso</h3>
+          <p>1. Identifica lo que buscas<br>2. Escribe la fórmula<br>3. Reemplaza los valores<br>4. Calcula con cuidado</p>
+        </div>
+        <div class="tip-card">
+          <h3>📝 Verifica las unidades</h3>
+          <p>Siempre asegúrate de que todas las unidades estén en el sistema internacional (kg, m, s).</p>
+        </div>
+        <div class="tip-card">
+          <h3>🤝 Estudia en grupo</h3>
+          <p>Explicar conceptos a compañeros te ayuda a entender mejor y descubrir dudas.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="practice-problems">
+      <h2>📝 Problemas de Práctica</h2>
+      <div class="problem-card">
+        <h3>Problema 1: Trabajo</h3>
+        <p>Una persona empuja una caja con una fuerza de 50 N durante 10 metros. El ángulo entre la fuerza y el movimiento es de 30°. ¿Cuánto trabajo realiza?</p>
+        <button class="solution-button" onclick="toggleSolution(1)">Ver Solución</button>
+        <div id="solution-1" class="solution" style="display: none;">
+          <h4>Solución:</h4>
+          <div class="equation">$$W = 50 \cdot 10 \cdot \cos(30°) = 500 \cdot 0.866 = 433\ \text{J}$$</div>
+        </div>
+      </div>
+
+      <div class="problem-card">
+        <h3>Problema 2: Energía Cinética</h3>
+        <p>Un auto de 1200 kg se mueve a 20 m/s. ¿Cuál es su energía cinética?</p>
+        <button class="solution-button" onclick="toggleSolution(2)">Ver Solución</button>
+        <div id="solution-2" class="solution" style="display: none;">
+          <h4>Solución:</h4>
+          <div class="equation">$$E_c = \frac{1}{2} \cdot 1200 \cdot 20^2 = 600 \cdot 400 = 240{,}000\ \text{J}$$</div>
+        </div>
+      </div>
+
+      <div class="problem-card">
+        <h3>Problema 3: Ley de Ohm</h3>
+        <p>Un circuito tiene una fuente de 24 V y una resistencia de 8 Ω. ¿Cuál es la corriente que circula?</p>
+        <button class="solution-button" onclick="toggleSolution(3)">Ver Solución</button>
+        <div id="solution-3" class="solution" style="display: none;">
+          <h4>Solución:</h4>
+          <div class="equation">$$I = \frac{V}{R} = \frac{24}{8} = 3\ \text{A}$$</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>📚 Aprende Física</h3>
+        <p>Material educativo para estudiantes de secundaria</p>
+      </div>
+      <div class="footer-section">
+        <h3>👨‍🏫 Creado por</h3>
+        <p>Prof. Javier Pereyra</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Portal de Física para Secundaria - Educación para todos</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleSolution(problemNumber) {
+      const solution = document.getElementById(`solution-${problemNumber}`);
+      const button = document.querySelector(`[onclick="toggleSolution(${problemNumber})"]`);
+
+      if (solution.style.display === 'none') {
+        solution.style.display = 'block';
+        button.textContent = 'Ocultar Solución';
+      } else {
+        solution.style.display = 'none';
+        button.textContent = 'Ver Solución';
+      }
+    }
+  </script>
+  <script src="js/dark-mode.js"></script>
+</body>
+</html>
+

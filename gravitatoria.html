@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Energía Potencial</title>
+  <meta name="description" content="Energía potencial gravitatoria: fórmula, unidades, variación y ejemplos resueltos para secundaria.">
+  <link rel="stylesheet" href="css/index.css">
+
+  <!-- Polyfill y MathJax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$','$$'], ['\\[','\\]']],
+        packages: ['base', 'ams', 'noerrors', 'noundefined']
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+</head>
+<body>
+  <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
+  <header>
+    <h1>⚡ Energía Potencial</h1>
+    <p>Energía almacenada por posición en el campo gravitatorio</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="guia.html">Guía</a></li>
+        <li><a href="definicion-energia.html">Energía</a></li>
+        <li><a href="trabajo.html">Trabajo</a></li>
+        <li><a href="cinetica.html">E. Cinética</a></li>
+        <li><a href="gravitatoria.html" class="active">E. Potencial</a></li>
+        <li><a href="mecanica01.html">E. Mecánica</a></li>
+        <li><a href="mecanica02.html">Conservación</a></li>
+        <li><a href="electricidad.html">Electricidad</a></li>
+        <li><a href="calor.html">Calor</a></li>
+        <li><a href="temperatura.html">Temperatura</a></li>
+        <li><a href="cambios-estado.html">Cambios de Estado</a></li>
+        <li><a href="fuentes-energia-argentina.html">Energía Argentina</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="content-main">
+    <!-- Introducción -->
+    <section class="content-section intro">
+      <h2>¿Qué es la Energía Potencial Gravitatoria?</h2>
+      <p>
+        La energía potencial gravitatoria es la energía que posee un objeto debido a su posición 
+        en un campo gravitatorio. Depende de la masa del objeto, la aceleración de la gravedad 
+        y la altura a la que se encuentre.
+      </p>
+      <div class="key-points">
+        <strong>Idea clave:</strong> a mayor altura, mayor energía potencial.
+      </div>
+    </section>
+
+    <!-- Fórmula -->
+    <section class="content-section formula">
+      <h2>Fórmula de la Energía Potencial Gravitatoria</h2>
+      <div class="equation">
+        $$E_p = m \, g \, h$$
+      </div>
+      <p>Donde:</p>
+      <ul>
+        <li><strong>$E_p$:</strong> Energía potencial gravitatoria (en julios, J).</li>
+        <li><strong>$m$:</strong> Masa del objeto (en kilogramos, kg).</li>
+        <li><strong>$g$:</strong> Aceleración de la gravedad (~9,8 m/s<sup>2</sup> en la Tierra).</li>
+        <li><strong>$h$:</strong> Altura del objeto respecto a una referencia (en metros, m).</li>
+      </ul>
+    </section>
+
+    <!-- Unidades -->
+    <section class="content-section unidades">
+      <h2>Unidades en el Sistema Internacional (SI - MKS)</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Magnitud</th>
+            <th>Símbolo</th>
+            <th>Unidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Energía Potencial Gravitatoria</td>
+            <td>$E_p$</td>
+            <td>Julios (J)</td>
+          </tr>
+          <tr>
+            <td>Masa</td>
+            <td>$m$</td>
+            <td>Kilogramos (kg)</td>
+          </tr>
+          <tr>
+            <td>Aceleración de la Gravedad</td>
+            <td>$g$</td>
+            <td>m/s<sup>2</sup></td>
+          </tr>
+          <tr>
+            <td>Altura</td>
+            <td>$h$</td>
+            <td>Metros (m)</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Variación de la Energía Potencial -->
+    <section class="content-section variacion">
+      <h2>Variación de la Energía Potencial Gravitatoria</h2>
+      <p>
+        Si un objeto cambia de altura desde $h_i$ hasta $h_f$, la variación de la 
+        energía potencial gravitatoria ($\Delta E_p$) se calcula como:
+      </p>
+      <div class="equation">
+        $$\Delta E_p = m \, g \, (h_f - h_i)$$
+      </div>
+      <p>
+        Al aumentar la altura, la energía potencial gravitatoria del objeto se incrementa.
+        Al descender, el objeto pierde energía potencial a favor de otras formas de energía 
+        (por ejemplo, energía cinética).
+      </p>
+    </section>
+
+    <!-- Ejemplos -->
+    <section class="content-section ejemplos">
+      <h2>Ejemplos de Problemas Resueltos</h2>
+
+      <h3>Ejemplo 1: Cálculo de Energía Potencial Gravitatoria</h3>
+      <p>
+        Un objeto de 10 kg se eleva a una altura de 5 m sobre el suelo.  
+        ¿Cuál es su energía potencial gravitatoria?
+      </p>
+      <div class="equation">
+        $$E_p = 10 \, \text{kg} \cdot 9.8 \, \frac{m}{s^2} \cdot 5 \, \text{m} = 490 \, \text{J}$$
+      </div>
+
+      <h3>Ejemplo 2: Variación de Energía Potencial</h3>
+      <p>
+        Una caja de 2 kg desciende desde 10 m hasta 2 m de altura.  
+        ¿Cuál es la variación en su energía potencial gravitatoria?
+      </p>
+      <div class="equation">
+        $$\Delta E_p = 2 \, \text{kg} \cdot 9.8 \, \frac{m}{s^2} \cdot (2 \, \text{m} - 10 \, \text{m}) = -156.8 \text{ J}$$
+      </div>
+      <p>
+        El signo negativo indica que la energía potencial ha disminuido en ese valor,  
+        transformándose probablemente en energía cinética u otro tipo de energía.
+      </p>
+    </section>
+    <section class="cards">
+      <div class="card">
+        <h2>🧩 Ejemplo resuelto</h2>
+        <p>Una mochila de 4 kg está a 2 m de altura. ¿Cuál es su energía potencial?</p>
+        <div class="equation">$$E_p = 4 \cdot 9.8 \cdot 2 = 78.4\ \text{J}$$</div>
+        <div class="example">
+          <strong>Conclusión:</strong> la energía potencial depende linealmente de la altura.
+        </div>
+      </div>
+      <div class="card">
+        <h2>✅ Autoevaluación</h2>
+        <p>Un objeto de 3 kg se eleva 5 m. ¿Cuánta energía potencial gana?</p>
+        <div class="example">
+          <strong>Pista:</strong> usa $g = 9.8\,\text{m/s}^2$.
+        </div>
+      </div>
+    </section>
+
+    <!-- Quiz específico de Energía Potencial -->
+    <section class="content-section">
+      <h2>🎮 Quiz: Energía Potencial</h2>
+      <p>Pon a prueba tu conocimiento sobre energía potencial gravitatoria:</p>
+    </section>
+
+    <section class="quiz-container" id="quiz-potencial">
+      <div class="quiz-content" id="quiz-content-potencial"></div>
+      <div class="quiz-results" id="quiz-results-potencial" style="display: none;">
+        <h3>🎉 ¡Quiz Completado!</h3>
+        <div class="score-display">
+          <p class="score-text">Respondiste correctamente <span id="correct-count-potencial">0</span> de <span id="total-count-potencial">4</span> preguntas</p>
+        </div>
+        <button class="retry-button" onclick="restartQuizPotencial()">Intentar de Nuevo</button>
+      </div>
+    </section>
+
+    <script>
+    const quizDataPotencial = [
+      {
+        question: "Un objeto de 3 kg se eleva 5 m. ¿Cuánta energía potencial gana?",
+        equation: "$$E_p = m \\cdot g \\cdot h$$",
+        options: ["15 J", "49 J", "147 J", "294 J"],
+        correct: 2,
+        explanation: "Ep = 3 kg × 9.8 m/s² × 5 m = 147 J"
+      },
+      {
+        question: "¿Qué sucede con la energía potencial si se duplica la altura?",
+        equation: "$$E_p = m \\cdot g \\cdot h$$",
+        options: ["Se cuadruplica", "Se duplica", "Se reduce a la mitad", "No cambia"],
+        correct: 1,
+        explanation: "La energía potencial es directamente proporcional a la altura, por lo que si h se duplica, Ep también se duplica."
+      },
+      {
+        question: "Una pelota de 0.2 kg cae desde 10 m hasta 4 m. ¿Cuál es la variación de energía potencial?",
+        equation: "$$\\Delta E_p = m \\cdot g \\cdot (h_f - h_i)$$",
+        options: ["+11.76 J", "-11.76 J", "+19.6 J", "-19.6 J"],
+        correct: 1,
+        explanation: "ΔEp = 0.2 × 9.8 × (4 - 10) = 0.2 × 9.8 × (-6) = -11.76 J (pierde energía potencial)"
+      },
+      {
+        question: "¿Por qué es importante definir un nivel de referencia (h = 0) para la energía potencial?",
+        equation: "",
+        options: ["Porque la Ep siempre debe ser positiva", "Porque la variación de Ep es lo que importa físicamente", "Porque sin referencia no se puede calcular", "No es necesario definir referencia"],
+        correct: 1,
+        explanation: "El valor absoluto de Ep depende del nivel de referencia, pero las variaciones (ΔEp) son independientes de la referencia elegida."
+      }
+    ];
+
+    let currentQuestionPotencial = 0;
+    let scorePotencial = 0;
+    let answeredPotencial = false;
+
+    function initQuizPotencial() {
+      document.getElementById('total-count-potencial').textContent = quizDataPotencial.length;
+      showQuestionPotencial();
+    }
+
+    function showQuestionPotencial() {
+      answeredPotencial = false;
+      const question = quizDataPotencial[currentQuestionPotencial];
+      const quizContent = document.getElementById('quiz-content-potencial');
+
+      quizContent.innerHTML = `
+        <div class="question-card">
+          <h3>📝 Pregunta ${currentQuestionPotencial + 1} de ${quizDataPotencial.length}</h3>
+          <p class="question-text">${question.question}</p>
+          ${question.equation ? `<div class="question-equation">${question.equation}</div>` : ''}
+          <div class="options-grid">
+            ${question.options.map((option, index) => `
+              <button class="option-button" onclick="selectOptionPotencial(${index})">
+                ${option}
+              </button>
+            `).join('')}
+          </div>
+          <div class="explanation" id="explanation-potencial" style="display: none;">
+            <h4>💡 Explicación:</h4>
+            <p>${question.explanation}</p>
+          </div>
+          <div class="navigation-buttons" id="nav-potencial" style="display: none;">
+            ${currentQuestionPotencial < quizDataPotencial.length - 1 ?
+              '<button class="nav-button" onclick="nextQuestionPotencial()">Siguiente →</button>' :
+              '<button class="nav-button" onclick="showResultsPotencial()">Ver Resultados →</button>'}
+          </div>
+        </div>
+      `;
+      MathJax.typesetPromise();
+    }
+
+    function selectOptionPotencial(optionIndex) {
+      if (answeredPotencial) return;
+      answeredPotencial = true;
+      const question = quizDataPotencial[currentQuestionPotencial];
+      const buttons = document.querySelectorAll('#quiz-content-potencial .option-button');
+
+      buttons[question.correct].classList.add('correct');
+      if (optionIndex !== question.correct) {
+        buttons[optionIndex].classList.add('incorrect');
+      } else {
+        scorePotencial++;
+      }
+
+      document.getElementById('explanation-potencial').style.display = 'block';
+      document.getElementById('nav-potencial').style.display = 'flex';
+      buttons.forEach(button => button.disabled = true);
+    }
+
+    function nextQuestionPotencial() {
+      currentQuestionPotencial++;
+      showQuestionPotencial();
+    }
+
+    function showResultsPotencial() {
+      document.getElementById('quiz-content-potencial').style.display = 'none';
+      document.getElementById('quiz-results-potencial').style.display = 'block';
+      document.getElementById('correct-count-potencial').textContent = scorePotencial;
+    }
+
+    function restartQuizPotencial() {
+      currentQuestionPotencial = 0;
+      scorePotencial = 0;
+      document.getElementById('quiz-content-potencial').style.display = 'block';
+      document.getElementById('quiz-results-potencial').style.display = 'none';
+      showQuestionPotencial();
+    }
+
+    document.addEventListener('DOMContentLoaded', initQuizPotencial);
+    </script>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>📚 Aprende Física</h3>
+        <p>Material educativo para estudiantes de secundaria</p>
+      </div>
+      <div class="footer-section">
+        <h3>👨‍🏫 Creado por</h3>
+        <p>Prof. Javier Pereyra</p>
+      </div>
+      <div class="footer-section">
+        <h3>📧 Contacto</h3>
+        <p>Para dudas y sugerencias</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Portal de Física para Secundaria - Educación para todos</p>
+    </div>
+  </footer>
+  <script src="js/dark-mode.js"></script>
+</body>
+</html>
+

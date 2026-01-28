@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Física para Secundaria - Quiz Interactivo</title>
+  <meta name="description" content="Quiz interactivo de física: evalúa tu conocimiento sobre energía, trabajo, electricidad y calor.">
+  <link rel="stylesheet" href="css/index.css">
+  
+  <!-- Polyfill y MathJax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$','$$'], ['\\[','\\]']],
+        packages: ['base', 'ams', 'noerrors', 'noundefined']
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+</head>
+<body>
+  <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
+  <header>
+    <h1>🎮 Quiz Interactivo</h1>
+    <p>Evalúa tu conocimiento sobre energía mecánica</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="quiz.html" class="active">Quiz</a></li>
+        <li><a href="guia.html">Guía</a></li>
+        <li><a href="definicion-energia.html">Energía</a></li>
+        <li><a href="trabajo.html">Trabajo</a></li>
+        <li><a href="cinetica.html">E. Cinética</a></li>
+        <li><a href="gravitatoria.html">E. Potencial</a></li>
+        <li><a href="mecanica01.html">E. Mecánica</a></li>
+        <li><a href="mecanica02.html">Conservación</a></li>
+        <li><a href="electricidad.html">Electricidad</a></li>
+        <li><a href="calor.html">Calor</a></li>
+        <li><a href="temperatura.html">Temperatura</a></li>
+        <li><a href="cambios-estado.html">Cambios de Estado</a></li>
+        <li><a href="fuentes-energia-argentina.html">Energía Argentina</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="quiz-container">
+    <section class="quiz-header">
+      <h2>📊 Evalúa tu Progreso</h2>
+      <div class="progress-bar">
+        <div class="progress" id="progress-bar" style="width: 0%"></div>
+      </div>
+      <p class="progress-text">Pregunta <span id="current-question">1</span> de <span id="total-questions">10</span></p>
+    </section>
+
+    <section class="quiz-content" id="quiz-content">
+      <!-- Las preguntas se cargarán dinámicamente aquí -->
+    </section>
+
+    <section class="quiz-results" id="quiz-results" style="display: none;">
+      <h2>🎉 ¡Quiz Completado!</h2>
+      <div class="score-display">
+        <div class="score-circle">
+          <span class="score-percentage" id="score-percentage">0%</span>
+        </div>
+        <p class="score-text">Respondiste correctamente <span id="correct-count">0</span> de <span id="total-count">10</span> preguntas</p>
+      </div>
+      <div class="result-message" id="result-message"></div>
+      <div class="action-buttons">
+        <button class="retry-button" onclick="restartQuiz()">Intentar de Nuevo</button>
+        <button class="study-button" onclick="window.location.href='guia.html'">Repasar Guía</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>📚 Aprende Física</h3>
+        <p>Material educativo para estudiantes de secundaria</p>
+      </div>
+      <div class="footer-section">
+        <h3>👨‍🏫 Creado por</h3>
+        <p>Prof. Javier Pereyra</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Portal de Física para Secundaria - Educación para todos</p>
+    </div>
+  </footer>
+
+  <script>
+    const quizData = [
+      {
+        question: "¿Cuál es la fórmula del trabajo en física?",
+        equation: "$$W = F \\cdot d \\cdot \\cos(\\theta)$$",
+        options: [
+          "W = m × g × h",
+          "W = F × d × cos(θ)",
+          "W = ½ m v²",
+          "W = F × d"
+        ],
+        correct: 1,
+        explanation: "El trabajo se calcula multiplicando la fuerza por la distancia y por el coseno del ángulo entre ambas."
+      },
+      {
+        question: "Un objeto de 5 kg se mueve a 4 m/s. ¿Cuál es su energía cinética?",
+        equation: "$$E_c = \\frac{1}{2} m v^2$$",
+        options: [
+          "20 J",
+          "40 J",
+          "80 J",
+          "160 J"
+        ],
+        correct: 1,
+        explanation: "Ec = ½ × 5 kg × (4 m/s)² = ½ × 5 × 16 = 40 J"
+      },
+      {
+        question: "Una caja de 10 kg está a 3 metros de altura. ¿Cuál es su energía potencial?",
+        equation: "$$E_p = m g h$$",
+        options: [
+          "30 J",
+          "98 J",
+          "294 J",
+          "300 J"
+        ],
+        correct: 2,
+        explanation: "Ep = 10 kg × 9.8 m/s² × 3 m = 294 J"
+      },
+      {
+        question: "¿Cuál es la unidad de trabajo y energía en el Sistema Internacional?",
+        equation: "",
+        options: [
+          "Newton (N)",
+          "Watt (W)",
+          "Joule (J)",
+          "Pascal (Pa)"
+        ],
+        correct: 2,
+        explanation: "El Joule (J) es la unidad de trabajo y energía en el SI."
+      },
+      {
+        question: "Si una fuerza de 100 N actúa horizontalmente sobre una caja que se mueve 5 m, ¿cuánto trabajo se realiza?",
+        equation: "$$W = F \\cdot d \\cdot \\cos(\\theta)$$",
+        options: [
+          "100 J",
+          "250 J",
+          "500 J",
+          "1000 J"
+        ],
+        correct: 2,
+        explanation: "Como el ángulo es 0°, cos(0°) = 1. W = 100 N × 5 m × 1 = 500 J"
+      },
+      {
+        question: "¿Qué sucede con la energía mecánica total si no hay fricción?",
+        equation: "$$E_m = E_c + E_p$$",
+        options: [
+          "Aumenta constantemente",
+          "Disminuye constantemente", 
+          "Se mantiene constante",
+          "Oscila entre valores"
+        ],
+        correct: 2,
+        explanation: "Según el principio de conservación de la energía, sin fricción la energía mecánica total permanece constante."
+      },
+      {
+        question: "Un automóvil duplica su velocidad. ¿Cómo cambia su energía cinética?",
+        equation: "$$E_c = \\frac{1}{2} m v^2$$",
+        options: [
+          "Se duplica",
+          "Se triplica",
+          "Se cuadruplica",
+          "No cambia"
+        ],
+        correct: 2,
+        explanation: "Como la energía cinética es proporcional al cuadrado de la velocidad, si v duplica, v² se cuadruplica."
+      },
+      {
+        question: "¿Cuál es el valor aproximado de la aceleración gravitatoria en la Tierra?",
+        equation: "",
+        options: [
+          "1 m/s²",
+          "4.9 m/s²",
+          "9.8 m/s²",
+          "19.6 m/s²"
+        ],
+        correct: 2,
+        explanation: "La aceleración gravitatoria en la Tierra es aproximadamente 9.8 m/s²."
+      },
+      {
+        question: "Una persona levanta un objeto de 2 kg a una altura de 5 metros. ¿Cuál es el trabajo realizado?",
+        equation: "$$W = m g h$$",
+        options: [
+          "10 J",
+          "49 J",
+          "98 J",
+          "490 J"
+        ],
+        correct: 2,
+        explanation: "Trabajo contra la gravedad = 2 kg × 9.8 m/s² × 5 m = 98 J"
+      },
+      {
+        question: "En una montaña rusa, ¿dónde es máxima la energía potencial?",
+        equation: "$$E_p = m g h$$",
+        options: [
+          "En el punto más bajo",
+          "En el punto más alto",
+          "En el punto medio",
+          "Es constante"
+        ],
+        correct: 1,
+        explanation: "La energía potencial depende de la altura (Ep = mgh), por lo que es máxima en el punto más alto."
+      },
+      {
+        question: "Según la ley de Coulomb, ¿qué ocurre con la fuerza eléctrica si se duplica la distancia entre dos cargas?",
+        equation: "$$F = k \\frac{q_1 q_2}{r^2}$$",
+        options: [
+          "Se reduce a la mitad",
+          "Se reduce a la cuarta parte",
+          "Se duplica",
+          "No cambia"
+        ],
+        correct: 1,
+        explanation: "Como la fuerza es inversamente proporcional al cuadrado de la distancia, al duplicar r, la fuerza se reduce a r²=4, es decir, a la cuarta parte."
+      },
+      {
+        question: "¿Cuál es la ley de Ohm?",
+        equation: "$$V = I \\cdot R$$",
+        options: [
+          "V = I / R",
+          "V = I × R",
+          "V = R / I",
+          "V = I + R"
+        ],
+        correct: 1,
+        explanation: "La ley de Ohm establece que el voltaje (V) es igual a la corriente (I) multiplicada por la resistencia (R)."
+      },
+      {
+        question: "¿Cuánto calor se necesita para elevar 1 kg de agua en 10°C? (c = 4180 J/kg·°C)",
+        equation: "$$Q = m \\cdot c \\cdot \\Delta T$$",
+        options: [
+          "418 J",
+          "4180 J",
+          "41800 J",
+          "4.18 J"
+        ],
+        correct: 2,
+        explanation: "Q = 1 kg × 4180 J/kg·°C × 10°C = 41800 J"
+      },
+      {
+        question: "¿Cuál es la principal fuente de generación eléctrica en Argentina?",
+        equation: "",
+        options: [
+          "Energía nuclear",
+          "Gas natural",
+          "Energía eólica",
+          "Energía hidroeléctrica"
+        ],
+        correct: 1,
+        explanation: "El gas natural es la principal fuente de generación eléctrica en Argentina, representando aproximadamente el 51% de la matriz."
+      },
+      {
+        question: "El calor siempre fluye espontáneamente desde...",
+        equation: "",
+        options: [
+          "Un cuerpo frío a uno caliente",
+          "Un cuerpo caliente a uno frío",
+          "En ambas direcciones por igual",
+          "Solo en el vacío"
+        ],
+        correct: 1,
+        explanation: "Por la segunda ley de la termodinámica, el calor fluye espontáneamente del cuerpo de mayor temperatura al de menor temperatura."
+      }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+    let answered = false;
+
+    function initQuiz() {
+      document.getElementById('total-questions').textContent = quizData.length;
+      showQuestion();
+    }
+
+    function showQuestion() {
+      answered = false;
+      const question = quizData[currentQuestion];
+      const quizContent = document.getElementById('quiz-content');
+      
+      quizContent.innerHTML = `
+        <div class="question-card">
+          <h3>📝 Pregunta ${currentQuestion + 1}</h3>
+          <p class="question-text">${question.question}</p>
+          ${question.equation ? `<div class="question-equation">${question.equation}</div>` : ''}
+          <div class="options-grid">
+            ${question.options.map((option, index) => `
+              <button class="option-button" onclick="selectOption(${index})">
+                ${option}
+              </button>
+            `).join('')}
+          </div>
+          <div class="explanation" id="explanation" style="display: none;">
+            <h4>💡 Explicación:</h4>
+            <p>${question.explanation}</p>
+          </div>
+          <div class="navigation-buttons" id="navigation-buttons" style="display: none;">
+            ${currentQuestion > 0 ? '<button class="nav-button" onclick="previousQuestion()">← Anterior</button>' : ''}
+            ${currentQuestion < quizData.length - 1 ? '<button class="nav-button" onclick="nextQuestion()">Siguiente →</button>' : '<button class="nav-button" onclick="showResults()">Ver Resultados →</button>'}
+          </div>
+        </div>
+      `;
+
+      updateProgress();
+      // Forzar renderizado de MathJax
+      MathJax.typesetPromise();
+    }
+
+    function selectOption(optionIndex) {
+      if (answered) return;
+      
+      answered = true;
+      const question = quizData[currentQuestion];
+      const buttons = document.querySelectorAll('.option-button');
+      const explanation = document.getElementById('explanation');
+      const navigationButtons = document.getElementById('navigation-buttons');
+      
+      // Marcar la respuesta correcta
+      buttons[question.correct].classList.add('correct');
+      
+      // Si la respuesta es incorrecta, marcarla
+      if (optionIndex !== question.correct) {
+        buttons[optionIndex].classList.add('incorrect');
+      } else {
+        score++;
+      }
+      
+      // Mostrar explicación y navegación
+      explanation.style.display = 'block';
+      navigationButtons.style.display = 'flex';
+      
+      // Deshabilitar todos los botones
+      buttons.forEach(button => button.disabled = true);
+    }
+
+    function nextQuestion() {
+      currentQuestion++;
+      if (currentQuestion < quizData.length) {
+        showQuestion();
+      }
+    }
+
+    function previousQuestion() {
+      if (currentQuestion > 0) {
+        currentQuestion--;
+        showQuestion();
+      }
+    }
+
+    function updateProgress() {
+      const progress = ((currentQuestion + 1) / quizData.length) * 100;
+      document.getElementById('progress-bar').style.width = progress + '%';
+      document.getElementById('current-question').textContent = currentQuestion + 1;
+    }
+
+    function showResults() {
+      const percentage = Math.round((score / quizData.length) * 100);
+      
+      document.getElementById('quiz-content').style.display = 'none';
+      document.getElementById('quiz-results').style.display = 'block';
+      document.getElementById('score-percentage').textContent = percentage + '%';
+      document.getElementById('correct-count').textContent = score;
+      document.getElementById('total-count').textContent = quizData.length;
+      
+      const resultMessage = document.getElementById('result-message');
+      let message = '';
+      let emoji = '';
+      
+      if (percentage >= 90) {
+        message = '¡Excelente! Tienes un dominio excepcional de los conceptos.';
+        emoji = '🏆';
+      } else if (percentage >= 70) {
+        message = '¡Muy bien! Comprendes la mayoría de los conceptos importantes.';
+        emoji = '🌟';
+      } else if (percentage >= 50) {
+        message = 'Bien, pero puedes mejorar repasando algunos conceptos.';
+        emoji = '📚';
+      } else {
+        message = 'Necesitas repasar más los conceptos fundamentales.';
+        emoji = '💪';
+      }
+      
+      resultMessage.innerHTML = `<p>${emoji} ${message}</p>`;
+    }
+
+    function restartQuiz() {
+      currentQuestion = 0;
+      score = 0;
+      answered = false;
+      
+      document.getElementById('quiz-content').style.display = 'block';
+      document.getElementById('quiz-results').style.display = 'none';
+      
+      showQuestion();
+    }
+
+    // Iniciar el quiz cuando carga la página
+    document.addEventListener('DOMContentLoaded', initQuiz);
+  </script>
+  <script src="js/dark-mode.js"></script>
+</body>
+</html>
+

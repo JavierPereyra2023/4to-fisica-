@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambios de Estado de la Materia</title>
+  <meta name="description" content="Cambios de estado: fusión, vaporización, condensación, solidificación, sublimación, calor latente y curvas de calentamiento.">
+  <link rel="stylesheet" href="css/index.css">
+
+  <!-- Polyfill y MathJax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$','$$'], ['\\[','\\]']],
+        packages: ['base', 'ams', 'noerrors', 'noundefined']
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+</head>
+<body>
+  <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
+  <header>
+    <h1>🧊 Cambios de Estado</h1>
+    <p>Transformaciones de la materia entre sólido, líquido y gaseoso</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="guia.html">Guía</a></li>
+        <li><a href="definicion-energia.html">Energía</a></li>
+        <li><a href="trabajo.html">Trabajo</a></li>
+        <li><a href="cinetica.html">E. Cinética</a></li>
+        <li><a href="gravitatoria.html">E. Potencial</a></li>
+        <li><a href="mecanica01.html">E. Mecánica</a></li>
+        <li><a href="mecanica02.html">Conservación</a></li>
+        <li><a href="electricidad.html">Electricidad</a></li>
+        <li><a href="calor.html">Calor</a></li>
+        <li><a href="temperatura.html">Temperatura</a></li>
+        <li><a href="cambios-estado.html" class="active">Cambios de Estado</a></li>
+        <li><a href="fuentes-energia-argentina.html">Energía Argentina</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="content-main">
+    <!-- Introducción -->
+    <section class="content-section">
+      <h2>¿Qué son los Cambios de Estado?</h2>
+      <p>
+        Los <strong>cambios de estado</strong> (o transiciones de fase) ocurren cuando un
+        material pasa de un estado de agregación a otro (sólido, líquido o gaseoso) al
+        absorber o liberar energía en forma de calor. Durante el cambio de estado, la
+        temperatura permanece constante aunque se siga suministrando calor.
+      </p>
+      <div class="key-points">
+        <strong>Idea clave:</strong> durante un cambio de estado, toda la energía se usa para
+        romper o formar enlaces entre moléculas, no para cambiar la temperatura.
+      </div>
+    </section>
+
+    <!-- Ecuación de calor latente -->
+    <section class="content-section">
+      <h2>Calor Latente</h2>
+      <p>
+        La cantidad de calor necesaria para que un cuerpo cambie de estado (sin cambiar su
+        temperatura) se calcula con:
+      </p>
+      <div class="equation">
+        $$Q = m \cdot L$$
+      </div>
+      <p>Donde:</p>
+      <ul>
+        <li><strong>$Q$:</strong> Calor absorbido o liberado (en julios, J).</li>
+        <li><strong>$m$:</strong> Masa del cuerpo (en kg).</li>
+        <li><strong>$L$:</strong> Calor latente específico del cambio de estado (en J/kg).</li>
+      </ul>
+      <div class="callout">
+        <strong>Importante:</strong> cada material tiene calores latentes distintos para fusión
+        ($L_f$) y vaporización ($L_v$). El calor latente de vaporización siempre es mayor
+        porque requiere más energía separar las moléculas completamente.
+      </div>
+    </section>
+
+    <!-- Tipos de cambios de estado -->
+    <section class="content-section">
+      <h2>Los Seis Cambios de Estado</h2>
+    </section>
+
+    <section class="cards">
+      <div class="card">
+        <h2>🧊➡️💧 Fusión</h2>
+        <p>Sólido a líquido. Absorbe calor.</p>
+        <div class="equation">$$Q = m \cdot L_f$$</div>
+        <div class="example">
+          <strong>Ejemplo:</strong> un cubo de hielo se derrite a 0°C. Para el agua:
+          $L_f = 334{,}000\,\text{J/kg}$.
+        </div>
+      </div>
+      <div class="card">
+        <h2>💧➡️🧊 Solidificación</h2>
+        <p>Líquido a sólido. Libera calor.</p>
+        <div class="equation">$$Q = -m \cdot L_f$$</div>
+        <div class="example">
+          <strong>Ejemplo:</strong> el agua se congela en el freezer. Libera la misma cantidad
+          de calor que absorbió al fundirse.
+        </div>
+      </div>
+      <div class="card">
+        <h2>💧➡️💨 Vaporización</h2>
+        <p>Líquido a gas. Absorbe calor. Incluye evaporación y ebullición.</p>
+        <div class="equation">$$Q = m \cdot L_v$$</div>
+        <div class="example">
+          <strong>Ejemplo:</strong> el agua hierve a 100°C. Para el agua:
+          $L_v = 2{,}260{,}000\,\text{J/kg}$.
+        </div>
+      </div>
+      <div class="card">
+        <h2>💨➡️💧 Condensación</h2>
+        <p>Gas a líquido. Libera calor.</p>
+        <div class="equation">$$Q = -m \cdot L_v$$</div>
+        <div class="example">
+          <strong>Ejemplo:</strong> el vapor de agua se condensa en el espejo del baño después
+          de una ducha caliente.
+        </div>
+      </div>
+      <div class="card">
+        <h2>🧊➡️💨 Sublimación</h2>
+        <p>Sólido a gas directamente, sin pasar por líquido.</p>
+        <div class="equation">$$Q = m \cdot L_s$$</div>
+        <div class="example">
+          <strong>Ejemplo:</strong> el hielo seco (CO₂ sólido) se convierte directamente en gas.
+          La ropa mojada se seca en invierno por sublimación del hielo.
+        </div>
+      </div>
+      <div class="card">
+        <h2>💨➡️🧊 Deposición</h2>
+        <p>Gas a sólido directamente, sin pasar por líquido.</p>
+        <div class="equation">$$Q = -m \cdot L_s$$</div>
+        <div class="example">
+          <strong>Ejemplo:</strong> la escarcha se forma cuando el vapor de agua se deposita
+          directamente como hielo sobre superficies frías.
+        </div>
+      </div>
+    </section>
+
+    <!-- Calores latentes del agua -->
+    <section class="content-section">
+      <h2>Calores Latentes del Agua</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Cambio de estado</th>
+            <th>Temperatura</th>
+            <th>Calor latente ($L$)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Fusión / Solidificación</td>
+            <td>0°C</td>
+            <td>334.000 J/kg</td>
+          </tr>
+          <tr>
+            <td>Vaporización / Condensación</td>
+            <td>100°C</td>
+            <td>2.260.000 J/kg</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="key-points">
+        <strong>Comparación:</strong> vaporizar 1 kg de agua necesita casi 7 veces más energía
+        que fundirla. Por eso las quemaduras con vapor son tan peligrosas.
+      </div>
+    </section>
+
+    <!-- Curva de calentamiento -->
+    <section class="content-section">
+      <h2>Curva de Calentamiento del Agua</h2>
+      <p>
+        Si calentamos hielo a $-20°$C de forma continua, la temperatura sube en escalones.
+        Los tramos horizontales corresponden a los cambios de estado:
+      </p>
+
+      <h3>Tramo 1: Hielo se calienta ($-20°$C a $0°$C)</h3>
+      <div class="equation">
+        $$Q_1 = m \cdot c_{\text{hielo}} \cdot \Delta T = m \cdot 2090 \cdot 20$$
+      </div>
+
+      <h3>Tramo 2: Fusión (0°C, temperatura constante)</h3>
+      <div class="equation">
+        $$Q_2 = m \cdot L_f = m \cdot 334{,}000$$
+      </div>
+
+      <h3>Tramo 3: Agua se calienta ($0°$C a $100°$C)</h3>
+      <div class="equation">
+        $$Q_3 = m \cdot c_{\text{agua}} \cdot \Delta T = m \cdot 4186 \cdot 100$$
+      </div>
+
+      <h3>Tramo 4: Vaporización (100°C, temperatura constante)</h3>
+      <div class="equation">
+        $$Q_4 = m \cdot L_v = m \cdot 2{,}260{,}000$$
+      </div>
+
+      <h3>Tramo 5: Vapor se calienta (> 100°C)</h3>
+      <div class="equation">
+        $$Q_5 = m \cdot c_{\text{vapor}} \cdot \Delta T = m \cdot 2010 \cdot \Delta T$$
+      </div>
+
+      <div class="callout">
+        <strong>Calor total:</strong> la energía total para transformar hielo a $-20°$C en
+        vapor a $120°$C es:
+        $$Q_{\text{total}} = Q_1 + Q_2 + Q_3 + Q_4 + Q_5$$
+      </div>
+    </section>
+
+    <!-- Evaporación vs ebullición -->
+    <section class="content-section">
+      <h2>Evaporación vs. Ebullición</h2>
+      <div class="content-grid">
+        <div class="callout">
+          <strong>Evaporación:</strong> ocurre solo en la superficie del líquido, a cualquier
+          temperatura. Es un proceso lento. Ejemplo: un charco se seca al sol.
+        </div>
+        <div class="callout">
+          <strong>Ebullición:</strong> ocurre en todo el volumen del líquido, a una
+          temperatura específica (punto de ebullición). Es un proceso rápido con burbujas
+          visibles. Ejemplo: el agua hirviendo a 100°C.
+        </div>
+      </div>
+    </section>
+
+    <!-- Ejemplos -->
+    <section class="content-section">
+      <h2>Ejemplos de Problemas Resueltos</h2>
+
+      <h3>Ejemplo 1: Fundir hielo</h3>
+      <p>¿Cuánto calor se necesita para fundir 500 g de hielo a 0°C?</p>
+      <div class="equation">
+        $$Q = 0.5 \, \text{kg} \cdot 334{,}000 \, \frac{\text{J}}{\text{kg}} = 167{,}000 \, \text{J} = 167 \, \text{kJ}$$
+      </div>
+
+      <h3>Ejemplo 2: Calentar hielo hasta vapor</h3>
+      <p>¿Cuánto calor se necesita para transformar 200 g de hielo a 0°C en vapor a 100°C?</p>
+      <div class="equation">
+        $$Q_{\text{fusión}} = 0.2 \cdot 334{,}000 = 66{,}800 \, \text{J}$$
+      </div>
+      <div class="equation">
+        $$Q_{\text{calentar agua}} = 0.2 \cdot 4186 \cdot 100 = 83{,}720 \, \text{J}$$
+      </div>
+      <div class="equation">
+        $$Q_{\text{vaporización}} = 0.2 \cdot 2{,}260{,}000 = 452{,}000 \, \text{J}$$
+      </div>
+      <div class="equation">
+        $$Q_{\text{total}} = 66{,}800 + 83{,}720 + 452{,}000 = 602{,}520 \, \text{J} \approx 603 \, \text{kJ}$$
+      </div>
+    </section>
+
+    <!-- Tarjetas finales -->
+    <section class="cards">
+      <div class="card">
+        <h2>🧩 Ejemplo resuelto</h2>
+        <p>¿Cuánto calor libera 1 kg de vapor al condensarse a 100°C?</p>
+        <div class="equation">$$Q = -1 \cdot 2{,}260{,}000 = -2{,}260{,}000\,\text{J}$$</div>
+        <div class="example">
+          <strong>Conclusión:</strong> el signo negativo indica que el vapor libera una enorme
+          cantidad de energía. Por eso las quemaduras con vapor son muy graves.
+        </div>
+      </div>
+      <div class="card">
+        <h2>✅ Autoevaluación</h2>
+        <p>¿Por qué la ropa mojada se seca en invierno aunque la temperatura esté bajo cero?</p>
+        <div class="example">
+          <strong>Pista:</strong> piensa en qué cambio de estado permite pasar de sólido a gas
+          sin pasar por líquido.
+        </div>
+      </div>
+    </section>
+
+    <!-- Quiz específico de Cambios de Estado -->
+    <section class="content-section">
+      <h2>🎮 Quiz: Cambios de Estado</h2>
+      <p>Pon a prueba tu conocimiento sobre cambios de estado:</p>
+    </section>
+
+    <section class="quiz-container" id="quiz-estado">
+      <div class="quiz-content" id="quiz-content-estado"></div>
+      <div class="quiz-results" id="quiz-results-estado" style="display: none;">
+        <h3>🎉 ¡Quiz Completado!</h3>
+        <div class="score-display">
+          <p class="score-text">Respondiste correctamente <span id="correct-count-estado">0</span> de <span id="total-count-estado">4</span> preguntas</p>
+        </div>
+        <button class="retry-button" onclick="restartQuizEstado()">Intentar de Nuevo</button>
+      </div>
+    </section>
+
+    <script>
+    const quizDataEstado = [
+      {
+        question: "¿Por qué la ropa mojada se seca en invierno aunque la temperatura esté bajo cero?",
+        equation: "",
+        options: ["Por evaporación del agua líquida", "Por sublimación del hielo", "Por condensación del vapor", "No se seca bajo cero"],
+        correct: 1,
+        explanation: "El agua congelada en la ropa pasa directamente de sólido (hielo) a gas (vapor) por sublimación, sin pasar por líquido."
+      },
+      {
+        question: "¿Cuánto calor se necesita para fundir 0,5 kg de hielo a 0°C? (Lf = 334.000 J/kg)",
+        equation: "$$Q = m \\cdot L_f$$",
+        options: ["167.000 J", "334.000 J", "668.000 J", "83.500 J"],
+        correct: 0,
+        explanation: "Q = 0,5 kg × 334.000 J/kg = 167.000 J"
+      },
+      {
+        question: "¿Por qué las quemaduras con vapor son más graves que con agua hirviendo?",
+        equation: "",
+        options: ["El vapor está más caliente", "El vapor libera calor latente al condensarse", "El agua hirviendo enfría más rápido", "No hay diferencia"],
+        correct: 1,
+        explanation: "El vapor libera Lv = 2.260.000 J/kg al condensarse, además del calor por enfriamiento. Es casi 7 veces más energía que el calor de fusión."
+      },
+      {
+        question: "Durante un cambio de estado, ¿qué sucede con la temperatura?",
+        equation: "",
+        options: ["Aumenta constantemente", "Disminuye constantemente", "Permanece constante", "Oscila"],
+        correct: 2,
+        explanation: "Durante el cambio de estado, toda la energía se usa para romper/formar enlaces moleculares, no para cambiar la temperatura."
+      }
+    ];
+
+    let currentQuestionEstado = 0;
+    let scoreEstado = 0;
+    let answeredEstado = false;
+
+    function initQuizEstado() {
+      document.getElementById('total-count-estado').textContent = quizDataEstado.length;
+      showQuestionEstado();
+    }
+
+    function showQuestionEstado() {
+      answeredEstado = false;
+      const question = quizDataEstado[currentQuestionEstado];
+      const quizContent = document.getElementById('quiz-content-estado');
+
+      quizContent.innerHTML = `
+        <div class="question-card">
+          <h3>📝 Pregunta ${currentQuestionEstado + 1} de ${quizDataEstado.length}</h3>
+          <p class="question-text">${question.question}</p>
+          ${question.equation ? `<div class="question-equation">${question.equation}</div>` : ''}
+          <div class="options-grid">
+            ${question.options.map((option, index) => `
+              <button class="option-button" onclick="selectOptionEstado(${index})">
+                ${option}
+              </button>
+            `).join('')}
+          </div>
+          <div class="explanation" id="explanation-estado" style="display: none;">
+            <h4>💡 Explicación:</h4>
+            <p>${question.explanation}</p>
+          </div>
+          <div class="navigation-buttons" id="nav-estado" style="display: none;">
+            ${currentQuestionEstado < quizDataEstado.length - 1 ?
+              '<button class="nav-button" onclick="nextQuestionEstado()">Siguiente →</button>' :
+              '<button class="nav-button" onclick="showResultsEstado()">Ver Resultados →</button>'}
+          </div>
+        </div>
+      `;
+      MathJax.typesetPromise();
+    }
+
+    function selectOptionEstado(optionIndex) {
+      if (answeredEstado) return;
+      answeredEstado = true;
+      const question = quizDataEstado[currentQuestionEstado];
+      const buttons = document.querySelectorAll('#quiz-content-estado .option-button');
+
+      buttons[question.correct].classList.add('correct');
+      if (optionIndex !== question.correct) {
+        buttons[optionIndex].classList.add('incorrect');
+      } else {
+        scoreEstado++;
+      }
+
+      document.getElementById('explanation-estado').style.display = 'block';
+      document.getElementById('nav-estado').style.display = 'flex';
+      buttons.forEach(button => button.disabled = true);
+    }
+
+    function nextQuestionEstado() {
+      currentQuestionEstado++;
+      showQuestionEstado();
+    }
+
+    function showResultsEstado() {
+      document.getElementById('quiz-content-estado').style.display = 'none';
+      document.getElementById('quiz-results-estado').style.display = 'block';
+      document.getElementById('correct-count-estado').textContent = scoreEstado;
+    }
+
+    function restartQuizEstado() {
+      currentQuestionEstado = 0;
+      scoreEstado = 0;
+      document.getElementById('quiz-content-estado').style.display = 'block';
+      document.getElementById('quiz-results-estado').style.display = 'none';
+      showQuestionEstado();
+    }
+
+    document.addEventListener('DOMContentLoaded', initQuizEstado);
+    </script>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>📚 Aprende Física</h3>
+        <p>Material educativo para estudiantes de secundaria</p>
+      </div>
+      <div class="footer-section">
+        <h3>👨‍🏫 Creado por</h3>
+        <p>Prof. Javier Pereyra</p>
+      </div>
+      <div class="footer-section">
+        <h3>📧 Contacto</h3>
+        <p>Para dudas y sugerencias</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Portal de Física para Secundaria - Educación para todos</p>
+    </div>
+  </footer>
+  <script src="js/dark-mode.js"></script>
+</body>
+</html>
+

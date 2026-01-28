@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energía Hidroeléctrica en Argentina - Física Secundaria</title>
+    <style>
+        :root {
+            --neon-blue: #00e5ff;
+        }
+
+        body.dark-mode .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('hidro_fondo.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('hidro_fondo.png');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 20px;
+            text-align: center;
+        }
+    </style>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
+    <header>
+        <h1>💧 Energía Hidroeléctrica</h1>
+        <div class="search-container">
+            <div class="search-input-wrapper">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="grokSearch" placeholder="Grokipedia: Busca temas de física...">
+            </div>
+            <div id="searchResults" class="search-results"></div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="fuentes-energia-argentina.html">Energía Argentina</a></li>
+                <li><a href="eolica.html">Eólica</a></li>
+                <li><a href="solar.html">Solar</a></li>
+                <li><a href="hidroelectrica.html" class="active">Hidro</a></li>
+                <li><a href="biomasa.html">Biomasa</a></li>
+                <li><a href="geotermica.html">Geotérmica</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="content-main">
+        <section class="hero-section">
+            <h2 style="font-size: 3rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.5);">Grandes Represas</h2>
+            <p style="font-size: 1.5rem;">Aprovechando el caudal de los ríos Paraná, Uruguay y Limay</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Energía Potencial y Cinética</h2>
+            <p>Las represas almacenan agua a gran altura, convirtiendo la <strong>Energía Potencial
+                    Gravitatoria</strong> en <strong>Energía Cinética</strong> cuando el agua cae por las tuberías hacia
+                las turbinas.</p>
+
+            <div class="equation">$$E_p = m \cdot g \cdot h$$</div>
+
+            <div class="callout" style="border-left-color: var(--neon-blue);">
+                <h3>🇦🇷 Gigantes Argentinos</h3>
+                <p><strong>Yacyretá</strong> y <strong>Salto Grande</strong> son centrales binacionales que aportan la
+                    mayor parte de la energía hidroeléctrica al país. En el Comahue, represas como <strong>El
+                        Chocón</strong> son fundamentales para regular los ríos y generar energía.</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Aporte Hidroeléctrico Histórico</h2>
+            <p>La hidroelectricidad es una base estable de la matriz argentina.</p>
+            <div class="energy-chart">
+                <div class="chart-row">
+                    <div class="chart-label">Aporte Promedio</div>
+                    <div class="chart-bar">
+                        <div class="chart-fill" style="width: 30%; background: #42a5f5;"></div>
+                    </div>
+                    <div class="chart-value">~25-30%</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Portal de Física - Energía Hidroeléctrica en Argentina</p>
+        </div>
+    </footer>
+    <script src="js/dark-mode.js"></script>
+    <script src="js/search.js"></script>
+</body>
+
+
+</html>

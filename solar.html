@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energía Solar en Argentina - Física Secundaria</title>
+    <style>
+        :root {
+            --neon-green: #39ff14;
+            --neon-yellow: #fbc02d;
+        }
+
+        body.dark-mode .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('panel-solar.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('panel-solar.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 20px;
+            text-align: center;
+        }
+    </style>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
+    <header>
+        <h1>☀️ Energía Solar</h1>
+        <p>Aprovechando la radiación electromagnética del Sol</p>
+        <div class="search-container">
+            <div class="search-input-wrapper">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="grokSearch" placeholder="Grokipedia: Busca temas de física...">
+            </div>
+            <div id="searchResults" class="search-results"></div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="fuentes-energia-argentina.html">Energía Argentina</a></li>
+                <li><a href="eolica.html">Eólica</a></li>
+                <li><a href="solar.html" class="active">Solar</a></li>
+                <li><a href="hidroelectrica.html">Hidro</a></li>
+                <li><a href="biomasa.html">Biomasa</a></li>
+                <li><a href="geotermica.html">Geotérmica</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="content-main">
+        <section class="hero-section">
+            <h2 style="font-size: 3rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.5);">Sol de la Puna</h2>
+            <p style="font-size: 1.5rem;">Argentina posee uno de los mejores recursos solares del planeta</p>
+        </section>
+
+        <section class="content-section">
+            <h2>El Efecto Fotovoltaico</h2>
+            <p>La luz solar está compuesta por fotones. Cuando estos chocan contra los paneles de silicio, liberan
+                electrones, creando un flujo de corriente eléctrica continua.</p>
+
+            <div class="callout" style="border-left-color: var(--neon-yellow);">
+                <h3>💡 ¿Sabías qué?</h3>
+                <p>El Parque Solar <strong>Cauchari</strong> en Jujuy es uno de los más altos del mundo (4000 metros
+                    sobre el nivel del mar), lo que mejora la eficiencia de los paneles debido al aire más limpio y
+                    frío.</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Recurso Solar por Región (kWh/m²)</h2>
+            <p>En el NOA (Noroeste Argentino), la radiación es excepcionalmente alta.</p>
+            <div class="energy-chart">
+                <div class="chart-row">
+                    <div class="chart-label">Jujuy/Salta</div>
+                    <div class="chart-bar">
+                        <div class="chart-fill" style="width: 95%; background: var(--neon-yellow);"></div>
+                    </div>
+                    <div class="chart-value">2500</div>
+                </div>
+                <div class="chart-row">
+                    <div class="chart-label">Buenos Aires</div>
+                    <div class="chart-bar">
+                        <div class="chart-fill" style="width: 60%; background: #f9a825;"></div>
+                    </div>
+                    <div class="chart-value">1600</div>
+                </div>
+                <div class="chart-row">
+                    <div class="chart-label">Patagonia</div>
+                    <div class="chart-bar">
+                        <div class="chart-fill" style="width: 40%; background: #f57f17;"></div>
+                    </div>
+                    <div class="chart-value">1100</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Portal de Física - Energía Solar en Argentina</p>
+        </div>
+    </footer>
+    <script src="js/dark-mode.js"></script>
+    <script src="js/search.js"></script>
+</body>
+
+
+</html>

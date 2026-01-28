@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temperatura - Escalas y Conversiones</title>
+  <meta name="description" content="Temperatura en física: escalas Celsius, Fahrenheit y Kelvin, ecuaciones de conversión, termómetros y cero absoluto.">
+  <link rel="stylesheet" href="css/index.css">
+
+  <!-- Polyfill y MathJax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$','$$'], ['\\[','\\]']],
+        packages: ['base', 'ams', 'noerrors', 'noundefined']
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+</head>
+<body>
+  <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
+  <header>
+    <h1>🌡️ Temperatura</h1>
+    <p>Escalas térmicas y ecuaciones de conversión</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="guia.html">Guía</a></li>
+        <li><a href="definicion-energia.html">Energía</a></li>
+        <li><a href="trabajo.html">Trabajo</a></li>
+        <li><a href="cinetica.html">E. Cinética</a></li>
+        <li><a href="gravitatoria.html">E. Potencial</a></li>
+        <li><a href="mecanica01.html">E. Mecánica</a></li>
+        <li><a href="mecanica02.html">Conservación</a></li>
+        <li><a href="electricidad.html">Electricidad</a></li>
+        <li><a href="calor.html">Calor</a></li>
+        <li><a href="temperatura.html" class="active">Temperatura</a></li>
+        <li><a href="cambios-estado.html">Cambios de Estado</a></li>
+        <li><a href="fuentes-energia-argentina.html">Energía Argentina</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="content-main">
+    <!-- Definición -->
+    <section class="content-section">
+      <h2>¿Qué es la Temperatura?</h2>
+      <p>
+        La <strong>temperatura</strong> es una magnitud física que mide el grado de agitación
+        térmica de las partículas que forman un cuerpo. A mayor agitación de las moléculas,
+        mayor temperatura. No es lo mismo que el calor: la temperatura es una propiedad del
+        cuerpo, mientras que el calor es energía en tránsito.
+      </p>
+      <div class="key-points">
+        <strong>Diferencia fundamental:</strong> la temperatura mide "qué tan caliente" está
+        un cuerpo. El calor es la energía que se transfiere entre cuerpos a diferentes
+        temperaturas.
+      </div>
+    </section>
+
+    <!-- Escalas -->
+    <section class="content-section">
+      <h2>Escalas de Temperatura</h2>
+    </section>
+
+    <section class="cards">
+      <div class="card">
+        <h2>°C Celsius</h2>
+        <p>Escala más usada en la vida cotidiana y en ciencia. Creada por Anders Celsius (1742).</p>
+        <div class="example">
+          <strong>Puntos de referencia:</strong><br>
+          0°C = punto de fusión del agua<br>
+          100°C = punto de ebullición del agua<br>
+          (a presión atmosférica normal)
+        </div>
+      </div>
+      <div class="card">
+        <h2>K Kelvin</h2>
+        <p>Escala absoluta del Sistema Internacional. Creada por Lord Kelvin (1848).</p>
+        <div class="example">
+          <strong>Puntos de referencia:</strong><br>
+          0 K = cero absoluto (-273,15°C)<br>
+          273,15 K = punto de fusión del agua<br>
+          373,15 K = punto de ebullición del agua
+        </div>
+      </div>
+      <div class="card">
+        <h2>°F Fahrenheit</h2>
+        <p>Usada en Estados Unidos y algunos países. Creada por Daniel Fahrenheit (1724).</p>
+        <div class="example">
+          <strong>Puntos de referencia:</strong><br>
+          32°F = punto de fusión del agua<br>
+          212°F = punto de ebullición del agua<br>
+          98,6°F = temperatura corporal normal
+        </div>
+      </div>
+    </section>
+
+    <!-- Ecuaciones de conversión -->
+    <section class="content-section">
+      <h2>Ecuaciones de Conversión</h2>
+
+      <h3>Celsius a Kelvin</h3>
+      <div class="equation">
+        $$K = \,^\circ C + 273.15$$
+      </div>
+
+      <h3>Kelvin a Celsius</h3>
+      <div class="equation">
+        $$^\circ C = K - 273.15$$
+      </div>
+
+      <h3>Celsius a Fahrenheit</h3>
+      <div class="equation">
+        $$^\circ F = \frac{9}{5} \cdot \,^\circ C + 32$$
+      </div>
+
+      <h3>Fahrenheit a Celsius</h3>
+      <div class="equation">
+        $$^\circ C = \frac{5}{9} \cdot (^\circ F - 32)$$
+      </div>
+
+      <h3>Fahrenheit a Kelvin</h3>
+      <div class="equation">
+        $$K = \frac{5}{9} \cdot (^\circ F - 32) + 273.15$$
+      </div>
+
+      <h3>Ecuación general de equivalencia</h3>
+      <p>Las tres escalas se relacionan mediante la proporción:</p>
+      <div class="equation">
+        $$\frac{^\circ C - 0}{100} = \frac{^\circ F - 32}{180} = \frac{K - 273.15}{100}$$
+      </div>
+    </section>
+
+    <!-- Tabla comparativa -->
+    <section class="content-section">
+      <h2>Tabla Comparativa de Temperaturas</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Situación</th>
+            <th>°C</th>
+            <th>K</th>
+            <th>°F</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Cero absoluto</td>
+            <td>-273,15</td>
+            <td>0</td>
+            <td>-459,67</td>
+          </tr>
+          <tr>
+            <td>Nitrógeno líquido</td>
+            <td>-196</td>
+            <td>77</td>
+            <td>-321</td>
+          </tr>
+          <tr>
+            <td>Agua congela</td>
+            <td>0</td>
+            <td>273,15</td>
+            <td>32</td>
+          </tr>
+          <tr>
+            <td>Temperatura corporal</td>
+            <td>37</td>
+            <td>310,15</td>
+            <td>98,6</td>
+          </tr>
+          <tr>
+            <td>Agua hierve</td>
+            <td>100</td>
+            <td>373,15</td>
+            <td>212</td>
+          </tr>
+          <tr>
+            <td>Superficie del Sol</td>
+            <td>5500</td>
+            <td>5773</td>
+            <td>9932</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Cero absoluto -->
+    <section class="content-section">
+      <h2>El Cero Absoluto</h2>
+      <p>
+        El <strong>cero absoluto</strong> ($0\,\text{K} = -273.15\,°\text{C}$) es la temperatura
+        más baja teóricamente posible. A esta temperatura, las partículas tienen la mínima
+        energía cinética posible (según la mecánica cuántica, conservan una energía residual
+        llamada "energía del punto cero").
+      </p>
+      <div class="equation">
+        $$E_{c,\text{promedio}} = \frac{3}{2} k_B T$$
+      </div>
+      <p>
+        Donde $k_B = 1.38 \times 10^{-23}\,\text{J/K}$ es la constante de Boltzmann. Esta
+        ecuación muestra que la energía cinética promedio de las partículas es directamente
+        proporcional a la temperatura absoluta.
+      </p>
+      <div class="key-points">
+        <strong>Dato:</strong> en laboratorio se han alcanzado temperaturas de millonésimas
+        de kelvin por encima del cero absoluto, pero nunca exactamente 0 K.
+      </div>
+    </section>
+
+    <!-- Dilatación térmica -->
+    <section class="content-section">
+      <h2>Dilatación Térmica</h2>
+      <p>
+        Los materiales cambian de tamaño al variar su temperatura. La dilatación lineal se
+        calcula como:
+      </p>
+      <div class="equation">
+        $$\Delta L = L_0 \cdot \alpha \cdot \Delta T$$
+      </div>
+      <p>Donde:</p>
+      <ul>
+        <li><strong>$\Delta L$:</strong> Cambio en la longitud (m).</li>
+        <li><strong>$L_0$:</strong> Longitud original (m).</li>
+        <li><strong>$\alpha$:</strong> Coeficiente de dilatación lineal (1/°C).</li>
+        <li><strong>$\Delta T$:</strong> Variación de temperatura (°C).</li>
+      </ul>
+      <div class="callout">
+        <strong>Aplicación:</strong> los puentes tienen juntas de dilatación para evitar que
+        se deformen con los cambios de temperatura entre verano e invierno.
+      </div>
+    </section>
+
+    <!-- Ejemplos -->
+    <section class="content-section">
+      <h2>Ejemplos de Problemas Resueltos</h2>
+
+      <h3>Ejemplo 1: Celsius a Fahrenheit</h3>
+      <p>Convertir 37°C (temperatura corporal) a Fahrenheit:</p>
+      <div class="equation">
+        $$^\circ F = \frac{9}{5} \cdot 37 + 32 = 66.6 + 32 = 98.6\,^\circ F$$
+      </div>
+
+      <h3>Ejemplo 2: Fahrenheit a Celsius</h3>
+      <p>En una ciudad de EE.UU. hacen 77°F. ¿Cuánto es en Celsius?</p>
+      <div class="equation">
+        $$^\circ C = \frac{5}{9} \cdot (77 - 32) = \frac{5}{9} \cdot 45 = 25\,^\circ C$$
+      </div>
+
+      <h3>Ejemplo 3: Celsius a Kelvin</h3>
+      <p>¿Cuánto es -40°C en Kelvin?</p>
+      <div class="equation">
+        $$K = -40 + 273.15 = 233.15\,\text{K}$$
+      </div>
+
+      <h3>Ejemplo 4: Dilatación</h3>
+      <p>Una barra de acero de 10 m se calienta de 20°C a 50°C. Si $\alpha = 12 \times 10^{-6}\,\text{°C}^{-1}$, ¿cuánto se alarga?</p>
+      <div class="equation">
+        $$\Delta L = 10 \cdot 12 \times 10^{-6} \cdot 30 = 3.6 \times 10^{-3}\,\text{m} = 3.6\,\text{mm}$$
+      </div>
+    </section>
+
+    <!-- Tarjetas finales -->
+    <section class="cards">
+      <div class="card">
+        <h2>🧩 Ejemplo resuelto</h2>
+        <p>¿A qué temperatura las escalas Celsius y Fahrenheit coinciden?</p>
+        <div class="equation">$$x = \frac{9}{5}x + 32 \implies -\frac{4}{5}x = 32 \implies x = -40$$</div>
+        <div class="example">
+          <strong>Conclusión:</strong> $-40\,°\text{C} = -40\,°\text{F}$ es el único punto donde ambas escalas coinciden.
+        </div>
+      </div>
+      <div class="card">
+        <h2>✅ Autoevaluación</h2>
+        <p>¿Es posible tener una temperatura de $-300\,°\text{C}$?</p>
+        <div class="example">
+          <strong>Pista:</strong> piensa en el cero absoluto y cuánto es en Celsius.
+        </div>
+      </div>
+    </section>
+
+    <!-- Quiz específico de Temperatura -->
+    <section class="content-section">
+      <h2>🎮 Quiz: Temperatura</h2>
+      <p>Pon a prueba tu conocimiento sobre escalas de temperatura:</p>
+    </section>
+
+    <section class="quiz-container" id="quiz-temperatura">
+      <div class="quiz-content" id="quiz-content-temperatura"></div>
+      <div class="quiz-results" id="quiz-results-temperatura" style="display: none;">
+        <h3>🎉 ¡Quiz Completado!</h3>
+        <div class="score-display">
+          <p class="score-text">Respondiste correctamente <span id="correct-count-temperatura">0</span> de <span id="total-count-temperatura">4</span> preguntas</p>
+        </div>
+        <button class="retry-button" onclick="restartQuizTemperatura()">Intentar de Nuevo</button>
+      </div>
+    </section>
+
+    <script>
+    const quizDataTemperatura = [
+      {
+        question: "¿Es posible tener una temperatura de -300°C?",
+        equation: "",
+        options: ["Sí, es posible", "No, porque el cero absoluto es -273,15°C", "Sí, pero solo en el espacio", "Depende del material"],
+        correct: 1,
+        explanation: "El cero absoluto es -273,15°C. No es posible tener temperaturas menores porque representaría energía cinética negativa."
+      },
+      {
+        question: "Convierte 25°C a Kelvin:",
+        equation: "$$K = \\,^{\\circ}C + 273.15$$",
+        options: ["248,15 K", "298,15 K", "25 K", "300 K"],
+        correct: 1,
+        explanation: "K = 25 + 273,15 = 298,15 K"
+      },
+      {
+        question: "¿A qué temperatura Celsius y Fahrenheit tienen el mismo valor numérico?",
+        equation: "",
+        options: ["0°", "32°", "-40°", "100°"],
+        correct: 2,
+        explanation: "Resolviendo x = (9/5)x + 32, obtenemos x = -40. Es el único punto donde -40°C = -40°F."
+      },
+      {
+        question: "¿Cuánto es 98,6°F (temperatura corporal) en Celsius?",
+        equation: "$$^{\\circ}C = \\frac{5}{9}(^{\\circ}F - 32)$$",
+        options: ["37°C", "36°C", "38°C", "35°C"],
+        correct: 0,
+        explanation: "°C = (5/9) × (98,6 - 32) = (5/9) × 66,6 = 37°C"
+      }
+    ];
+
+    let currentQuestionTemperatura = 0;
+    let scoreTemperatura = 0;
+    let answeredTemperatura = false;
+
+    function initQuizTemperatura() {
+      document.getElementById('total-count-temperatura').textContent = quizDataTemperatura.length;
+      showQuestionTemperatura();
+    }
+
+    function showQuestionTemperatura() {
+      answeredTemperatura = false;
+      const question = quizDataTemperatura[currentQuestionTemperatura];
+      const quizContent = document.getElementById('quiz-content-temperatura');
+
+      quizContent.innerHTML = `
+        <div class="question-card">
+          <h3>📝 Pregunta ${currentQuestionTemperatura + 1} de ${quizDataTemperatura.length}</h3>
+          <p class="question-text">${question.question}</p>
+          ${question.equation ? `<div class="question-equation">${question.equation}</div>` : ''}
+          <div class="options-grid">
+            ${question.options.map((option, index) => `
+              <button class="option-button" onclick="selectOptionTemperatura(${index})">
+                ${option}
+              </button>
+            `).join('')}
+          </div>
+          <div class="explanation" id="explanation-temperatura" style="display: none;">
+            <h4>💡 Explicación:</h4>
+            <p>${question.explanation}</p>
+          </div>
+          <div class="navigation-buttons" id="nav-temperatura" style="display: none;">
+            ${currentQuestionTemperatura < quizDataTemperatura.length - 1 ?
+              '<button class="nav-button" onclick="nextQuestionTemperatura()">Siguiente →</button>' :
+              '<button class="nav-button" onclick="showResultsTemperatura()">Ver Resultados →</button>'}
+          </div>
+        </div>
+      `;
+      MathJax.typesetPromise();
+    }
+
+    function selectOptionTemperatura(optionIndex) {
+      if (answeredTemperatura) return;
+      answeredTemperatura = true;
+      const question = quizDataTemperatura[currentQuestionTemperatura];
+      const buttons = document.querySelectorAll('#quiz-content-temperatura .option-button');
+
+      buttons[question.correct].classList.add('correct');
+      if (optionIndex !== question.correct) {
+        buttons[optionIndex].classList.add('incorrect');
+      } else {
+        scoreTemperatura++;
+      }
+
+      document.getElementById('explanation-temperatura').style.display = 'block';
+      document.getElementById('nav-temperatura').style.display = 'flex';
+      buttons.forEach(button => button.disabled = true);
+    }
+
+    function nextQuestionTemperatura() {
+      currentQuestionTemperatura++;
+      showQuestionTemperatura();
+    }
+
+    function showResultsTemperatura() {
+      document.getElementById('quiz-content-temperatura').style.display = 'none';
+      document.getElementById('quiz-results-temperatura').style.display = 'block';
+      document.getElementById('correct-count-temperatura').textContent = scoreTemperatura;
+    }
+
+    function restartQuizTemperatura() {
+      currentQuestionTemperatura = 0;
+      scoreTemperatura = 0;
+      document.getElementById('quiz-content-temperatura').style.display = 'block';
+      document.getElementById('quiz-results-temperatura').style.display = 'none';
+      showQuestionTemperatura();
+    }
+
+    document.addEventListener('DOMContentLoaded', initQuizTemperatura);
+    </script>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>📚 Aprende Física</h3>
+        <p>Material educativo para estudiantes de secundaria</p>
+      </div>
+      <div class="footer-section">
+        <h3>👨‍🏫 Creado por</h3>
+        <p>Prof. Javier Pereyra</p>
+      </div>
+      <div class="footer-section">
+        <h3>📧 Contacto</h3>
+        <p>Para dudas y sugerencias</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Portal de Física para Secundaria - Educación para todos</p>
+    </div>
+  </footer>
+  <script src="js/dark-mode.js"></script>
+</body>
+</html>
+

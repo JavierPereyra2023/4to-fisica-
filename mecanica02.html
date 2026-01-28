@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Conservación de la Energía</title>
+  <meta name="description" content="Conservación de la energía mecánica: caída libre, modelo ideal y real con rozamiento.">
+  <link rel="stylesheet" href="css/index.css" />
+
+  <!-- Polyfill y MathJax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$','$$'], ['\\[','\\]']],
+        packages: ['base', 'ams', 'noerrors', 'noundefined']
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+</head>
+<body>
+  <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
+  <header>
+    <h1>🔄 Conservación de la Energía</h1>
+    <p>El principio fundamental: la energía no se crea ni se destruye</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="guia.html">Guía</a></li>
+        <li><a href="definicion-energia.html">Energía</a></li>
+        <li><a href="trabajo.html">Trabajo</a></li>
+        <li><a href="cinetica.html">E. Cinética</a></li>
+        <li><a href="gravitatoria.html">E. Potencial</a></li>
+        <li><a href="mecanica01.html">E. Mecánica</a></li>
+        <li><a href="mecanica02.html" class="active">Conservación</a></li>
+        <li><a href="electricidad.html">Electricidad</a></li>
+        <li><a href="calor.html">Calor</a></li>
+        <li><a href="temperatura.html">Temperatura</a></li>
+        <li><a href="cambios-estado.html">Cambios de Estado</a></li>
+        <li><a href="fuentes-energia-argentina.html">Energía Argentina</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="content-main">
+    <section class="content-section">
+      <h2>Conservación de la Energía Mecánica</h2>
+      <p>
+        La energía mecánica total (\( E_m = E_c + E_p \)) se conserva en sistemas donde solo actúan fuerzas conservativas, como la gravedad. Analizaremos la caída libre en tres niveles: instantáneas discretas, modelo ideal continuo y modelo real con rozamiento.
+      </p>
+      <div class="equation">
+        $$ E_{mi} = E_{mf} $$
+      </div>
+      <div class="key-points">
+        <strong>Idea clave:</strong> sin rozamiento, la energía mecánica total se mantiene constante.
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>Instantáneas en Caída Libre (sin rozamiento)</h2>
+      <p>
+        Supuestos: masa \( m = 1 \, \text{kg} \), altura inicial \( h_0 = 50 \, \text{m} \), \( g = 9.8 \, \text{m/s}^2 \), \( v_0 = 0 \). Tomamos "fotos" en \( t = 0, 1, 2 \, \text{s} \):
+      </p>
+      <ul>
+        <li><strong>Velocidad</strong>: 
+          <div class="equation">
+            $$ v = g t $$
+          </div>
+        </li>
+        <li><strong>Posición</strong>: 
+          <div class="equation">
+            $$ y = h_0 - \frac{1}{2} g t^2 $$
+          </div>
+        </li>
+        <li><strong>Energías</strong>:
+          <div class="equation">
+            $$ E_c = \frac{1}{2} m v^2, \quad E_p = m g y, \quad E_m = E_c + E_p = 490 \, \text{J} $$
+          </div>
+        </li>
+      </ul>
+      <p>
+        Calculamos valores puntuales sin asumir una evolución continua:
+        - \( t = 0 \, \text{s} \): \( v = 0 \, \text{m/s} \), \( y = 50 \, \text{m} \), \( E_c = 0 \, \text{J} \), \( E_p = 490 \, \text{J} \).
+        - \( t = 1 \, \text{s} \): \( v = 9.8 \, \text{m/s} \), \( y = 45.1 \, \text{m} \), \( E_c = 48.02 \, \text{J} \), \( E_p = 441.98 \, \text{J} \).
+        - \( t = 2 \, \text{s} \): \( v = 19.6 \, \text{m/s} \), \( y = 30.4 \, \text{m} \), \( E_c = 192.08 \, \text{J} \), \( E_p = 297.92 \, \text{J} \).
+      </p>
+      <h3>Gráfico: Energías en Instantáneas</h3>
+      <canvas id="chartDiscrete" width="400" height="250"></canvas>
+    </section>
+
+    <section class="content-section">
+      <h2>Caso Ideal (sin rozamiento, continuo)</h2>
+      <p>
+        Supuestos: mismos valores, pero ahora \( v(t) \) y \( y(t) \) son funciones del tiempo:
+      </p>
+      <div class="equation">
+        $$ y(t) = h_0 - \frac{1}{2} g t^2 $$
+      </div>
+      <div class="equation">
+        $$ v(t) = g t $$
+      </div>
+      <ul>
+        <li><strong>Energía cinética</strong>: 
+          <div class="equation">
+            $$ E_c(t) = \frac{1}{2} m v(t)^2 = \frac{1}{2} m (g t)^2 $$
+          </div>
+        </li>
+        <li><strong>Energía potencial</strong>: 
+          <div class="equation">
+            $$ E_p(t) = m g y(t) = m g \left(h_0 - \frac{1}{2} g t^2\right) $$
+          </div>
+        </li>
+        <li><strong>Energía mecánica</strong>: 
+          <div class="equation">
+            $$ E_m = E_c + E_p = m g h_0 = 490 \, \text{J} $$
+          </div>
+        </li>
+      </ul>
+      <h3>Gráfico: Energías vs. Tiempo (Ideal)</h3>
+      <canvas id="chartIdeal" width="400" height="250"></canvas>
+    </section>
+
+    <section class="content-section">
+      <h2>Caso Real (con rozamiento)</h2>
+      <p>
+        Supuestos: igual al caso ideal, pero con \( F_r = -b v \), \( b = 0.1 \, \text{kg/s} \):
+      </p>
+      <div class="equation">
+        $$ m \frac{dv}{dt} = -m g - b v $$
+      </div>
+      <div class="equation">
+        $$ v(t) = -\frac{m g}{b} \left(1 - e^{-b t / m}\right) $$
+      </div>
+      <ul>
+        <li><strong>Energía cinética</strong>: 
+          <div class="equation">
+            $$ E_c(t) = \frac{1}{2} m v(t)^2 $$
+          </div>
+        </li>
+        <li><strong>Energía potencial</strong>: 
+          <div class="equation">
+            $$ E_p(t) = m g y(t) $$
+          </div>
+        </li>
+        <li><strong>Energía mecánica</strong>: 
+          <div class="equation">
+            $$ E_m(t) = E_c(t) + E_p(t) $$
+          </div>
+        </li>
+      </ul>
+      <h3>Gráfico: Energías vs. Tiempo (Real)</h3>
+      <canvas id="chartReal" width="400" height="250"></canvas>
+    </section>
+
+    <section class="cards">
+      <div class="card">
+        <h2>🧩 Ejemplo resuelto</h2>
+        <p>Una pelota cae desde 10 m. Sin rozamiento, ¿cómo cambia $E_p$ y $E_c$?</p>
+        <div class="example">
+          <strong>Respuesta:</strong> $E_p$ disminuye mientras $E_c$ aumenta; la suma $E_m$ se conserva.
+        </div>
+      </div>
+      <div class="card">
+        <h2>✅ Autoevaluación</h2>
+        <p>Si $E_m$ es constante, ¿qué sucede con $E_c$ cuando $E_p$ baja?</p>
+        <div class="example">
+          <strong>Pista:</strong> piensa en una montaña rusa.
+        </div>
+      </div>
+    </section>
+
+    <!-- Quiz específico de Conservación -->
+    <section class="content-section">
+      <h2>🎮 Quiz: Conservación de la Energía</h2>
+      <p>Pon a prueba tu conocimiento sobre conservación de la energía:</p>
+    </section>
+
+    <section class="quiz-container" id="quiz-conservacion">
+      <div class="quiz-content" id="quiz-content-conservacion"></div>
+      <div class="quiz-results" id="quiz-results-conservacion" style="display: none;">
+        <h3>🎉 ¡Quiz Completado!</h3>
+        <div class="score-display">
+          <p class="score-text">Respondiste correctamente <span id="correct-count-conservacion">0</span> de <span id="total-count-conservacion">4</span> preguntas</p>
+        </div>
+        <button class="retry-button" onclick="restartQuizConservacion()">Intentar de Nuevo</button>
+      </div>
+    </section>
+
+    <script>
+    const quizDataConservacion = [
+      {
+        question: "Si $E_m$ es constante y $E_p$ disminuye, ¿qué sucede con $E_c$?",
+        equation: "$$E_{m_i} = E_{m_f}$$",
+        options: ["Disminuye", "Aumenta", "Permanece constante", "Se vuelve negativa"],
+        correct: 1,
+        explanation: "Si Em = Ec + Ep es constante y Ep baja, entonces Ec debe aumentar para mantener la suma constante."
+      },
+      {
+        question: "¿Cuándo NO se conserva la energía mecánica?",
+        equation: "",
+        options: ["En caída libre", "En un péndulo ideal", "Cuando hay fricción", "En una montaña rusa sin rozamiento"],
+        correct: 2,
+        explanation: "La fricción es una fuerza no conservativa que convierte energía mecánica en calor, por lo que Em no se conserva."
+      },
+      {
+        question: "Una pelota cae desde 20 m. Sin rozamiento, ¿cuál es su velocidad al llegar al suelo?",
+        equation: "$$mgh = \\frac{1}{2}mv^2$$",
+        options: ["14 m/s", "20 m/s", "28 m/s", "196 m/s"],
+        correct: 1,
+        explanation: "De mgh = ½mv² → v = √(2gh) = √(2 × 9.8 × 20) = √392 ≈ 19.8 ≈ 20 m/s"
+      },
+      {
+        question: "En una montaña rusa ideal, ¿dónde es máxima la velocidad?",
+        equation: "",
+        options: ["En el punto más alto", "En el punto más bajo", "En el punto medio", "Es constante en todo el recorrido"],
+        correct: 1,
+        explanation: "En el punto más bajo, toda la energía potencial se ha convertido en cinética, por lo que la velocidad es máxima."
+      }
+    ];
+
+    let currentQuestionConservacion = 0;
+    let scoreConservacion = 0;
+    let answeredConservacion = false;
+
+    function initQuizConservacion() {
+      document.getElementById('total-count-conservacion').textContent = quizDataConservacion.length;
+      showQuestionConservacion();
+    }
+
+    function showQuestionConservacion() {
+      answeredConservacion = false;
+      const question = quizDataConservacion[currentQuestionConservacion];
+      const quizContent = document.getElementById('quiz-content-conservacion');
+
+      quizContent.innerHTML = `
+        <div class="question-card">
+          <h3>📝 Pregunta ${currentQuestionConservacion + 1} de ${quizDataConservacion.length}</h3>
+          <p class="question-text">${question.question}</p>
+          ${question.equation ? `<div class="question-equation">${question.equation}</div>` : ''}
+          <div class="options-grid">
+            ${question.options.map((option, index) => `
+              <button class="option-button" onclick="selectOptionConservacion(${index})">
+                ${option}
+              </button>
+            `).join('')}
+          </div>
+          <div class="explanation" id="explanation-conservacion" style="display: none;">
+            <h4>💡 Explicación:</h4>
+            <p>${question.explanation}</p>
+          </div>
+          <div class="navigation-buttons" id="nav-conservacion" style="display: none;">
+            ${currentQuestionConservacion < quizDataConservacion.length - 1 ?
+              '<button class="nav-button" onclick="nextQuestionConservacion()">Siguiente →</button>' :
+              '<button class="nav-button" onclick="showResultsConservacion()">Ver Resultados →</button>'}
+          </div>
+        </div>
+      `;
+      MathJax.typesetPromise();
+    }
+
+    function selectOptionConservacion(optionIndex) {
+      if (answeredConservacion) return;
+      answeredConservacion = true;
+      const question = quizDataConservacion[currentQuestionConservacion];
+      const buttons = document.querySelectorAll('#quiz-content-conservacion .option-button');
+
+      buttons[question.correct].classList.add('correct');
+      if (optionIndex !== question.correct) {
+        buttons[optionIndex].classList.add('incorrect');
+      } else {
+        scoreConservacion++;
+      }
+
+      document.getElementById('explanation-conservacion').style.display = 'block';
+      document.getElementById('nav-conservacion').style.display = 'flex';
+      buttons.forEach(button => button.disabled = true);
+    }
+
+    function nextQuestionConservacion() {
+      currentQuestionConservacion++;
+      showQuestionConservacion();
+    }
+
+    function showResultsConservacion() {
+      document.getElementById('quiz-content-conservacion').style.display = 'none';
+      document.getElementById('quiz-results-conservacion').style.display = 'block';
+      document.getElementById('correct-count-conservacion').textContent = scoreConservacion;
+    }
+
+    function restartQuizConservacion() {
+      currentQuestionConservacion = 0;
+      scoreConservacion = 0;
+      document.getElementById('quiz-content-conservacion').style.display = 'block';
+      document.getElementById('quiz-results-conservacion').style.display = 'none';
+      showQuestionConservacion();
+    }
+
+    document.addEventListener('DOMContentLoaded', initQuizConservacion);
+    </script>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>📚 Aprende Física</h3>
+        <p>Material educativo para estudiantes de secundaria</p>
+      </div>
+      <div class="footer-section">
+        <h3>👨‍🏫 Creado por</h3>
+        <p>Prof. Javier Pereyra</p>
+      </div>
+      <div class="footer-section">
+        <h3>📧 Contacto</h3>
+        <p>Para dudas y sugerencias</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Portal de Física para Secundaria - Educación para todos</p>
+    </div>
+  </footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const g = 9.8;
+    const m = 1;
+    const h0 = 50;
+    const b = 0.1;
+    const tMaxIdeal = Math.sqrt(2 * h0 / g);
+
+    // --- Gráfico Discreto ---
+    const ctxDiscrete = document.getElementById('chartDiscrete').getContext('2d');
+    const timesDiscrete = [0, 1, 2];
+    let E_c_discrete = [], E_p_discrete = [], E_m_discrete = [];
+
+    timesDiscrete.forEach(t => {
+      const v = g * t;
+      const y = Math.max(h0 - 0.5 * g * t * t, 0);
+      const ec = 0.5 * m * v * v;
+      const ep = m * g * y;
+      const em = ec + ep;
+
+      E_c_discrete.push(ec);
+      E_p_discrete.push(ep);
+      E_m_discrete.push(em);
+    });
+
+    const dataDiscrete = {
+      labels: timesDiscrete.map(t => `t=${t}s`),
+      datasets: [
+        { label: 'E. Cinética (J)', data: E_c_discrete, backgroundColor: 'rgba(255, 99, 132, 0.7)' },
+        { label: 'E. Potencial (J)', data: E_p_discrete, backgroundColor: 'rgba(54, 162, 235, 0.7)' },
+        { label: 'E. Mecánica (J)', data: E_m_discrete, backgroundColor: 'rgba(75, 192, 192, 0.7)' }
+      ]
+    };
+
+    const configDiscrete = {
+      type: 'bar',
+      data: dataDiscrete,
+      options: {
+        responsive: true,
+        scales: {
+          x: { title: { display: true, text: 'Tiempo (s)' } },
+          y: { title: { display: true, text: 'Energía (J)' }, beginAtZero: true }
+        },
+        plugins: { title: { display: true, text: 'Energías en Instantáneas' } }
+      }
+    };
+
+    new Chart(ctxDiscrete, configDiscrete);
+
+    // --- Gráfico Ideal ---
+    const ctxIdeal = document.getElementById('chartIdeal').getContext('2d');
+    const timesIdeal = [0, 0.5, 1, 1.5, 2, 2.5, 3, tMaxIdeal];
+    let E_c_ideal = [], E_p_ideal = [], E_m_ideal = [];
+
+    timesIdeal.forEach(t => {
+      const v = g * t;
+      const y = Math.max(h0 - 0.5 * g * t * t, 0);
+      const ec = 0.5 * m * v * v;
+      const ep = m * g * y;
+      const em = ec + ep;
+
+      E_c_ideal.push(ec);
+      E_p_ideal.push(ep);
+      E_m_ideal.push(em);
+    });
+
+    const dataIdeal = {
+      labels: timesIdeal.map(t => `t=${t.toFixed(2)}s`),
+      datasets: [
+        { label: 'E. Cinética (J)', data: E_c_ideal, borderColor: 'rgb(255, 99, 132)', backgroundColor: 'rgba(255, 99, 132, 0.2)', fill: false, tension: 0.1 },
+        { label: 'E. Potencial (J)', data: E_p_ideal, borderColor: 'rgb(54, 162, 235)', backgroundColor: 'rgba(54, 162, 235, 0.2)', fill: false, tension: 0.1 },
+        { label: 'E. Mecánica (J)', data: E_m_ideal, borderColor: 'rgb(75, 192, 192)', backgroundColor: 'rgba(75, 192, 192, 0.2)', fill: false, tension: 0.1 }
+      ]
+    };
+
+    const configIdeal = {
+      type: 'line',
+      data: dataIdeal,
+      options: {
+        responsive: true,
+        scales: {
+          x: { title: { display: true, text: 'Tiempo (s)' } },
+          y: { title: { display: true, text: 'Energía (J)' }, beginAtZero: true }
+        },
+        plugins: { title: { display: true, text: 'Energías en Caída Libre Ideal' } }
+      }
+    };
+
+    new Chart(ctxIdeal, configIdeal);
+
+    // --- Gráfico Real ---
+    const ctxReal = document.getElementById('chartReal').getContext('2d');
+    const timesReal = timesIdeal;
+    let E_c_real = [], E_p_real = [], E_m_real = [];
+
+    timesReal.forEach(t => {
+      const v = -(m * g / b) * (1 - Math.exp(-b * t / m));
+      const y = Math.max(h0 + (m / b) * (m * g / b) * (t + (m / b) * (Math.exp(-b * t / m) - 1)), 0);
+      const ec = 0.5 * m * v * v;
+      const ep = m * g * y;
+      const em = ec + ep;
+
+      E_c_real.push(ec);
+      E_p_real.push(ep);
+      E_m_real.push(em);
+    });
+
+    const dataReal = {
+      labels: timesReal.map(t => `t=${t.toFixed(2)}s`),
+      datasets: [
+        { label: 'E. Cinética (J)', data: E_c_real, borderColor: 'rgb(255, 99, 132)', backgroundColor: 'rgba(255, 99, 132, 0.2)', fill: false, tension: 0.1 },
+        { label: 'E. Potencial (J)', data: E_p_real, borderColor: 'rgb(54, 162, 235)', backgroundColor: 'rgba(54, 162, 235, 0.2)', fill: false, tension: 0.1 },
+        { label: 'E. Mecánica (J)', data: E_m_real, borderColor: 'rgb(75, 192, 192)', backgroundColor: 'rgba(75, 192, 192, 0.2)', fill: false, tension: 0.1 }
+      ]
+    };
+
+    const configReal = {
+      type: 'line',
+      data: dataReal,
+      options: {
+        responsive: true,
+        scales: {
+          x: { title: { display: true, text: 'Tiempo (s)' } },
+          y: { title: { display: true, text: 'Energía (J)' }, beginAtZero: true }
+        },
+        plugins: { title: { display: true, text: 'Energías en Caída Libre con Rozamiento' } }
+      }
+    };
+
+    new Chart(ctxReal, configReal);
+  });
+  </script>
+  <script src="js/dark-mode.js"></script>
+</body>
+</html>
+

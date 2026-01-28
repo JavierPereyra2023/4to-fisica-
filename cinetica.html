@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Energía Cinética</title>
+  <meta name="description" content="Energía cinética: fórmula clásica, variación, ejemplos resueltos y cinemática relativista para secundaria.">
+  <link rel="stylesheet" href="css/index.css">
+
+  <!-- Polyfill y MathJax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$','$$'], ['\\[','\\]']],
+        packages: ['base', 'ams', 'noerrors', 'noundefined']
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+</head>
+<body>
+  <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
+  <header>
+    <h1>🏃 Energía Cinética</h1>
+    <p>Comprende la energía del movimiento</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="guia.html">Guía</a></li>
+        <li><a href="definicion-energia.html">Energía</a></li>
+        <li><a href="trabajo.html">Trabajo</a></li>
+        <li><a href="cinetica.html" class="active">E. Cinética</a></li>
+        <li><a href="gravitatoria.html">E. Potencial</a></li>
+        <li><a href="mecanica01.html">E. Mecánica</a></li>
+        <li><a href="mecanica02.html">Conservación</a></li>
+        <li><a href="electricidad.html">Electricidad</a></li>
+        <li><a href="calor.html">Calor</a></li>
+        <li><a href="temperatura.html">Temperatura</a></li>
+        <li><a href="cambios-estado.html">Cambios de Estado</a></li>
+        <li><a href="fuentes-energia-argentina.html">Energía Argentina</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="content-main">
+    <!-- ========================= -->
+    <!--  1. Introducción clásica -->
+    <!-- ========================= -->
+    <section class="content-section intro">
+      <h2>¿Qué es la Energía Cinética?</h2>
+      <p>
+        La energía cinética es la energía que posee un objeto debido a su movimiento.  
+        Es una forma de energía mecánica que depende de la masa del objeto y de su velocidad.
+      </p>
+      <div class="key-points">
+        <strong>Idea clave:</strong> si la velocidad se duplica, la energía cinética se cuadruplica.
+      </div>
+    </section>
+
+    <section class="content-section formula">
+      <h2>Fórmula Clásica de la Energía Cinética</h2>
+      <div class="equation">
+        $$E_c = \frac{1}{2} m v^2$$
+      </div>
+      <p>Donde:</p>
+      <ul>
+        <li><strong>$E_c$:</strong> Energía cinética (en julios, J).</li>
+        <li><strong>$m$:</strong> Masa del objeto (en kilogramos, kg).</li>
+        <li><strong>$v$:</strong> Velocidad del objeto (en metros por segundo, m/s).</li>
+      </ul>
+    </section>
+
+    <section class="content-section unidades">
+      <h2>Unidades en el Sistema Internacional (SI - MKS)</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Magnitud</th>
+            <th>Símbolo</th>
+            <th>Unidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Energía Cinética</td>
+            <td>$E_c$</td>
+            <td>Julios (J)</td>
+          </tr>
+          <tr>
+            <td>Masa</td>
+            <td>$m$</td>
+            <td>Kilogramos (kg)</td>
+          </tr>
+          <tr>
+            <td>Velocidad</td>
+            <td>$v$</td>
+            <td>Metros por segundo (m/s)</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="content-section variacion">
+      <h2>Variación de la Energía Cinética</h2>
+      <p>
+        La energía cinética de un objeto cambia cuando su velocidad cambia.  
+        La variación de la energía cinética ($\Delta E_c$) se puede calcular como:
+      </p>
+      <div class="equation">
+        $$\Delta E_c = \frac{1}{2} m (v_f^2 - v_i^2)$$
+      </div>
+      <p>Donde:</p>
+      <ul>
+        <li><strong>$v_f$:</strong> Velocidad final del objeto.</li>
+        <li><strong>$v_i$:</strong> Velocidad inicial del objeto.</li>
+      </ul>
+    </section>
+
+    <section class="content-section ejemplos">
+      <h2>Ejemplos de Problemas Resueltos</h2>
+
+      <h3>Ejemplo 1: Cálculo de Energía Cinética</h3>
+      <p>Un objeto de 5 kg se mueve a una velocidad de 10 m/s. ¿Cuál es su energía cinética?</p>
+      <div class="equation">
+        $$E_c = \frac{1}{2} \cdot 5 \, \text{kg} \cdot (10 \, \text{m/s})^2 = 250 \, \text{J}$$
+      </div>
+
+      <h3>Ejemplo 2: Variación de Energía Cinética</h3>
+      <p>Un coche de 1000 kg acelera de 0 a 20 m/s. ¿Cuál es la variación de su energía cinética?</p>
+      <div class="equation">
+        $$\Delta E_c = \frac{1}{2} \cdot 1000 \, \text{kg} \cdot (20 \, \text{m/s})^2 = 200,000 \, \text{J}$$
+      </div>
+    </section>
+
+    <!-- =============================== -->
+    <!--  2. Cinemática Relativista -->
+    <!-- =============================== -->
+    <section class="content-section relativista">
+      <h2>Cinemática Relativista</h2>
+      <p>
+        A principios del siglo XX, Albert Einstein demostró que ningún objeto con masa puede 
+        superar la velocidad de la luz en el vacío (<span>$c = 3 \times 10^8 \frac{m}{s}$</span>). 
+        La mecánica clásica no considera este límite, por lo que, a velocidades cercanas a la 
+        velocidad de la luz, hay que usar la <strong>Teoría de la Relatividad Especial</strong>.
+      </p>
+      <h3>Transformaciones de Lorentz</h3>
+      <p>
+        Para describir eventos en un marco de referencia inercial que se mueve a velocidad $v$ 
+        con respecto a otro, se emplean las transformaciones de Lorentz:
+      </p>
+      <div class="equation">
+        $$t' = \gamma \Bigl(t - \frac{v x}{c^2}\Bigr), \quad x' = \gamma (x - v t)$$
+      </div>
+      <p>
+        Donde la <em>factor de Lorentz</em> <strong>$\gamma$</strong> se define como:
+      </p>
+      <div class="equation">
+        $$\gamma = \frac{1}{\sqrt{1 - \frac{v^2}{c^2}}}$$
+      </div>
+      <p>
+        Y análogamente, en las coordenadas perpendiculares al movimiento ($y$, $z$), se cumple: 
+        <span>$y' = y$, $z' = z$</span>.
+      </p>
+    </section>
+
+    <!-- =============================== -->
+    <!--  3. Energía Cinética Relativista -->
+    <!-- =============================== -->
+    <section class="content-section relativista">
+      <h2>Energía Cinética Relativista</h2>
+      <p>
+        En relatividad especial, la expresión de la energía cinética se modifica para incluir 
+        el factor <strong>$\gamma$</strong>, reflejando que la velocidad máxima es $c$. 
+        La <em>energía total relativista</em> de un objeto es:
+      </p>
+      <div class="equation">
+        $$E_{\text{total}} = \gamma \, m \, c^2$$
+      </div>
+      <p>
+        Mientras que la <strong>energía en reposo</strong> es $m c^2$. Por ello, la 
+        <strong>energía cinética relativista</strong> se expresa como:
+      </p>
+      <div class="equation">
+        $$E_{c,\text{rel}} = (\gamma - 1) \, m \, c^2$$
+      </div>
+      <p>
+        Observamos que, a medida que $v$ se aproxima a $c$, $\gamma$ crece de forma muy 
+        significativa, haciendo que la energía cinética se dispare. Sin embargo, 
+        <strong>$v$</strong> <em>nunca</em> supera la velocidad de la luz.
+      </p>
+      <p>La comprobación experimental de la relatividad especial vino de la mano del estudio de los rayos cósmicos y el desarrollo de los aceleradores de partículas.</p>
+    </section>
+
+    <section class="cards">
+      <div class="card">
+        <h2>🧩 Ejemplo resuelto</h2>
+        <p>Un ciclista de 70 kg se mueve a 8 m/s. Calcula su energía cinética.</p>
+        <div class="equation">$$E_c = \frac{1}{2} \cdot 70 \cdot 8^2 = 2240\ \text{J}$$</div>
+        <div class="example">
+          <strong>Conclusión:</strong> la energía crece muy rápido cuando aumenta la velocidad.
+        </div>
+      </div>
+      <div class="card">
+        <h2>✅ Autoevaluación</h2>
+        <p>Una pelota de 0.5 kg se mueve a 12 m/s. ¿Cuál es su energía cinética?</p>
+        <div class="example">
+          <strong>Pista:</strong> calcula $v^2$ primero y luego multiplica por $\frac{1}{2} m$.
+        </div>
+      </div>
+    </section>
+
+    <!-- Quiz específico de Energía Cinética -->
+    <section class="content-section">
+      <h2>🎮 Quiz: Energía Cinética</h2>
+      <p>Pon a prueba tu conocimiento sobre energía cinética:</p>
+    </section>
+
+    <section class="quiz-container" id="quiz-cinetica">
+      <div class="quiz-content" id="quiz-content-cinetica"></div>
+      <div class="quiz-results" id="quiz-results-cinetica" style="display: none;">
+        <h3>🎉 ¡Quiz Completado!</h3>
+        <div class="score-display">
+          <p class="score-text">Respondiste correctamente <span id="correct-count-cinetica">0</span> de <span id="total-count-cinetica">4</span> preguntas</p>
+        </div>
+        <button class="retry-button" onclick="restartQuizCinetica()">Intentar de Nuevo</button>
+      </div>
+    </section>
+
+    <script>
+    const quizDataCinetica = [
+      {
+        question: "Una pelota de 0.5 kg se mueve a 12 m/s. ¿Cuál es su energía cinética?",
+        equation: "$$E_c = \\frac{1}{2} m v^2$$",
+        options: ["6 J", "36 J", "72 J", "144 J"],
+        correct: 1,
+        explanation: "Ec = ½ × 0.5 kg × (12 m/s)² = ½ × 0.5 × 144 = 36 J"
+      },
+      {
+        question: "Si un objeto triplica su velocidad, ¿cómo cambia su energía cinética?",
+        equation: "$$E_c = \\frac{1}{2} m v^2$$",
+        options: ["Se triplica", "Se multiplica por 6", "Se multiplica por 9", "No cambia"],
+        correct: 2,
+        explanation: "Como Ec ∝ v², si v se triplica, v² se multiplica por 9 (3² = 9)."
+      },
+      {
+        question: "Un auto de 1500 kg frena de 20 m/s a 10 m/s. ¿Cuál es la variación de energía cinética?",
+        equation: "$$\\Delta E_c = \\frac{1}{2} m (v_f^2 - v_i^2)$$",
+        options: ["-225.000 J", "-150.000 J", "+225.000 J", "-75.000 J"],
+        correct: 0,
+        explanation: "ΔEc = ½ × 1500 × (10² - 20²) = 750 × (100 - 400) = 750 × (-300) = -225.000 J"
+      },
+      {
+        question: "¿Por qué la energía cinética siempre es positiva o cero?",
+        equation: "$$E_c = \\frac{1}{2} m v^2$$",
+        options: ["Porque la masa siempre es positiva", "Porque v² siempre es positivo o cero", "Ambas razones son correctas", "No siempre es positiva"],
+        correct: 2,
+        explanation: "La masa siempre es positiva y el cuadrado de cualquier número (v²) siempre es positivo o cero, por lo que Ec ≥ 0."
+      }
+    ];
+
+    let currentQuestionCinetica = 0;
+    let scoreCinetica = 0;
+    let answeredCinetica = false;
+
+    function initQuizCinetica() {
+      document.getElementById('total-count-cinetica').textContent = quizDataCinetica.length;
+      showQuestionCinetica();
+    }
+
+    function showQuestionCinetica() {
+      answeredCinetica = false;
+      const question = quizDataCinetica[currentQuestionCinetica];
+      const quizContent = document.getElementById('quiz-content-cinetica');
+
+      quizContent.innerHTML = `
+        <div class="question-card">
+          <h3>📝 Pregunta ${currentQuestionCinetica + 1} de ${quizDataCinetica.length}</h3>
+          <p class="question-text">${question.question}</p>
+          ${question.equation ? `<div class="question-equation">${question.equation}</div>` : ''}
+          <div class="options-grid">
+            ${question.options.map((option, index) => `
+              <button class="option-button" onclick="selectOptionCinetica(${index})">
+                ${option}
+              </button>
+            `).join('')}
+          </div>
+          <div class="explanation" id="explanation-cinetica" style="display: none;">
+            <h4>💡 Explicación:</h4>
+            <p>${question.explanation}</p>
+          </div>
+          <div class="navigation-buttons" id="nav-cinetica" style="display: none;">
+            ${currentQuestionCinetica < quizDataCinetica.length - 1 ?
+              '<button class="nav-button" onclick="nextQuestionCinetica()">Siguiente →</button>' :
+              '<button class="nav-button" onclick="showResultsCinetica()">Ver Resultados →</button>'}
+          </div>
+        </div>
+      `;
+      MathJax.typesetPromise();
+    }
+
+    function selectOptionCinetica(optionIndex) {
+      if (answeredCinetica) return;
+      answeredCinetica = true;
+      const question = quizDataCinetica[currentQuestionCinetica];
+      const buttons = document.querySelectorAll('#quiz-content-cinetica .option-button');
+
+      buttons[question.correct].classList.add('correct');
+      if (optionIndex !== question.correct) {
+        buttons[optionIndex].classList.add('incorrect');
+      } else {
+        scoreCinetica++;
+      }
+
+      document.getElementById('explanation-cinetica').style.display = 'block';
+      document.getElementById('nav-cinetica').style.display = 'flex';
+      buttons.forEach(button => button.disabled = true);
+    }
+
+    function nextQuestionCinetica() {
+      currentQuestionCinetica++;
+      showQuestionCinetica();
+    }
+
+    function showResultsCinetica() {
+      document.getElementById('quiz-content-cinetica').style.display = 'none';
+      document.getElementById('quiz-results-cinetica').style.display = 'block';
+      document.getElementById('correct-count-cinetica').textContent = scoreCinetica;
+    }
+
+    function restartQuizCinetica() {
+      currentQuestionCinetica = 0;
+      scoreCinetica = 0;
+      document.getElementById('quiz-content-cinetica').style.display = 'block';
+      document.getElementById('quiz-results-cinetica').style.display = 'none';
+      showQuestionCinetica();
+    }
+
+    document.addEventListener('DOMContentLoaded', initQuizCinetica);
+    </script>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>📚 Aprende Física</h3>
+        <p>Material educativo para estudiantes de secundaria</p>
+      </div>
+      <div class="footer-section">
+        <h3>👨‍🏫 Creado por</h3>
+        <p>Prof. Javier Pereyra</p>
+      </div>
+      <div class="footer-section">
+        <h3>📧 Contacto</h3>
+        <p>Para dudas y sugerencias</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Portal de Física para Secundaria - Educación para todos</p>
+    </div>
+  </footer>
+  <script src="js/dark-mode.js"></script>
+</body>
+</html>
+

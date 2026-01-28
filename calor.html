@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calor - Transferencia de Energía Térmica</title>
+  <meta name="description" content="Calor en física: ecuación calorimétrica, conducción (ley de Fourier), convección, radiación (Stefan-Boltzmann) y equilibrio térmico.">
+  <link rel="stylesheet" href="css/index.css">
+
+  <!-- Polyfill y MathJax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$','$$'], ['\\[','\\]']],
+        packages: ['base', 'ams', 'noerrors', 'noundefined']
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+</head>
+<body>
+  <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
+  <header>
+    <h1>🔥 Calor</h1>
+    <p>Transferencia de energía térmica entre cuerpos</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="guia.html">Guía</a></li>
+        <li><a href="definicion-energia.html">Energía</a></li>
+        <li><a href="trabajo.html">Trabajo</a></li>
+        <li><a href="cinetica.html">E. Cinética</a></li>
+        <li><a href="gravitatoria.html">E. Potencial</a></li>
+        <li><a href="mecanica01.html">E. Mecánica</a></li>
+        <li><a href="mecanica02.html">Conservación</a></li>
+        <li><a href="electricidad.html">Electricidad</a></li>
+        <li><a href="calor.html" class="active">Calor</a></li>
+        <li><a href="temperatura.html">Temperatura</a></li>
+        <li><a href="cambios-estado.html">Cambios de Estado</a></li>
+        <li><a href="fuentes-energia-argentina.html">Energía Argentina</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="content-main">
+    <!-- Definición -->
+    <section class="content-section">
+      <h2>¿Qué es el Calor?</h2>
+      <p>
+        El <strong>calor</strong> es la energía que se transfiere entre dos cuerpos o sistemas
+        debido a una diferencia de temperatura. No es algo que un cuerpo "tiene", sino un
+        proceso de transferencia. Un cuerpo tiene energía interna, y cuando parte de esa
+        energía se transfiere a otro cuerpo, llamamos <em>calor</em> a esa transferencia.
+      </p>
+      <div class="key-points">
+        <strong>Idea clave:</strong> el calor siempre fluye espontáneamente del cuerpo de mayor
+        temperatura al de menor temperatura, hasta alcanzar el equilibrio térmico.
+      </div>
+    </section>
+
+    <!-- Ecuación fundamental -->
+    <section class="content-section">
+      <h2>Ecuación Calorimétrica Fundamental</h2>
+      <p>
+        La cantidad de calor necesaria para cambiar la temperatura de un cuerpo depende de tres
+        factores: su masa, su calor específico y la variación de temperatura:
+      </p>
+      <div class="equation">
+        $$Q = m \cdot c \cdot \Delta T$$
+      </div>
+      <p>Donde:</p>
+      <ul>
+        <li><strong>$Q$:</strong> Calor transferido (en julios, J).</li>
+        <li><strong>$m$:</strong> Masa del cuerpo (en kilogramos, kg).</li>
+        <li><strong>$c$:</strong> Calor específico del material (en J/kg·°C).</li>
+        <li><strong>$\Delta T = T_f - T_i$:</strong> Variación de temperatura (en °C o K).</li>
+      </ul>
+      <div class="callout">
+        <strong>Convención de signos:</strong> si $Q > 0$, el cuerpo absorbe calor (se calienta).
+        Si $Q < 0$, el cuerpo cede calor (se enfría).
+      </div>
+    </section>
+
+    <!-- Calor específico -->
+    <section class="content-section">
+      <h2>Calor Específico de Materiales Comunes</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Material</th>
+            <th>$c$ (J/kg·°C)</th>
+            <th>Observación</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Agua</td>
+            <td>4186</td>
+            <td>Muy alto, regula el clima</td>
+          </tr>
+          <tr>
+            <td>Hielo</td>
+            <td>2090</td>
+            <td>Menor que el agua líquida</td>
+          </tr>
+          <tr>
+            <td>Aluminio</td>
+            <td>897</td>
+            <td>Se calienta rápido</td>
+          </tr>
+          <tr>
+            <td>Hierro</td>
+            <td>449</td>
+            <td>Usado en sartenes</td>
+          </tr>
+          <tr>
+            <td>Cobre</td>
+            <td>385</td>
+            <td>Buen conductor térmico</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Equilibrio térmico -->
+    <section class="content-section">
+      <h2>Equilibrio Térmico</h2>
+      <p>
+        Cuando dos cuerpos a diferentes temperaturas se ponen en contacto, el calor que pierde
+        el cuerpo caliente es igual al calor que gana el cuerpo frío (en un sistema aislado):
+      </p>
+      <div class="equation">
+        $$Q_{\text{cedido}} + Q_{\text{absorbido}} = 0$$
+      </div>
+      <div class="equation">
+        $$m_1 \, c_1 \, (T_f - T_{1i}) + m_2 \, c_2 \, (T_f - T_{2i}) = 0$$
+      </div>
+      <p>
+        Donde $T_f$ es la temperatura final de equilibrio, que es la misma para ambos cuerpos.
+      </p>
+    </section>
+
+    <!-- Mecanismos de transferencia -->
+    <section class="content-section">
+      <h2>Mecanismos de Transferencia de Calor</h2>
+    </section>
+
+    <section class="cards">
+      <div class="card">
+        <h2>🧱 Conducción</h2>
+        <p>Transferencia a través de un material sólido, molécula a molécula, sin transporte de materia.</p>
+        <div class="equation">$$\frac{Q}{t} = \frac{k \cdot A \cdot \Delta T}{L}$$</div>
+        <div class="example">
+          <strong>Ley de Fourier:</strong> $k$ es la conductividad térmica del material, $A$ es el
+          área, $\Delta T$ la diferencia de temperatura y $L$ el espesor.
+        </div>
+        <div class="example">
+          <strong>Ejemplo:</strong> una cuchara de metal se calienta al ponerla en una taza de café.
+          Los metales tienen alta conductividad ($k$), por eso conducen bien el calor.
+        </div>
+      </div>
+      <div class="card">
+        <h2>🌀 Convección</h2>
+        <p>Transferencia mediante el movimiento de un fluido (líquido o gas) que transporta energía.</p>
+        <div class="example">
+          <strong>Natural:</strong> el aire caliente sube y el frío baja, generando corrientes de
+          convección. Así funcionan las brisas marinas.
+        </div>
+        <div class="example">
+          <strong>Forzada:</strong> un ventilador o una bomba mueven el fluido. Ejemplo: el
+          radiador de un auto usa una bomba para circular el refrigerante.
+        </div>
+      </div>
+      <div class="card">
+        <h2>☀️ Radiación</h2>
+        <p>Transferencia mediante ondas electromagnéticas, sin necesidad de un medio material.</p>
+        <div class="equation">$$P = \varepsilon \, \sigma \, A \, T^4$$</div>
+        <div class="example">
+          <strong>Ley de Stefan-Boltzmann:</strong> $\sigma = 5.67 \times 10^{-8}\,\text{W/m}^2\text{K}^4$,
+          $\varepsilon$ es la emisividad (0 a 1), $A$ el área y $T$ la temperatura absoluta.
+        </div>
+        <div class="example">
+          <strong>Ejemplo:</strong> el Sol calienta la Tierra a través del vacío del espacio.
+          Los cuerpos oscuros absorben más radiación que los claros.
+        </div>
+      </div>
+    </section>
+
+    <!-- Conductividad térmica -->
+    <section class="content-section">
+      <h2>Conductividad Térmica</h2>
+      <p>
+        La conductividad térmica ($k$) indica qué tan bien un material conduce el calor.
+        Materiales con $k$ alto son buenos conductores; los de $k$ bajo son aislantes.
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Material</th>
+            <th>$k$ (W/m·K)</th>
+            <th>Tipo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Cobre</td>
+            <td>401</td>
+            <td>Conductor</td>
+          </tr>
+          <tr>
+            <td>Aluminio</td>
+            <td>237</td>
+            <td>Conductor</td>
+          </tr>
+          <tr>
+            <td>Vidrio</td>
+            <td>1,0</td>
+            <td>Aislante</td>
+          </tr>
+          <tr>
+            <td>Madera</td>
+            <td>0,12</td>
+            <td>Aislante</td>
+          </tr>
+          <tr>
+            <td>Aire</td>
+            <td>0,025</td>
+            <td>Aislante</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="key-points">
+        <strong>Aplicación:</strong> los termos usan doble pared con vacío (elimina conducción y
+        convección) y superficie reflectante (reduce radiación).
+      </div>
+    </section>
+
+    <!-- Ejemplos resueltos -->
+    <section class="content-section">
+      <h2>Ejemplos de Problemas Resueltos</h2>
+
+      <h3>Ejemplo 1: Calentar agua</h3>
+      <p>¿Cuánto calor se necesita para calentar 0,5 kg de agua de 20°C a 80°C?</p>
+      <div class="equation">
+        $$Q = 0.5 \, \text{kg} \cdot 4186 \, \frac{\text{J}}{\text{kg·°C}} \cdot (80 - 20)\text{°C} = 125{,}580 \, \text{J} \approx 125.6 \, \text{kJ}$$
+      </div>
+
+      <h3>Ejemplo 2: Equilibrio térmico</h3>
+      <p>Se mezclan 200 g de agua a 80°C con 300 g de agua a 20°C. ¿Cuál es la temperatura final?</p>
+      <div class="equation">
+        $$m_1 \, c \, (T_f - 80) + m_2 \, c \, (T_f - 20) = 0$$
+      </div>
+      <div class="equation">
+        $$0.2 (T_f - 80) + 0.3 (T_f - 20) = 0$$
+      </div>
+      <div class="equation">
+        $$0.5 \, T_f = 22 \implies T_f = 44\text{°C}$$
+      </div>
+
+      <h3>Ejemplo 3: Conducción por una pared</h3>
+      <p>Una pared de vidrio de 0,5 cm de espesor, con área de 2 m², separa ambientes a 25°C y 5°C.
+        ¿Cuánto calor se transmite por segundo?</p>
+      <div class="equation">
+        $$\frac{Q}{t} = \frac{1.0 \cdot 2 \cdot (25 - 5)}{0.005} = 8000 \, \text{W} = 8 \, \text{kW}$$
+      </div>
+    </section>
+
+    <!-- Tarjetas finales -->
+    <section class="cards">
+      <div class="card">
+        <h2>🧩 Ejemplo resuelto</h2>
+        <p>¿Cuánto calor cede un bloque de hierro de 2 kg al enfriarse de 200°C a 50°C?</p>
+        <div class="equation">$$Q = 2 \cdot 449 \cdot (50 - 200) = -134{,}700 \, \text{J}$$</div>
+        <div class="example">
+          <strong>Conclusión:</strong> el signo negativo indica que el cuerpo cede calor al entorno.
+        </div>
+      </div>
+      <div class="card">
+        <h2>✅ Autoevaluación</h2>
+        <p>¿Por qué una olla de cobre calienta más rápido que una de vidrio?</p>
+        <div class="example">
+          <strong>Pista:</strong> compara las conductividades térmicas ($k$) de ambos materiales.
+        </div>
+      </div>
+    </section>
+
+    <!-- Quiz específico de Calor -->
+    <section class="content-section">
+      <h2>🎮 Quiz: Calor</h2>
+      <p>Pon a prueba tu conocimiento sobre transferencia de calor:</p>
+    </section>
+
+    <section class="quiz-container" id="quiz-calor">
+      <div class="quiz-content" id="quiz-content-calor"></div>
+      <div class="quiz-results" id="quiz-results-calor" style="display: none;">
+        <h3>🎉 ¡Quiz Completado!</h3>
+        <div class="score-display">
+          <p class="score-text">Respondiste correctamente <span id="correct-count-calor">0</span> de <span id="total-count-calor">4</span> preguntas</p>
+        </div>
+        <button class="retry-button" onclick="restartQuizCalor()">Intentar de Nuevo</button>
+      </div>
+    </section>
+
+    <script>
+    const quizDataCalor = [
+      {
+        question: "¿Por qué una olla de cobre calienta más rápido que una de vidrio?",
+        equation: "",
+        options: ["El cobre tiene mayor calor específico", "El cobre tiene mayor conductividad térmica", "El vidrio absorbe más calor", "No hay diferencia"],
+        correct: 1,
+        explanation: "El cobre tiene conductividad térmica k = 401 W/m·K, mientras que el vidrio tiene k = 1 W/m·K. Mayor k significa mejor conducción de calor."
+      },
+      {
+        question: "¿Cuánto calor se necesita para calentar 2 kg de agua de 25°C a 75°C? (c = 4186 J/kg·°C)",
+        equation: "$$Q = m \\cdot c \\cdot \\Delta T$$",
+        options: ["418.600 J", "209.300 J", "83.720 J", "41.860 J"],
+        correct: 0,
+        explanation: "Q = 2 kg × 4186 J/kg·°C × (75-25)°C = 2 × 4186 × 50 = 418.600 J"
+      },
+      {
+        question: "El calor siempre fluye espontáneamente desde:",
+        equation: "",
+        options: ["El cuerpo más grande al más pequeño", "El cuerpo más frío al más caliente", "El cuerpo más caliente al más frío", "En ambas direcciones por igual"],
+        correct: 2,
+        explanation: "Por la segunda ley de la termodinámica, el calor fluye espontáneamente del cuerpo de mayor temperatura al de menor temperatura."
+      },
+      {
+        question: "¿Cuál mecanismo de transferencia de calor NO requiere contacto material?",
+        equation: "",
+        options: ["Conducción", "Convección", "Radiación", "Todos requieren contacto"],
+        correct: 2,
+        explanation: "La radiación transfiere calor mediante ondas electromagnéticas y no necesita medio material (funciona incluso en el vacío)."
+      }
+    ];
+
+    let currentQuestionCalor = 0;
+    let scoreCalor = 0;
+    let answeredCalor = false;
+
+    function initQuizCalor() {
+      document.getElementById('total-count-calor').textContent = quizDataCalor.length;
+      showQuestionCalor();
+    }
+
+    function showQuestionCalor() {
+      answeredCalor = false;
+      const question = quizDataCalor[currentQuestionCalor];
+      const quizContent = document.getElementById('quiz-content-calor');
+
+      quizContent.innerHTML = `
+        <div class="question-card">
+          <h3>📝 Pregunta ${currentQuestionCalor + 1} de ${quizDataCalor.length}</h3>
+          <p class="question-text">${question.question}</p>
+          ${question.equation ? `<div class="question-equation">${question.equation}</div>` : ''}
+          <div class="options-grid">
+            ${question.options.map((option, index) => `
+              <button class="option-button" onclick="selectOptionCalor(${index})">
+                ${option}
+              </button>
+            `).join('')}
+          </div>
+          <div class="explanation" id="explanation-calor" style="display: none;">
+            <h4>💡 Explicación:</h4>
+            <p>${question.explanation}</p>
+          </div>
+          <div class="navigation-buttons" id="nav-calor" style="display: none;">
+            ${currentQuestionCalor < quizDataCalor.length - 1 ?
+              '<button class="nav-button" onclick="nextQuestionCalor()">Siguiente →</button>' :
+              '<button class="nav-button" onclick="showResultsCalor()">Ver Resultados →</button>'}
+          </div>
+        </div>
+      `;
+      MathJax.typesetPromise();
+    }
+
+    function selectOptionCalor(optionIndex) {
+      if (answeredCalor) return;
+      answeredCalor = true;
+      const question = quizDataCalor[currentQuestionCalor];
+      const buttons = document.querySelectorAll('#quiz-content-calor .option-button');
+
+      buttons[question.correct].classList.add('correct');
+      if (optionIndex !== question.correct) {
+        buttons[optionIndex].classList.add('incorrect');
+      } else {
+        scoreCalor++;
+      }
+
+      document.getElementById('explanation-calor').style.display = 'block';
+      document.getElementById('nav-calor').style.display = 'flex';
+      buttons.forEach(button => button.disabled = true);
+    }
+
+    function nextQuestionCalor() {
+      currentQuestionCalor++;
+      showQuestionCalor();
+    }
+
+    function showResultsCalor() {
+      document.getElementById('quiz-content-calor').style.display = 'none';
+      document.getElementById('quiz-results-calor').style.display = 'block';
+      document.getElementById('correct-count-calor').textContent = scoreCalor;
+    }
+
+    function restartQuizCalor() {
+      currentQuestionCalor = 0;
+      scoreCalor = 0;
+      document.getElementById('quiz-content-calor').style.display = 'block';
+      document.getElementById('quiz-results-calor').style.display = 'none';
+      showQuestionCalor();
+    }
+
+    document.addEventListener('DOMContentLoaded', initQuizCalor);
+    </script>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>📚 Aprende Física</h3>
+        <p>Material educativo para estudiantes de secundaria</p>
+      </div>
+      <div class="footer-section">
+        <h3>👨‍🏫 Creado por</h3>
+        <p>Prof. Javier Pereyra</p>
+      </div>
+      <div class="footer-section">
+        <h3>📧 Contacto</h3>
+        <p>Para dudas y sugerencias</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Portal de Física para Secundaria - Educación para todos</p>
+    </div>
+  </footer>
+  <script src="js/dark-mode.js"></script>
+</body>
+</html>
+

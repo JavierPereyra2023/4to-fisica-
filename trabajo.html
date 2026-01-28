@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trabajo en Física</title>
+  <meta name="description" content="Concepto de trabajo en física: fórmula, unidades, ejemplos resueltos y aplicaciones para secundaria.">
+  <link rel="stylesheet" href="css/index.css">
+
+  <!-- Polyfill y MathJax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$','$$'], ['\\[','\\]']],
+        packages: ['base', 'ams', 'noerrors', 'noundefined']
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+</head>
+<body>
+  <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
+  <header>
+    <h1>💪 Trabajo en Física</h1>
+    <p>La transferencia de energía mediante una fuerza</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="guia.html">Guía</a></li>
+        <li><a href="definicion-energia.html">Energía</a></li>
+        <li><a href="trabajo.html" class="active">Trabajo</a></li>
+        <li><a href="cinetica.html">E. Cinética</a></li>
+        <li><a href="gravitatoria.html">E. Potencial</a></li>
+        <li><a href="mecanica01.html">E. Mecánica</a></li>
+        <li><a href="mecanica02.html">Conservación</a></li>
+        <li><a href="electricidad.html">Electricidad</a></li>
+        <li><a href="calor.html">Calor</a></li>
+        <li><a href="temperatura.html">Temperatura</a></li>
+        <li><a href="cambios-estado.html">Cambios de Estado</a></li>
+        <li><a href="fuentes-energia-argentina.html">Energía Argentina</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="content-main">
+    <!-- Introducción -->
+    <section class="content-section">
+      <h2>¿Qué es el Trabajo en Física?</h2>
+      <p>
+        En física, el trabajo es la transferencia de energía que ocurre cuando una fuerza actúa
+        sobre un objeto y lo desplaza en la dirección de esa fuerza. A diferencia del uso cotidiano
+        de la palabra, en física solo hay trabajo cuando existe un desplazamiento.
+      </p>
+      <div class="key-points">
+        <strong>Idea clave:</strong> si no hay desplazamiento, no hay trabajo, sin importar cuánta
+        fuerza se aplique.
+      </div>
+    </section>
+
+    <!-- Fórmula -->
+    <section class="content-section">
+      <h2>Fórmula del Trabajo</h2>
+      <div class="equation">
+        $$W = F \cdot d \cdot \cos(\theta)$$
+      </div>
+      <p>Donde:</p>
+      <ul>
+        <li><strong>$W$:</strong> Trabajo (en julios, J).</li>
+        <li><strong>$F$:</strong> Magnitud de la fuerza aplicada (en newtons, N).</li>
+        <li><strong>$d$:</strong> Desplazamiento del objeto (en metros, m).</li>
+        <li><strong>$\theta$:</strong> Ángulo entre la dirección de la fuerza y la del desplazamiento.</li>
+      </ul>
+    </section>
+
+    <!-- Casos especiales -->
+    <section class="content-section">
+      <h2>Casos especiales según el ángulo</h2>
+      <div class="content-grid">
+        <div class="callout">
+          <strong>$\theta = 0°$</strong> (fuerza y desplazamiento en la misma dirección):
+          $$W = F \cdot d$$
+          El trabajo es máximo y positivo.
+        </div>
+        <div class="callout">
+          <strong>$\theta = 90°$</strong> (fuerza perpendicular al desplazamiento):
+          $$W = 0$$
+          No se realiza trabajo (ej.: llevar una caja caminando horizontalmente).
+        </div>
+        <div class="callout">
+          <strong>$\theta = 180°$</strong> (fuerza opuesta al desplazamiento):
+          $$W = -F \cdot d$$
+          El trabajo es negativo (ej.: la fricción).
+        </div>
+      </div>
+    </section>
+
+    <!-- Unidades -->
+    <section class="content-section">
+      <h2>Unidades en el Sistema Internacional (SI - MKS)</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Magnitud</th>
+            <th>Símbolo</th>
+            <th>Unidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Trabajo</td>
+            <td>$W$</td>
+            <td>Julios (J) = N·m</td>
+          </tr>
+          <tr>
+            <td>Fuerza</td>
+            <td>$F$</td>
+            <td>Newtons (N)</td>
+          </tr>
+          <tr>
+            <td>Desplazamiento</td>
+            <td>$d$</td>
+            <td>Metros (m)</td>
+          </tr>
+          <tr>
+            <td>Ángulo</td>
+            <td>$\theta$</td>
+            <td>Grados (°) o radianes (rad)</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Relación con energía -->
+    <section class="content-section">
+      <h2>Trabajo y Energía: el Teorema Trabajo-Energía</h2>
+      <p>
+        El trabajo neto realizado sobre un objeto es igual a la variación de su energía cinética.
+        Este principio conecta directamente el trabajo con la energía:
+      </p>
+      <div class="equation">
+        $$W_{\text{neto}} = \Delta E_c = \frac{1}{2} m v_f^2 - \frac{1}{2} m v_i^2$$
+      </div>
+      <p>
+        Si el trabajo neto es positivo, el objeto acelera (gana energía cinética).
+        Si es negativo, el objeto desacelera (pierde energía cinética).
+      </p>
+    </section>
+
+    <!-- Ejemplos -->
+    <section class="content-section">
+      <h2>Ejemplos de Problemas Resueltos</h2>
+
+      <h3>Ejemplo 1: Trabajo con fuerza horizontal</h3>
+      <p>Una persona empuja una caja con una fuerza de 50 N durante 10 m en la misma dirección del movimiento. ¿Cuánto trabajo realiza?</p>
+      <div class="equation">
+        $$W = 50 \, \text{N} \cdot 10 \, \text{m} \cdot \cos(0°) = 500 \, \text{J}$$
+      </div>
+
+      <h3>Ejemplo 2: Trabajo con ángulo</h3>
+      <p>Se aplica una fuerza de 80 N a 60° respecto al suelo para arrastrar un objeto 5 m. ¿Cuál es el trabajo realizado?</p>
+      <div class="equation">
+        $$W = 80 \, \text{N} \cdot 5 \, \text{m} \cdot \cos(60°) = 400 \cdot 0.5 = 200 \, \text{J}$$
+      </div>
+
+      <h3>Ejemplo 3: Trabajo contra la gravedad</h3>
+      <p>Se levanta un objeto de 3 kg a una altura de 4 m. ¿Cuánto trabajo se realiza contra la gravedad?</p>
+      <div class="equation">
+        $$W = m \cdot g \cdot h = 3 \, \text{kg} \cdot 9.8 \, \frac{\text{m}}{\text{s}^2} \cdot 4 \, \text{m} = 117.6 \, \text{J}$$
+      </div>
+    </section>
+
+    <section class="cards">
+      <div class="card">
+        <h2>🧩 Ejemplo resuelto</h2>
+        <p>Un obrero empuja un cajón con 200 N a 30° y lo desplaza 6 m. ¿Cuánto trabajo realiza?</p>
+        <div class="equation">$$W = 200 \cdot 6 \cdot \cos(30°) = 1200 \cdot 0.866 = 1039.2\ \text{J}$$</div>
+        <div class="example">
+          <strong>Conclusión:</strong> cuando la fuerza no es paralela al movimiento, el trabajo se reduce.
+        </div>
+      </div>
+      <div class="card">
+        <h2>✅ Autoevaluación</h2>
+        <p>Si empujas una pared con 500 N pero no se mueve, ¿cuánto trabajo realizas?</p>
+        <div class="example">
+          <strong>Pista:</strong> piensa en el desplazamiento $d$.
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <img src="trabajo.jpg" alt="Concepto de trabajo en física" style="width: 100%; border-radius: 12px;">
+    </section>
+
+    <!-- Quiz específico de Trabajo -->
+    <section class="content-section">
+      <h2>🎮 Quiz: Trabajo en Física</h2>
+      <p>Pon a prueba tu conocimiento sobre el trabajo en física:</p>
+    </section>
+
+    <section class="quiz-container" id="quiz-trabajo">
+      <div class="quiz-content" id="quiz-content-trabajo"></div>
+      <div class="quiz-results" id="quiz-results-trabajo" style="display: none;">
+        <h3>🎉 ¡Quiz Completado!</h3>
+        <div class="score-display">
+          <p class="score-text">Respondiste correctamente <span id="correct-count-trabajo">0</span> de <span id="total-count-trabajo">4</span> preguntas</p>
+        </div>
+        <button class="retry-button" onclick="restartQuizTrabajo()">Intentar de Nuevo</button>
+      </div>
+    </section>
+
+    <script>
+    const quizDataTrabajo = [
+      {
+        question: "Si empujas una pared con 500 N pero no se mueve, ¿cuánto trabajo realizas?",
+        equation: "$$W = F \\cdot d \\cdot \\cos(\\theta)$$",
+        options: ["500 J", "0 J", "250 J", "Depende del ángulo"],
+        correct: 1,
+        explanation: "Si no hay desplazamiento (d = 0), el trabajo es cero, sin importar la fuerza aplicada."
+      },
+      {
+        question: "Una persona arrastra una caja con 80 N a 60° respecto al suelo durante 4 m. ¿Cuál es el trabajo realizado?",
+        equation: "$$W = F \\cdot d \\cdot \\cos(\\theta)$$",
+        options: ["320 J", "160 J", "277 J", "80 J"],
+        correct: 1,
+        explanation: "W = 80 N × 4 m × cos(60°) = 320 × 0.5 = 160 J"
+      },
+      {
+        question: "¿Cuándo el trabajo es negativo?",
+        equation: "",
+        options: ["Cuando la fuerza es perpendicular al movimiento", "Cuando la fuerza se opone al movimiento", "Cuando no hay fricción", "Nunca puede ser negativo"],
+        correct: 1,
+        explanation: "El trabajo es negativo cuando el ángulo entre la fuerza y el desplazamiento es mayor a 90°, es decir, cuando la fuerza se opone al movimiento (ej: fricción)."
+      },
+      {
+        question: "Según el teorema trabajo-energía, el trabajo neto sobre un objeto es igual a:",
+        equation: "$$W_{neto} = \\Delta E_c$$",
+        options: ["El cambio en energía potencial", "El cambio en energía cinética", "La energía mecánica total", "La fuerza por la masa"],
+        correct: 1,
+        explanation: "El teorema trabajo-energía establece que el trabajo neto es igual a la variación de la energía cinética del objeto."
+      }
+    ];
+
+    let currentQuestionTrabajo = 0;
+    let scoreTrabajo = 0;
+    let answeredTrabajo = false;
+
+    function initQuizTrabajo() {
+      document.getElementById('total-count-trabajo').textContent = quizDataTrabajo.length;
+      showQuestionTrabajo();
+    }
+
+    function showQuestionTrabajo() {
+      answeredTrabajo = false;
+      const question = quizDataTrabajo[currentQuestionTrabajo];
+      const quizContent = document.getElementById('quiz-content-trabajo');
+
+      quizContent.innerHTML = `
+        <div class="question-card">
+          <h3>📝 Pregunta ${currentQuestionTrabajo + 1} de ${quizDataTrabajo.length}</h3>
+          <p class="question-text">${question.question}</p>
+          ${question.equation ? `<div class="question-equation">${question.equation}</div>` : ''}
+          <div class="options-grid">
+            ${question.options.map((option, index) => `
+              <button class="option-button" onclick="selectOptionTrabajo(${index})">
+                ${option}
+              </button>
+            `).join('')}
+          </div>
+          <div class="explanation" id="explanation-trabajo" style="display: none;">
+            <h4>💡 Explicación:</h4>
+            <p>${question.explanation}</p>
+          </div>
+          <div class="navigation-buttons" id="nav-trabajo" style="display: none;">
+            ${currentQuestionTrabajo < quizDataTrabajo.length - 1 ?
+              '<button class="nav-button" onclick="nextQuestionTrabajo()">Siguiente →</button>' :
+              '<button class="nav-button" onclick="showResultsTrabajo()">Ver Resultados →</button>'}
+          </div>
+        </div>
+      `;
+      MathJax.typesetPromise();
+    }
+
+    function selectOptionTrabajo(optionIndex) {
+      if (answeredTrabajo) return;
+      answeredTrabajo = true;
+      const question = quizDataTrabajo[currentQuestionTrabajo];
+      const buttons = document.querySelectorAll('#quiz-content-trabajo .option-button');
+
+      buttons[question.correct].classList.add('correct');
+      if (optionIndex !== question.correct) {
+        buttons[optionIndex].classList.add('incorrect');
+      } else {
+        scoreTrabajo++;
+      }
+
+      document.getElementById('explanation-trabajo').style.display = 'block';
+      document.getElementById('nav-trabajo').style.display = 'flex';
+      buttons.forEach(button => button.disabled = true);
+    }
+
+    function nextQuestionTrabajo() {
+      currentQuestionTrabajo++;
+      showQuestionTrabajo();
+    }
+
+    function showResultsTrabajo() {
+      document.getElementById('quiz-content-trabajo').style.display = 'none';
+      document.getElementById('quiz-results-trabajo').style.display = 'block';
+      document.getElementById('correct-count-trabajo').textContent = scoreTrabajo;
+    }
+
+    function restartQuizTrabajo() {
+      currentQuestionTrabajo = 0;
+      scoreTrabajo = 0;
+      document.getElementById('quiz-content-trabajo').style.display = 'block';
+      document.getElementById('quiz-results-trabajo').style.display = 'none';
+      showQuestionTrabajo();
+    }
+
+    document.addEventListener('DOMContentLoaded', initQuizTrabajo);
+    </script>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>📚 Aprende Física</h3>
+        <p>Material educativo para estudiantes de secundaria</p>
+      </div>
+      <div class="footer-section">
+        <h3>👨‍🏫 Creado por</h3>
+        <p>Prof. Javier Pereyra</p>
+      </div>
+      <div class="footer-section">
+        <h3>📧 Contacto</h3>
+        <p>Para dudas y sugerencias</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Portal de Física para Secundaria - Educación para todos</p>
+    </div>
+  </footer>
+  <script src="js/dark-mode.js"></script>
+</body>
+</html>
+

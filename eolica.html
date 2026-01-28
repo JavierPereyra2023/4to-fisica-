@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Energía Eólica en Argentina - Física Secundaria</title>
+  <style>
+    :root {
+      --neon-green: #39ff14;
+      --neon-blue: #00e5ff;
+    }
+
+    body.dark-mode .hero-section {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('eolica_realista.png');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    .hero-section {
+      background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('eolica_realista.png');
+      background-size: cover;
+      background-position: center;
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    .faraday-box {
+      border: 2px solid var(--neon-blue);
+      padding: 20px;
+      border-radius: 15px;
+      margin: 20px 0;
+      background: rgba(0, 229, 255, 0.05);
+    }
+
+    body.dark-mode .faraday-box {
+      box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+    }
+  </style>
+  <link rel="stylesheet" href="css/index.css">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+  <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
+  <header>
+    <h1>🌬️ Energía Eólica</h1>
+    <p>El poder del viento convertido en electricidad</p>
+    <div class="search-container">
+      <div class="search-input-wrapper">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="grokSearch" placeholder="Grokipedia: Busca temas de física...">
+      </div>
+      <div id="searchResults" class="search-results"></div>
+    </div>
+
+    <nav>
+
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="fuentes-energia-argentina.html">Energía Argentina</a></li>
+        <li><a href="eolica.html" class="active">Eólica</a></li>
+        <li><a href="solar.html">Solar</a></li>
+        <li><a href="hidroelectrica.html">Hidro</a></li>
+        <li><a href="biomasa.html">Biomasa</a></li>
+        <li><a href="geotermica.html">Geotérmica</a></li>
+      </ul>
+    </nav>
+
+  </header>
+
+  <main class="content-main">
+    <section class="hero-section">
+      <h2 style="font-size: 3rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.5);">Viento Argentino</h2>
+      <p style="font-size: 1.5rem;">Aprovechando las ráfagas de la Patagonia y Buenos Aires</p>
+    </section>
+
+    <section class="content-section">
+      <h2>¿Cómo funciona? La Física detrás</h2>
+      <p>La energía eólica es una forma de energía cinética (del movimiento) del aire. Los aerogeneradores capturan esta
+        energía mediante sus palas.</p>
+
+      <div class="faraday-box">
+        <h3>⚡ Ley de Faraday y el Generador</h3>
+        <p>Dentro de la góndola (la "caja" arriba del poste), el eje giratorio mueve imanes cerca de bobinas de cobre.
+          Según la <strong>Ley de Faraday</strong>:</p>
+        <div class="equation">$$\varepsilon = -N \frac{\Delta \Phi_B}{\Delta t}$$</div>
+        <p>Un campo magnético variable en el tiempo induce una fuerza electromotriz (voltaje) en un conductor. ¡Así es
+          como el giro mecánico se vuelve corriente eléctrica!</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>Energía Eólica en Argentina</h2>
+      <p>Argentina cuenta con uno de los mayores potenciales eólicos del mundo, especialmente en el sur.</p>
+      <div class="energy-chart">
+        <p><strong>Crecimiento de la Capacidad (MW)</strong></p>
+        <div class="chart-row">
+          <div class="chart-label">2015</div>
+          <div class="chart-bar">
+            <div class="chart-fill" style="width: 10%; background: #66bb6a;"></div>
+          </div>
+          <div class="chart-value">187 MW</div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-label">2023</div>
+          <div class="chart-bar">
+            <div class="chart-fill" style="width: 90%; background: var(--neon-green);"></div>
+          </div>
+          <div class="chart-value">3,500+ MW</div>
+        </div>
+      </div>
+      <div class="callout">
+        Argentina tiene parques icónicos como <strong>Loma Blanca</strong> (Chubut) y <strong>Puerto Madryn</strong>.
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Portal de Física - Energía Eólica en Argentina</p>
+    </div>
+  </footer>
+  <script src="js/dark-mode.js"></script>
+  <script src="js/search.js"></script>
+</body>
+
+
+</html>
