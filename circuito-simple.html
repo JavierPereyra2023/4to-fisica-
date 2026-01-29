@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circuito Simple - Portal de Física</title>
+    <style>
+        .svg-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 40px auto;
+            background: #0d1b2a;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 2px solid #00e5ff;
+        }
+
+        .circuit-svg {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Animación de Electrones */
+        .electron {
+            fill: #ffeb3b;
+            filter: drop-shadow(0 0 5px #fff176);
+        }
+
+        @keyframes flow {
+            from {
+                stroke-dashoffset: 100;
+            }
+
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        .wire-flow {
+            stroke: rgba(255, 235, 59, 0.3);
+            stroke-width: 4;
+            stroke-dasharray: 10, 20;
+            animation: flow 2s linear infinite;
+        }
+
+        /* Brillo de la Lámpara */
+        .bulb-glow {
+            fill: #ffeb3b;
+            opacity: 0.6;
+            animation: bulb-pulse 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes bulb-pulse {
+            0% {
+                opacity: 0.4;
+                filter: blur(10px);
+            }
+
+            100% {
+                opacity: 0.9;
+                filter: blur(15px);
+            }
+        }
+
+        body.dark-mode .svg-container {
+            background: #050a14;
+        }
+    </style>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
+    <header>
+        <h1>🔌 Circuito Simple</h1>
+        <p>La base de toda la electrónica moderna</p>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="electricidad.html">Electricidad</a></li>
+                <li><a href="tipos-energia.html">Tipos de Energía</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="content-main">
+        <section class="content-section">
+            <h2>¿Qué es un circuito simple?</h2>
+            <p>
+                Un circuito eléctrico simple es un lazo cerrado que permite el flujo de carga eléctrica. Está compuesto
+                por tres elementos esenciales: una <strong>fuente de energía</strong> (como una pila), un
+                <strong>conductor</strong> (cables de cobre) y una <strong>carga</strong> (como una lamparita).
+            </p>
+
+            <div class="svg-container">
+                <svg viewBox="0 0 400 300" class="circuit-svg" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Cables -->
+                    <path d="M 100 200 L 100 100 L 300 100 L 300 200 L 100 200" fill="none" stroke="#546e7a"
+                        stroke-width="8" stroke-linecap="round" />
+                    <path d="M 100 200 L 100 100 L 300 100 L 300 200 L 100 200" class="wire-flow" fill="none"
+                        stroke-linecap="round" />
+
+                    <!-- Batería -->
+                    <rect x="70" y="130" width="60" height="40" rx="5" fill="#37474f" />
+                    <rect x="130" y="140" width="10" height="20" rx="2" fill="#ffc107" />
+                    <text x="100" y="155" font-family="Arial" font-size="12" fill="white"
+                        text-anchor="middle">BAT</text>
+                    <text x="133" y="135" font-family="Arial" font-size="14" fill="#ffc107" font-weight="bold">+</text>
+
+                    <!-- Lámpara con Resistencia Zigzag -->
+                    <circle cx="300" cy="150" r="25" fill="#455a64" />
+                    <circle cx="300" cy="150" r="20" class="bulb-glow" />
+                    <!-- Símbolo de resistencia zigzag -->
+                    <path d="M 290 150 L 293 140 L 297 160 L 301 140 L 305 160 L 309 140 L 312 150" fill="none"
+                        stroke="white" stroke-width="2" stroke-linejoin="round" />
+                    <rect x="290" y="172" width="20" height="8" fill="#90a4ae" />
+
+                    <!-- Electrones -->
+                    <circle r="4" class="electron">
+                        <animateMotion dur="4s" repeatCount="indefinite"
+                            path="M 100 200 L 100 100 L 300 100 L 300 200 L 100 200" rotate="auto" />
+                    </circle>
+                    <circle r="4" class="electron">
+                        <animateMotion dur="4s" begin="1s" repeatCount="indefinite"
+                            path="M 100 200 L 100 100 L 300 100 L 300 200 L 100 200" rotate="auto" />
+                    </circle>
+                    <circle r="4" class="electron">
+                        <animateMotion dur="4s" begin="2s" repeatCount="indefinite"
+                            path="M 100 200 L 100 100 L 300 100 L 300 200 L 100 200" rotate="auto" />
+                    </circle>
+                    <circle r="4" class="electron">
+                        <animateMotion dur="4s" begin="3s" repeatCount="indefinite"
+                            path="M 100 200 L 100 100 L 300 100 L 300 200 L 100 200" rotate="auto" />
+                    </circle>
+                </svg>
+            </div>
+
+            <div class="key-points">
+                <strong>Componentes:</strong>
+                <ul>
+                    <li><strong>Voltaje ($V$):</strong> El empuje que mueve las cargas.</li>
+                    <li><strong>Corriente ($I$):</strong> La cantidad de electrones que pasan por segundo.</li>
+                    <li><strong>Resistencia ($R$):</strong> La oposición al paso de la corriente.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>La Ley de Ohm</h2>
+            <p>
+                En un circuito simple, la relación entre estos tres elementos se rige por la Ley de Ohm:
+            </p>
+            <div class="equation">
+                $$V = I \cdot R$$
+            </div>
+            <p>
+                Esto significa que si aumentas el voltaje, la corriente aumenta. Si aumentas la resistencia, la
+                corriente disminuye.
+            </p>
+        </section>
+
+        <div class="back-button-container">
+            <a href="electricidad.html" class="back-button">← Volver a Electricidad</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Portal de Física para Secundaria</p>
+        </div>
+    </footer>
+    <script src="js/dark-mode.js"></script>
+</body>
+
+</html>

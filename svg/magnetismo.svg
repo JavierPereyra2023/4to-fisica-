@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200">
+  <rect width="300" height="200" fill="#0d1b2a"/>
+  <!-- Wire (conductor) -->
+  <circle cx="150" cy="95" r="8" fill="#b0bec5" stroke="#78909c" stroke-width="2"/>
+  <circle cx="150" cy="95" r="3" fill="#0d1b2a"/>
+  <!-- Current dot (into page) -->
+  <text x="150" y="99" text-anchor="middle" fill="#ffd54f" font-size="10" font-family="Arial" font-weight="bold">⊗</text>
+  <text x="150" y="72" text-anchor="middle" fill="#ffd54f" font-size="8" font-family="Arial">I</text>
+  <!-- Magnetic field circles -->
+  <circle cx="150" cy="95" r="25" fill="none" stroke="#66bb6a" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.5">
+    <animate attributeName="r" values="25;27;25" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.5;0.8;0.5" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="150" cy="95" r="42" fill="none" stroke="#66bb6a" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.35">
+    <animate attributeName="r" values="42;45;42" dur="2.5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.35;0.6;0.35" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="150" cy="95" r="60" fill="none" stroke="#66bb6a" stroke-width="1" stroke-dasharray="4,3" opacity="0.2">
+    <animate attributeName="r" values="60;63;60" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <!-- B field direction arrows (circular) -->
+  <g fill="#66bb6a" opacity="0.7">
+    <polygon points="175,92 175,98 180,95" transform="rotate(0 150 95)">
+      <animateTransform attributeName="transform" type="rotate" from="0 150 95" to="360 150 95" dur="4s" repeatCount="indefinite"/>
+    </polygon>
+    <polygon points="192,92 192,98 197,95" transform="rotate(0 150 95)">
+      <animateTransform attributeName="transform" type="rotate" from="90 150 95" to="450 150 95" dur="5s" repeatCount="indefinite"/>
+    </polygon>
+  </g>
+  <!-- B label -->
+  <text x="200" y="70" fill="#66bb6a" font-size="14" font-family="Arial" font-weight="bold" opacity="0.8">
+    B
+    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+  </text>
+  <!-- Magnet (bottom left) -->
+  <rect x="30" y="140" width="30" height="18" rx="2" fill="#e53935"/>
+  <text x="45" y="153" text-anchor="middle" fill="#fff" font-size="9" font-family="Arial" font-weight="bold">N</text>
+  <rect x="60" y="140" width="30" height="18" rx="2" fill="#1565c0"/>
+  <text x="75" y="153" text-anchor="middle" fill="#fff" font-size="9" font-family="Arial" font-weight="bold">S</text>
+  <!-- Field lines from magnet -->
+  <path d="M90,149 Q120,130 90,110 Q60,90 30,110 Q0,130 30,149" fill="none" stroke="#4fc3f7" stroke-width="1" opacity="0.3">
+    <animate attributeName="opacity" values="0.2;0.5;0.2" dur="3s" repeatCount="indefinite"/>
+  </path>
+  <!-- Compass needle -->
+  <g transform="translate(250, 148)">
+    <circle cx="0" cy="0" r="12" fill="none" stroke="#4fc3f7" stroke-width="1" opacity="0.5"/>
+    <line x1="-8" y1="0" x2="8" y2="0" stroke="#e53935" stroke-width="2">
+      <animateTransform attributeName="transform" type="rotate" values="0;10;-10;0" dur="4s" repeatCount="indefinite"/>
+    </line>
+    <circle cx="0" cy="0" r="2" fill="#4fc3f7"/>
+  </g>
+  <text x="150" y="188" text-anchor="middle" fill="#66bb6a" font-size="10" font-family="Arial" font-weight="bold" letter-spacing="1">MAGNETISMO</text>
+</svg>

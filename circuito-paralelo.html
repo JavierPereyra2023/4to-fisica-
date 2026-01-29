@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circuito en Paralelo - Portal de Física</title>
+    <style>
+        .svg-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 40px auto;
+            background: #0d1b2a;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 2px solid #00e5ff;
+        }
+
+        .circuit-svg {
+            width: 100%;
+            height: auto;
+        }
+
+        .electron {
+            fill: #ffeb3b;
+            filter: drop-shadow(0 0 5px #fff176);
+        }
+
+        @keyframes flow {
+            from {
+                stroke-dashoffset: 100;
+            }
+
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        .wire-flow {
+            stroke: rgba(255, 235, 59, 0.3);
+            stroke-width: 4;
+            stroke-dasharray: 10, 20;
+            animation: flow 2s linear infinite;
+        }
+
+        .bulb-glow {
+            fill: #ffeb3b;
+            opacity: 0.6;
+            animation: bulb-pulse 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes bulb-pulse {
+            0% {
+                opacity: 0.4;
+                filter: blur(10px);
+            }
+
+            100% {
+                opacity: 0.9;
+                filter: blur(15px);
+            }
+        }
+
+        body.dark-mode .svg-container {
+            background: #050a14;
+        }
+    </style>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
+    <header>
+        <h1>⚡ Circuito en Paralelo</h1>
+        <p>Independencia y potencia: como las casas modernas</p>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="electricidad.html">Electricidad</a></li>
+                <li><a href="tipos-energia.html">Tipos de Energía</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="content-main">
+        <section class="content-section">
+            <h2>¿Qué es un circuito en paralelo?</h2>
+            <p>
+                En un circuito en paralelo, los receptores se conectan en ramas separadas, creando múltiples caminos
+                para la corriente. Cada componente está conectado directamente a los bornes de la fuente de energía.
+            </p>
+
+            <div class="svg-container">
+                <svg viewBox="0 0 400 300" class="circuit-svg" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Ramas Principales -->
+                    <path d="M 80 150 L 120 150 M 280 150 L 320 150" fill="none" stroke="#546e7a" stroke-width="8" />
+
+                    <!-- Rama 1 -->
+                    <path d="M 120 150 L 120 80 L 280 80 L 280 150" fill="none" stroke="#546e7a" stroke-width="8"
+                        stroke-linejoin="round" />
+                    <path d="M 120 150 L 120 80 L 280 80 L 280 150" class="wire-flow" fill="none" />
+
+                    <!-- Rama 2 -->
+                    <path d="M 120 150 L 120 220 L 280 220 L 280 150" fill="none" stroke="#546e7a" stroke-width="8"
+                        stroke-linejoin="round" />
+                    <path d="M 120 150 L 120 220 L 280 220 L 280 150" class="wire-flow" fill="none" />
+
+                    <!-- Conexión a Batería -->
+                    <path d="M 80 150 L 80 260 L 320 260 L 320 150" fill="none" stroke="#546e7a" stroke-width="8" />
+                    <path d="M 320 150 L 320 260 L 80 260 L 80 150" class="wire-flow" fill="none" />
+
+                    <!-- Batería -->
+                    <rect x="170" y="240" width="60" height="40" rx="5" fill="#37474f" />
+                    <rect x="230" y="250" width="10" height="20" rx="2" fill="#ffc107" />
+
+                    <!-- Lámparas con Resistencia Zigzag -->
+                    <g transform="translate(200, 80)">
+                        <circle r="20" fill="#455a64" />
+                        <circle r="15" class="bulb-glow" />
+                        <!-- Símbolo de resistencia zigzag -->
+                        <path d="M -12 0 L -8 -10 L -4 10 L 0 -10 L 4 10 L 8 -10 L 12 0" fill="none" stroke="white"
+                            stroke-width="2" stroke-linejoin="round" />
+                    </g>
+                    <g transform="translate(200, 220)">
+                        <circle r="20" fill="#455a64" />
+                        <circle r="15" class="bulb-glow" />
+                        <path d="M -12 0 L -8 -10 L -4 10 L 0 -10 L 4 10 L 8 -10 L 12 0" fill="none" stroke="white"
+                            stroke-width="2" stroke-linejoin="round" />
+                    </g>
+
+                    <!-- Electrones Branching -->
+                    <!-- Rama Superior -->
+                    <circle r="4" class="electron">
+                        <animateMotion dur="4s" repeatCount="indefinite" path="M 120 150 L 120 80 L 280 80 L 280 150"
+                            rotate="auto" />
+                    </circle>
+                    <circle r="4" class="electron">
+                        <animateMotion dur="4s" begin="2s" repeatCount="indefinite"
+                            path="M 120 150 L 120 80 L 280 80 L 280 150" rotate="auto" />
+                    </circle>
+                    <!-- Rama Inferior -->
+                    <circle r="4" class="electron">
+                        <animateMotion dur="4s" begin="1s" repeatCount="indefinite"
+                            path="M 120 150 L 120 220 L 280 220 L 280 150" rotate="auto" />
+                    </circle>
+                    <circle r="4" class="electron">
+                        <animateMotion dur="4s" begin="3s" repeatCount="indefinite"
+                            path="M 120 150 L 120 220 L 280 220 L 280 150" rotate="auto" />
+                    </circle>
+                    <!-- Tronco Común -->
+                    <circle r="4" class="electron">
+                        <animateMotion dur="2s" repeatCount="indefinite" path="M 320 150 L 320 260 L 80 260 L 80 150"
+                            rotate="auto" />
+                    </circle>
+                </svg>
+            </div>
+
+            <div class="key-points">
+                <strong>Propiedades:</strong>
+                <ul>
+                    <li><strong>Voltaje ($V$):</strong> Es el mismo en todas las ramas.</li>
+                    <li><strong>Corriente ($I$):</strong> Se suma de todas las ramas ($I_{total} = I_1 + I_2$).</li>
+                    <li><strong>Independencia:</strong> Si una lámpara se quema, las demás siguen funcionando.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Resistencia Equivalente</h2>
+            <p>
+                En paralelo, la resistencia total es menor que la menor de las resistencias individuales:
+            </p>
+            <div class="equation">
+                $$\frac{1}{R_T} = \frac{1}{R_1} + \frac{1}{R_2} + \frac{1}{R_3}$$
+            </div>
+            <p>
+                Este es el sistema que usamos en nuestras casas: permite apagar la luz de la cocina sin que se apague la
+                tele del living.
+            </p>
+        </section>
+
+        <div class="back-button-container">
+            <a href="electricidad.html" class="back-button">← Volver a Electricidad</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Portal de Física para Secundaria</p>
+        </div>
+    </footer>
+    <script src="js/dark-mode.js"></script>
+</body>
+
+</html>

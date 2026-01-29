@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ley de Coulomb - Portal de Física</title>
+    <style>
+        .svg-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 40px auto;
+            background: #0d1b2a;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 2px solid #00e5ff;
+            overflow: hidden;
+        }
+
+        .coulomb-svg {
+            width: 100%;
+            height: auto;
+        }
+
+        .charge-plus {
+            fill: #f44336;
+            filter: drop-shadow(0 0 8px #f44336);
+        }
+
+        .charge-minus {
+            fill: #2196f3;
+            filter: drop-shadow(0 0 8px #2196f3);
+        }
+
+        .force-arrow {
+            stroke: #fff;
+            stroke-width: 3;
+            fill: none;
+            marker-end: url(#arrowhead);
+        }
+
+        @keyframes attract {
+            0% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(10px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes attract-reverse {
+            0% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(-10px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .q1-anim {
+            animation: attract 2s ease-in-out infinite;
+        }
+
+        .q2-anim {
+            animation: attract-reverse 2s ease-in-out infinite;
+        }
+
+        body.dark-mode .svg-container {
+            background: #050a14;
+        }
+    </style>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
+    <header>
+        <h1>⚛️ Ley de Coulomb</h1>
+        <p>La fuerza invisible entre las cargas</p>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="electricidad.html">Electricidad</a></li>
+                <li><a href="tipos-energia.html">Tipos de Energía</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="content-main">
+        <section class="content-section">
+            <h2>¿Qué dice la Ley de Coulomb?</h2>
+            <p>
+                Charles-Augustin de Coulomb descubrió que la fuerza de atracción o repulsión entre dos cargas eléctricas
+                es directamente proporcional al producto de sus cargas e inversamente proporcional al cuadrado de la
+                distancia que las separa.
+            </p>
+
+            <div class="svg-container">
+                <svg viewBox="0 0 400 200" class="coulomb-svg" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="white" />
+                        </marker>
+                    </defs>
+
+                    <!-- Carga 1 (+) -->
+                    <g class="q1-anim">
+                        <circle cx="100" cy="100" r="30" class="charge-plus" />
+                        <text x="100" y="105" font-family="Arial" font-size="24" fill="white" text-anchor="middle"
+                            font-weight="bold">+</text>
+                        <!-- Flecha de fuerza -->
+                        <line x1="135" y1="100" x2="175" y2="100" class="force-arrow" />
+                    </g>
+
+                    <!-- Carga 2 (-) -->
+                    <g class="q2-anim">
+                        <circle cx="300" cy="100" r="30" class="charge-minus" />
+                        <text x="300" y="110" font-family="Arial" font-size="34" fill="white" text-anchor="middle"
+                            font-weight="bold">-</text>
+                        <!-- Flecha de fuerza -->
+                        <line x1="265" y1="100" x2="225" y2="100" class="force-arrow" />
+                    </g>
+
+                    <text x="200" y="180" font-family="Arial" font-size="14" fill="#64b5f6"
+                        text-anchor="middle">Atracción por cargas opuestas</text>
+                </svg>
+            </div>
+
+            <div class="key-points">
+                <strong>Variables fundamentales:</strong>
+                <ul>
+                    <li><strong>$q_1, q_2$:</strong> Magnitud de las cargas (en Coulombs).</li>
+                    <li><strong>$r$:</strong> Distancia entre los centros de las cargas.</li>
+                    <li><strong>$k$:</strong> Constante de Coulomb ($9 \times 10^9\
+                        \text{N}\cdot\text{m}^2/\text{C}^2$).</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>La Ecuación Matemática</h2>
+            <div class="equation">
+                $$F = k \frac{|q_1 \cdot q_2|}{r^2}$$
+            </div>
+            <p>
+                <strong>¿Qué pasa si duplicamos la distancia?</strong> Como la distancia está al cuadrado y en el
+                denominador ($1/r^2$), la fuerza se reduce a la cuarta parte. ¡La distancia es un factor crítico!
+            </p>
+        </section>
+
+        <div class="back-button-container">
+            <a href="electricidad.html" class="back-button">← Volver a Electricidad</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Portal de Física para Secundaria</p>
+        </div>
+    </footer>
+    <script src="js/dark-mode.js"></script>
+</body>
+
+</html>

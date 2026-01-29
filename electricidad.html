@@ -4,11 +4,167 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Electricidad</title>
+  <title>Electricidad - Portal de Física</title>
   <meta name="description" content="Electrostática, magnetismo y circuitos eléctricos para secundaria.">
-  <link rel="stylesheet" href="css/index.css">
+  <style>
+    .hero-section {
+      background: linear-gradient(135deg, #0d47a1, #1565c0, #1976d2);
+      color: white;
+      padding: 80px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
 
-  <!-- Polyfill y MathJax -->
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(255, 213, 79, 0.15) 0%, transparent 70%);
+      transform: translate(-50%, -50%);
+      animation: elec-pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes elec-pulse {
+
+      0%,
+      100% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.4);
+      }
+    }
+
+    body.dark-mode .hero-section {
+      background: linear-gradient(135deg, #0a0a2e, #0d1b3e, #0a1628);
+    }
+
+    .elec-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      padding: 0 20px;
+    }
+
+    .elec-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .elec-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    body.dark-mode .elec-card {
+      background: #16213e;
+      border: 1px solid #00e5ff;
+      box-shadow: 0 0 15px rgba(0, 229, 255, 0.15);
+    }
+
+    body.dark-mode .elec-card:hover {
+      box-shadow: 0 0 25px rgba(0, 229, 255, 0.3);
+    }
+
+    .elec-card-img {
+      width: 100%;
+      height: 200px;
+      display: block;
+      object-fit: contain;
+      background: #0d1b2a;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+
+    .elec-card-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .elec-card-body h3 {
+      font-size: 1.2rem;
+      color: #1565c0;
+      margin-bottom: 10px;
+    }
+
+    body.dark-mode .elec-card-body h3 {
+      color: #4fc3f7;
+    }
+
+    .elec-card-body p {
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    body.dark-mode .elec-card-body p {
+      color: #ccc;
+    }
+
+    .elec-card-formula {
+      margin-top: 12px;
+      margin-bottom: 20px;
+      padding: 10px;
+      background: #f0f8ff;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 1.1rem;
+      color: #0d47a1;
+    }
+
+    body.dark-mode .elec-card-formula {
+      background: #0a1628;
+      color: #4fc3f7;
+    }
+
+    .elec-card-btn {
+      display: inline-block;
+      margin-top: auto;
+      padding: 10px 24px;
+      background: linear-gradient(135deg, #1565c0, #1976d2);
+      color: white;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      text-align: center;
+      align-self: center;
+    }
+
+    .elec-card-btn:hover {
+      background: linear-gradient(135deg, #0d47a1, #1565c0);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(21, 101, 192, 0.4);
+    }
+
+    body.dark-mode .elec-card-btn {
+      background: transparent;
+      border: 1px solid #00e5ff;
+      color: #00e5ff;
+      box-shadow: 0 0 8px rgba(0, 229, 255, 0.2);
+    }
+
+    body.dark-mode .elec-card-btn:hover {
+      background: rgba(0, 229, 255, 0.1);
+      box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+    }
+  </style>
+  <link rel="stylesheet" href="css/index.css">
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <script>
@@ -18,9 +174,7 @@
         displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: ['base', 'ams', 'noerrors', 'noundefined']
       },
-      svg: {
-        fontCache: 'global'
-      }
+      svg: { fontCache: 'global' }
     };
   </script>
 </head>
@@ -30,11 +184,18 @@
   <header>
     <h1>⚡ Electricidad</h1>
     <p>Electrostática, magnetismo y circuitos eléctricos</p>
+    <div class="search-container">
+      <div class="search-input-wrapper">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="grokSearch" placeholder="Grokipedia: Busca temas de física...">
+      </div>
+      <div id="searchResults" class="search-results"></div>
+    </div>
     <nav>
       <ul>
         <li><a href="index.html">Inicio</a></li>
         <li><a href="tipos-energia.html">Tipos de Energía</a></li>
-        <li><a href="alternativas.html" class="active">Energías Alternativas</a></li>
+        <li><a href="alternativas.html">Energías Alternativas</a></li>
         <li><a href="calculadora.html">Calculadora</a></li>
         <li><a href="quiz.html">Quiz</a></li>
         <li><a href="guia.html">Guía</a></li>
@@ -43,6 +204,13 @@
   </header>
 
   <main class="content-main">
+    <section class="hero-section">
+      <h2 style="font-size: 2.5rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); position: relative;">El Mundo de la
+        Electricidad</h2>
+      <p style="font-size: 1.2rem; position: relative; opacity: 0.9;">De las cargas estáticas a los circuitos que mueven
+        el mundo</p>
+    </section>
+
     <section class="content-section">
       <h2>¿Qué es la electricidad?</h2>
       <p>
@@ -56,33 +224,92 @@
       </div>
     </section>
 
-    <section class="cards">
-      <div class="card">
-        <h2>⚡ Electrostática</h2>
-        <p>Estudia las fuerzas entre cargas eléctricas en reposo.</p>
-        <div class="equation">$$F = k \frac{q_1 q_2}{r^2}$$</div>
-        <div class="example">
-          <strong>Ejemplo:</strong> un globo frotado atrae pequeños papeles por carga eléctrica.
+    <!-- Cards con SVGs animados -->
+    <section class="content-section">
+      <h2>Temas fundamentales</h2>
+      <div class="elec-cards">
+
+        <!-- Card: Circuito Simple -->
+        <div class="elec-card">
+          <img src="svg/circuito-simple.svg" alt="Circuito Simple" class="elec-card-img">
+          <div class="elec-card-body">
+            <h3>🔌 Circuito Simple</h3>
+            <p>Un circuito básico conecta una fuente de voltaje, un conductor y una carga. La corriente fluye cuando hay
+              una diferencia de potencial.</p>
+            <div class="elec-card-formula">$$V = I \cdot R$$</div>
+            <a href="circuito-simple.html" class="elec-card-btn">Saber más →</a>
+          </div>
         </div>
-      </div>
-      <div class="card">
-        <h2>🧲 Magnetismo</h2>
-        <p>Las corrientes eléctricas generan campos magnéticos.</p>
-        <div class="equation">$$B = \mu_0 \frac{I}{2\pi r}$$</div>
-        <div class="example">
-          <strong>Ejemplo:</strong> un electroimán en timbres y relés.
+
+        <!-- Card: Circuito Serie -->
+        <div class="elec-card">
+          <img src="svg/circuito-serie.svg" alt="Circuito Serie" class="elec-card-img">
+          <div class="elec-card-body">
+            <h3>🔗 Circuito en Serie</h3>
+            <p>Las resistencias se conectan una tras otra. La corriente es la misma en todas, pero el voltaje se
+              reparte.</p>
+            <div class="elec-card-formula">$$R_T = R_1 + R_2 + R_3$$</div>
+            <a href="circuito-serie.html" class="elec-card-btn">Saber más →</a>
+          </div>
         </div>
-      </div>
-      <div class="card">
-        <h2>🔌 Circuitos eléctricos</h2>
-        <p>La corriente se produce cuando hay una diferencia de potencial.</p>
-        <div class="equation">$$V = I \cdot R$$</div>
-        <div class="example">
-          <strong>Ejemplo:</strong> en serie aumenta la resistencia, en paralelo aumenta la corriente.
+
+        <!-- Card: Circuito Paralelo -->
+        <div class="elec-card">
+          <img src="svg/circuito-paralelo.svg" alt="Circuito Paralelo" class="elec-card-img">
+          <div class="elec-card-body">
+            <h3>⚡ Circuito en Paralelo</h3>
+            <p>Las resistencias comparten los mismos nodos. El voltaje es igual en todas, pero la corriente se divide.
+            </p>
+            <div class="elec-card-formula">$$\frac{1}{R_T} = \frac{1}{R_1} + \frac{1}{R_2} + \frac{1}{R_3}$$</div>
+            <a href="circuito-paralelo.html" class="elec-card-btn">Saber más →</a>
+          </div>
         </div>
+
+        <!-- Card: Ley de Coulomb -->
+        <div class="elec-card">
+          <img src="svg/coulomb.svg" alt="Ley de Coulomb" class="elec-card-img">
+          <div class="elec-card-body">
+            <h3>⚛️ Ley de Coulomb</h3>
+            <p>La fuerza entre dos cargas es proporcional al producto de las cargas e inversamente proporcional al
+              cuadrado de la distancia.</p>
+            <div class="elec-card-formula">$$F = k \frac{q_1 \cdot q_2}{r^2}$$</div>
+            <a href="coulomb.html" class="elec-card-btn">Saber más →</a>
+          </div>
+        </div>
+
+        <!-- Card: Magnetismo (Oersted y Faraday) -->
+        <div class="elec-card">
+          <img src="svg/magnetismo.svg" alt="Magnetismo" class="elec-card-img">
+          <div class="elec-card-body">
+            <h3>🧲 Magnetismo e Inducción</h3>
+            <p>Descubre cómo la electricidad crea magnetismo (Oersted) y cómo el magnetismo en movimiento crea
+              electricidad (Faraday).</p>
+            <div class="elec-card-formula">
+              $$B = \mu_0 \frac{I}{2\pi r} \quad \text{y} \quad \varepsilon = -N \frac{\Delta \Phi}{\Delta t}$$
+            </div>
+            <div style="display: flex; gap: 10px; justify-content: center; margin-top: auto;">
+              <a href="magnetismo.html" class="elec-card-btn" style="margin-top: 0;">Oersted →</a>
+              <a href="faraday.html" class="elec-card-btn" style="margin-top: 0;">Faraday →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: Potencia y Energía -->
+        <div class="elec-card">
+          <img src="svg/potencia-kwh.svg" alt="Potencia y Energía" class="elec-card-img">
+          <div class="elec-card-body">
+            <h3>💡 Potencia y Energía</h3>
+            <p>La potencia eléctrica mide cuánta energía consume un dispositivo por unidad de tiempo. Se factura en kWh.
+            </p>
+            <div class="elec-card-formula">$$P = V \cdot I \qquad E = P \cdot t$$</div>
+            <a href="potencia-energia.html" class="elec-card-btn">Saber más →</a>
+          </div>
+        </div>
+
       </div>
     </section>
 
+    <!-- Aplicaciones -->
     <section class="content-section">
       <h2>Aplicaciones en la vida cotidiana</h2>
       <div class="content-grid">
@@ -98,9 +325,10 @@
       </div>
     </section>
 
+    <!-- Ejemplos resueltos -->
     <section class="cards">
       <div class="card">
-        <h2>🧩 Ejemplo resuelto</h2>
+        <h2>🧩 Ejemplo: Ley de Ohm</h2>
         <p>Si un circuito tiene 12 V y una resistencia de 4 Ω, ¿qué corriente circula?</p>
         <div class="equation">$$I = \frac{V}{R} = \frac{12}{4} = 3\ \text{A}$$</div>
         <div class="example">
@@ -108,22 +336,28 @@
         </div>
       </div>
       <div class="card">
+        <h2>🧩 Ejemplo: Potencia</h2>
+        <p>Una lámpara conectada a 220 V consume 0.5 A. ¿Cuánta potencia usa?</p>
+        <div class="equation">$$P = V \cdot I = 220 \times 0.5 = 110\ \text{W}$$</div>
+        <div class="example">
+          <strong>Si funciona 5 horas:</strong> $E = 0.11 \times 5 = 0.55\ \text{kWh}$
+        </div>
+      </div>
+      <div class="card" style="overflow: hidden;">
+        <img src="svg/autoevaluacion.svg" alt="Autoevaluación" class="elec-card-img"
+          style="border-radius: 12px 12px 0 0; margin: -20px -20px 15px -20px; width: calc(100% + 40px);">
         <h2>✅ Autoevaluación</h2>
         <p>Dos cargas iguales se repelen. ¿Qué pasa si duplicas la distancia?</p>
         <div class="example">
-          <strong>Pista:</strong> observa el denominador $r^2$.
+          <strong>Pista:</strong> observa el denominador $r^2$ en la Ley de Coulomb.
         </div>
       </div>
     </section>
 
-    <section class="content-section">
-      <img src="circuito_serie.png" alt="Circuito eléctrico en serie">
-    </section>
-
-    <!-- Quiz específico de Electricidad -->
-    <section class="content-section">
-      <h2>🎮 Quiz: Electricidad</h2>
-      <p>Pon a prueba tu conocimiento sobre electricidad:</p>
+    <!-- Quiz -->
+    <section class="content-section" style="text-align: center;">
+      <h2 style="text-align: center;">🎮 Quiz: Electricidad</h2>
+      <p style="text-align: center;">Pon a prueba tu conocimiento sobre electricidad:</p>
     </section>
 
     <section class="quiz-container" id="quiz-electricidad">
@@ -157,7 +391,7 @@
         {
           question: "¿Qué genera un campo magnético?",
           equation: "",
-          options: ["Cargas eléctricas en reposo", "Cargas eléctricas en movimiento (corriente)", "Solo imanes permanentes", "El vacío"],
+          options: ["Cargas en reposo", "Cargas en movimiento (corriente)", "Solo imanes permanentes", "El vacío"],
           correct: 1,
           explanation: "Las cargas eléctricas en movimiento (corriente eléctrica) generan campos magnéticos. Es la base del electromagnetismo."
         },
@@ -249,6 +483,7 @@
 
       document.addEventListener('DOMContentLoaded', initQuizElectricidad);
     </script>
+
     <div class="back-button-container">
       <a href="javascript:history.back()" class="back-button">← Volver</a>
     </div>
@@ -270,10 +505,11 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 Portal de Física para Secundaria - Educación para todos</p>
+      <p>&copy; 2026 Portal de Física para Secundaria</p>
     </div>
   </footer>
   <script src="js/dark-mode.js"></script>
+  <script src="js/search.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magnetismo - Portal de Física</title>
+    <style>
+        .svg-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 40px auto;
+            background: #0d1b2a;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 2px solid #00e5ff;
+        }
+
+        .magnet-svg {
+            width: 100%;
+            height: auto;
+        }
+
+        .magnetic-field {
+            fill: none;
+            stroke: #00e5ff;
+            stroke-width: 2;
+            stroke-dasharray: 4, 8;
+            opacity: 0.5;
+            animation: field-spin 5s linear infinite;
+        }
+
+        @keyframes field-spin {
+            from {
+                stroke-dashoffset: 50;
+            }
+
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        .wire {
+            stroke: #795548;
+            stroke-width: 12;
+            stroke-linecap: round;
+        }
+
+        .electron {
+            fill: #ffeb3b;
+            filter: drop-shadow(0 0 3px #ffeb3b);
+        }
+
+        body.dark-mode .svg-container {
+            background: #050a14;
+        }
+    </style>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
+    <header>
+        <h1>🧲 Magnetismo</h1>
+        <p>La fuerza que une a la electricidad con el movimiento</p>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="electricidad.html">Electricidad</a></li>
+                <li><a href="tipos-energia.html">Tipos de Energía</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="content-main">
+        <section class="content-section">
+            <h2>¿Qué es el electromagnetismo?</h2>
+            <p>
+                El magnetismo y la electricidad son dos caras de la misma moneda. Hans Christian Ørsted descubrió que
+                una corriente eléctrica crea un campo magnético a su alrededor. Esta idea permitió crear desde motores
+                eléctricos hasta los altavoces de tu teléfono.
+            </p>
+
+            <div class="svg-container">
+                <svg viewBox="0 0 400 300" class="magnet-svg" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Campo Magnético (Círculos concéntricos) -->
+                    <ellipse cx="200" cy="150" rx="40" ry="80" class="magnetic-field" />
+                    <ellipse cx="200" cy="150" rx="60" ry="110" class="magnetic-field" style="animation-delay: -1s;" />
+                    <ellipse cx="200" cy="150" rx="80" ry="140" class="magnetic-field" style="animation-delay: -2s;" />
+
+                    <!-- Cable -->
+                    <line x1="200" y1="20" x2="200" y2="280" class="wire" />
+
+                    <!-- Electrones fluyendo -->
+                    <circle r="4" class="electron">
+                        <animateMotion dur="2s" repeatCount="indefinite" path="M 200 280 L 200 20" />
+                    </circle>
+                    <circle r="4" class="electron">
+                        <animateMotion dur="2s" begin="0.5s" repeatCount="indefinite" path="M 200 280 L 200 20" />
+                    </circle>
+                    <circle r="4" class="electron">
+                        <animateMotion dur="2s" begin="1s" repeatCount="indefinite" path="M 200 280 L 200 20" />
+                    </circle>
+                    <circle r="4" class="electron">
+                        <animateMotion dur="2s" begin="1.5s" repeatCount="indefinite" path="M 200 280 L 200 20" />
+                    </circle>
+
+                    <!-- Etiquetas con MathJax usando foreignObject -->
+                    <foreignObject x="220" y="135" width="180" height="60">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                            style="color: #00e5ff; font-family: Arial; font-size: 14px; font-weight: bold; text-align: center; white-space: nowrap;">
+                            Campo Magnético ($\vec{B}$)
+                        </div>
+                    </foreignObject>
+
+                    <foreignObject x="50" y="30" width="140" height="60">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                            style="color: #ffeb3b; font-family: Arial; font-size: 14px; font-weight: bold; text-align: center; white-space: nowrap;">
+                            Corriente ($I$)
+                        </div>
+                    </foreignObject>
+                </svg>
+            </div>
+
+            <div class="key-points">
+                <strong>Puntos clave:</strong>
+                <ul>
+                    <li><strong>Regla de la mano derecha:</strong> Si el pulgar apunta hacia la corriente, los dedos
+                        indican el sentido del campo magnético.</li>
+                    <li><strong>Electroimanes:</strong> Podemos crear un imán simplemente haciendo circular electricidad
+                        por una bobina.</li>
+                    <li><strong>Motores:</strong> Usan la fuerza magnética para convertir electricidad en movimiento.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Experimento de Oersted</h2>
+            <p>
+                Si colocas una brújula cerca de un cable con corriente, verás que la aguja se mueve. Esto demuestra que
+                la electricidad afecta al magnetismo.
+            </p>
+            <div class="equation">
+                $$B = \mu_0 \frac{I}{2\pi r}$$
+            </div>
+            <p>
+                Donde $B$ es la intensidad del campo magnético, $I$ es la corriente y $r$ la distancia al cable.
+            </p>
+        </section>
+
+        <div class="back-button-container">
+            <a href="electricidad.html" class="back-button">← Volver a Electricidad</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Portal de Física para Secundaria</p>
+        </div>
+    </footer>
+    <script src="js/dark-mode.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Potencia y Energía - Portal de Física</title>
+    <style>
+        .svg-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 40px auto;
+            background: #0d1b2a;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 2px solid #00e5ff;
+        }
+
+        .energy-svg {
+            width: 100%;
+            height: auto;
+        }
+
+        .meter-bg {
+            fill: #102027;
+        }
+
+        .meter-text {
+            fill: #00e5ff;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .energy-particle {
+            fill: #ffeb3b;
+            opacity: 0.8;
+            filter: drop-shadow(0 0 5px #ffeb3b);
+        }
+
+        @keyframes consume {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(100px) scale(0);
+                opacity: 0;
+            }
+        }
+
+        .particle-anim {
+            animation: consume 2s linear infinite;
+        }
+
+        .rotating-disc {
+            fill: none;
+            stroke: #00e5ff;
+            stroke-width: 5;
+            stroke-dasharray: 20, 10;
+            animation: rotate 4s linear infinite;
+            transform-origin: center;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        body.dark-mode .svg-container {
+            background: #050a14;
+        }
+    </style>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
+    <header>
+        <h1>💡 Potencia y Energía</h1>
+        <p>Entendiendo el consumo y la factura eléctrica</p>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="electricidad.html">Electricidad</a></li>
+                <li><a href="tipos-energia.html">Tipos de Energía</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="content-main">
+        <section class="content-section">
+            <h2>¿Qué es la potencia eléctrica?</h2>
+            <p>
+                La potencia es la rapidez con la que un dispositivo consume o transforma la energía. Se mide en Watts
+                (W). Por ejemplo, una lámpara de 100W consume más energía por segundo que una de 10W.
+            </p>
+
+            <div class="svg-container">
+                <svg viewBox="0 0 400 200" class="energy-svg" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Medidor Digital -->
+                    <rect x="100" y="50" width="200" height="100" rx="10" class="meter-bg" stroke="#546e7a"
+                        stroke-width="4" />
+                    <text x="200" y="100" font-size="30" text-anchor="middle" class="meter-text"
+                        font-weight="bold">1248.52</text>
+                    <text x="200" y="130" font-size="14" text-anchor="middle" fill="#90a4ae">TOTAL kWh</text>
+
+                    <!-- Disco giratorio -->
+                    <circle cx="340" cy="100" r="30" class="meter-bg" stroke="#546e7a" stroke-width="2" />
+                    <circle cx="340" cy="100" r="25" class="rotating-disc" />
+
+                    <!-- Partículas de energía "cayendo" -->
+                    <circle cx="50" cy="50" r="5" class="energy-particle particle-anim" />
+                    <circle cx="70" cy="30" r="5" class="energy-particle particle-anim"
+                        style="animation-delay: 0.5s;" />
+                    <circle cx="40" cy="80" r="5" class="energy-particle particle-anim"
+                        style="animation-delay: 1.2s;" />
+                    <circle cx="80" cy="70" r="5" class="energy-particle particle-anim"
+                        style="animation-delay: 1.8s;" />
+
+                    <text x="60" y="160" font-size="12" fill="#ffeb3b" text-anchor="middle">Energía entrante</text>
+                </svg>
+            </div>
+
+            <div class="key-points">
+                <strong>Conceptos clave:</strong>
+                <ul>
+                    <li><strong>Potencia ($P$):</strong> La capacidad de trabajo. Se mide en Watts (W) o kilowatts (kW).
+                    </li>
+                    <li><strong>Energía ($E$):</strong> El total consumido acumulado. Se factura en kilowatt-hora (kWh).
+                    </li>
+                    <li><strong>Tiempo ($t$):</strong> Cuánto tiempo estuvo encendido el aparato.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Cómo se calcula</h2>
+            <div class="equation">
+                $$P = V \cdot I \qquad E = P \cdot t$$
+            </div>
+            <p>
+                Para saber cuánto vas a pagar, las empresas eléctricas multiplican los <strong>kWh</strong> consumidos
+                por el precio de la tarifa vigente. ¡Controlar la potencia de tus electrodomésticos ayuda a ahorrar!
+            </p>
+        </section>
+
+        <div class="back-button-container">
+            <a href="electricidad.html" class="back-button">← Volver a Electricidad</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Portal de Física para Secundaria</p>
+        </div>
+    </footer>
+    <script src="js/dark-mode.js"></script>
+</body>
+
+</html>

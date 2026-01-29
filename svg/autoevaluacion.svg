@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200">
+  <rect width="300" height="200" fill="#0d1b2a"/>
+
+  <!-- Ambient glow -->
+  <circle cx="150" cy="90" r="80" fill="#4fc3f7" opacity="0.04">
+    <animate attributeName="r" values="75;85;75" dur="3s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Puzzle piece 1 (top-left) - already placed -->
+  <g transform="translate(75, 35)">
+    <path d="M0,0 L25,0 L25,10 Q30,10 30,15 Q30,20 25,20 L25,30 L55,30 L55,20 Q50,20 50,15 Q50,10 55,10 L55,0 L80,0 L80,55 L55,55 L55,45 Q50,45 50,40 Q50,35 55,35 L55,30 L25,30 L25,35 Q30,35 30,40 Q30,45 25,45 L25,55 L0,55 Z"
+      fill="#1565c0" stroke="#4fc3f7" stroke-width="1.5" opacity="0.9">
+      <animate attributeName="opacity" values="0.85;1;0.85" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <!-- Checkmark on piece -->
+    <path d="M28,20 L35,28 L50,12" fill="none" stroke="#66bb6a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- Puzzle piece 2 (top-right) - already placed -->
+  <g transform="translate(155, 35)">
+    <path d="M0,0 L25,0 L25,10 Q30,10 30,15 Q30,20 25,20 L25,30 L55,30 L55,55 L25,55 L25,45 Q20,45 20,40 Q20,35 25,35 L25,30 L0,30 L0,20 Q5,20 5,15 Q5,10 0,10 Z"
+      fill="#0d47a1" stroke="#4fc3f7" stroke-width="1.5" opacity="0.85">
+      <animate attributeName="opacity" values="0.8;0.95;0.8" dur="2.5s" repeatCount="indefinite"/>
+    </path>
+    <!-- Question mark -->
+    <text x="27" y="30" text-anchor="middle" fill="#ffd54f" font-size="18" font-family="Arial" font-weight="bold">?</text>
+  </g>
+
+  <!-- Puzzle piece 3 (bottom-left) - placed -->
+  <g transform="translate(75, 90)">
+    <path d="M0,0 L25,0 L25,-10 Q30,-10 30,-5 Q30,0 25,0 L25,0 L55,0 L55,-10 Q60,-10 60,-5 Q60,0 55,0 L55,0 L80,0 L80,55 L55,55 L55,45 Q50,45 50,40 Q50,35 55,35 L55,0 L25,0 L25,35 Q30,35 30,40 Q30,45 25,45 L25,55 L0,55 Z"
+      fill="#1a237e" stroke="#4fc3f7" stroke-width="1.5" opacity="0.85">
+      <animate attributeName="opacity" values="0.8;0.95;0.8" dur="3s" repeatCount="indefinite"/>
+    </path>
+    <!-- Lightning icon -->
+    <polygon points="32,15 26,30 32,30 24,48 40,26 34,26 42,15" fill="#ffd54f" opacity="0.7">
+      <animate attributeName="opacity" values="0.5;0.9;0.5" dur="1.8s" repeatCount="indefinite"/>
+    </polygon>
+  </g>
+
+  <!-- Puzzle piece 4 (bottom-right) - floating into place -->
+  <g>
+    <animateTransform attributeName="transform" type="translate" values="175,105;165,98;155,90;155,90" dur="3s" repeatCount="indefinite"/>
+    <animateMotion dur="3s" repeatCount="indefinite" keyTimes="0;0.6;1;1" keyPoints="0;0;1;1" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0 0 1 1">
+      <mpath href="#floatPath"/>
+    </animateMotion>
+    <path d="M0,0 L25,0 L25,-10 Q30,-10 30,-5 Q30,0 25,0 L55,0 L55,55 L25,55 L25,45 Q20,45 20,40 Q20,35 25,35 L25,0 L0,0 L0,20 Q5,20 5,15 Q5,10 0,10 Z"
+      fill="#283593" stroke="#66bb6a" stroke-width="1.5" stroke-dasharray="4,2">
+      <animate attributeName="stroke-dashoffset" values="0;12" dur="1.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite"/>
+    </path>
+    <!-- Atom icon -->
+    <circle cx="27" cy="25" r="3" fill="#4fc3f7" opacity="0.8"/>
+    <ellipse cx="27" cy="25" rx="12" ry="5" fill="none" stroke="#4fc3f7" stroke-width="0.8" opacity="0.5"/>
+    <ellipse cx="27" cy="25" rx="12" ry="5" fill="none" stroke="#4fc3f7" stroke-width="0.8" opacity="0.5" transform="rotate(60 27 25)"/>
+    <ellipse cx="27" cy="25" rx="12" ry="5" fill="none" stroke="#4fc3f7" stroke-width="0.8" opacity="0.5" transform="rotate(-60 27 25)"/>
+  </g>
+
+  <!-- Sparkle particles around puzzle -->
+  <circle r="2" fill="#ffd54f" opacity="0">
+    <animate attributeName="cx" values="90;85;80" dur="2.5s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="40;30;20" dur="2.5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0.8;0" dur="2.5s" repeatCount="indefinite"/>
+    <animate attributeName="r" values="0;2;0" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="1.5" fill="#66bb6a" opacity="0">
+    <animate attributeName="cx" values="220;225;230" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+    <animate attributeName="cy" values="50;35;22" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+    <animate attributeName="opacity" values="0;0.7;0" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+  </circle>
+  <circle r="1.5" fill="#4fc3f7" opacity="0">
+    <animate attributeName="cx" values="150;148;145" dur="3s" repeatCount="indefinite" begin="1s"/>
+    <animate attributeName="cy" values="150;158;165" dur="3s" repeatCount="indefinite" begin="1s"/>
+    <animate attributeName="opacity" values="0;0.6;0" dur="3s" repeatCount="indefinite" begin="1s"/>
+  </circle>
+
+  <!-- Progress bar at bottom -->
+  <rect x="80" y="160" width="140" height="6" rx="3" fill="#16213e" stroke="#4fc3f7" stroke-width="0.5" opacity="0.5"/>
+  <rect x="80" y="160" width="0" height="6" rx="3" fill="#66bb6a" opacity="0.8">
+    <animate attributeName="width" values="0;105;105;0" dur="4s" repeatCount="indefinite"/>
+  </rect>
+  <text x="150" y="175" text-anchor="middle" fill="#66bb6a" font-size="7" font-family="Arial" opacity="0.6">
+    75%
+    <animate attributeName="opacity" values="0.4;0.8;0.4" dur="4s" repeatCount="indefinite"/>
+  </text>
+
+  <!-- Title -->
+  <text x="150" y="193" text-anchor="middle" fill="#ffd54f" font-size="10" font-family="Arial" font-weight="bold" letter-spacing="1">AUTOEVALUACION</text>
+</svg>

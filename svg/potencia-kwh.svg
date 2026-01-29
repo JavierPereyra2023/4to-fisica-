@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200">
+  <rect width="300" height="200" fill="#0d1b2a"/>
+  <!-- Electric meter display -->
+  <rect x="85" y="25" width="130" height="75" rx="8" fill="#16213e" stroke="#4fc3f7" stroke-width="1.5"/>
+  <rect x="95" y="35" width="110" height="30" rx="4" fill="#0a1628"/>
+  <!-- Digital numbers rolling -->
+  <text x="195" y="58" text-anchor="end" fill="#ffd54f" font-family="'Courier New', monospace" font-size="20" font-weight="bold">
+    0.220
+    <animate attributeName="textContent" values="0.220" dur="1s"/>
+  </text>
+  <text x="200" y="58" fill="#ffd54f" font-size="10" font-family="Arial">kWh</text>
+  <!-- Spinning disk indicator -->
+  <circle cx="150" cy="82" r="6" fill="none" stroke="#ff8a65" stroke-width="1.5"/>
+  <line x1="150" y1="76" x2="150" y2="82" stroke="#ff8a65" stroke-width="1.5">
+    <animateTransform attributeName="transform" type="rotate" from="0 150 82" to="360 150 82" dur="2s" repeatCount="indefinite"/>
+  </line>
+  <!-- Lightning bolt -->
+  <g transform="translate(40, 50)">
+    <polygon points="12,0 4,15 10,15 0,30 16,12 10,12 20,0" fill="#ffd54f" opacity="0.8">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="1.5s" repeatCount="indefinite"/>
+    </polygon>
+  </g>
+  <!-- Power plug -->
+  <g transform="translate(235, 55)">
+    <rect x="0" y="0" width="20" height="14" rx="3" fill="#546e7a"/>
+    <rect x="4" y="-6" width="3" height="8" rx="1" fill="#78909c"/>
+    <rect x="13" y="-6" width="3" height="8" rx="1" fill="#78909c"/>
+    <!-- Cable -->
+    <path d="M20,7 Q35,7 40,15 Q45,25 55,25" fill="none" stroke="#546e7a" stroke-width="2"/>
+  </g>
+  <!-- Energy bar chart -->
+  <g transform="translate(60, 115)">
+    <!-- Bars -->
+    <rect x="0" y="30" width="25" height="30" rx="2" fill="#66bb6a" opacity="0.7">
+      <animate attributeName="height" values="25;30;25" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="35;30;35" dur="3s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="35" y="15" width="25" height="45" rx="2" fill="#4fc3f7" opacity="0.7">
+      <animate attributeName="height" values="40;45;40" dur="3.5s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="20;15;20" dur="3.5s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="70" y="5" width="25" height="55" rx="2" fill="#ff8a65" opacity="0.7">
+      <animate attributeName="height" values="50;55;50" dur="2.5s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="10;5;10" dur="2.5s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="105" y="20" width="25" height="40" rx="2" fill="#ffd54f" opacity="0.7">
+      <animate attributeName="height" values="35;40;35" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="25;20;25" dur="4s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="140" y="10" width="25" height="50" rx="2" fill="#ab47bc" opacity="0.7">
+      <animate attributeName="height" values="45;50;45" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="15;10;15" dur="3s" repeatCount="indefinite"/>
+    </rect>
+    <!-- Base line -->
+    <line x1="-5" y1="60" x2="170" y2="60" stroke="#4fc3f7" stroke-width="1" opacity="0.3"/>
+  </g>
+  <text x="150" y="190" text-anchor="middle" fill="#ffd54f" font-size="10" font-family="Arial" font-weight="bold" letter-spacing="1">POTENCIA Y ENERGIA</text>
+</svg>

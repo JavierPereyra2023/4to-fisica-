@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo de Fisión Nuclear - Portal de Física</title>
+    <style>
+        .svg-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 40px auto;
+            background: #050a14;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);
+            border: 2px solid #00e5ff;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .fission-svg {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Átomos */
+        .uranium {
+            fill: #7c4dff;
+            stroke: #b39ddb;
+            stroke-width: 2;
+            filter: drop-shadow(0 0 10px rgba(124, 77, 255, 0.5));
+        }
+
+        .fragment-kr {
+            fill: #ff7043;
+            filter: drop-shadow(0 0 8px #ff7043);
+        }
+
+        .fragment-ba {
+            fill: #4caf50;
+            filter: drop-shadow(0 0 8px #4caf50);
+        }
+
+        .atom-label {
+            fill: white;
+            font-family: Arial;
+            font-size: 12px;
+            font-weight: bold;
+            pointer-events: none;
+            text-anchor: middle;
+            dominant-baseline: middle;
+        }
+
+        /* Neutrones */
+        .neutron {
+            fill: #00e5ff;
+            filter: drop-shadow(0 0 5px #00e5ff);
+        }
+
+        /* Energía */
+        .energy-flash {
+            fill: white;
+            opacity: 0;
+        }
+
+        @keyframes fission-sequence {
+            0% {
+                transform: translate(0, 0);
+                opacity: 1;
+                scale: 1;
+            }
+
+            45% {
+                transform: scale(1.2);
+            }
+
+            50% {
+                opacity: 0;
+                scale: 0;
+            }
+        }
+
+        @keyframes neutron-fly {
+            0% {
+                transform: translate(0, 0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(var(--dx), var(--dy));
+                opacity: 1;
+            }
+        }
+
+        @keyframes flash {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 0.8;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .anim-fission {
+            animation: fission-sequence 0.5s forwards;
+            animation-delay: var(--delay);
+        }
+
+        .anim-neutron {
+            animation: neutron-fly 1.5s linear forwards;
+            animation-delay: var(--delay);
+        }
+
+        .anim-flash {
+            animation: flash 0.4s ease-out;
+            animation-delay: var(--delay);
+        }
+
+        .controls {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn-restart {
+            background: #00e5ff;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 50px;
+            color: #050a14;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-restart:hover {
+            background: #00b8d4;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.5);
+        }
+    </style>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
+    <header>
+        <h1>☢️ Reacción en Cadena</h1>
+        <p>Modelo de fisión del Uranio-235</p>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="nuclear.html">Energía Nuclear</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="content-main">
+        <section class="content-section">
+            <h2>Simulación de Fisión</h2>
+            <p>
+                Un neutrón lento impacta contra un núcleo de Uranio-235, volviéndolo inestable (U-236). El núcleo se
+                divide, liberando energía y 3 neutrones adicionales que inician una reacción en cadena.
+            </p>
+
+            <div class="svg-container" id="sim-container">
+                <svg viewBox="0 0 800 400" class="fission-svg" id="fission-svg" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Generado por JS para permitir reinicio -->
+                </svg>
+            </div>
+
+            <div class="controls">
+                <button class="btn-restart" onclick="startSimulation()">💥 Iniciar / Reiniciar Reacción</button>
+            </div>
+
+            <div class="key-points" style="margin-top: 40px;">
+                <strong>¿Qué estamos viendo?</strong>
+                <ul>
+                    <li><strong>Neutrón de incidencia:</strong> El pequeño punto celeste que inicia el proceso.</li>
+                    <li><strong>Fisión:</strong> El momento en que el núcleo púrpura se divide en fragmentos rosas.</li>
+                    <li><strong>Efecto dominó:</strong> Cada fisión produce nuevos neutrones que golpean otros núcleos
+                        cercanos.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const SVG_NS = "http://www.w3.org/2000/svg";
+        const WIDTH = 800;
+        const HEIGHT = 400;
+
+        function startSimulation() {
+            const svg = document.getElementById('fission-svg');
+            svg.innerHTML = ''; // Limpiar
+
+            // 1. Pre-colocar núcleos de Uranio en una cuadrícula un poco aleatoria
+            const nucleiPositions = [];
+            for (let x = 150; x < WIDTH; x += 120) {
+                for (let y = 50; y < HEIGHT; y += 100) {
+                    const nx = x + (Math.random() - 0.5) * 40;
+                    const ny = y + (Math.random() - 0.5) * 40;
+                    nucleiPositions.push({ x: nx, y: ny, hit: false });
+
+                    const u = document.createElementNS(SVG_NS, "circle");
+                    u.setAttribute("cx", nx);
+                    u.setAttribute("cy", ny);
+                    u.setAttribute("r", 20);
+                    u.setAttribute("class", "uranium");
+                    u.id = `u-${nucleiPositions.length - 1}`;
+                    svg.appendChild(u);
+
+                    const label = document.createElementNS(SVG_NS, "text");
+                    label.setAttribute("x", nx);
+                    label.setAttribute("y", ny);
+                    label.setAttribute("class", "atom-label");
+                    label.id = `l-${nucleiPositions.length - 1}`;
+                    label.textContent = "U";
+                    svg.appendChild(label);
+                }
+            }
+
+            // 2. Disparar neutrones iniciales (dos para más colisiones)
+            fireNeutron(0, HEIGHT / 3, 2.8, 0.2, 0);
+            fireNeutron(0, (2 * HEIGHT) / 3, 2.8, -0.2, 0.2);
+
+            function fireNeutron(x, y, vx, vy, delay) {
+                const neutron = document.createElementNS(SVG_NS, "circle");
+                neutron.setAttribute("r", 4);
+                neutron.setAttribute("class", "neutron");
+                svg.appendChild(neutron);
+
+                let posX = x;
+                let posY = y;
+                let startTime = performance.now() + (delay * 1000);
+
+                function animate(time) {
+                    if (time < startTime) {
+                        requestAnimationFrame(animate);
+                        return;
+                    }
+
+                    posX += vx * 2; // Velocidad ajustada
+                    posY += vy * 2;
+
+                    neutron.setAttribute("cx", posX);
+                    neutron.setAttribute("cy", posY);
+
+                    // Detectar colisión con núcleos no impactados
+                    for (let i = 0; i < nucleiPositions.length; i++) {
+                        const n = nucleiPositions[i];
+                        if (!n.hit) {
+                            const dist = Math.sqrt((posX - n.x) ** 2 + (posY - n.y) ** 2);
+                            if (dist < 20) {
+                                n.hit = true;
+                                triggerFission(n, i);
+                                if (svg.contains(neutron)) svg.removeChild(neutron);
+                                return;
+                            }
+                        }
+                    }
+
+                    if (posX < WIDTH && posX > 0 && posY < HEIGHT && posY > 0) {
+                        requestAnimationFrame(animate);
+                    } else {
+                        if (svg.contains(neutron)) svg.removeChild(neutron);
+                    }
+                }
+                requestAnimationFrame(animate);
+            }
+
+            function triggerFission(nuclei, index) {
+                const targetU = document.getElementById(`u-${index}`);
+                const targetL = document.getElementById(`l-${index}`);
+
+                // Efecto de explosión/flash
+                const flash = document.createElementNS(SVG_NS, "circle");
+                flash.setAttribute("cx", nuclei.x);
+                flash.setAttribute("cy", nuclei.y);
+                flash.setAttribute("r", 40);
+                flash.setAttribute("class", "energy-flash anim-flash");
+                svg.appendChild(flash);
+
+                // Desaparecer núcleo y etiqueta
+                if (targetU) targetU.remove();
+                if (targetL) targetL.remove();
+
+                // Crear fragmentos específicos: Kr (Kriptón) y Ba (Bario)
+                createFragment(nuclei.x, nuclei.y, (Math.random() - 1.5) * 2, (Math.random() - 0.5) * 2, "Kr", "fragment-kr");
+                createFragment(nuclei.x, nuclei.y, (Math.random() + 0.5) * 2, (Math.random() - 0.5) * 2, "Ba", "fragment-ba");
+
+                // Liberar 3 neutrones nuevos con direcciones aleatorias hacia adelante
+                setTimeout(() => {
+                    for (let k = 0; k < 3; k++) {
+                        const angle = (Math.random() - 0.5) * 1.5; // Abanico hacia adelante
+                        const speed = 2 + Math.random();
+                        fireNeutron(nuclei.x, nuclei.y, Math.cos(angle) * speed, Math.sin(angle) * speed, 0);
+                    }
+                }, 50);
+            }
+
+            function createFragment(x, y, vx, vy, symbol, colorClass) {
+                const g = document.createElementNS(SVG_NS, "g");
+
+                const c = document.createElementNS(SVG_NS, "circle");
+                c.setAttribute("cx", x);
+                c.setAttribute("cy", y);
+                c.setAttribute("r", 15);
+                c.setAttribute("class", colorClass);
+                g.appendChild(c);
+
+                const t = document.createElementNS(SVG_NS, "text");
+                t.setAttribute("x", x);
+                t.setAttribute("y", y);
+                t.setAttribute("class", "atom-label");
+                t.textContent = symbol;
+                g.appendChild(t);
+
+                svg.appendChild(g);
+
+                let px = x;
+                let py = y;
+                let opacity = 1;
+
+                function move() {
+                    px += vx;
+                    py += vy;
+                    c.setAttribute("cx", px);
+                    c.setAttribute("cy", py);
+                    t.setAttribute("x", px);
+                    t.setAttribute("y", py);
+
+                    opacity -= 0.005;
+                    g.style.opacity = opacity;
+
+                    if (px > 0 && px < WIDTH && py > 0 && py < HEIGHT && opacity > 0) {
+                        requestAnimationFrame(move);
+                    } else {
+                        if (svg.contains(g)) svg.removeChild(g);
+                    }
+                }
+                requestAnimationFrame(move);
+            }
+        }
+
+        window.onload = startSimulation;
+    </script>
+    <script src="js/dark-mode.js"></script>
+</body>
+
+</html>

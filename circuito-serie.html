@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circuito en Serie - Portal de Física</title>
+    <style>
+        .svg-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 40px auto;
+            background: #0d1b2a;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 2px solid #00e5ff;
+        }
+
+        .circuit-svg {
+            width: 100%;
+            height: auto;
+        }
+
+        .electron {
+            fill: #ffeb3b;
+            filter: drop-shadow(0 0 5px #fff176);
+        }
+
+        @keyframes flow {
+            from {
+                stroke-dashoffset: 100;
+            }
+
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        .wire-flow {
+            stroke: rgba(255, 235, 59, 0.2);
+            stroke-width: 4;
+            stroke-dasharray: 10, 25;
+            animation: flow 4s linear infinite;
+        }
+
+        .bulb-glow {
+            fill: #ffeb3b;
+            opacity: 0.3;
+            animation: bulb-pulse 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes bulb-pulse {
+            0% {
+                opacity: 0.2;
+                filter: blur(8px);
+            }
+
+            100% {
+                opacity: 0.5;
+                filter: blur(12px);
+            }
+        }
+
+        body.dark-mode .svg-container {
+            background: #050a14;
+        }
+    </style>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
+    <header>
+        <h1>🔗 Circuito en Serie</h1>
+        <p>Uno tras otro: el camino único de la corriente</p>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="electricidad.html">Electricidad</a></li>
+                <li><a href="tipos-energia.html">Tipos de Energía</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="content-main">
+        <section class="content-section">
+            <h2>¿Qué es un circuito en serie?</h2>
+            <p>
+                En un circuito en serie, los receptores se conectan uno a continuación del otro. Esto crea un único
+                camino para la corriente eléctrica, lo que significa que la misma cantidad de electrones debe pasar por
+                todos los componentes.
+            </p>
+
+            <div class="svg-container">
+                <svg viewBox="0 0 400 300" class="circuit-svg" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Cables -->
+                    <path d="M 80 220 L 80 80 L 320 80 L 320 220 L 80 220" fill="none" stroke="#546e7a" stroke-width="8"
+                        stroke-linecap="round" />
+                    <path d="M 80 220 L 80 80 L 320 80 L 320 220 L 80 220" class="wire-flow" fill="none"
+                        stroke-linecap="round" />
+
+                    <!-- Batería -->
+                    <rect x="50" y="130" width="60" height="40" rx="5" fill="#37474f" />
+                    <rect x="110" y="140" width="10" height="20" rx="2" fill="#ffc107" />
+                    <text x="80" y="155" font-family="Arial" font-size="12" fill="white" text-anchor="middle">BAT</text>
+
+                    <!-- Lámparas con Resistencia Zigzag -->
+                    <g transform="translate(180, 80)">
+                        <circle r="20" fill="#455a64" />
+                        <circle r="15" class="bulb-glow" />
+                        <!-- Símbolo de resistencia zigzag -->
+                        <path d="M -12 0 L -8 -10 L -4 10 L 0 -10 L 4 10 L 8 -10 L 12 0" fill="none" stroke="white"
+                            stroke-width="2" stroke-linejoin="round" />
+                    </g>
+                    <g transform="translate(260, 80)">
+                        <circle r="20" fill="#455a64" />
+                        <circle r="15" class="bulb-glow" />
+                        <path d="M -12 0 L -8 -10 L -4 10 L 0 -10 L 4 10 L 8 -10 L 12 0" fill="none" stroke="white"
+                            stroke-width="2" stroke-linejoin="round" />
+                    </g>
+
+                    <!-- Electrones (más lentos en serie debido a mayor resistencia) -->
+                    <circle r="4" class="electron">
+                        <animateMotion dur="8s" repeatCount="indefinite"
+                            path="M 80 220 L 80 80 L 320 80 L 320 220 L 80 220" rotate="auto" />
+                    </circle>
+                    <circle r="4" class="electron">
+                        <animateMotion dur="8s" begin="2s" repeatCount="indefinite"
+                            path="M 80 220 L 80 80 L 320 80 L 320 220 L 80 220" rotate="auto" />
+                    </circle>
+                    <circle r="4" class="electron">
+                        <animateMotion dur="8s" begin="4s" repeatCount="indefinite"
+                            path="M 80 220 L 80 80 L 320 80 L 320 220 L 80 220" rotate="auto" />
+                    </circle>
+                    <circle r="4" class="electron">
+                        <animateMotion dur="8s" begin="6s" repeatCount="indefinite"
+                            path="M 80 220 L 80 80 L 320 80 L 320 220 L 80 220" rotate="auto" />
+                    </circle>
+                </svg>
+            </div>
+
+            <div class="key-points">
+                <strong>Propiedades:</strong>
+                <ul>
+                    <li><strong>Corriente ($I$):</strong> Es la misma en todo el circuito.</li>
+                    <li><strong>Voltaje ($V$):</strong> Se reparte entre los componentes ($V_T = V_1 + V_2$).</li>
+                    <li><strong>Falla crítica:</strong> Si un foco se quema, el circuito se abre y todos se apagan.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Resistencia Equivalente</h2>
+            <p>
+                Para calcular la resistencia total, simplemente sumamos los valores de cada componente:
+            </p>
+            <div class="equation">
+                $$R_{total} = R_1 + R_2 + R_3 + ...$$
+            </div>
+            <p>
+                Notarás que en la animación las lámparas brillan menos que en un circuito simple; esto es porque deben
+                compartir el voltaje de la fuente.
+            </p>
+        </section>
+
+        <div class="back-button-container">
+            <a href="electricidad.html" class="back-button">← Volver a Electricidad</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Portal de Física para Secundaria</p>
+        </div>
+    </footer>
+    <script src="js/dark-mode.js"></script>
+</body>
+
+</html>

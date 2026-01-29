@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ley de Faraday - Portal de Física</title>
+    <style>
+        .svg-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 40px auto;
+            background: #0d1b2a;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 2px solid #00e5ff;
+        }
+
+        .faraday-svg {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Bobina */
+        .coil {
+            fill: none;
+            stroke: #ff9800;
+            stroke-width: 4;
+            stroke-linecap: round;
+        }
+
+        /* Imán */
+        .magnet-n {
+            fill: #f44336;
+        }
+
+        /* Norte */
+        .magnet-s {
+            fill: #2196f3;
+        }
+
+        /* Sur */
+
+        @keyframes magnet-move {
+            0% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(120px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .magnet-group {
+            animation: magnet-move 4s ease-in-out infinite;
+        }
+
+        /* Brillo de la lámpara sincronizado */
+        @keyframes bulb-induction {
+
+            0%,
+            45%,
+            55%,
+            100% {
+                opacity: 0.1;
+                filter: blur(5px);
+            }
+
+            25%,
+            75% {
+                opacity: 0.9;
+                filter: blur(15px);
+            }
+
+            /* Brilla al entrar y salir */
+        }
+
+        .bulb-glow {
+            fill: #ffeb3b;
+            animation: bulb-induction 4s ease-in-out infinite;
+        }
+
+        .wire {
+            stroke: #546e7a;
+            stroke-width: 3;
+            fill: none;
+        }
+
+        body.dark-mode .svg-container {
+            background: #050a14;
+        }
+    </style>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
+    <header>
+        <h1>⚡ Ley de Faraday</h1>
+        <p>Inducción electromagnética: electricidad desde el magnetismo</p>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="electricidad.html">Electricidad</a></li>
+                <li><a href="tipos-energia.html">Tipos de Energía</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="content-main">
+        <section class="content-section">
+            <h2>¿Qué es la inducción electromagnética?</h2>
+            <p>
+                Michael Faraday descubrió que un campo magnético cambiante puede inducir una corriente eléctrica en un
+                conductor. Este es el principio fundamental detrás de los generadores eléctricos que alimentan nuestras
+                ciudades.
+            </p>
+
+            <div class="svg-container">
+                <svg viewBox="0 0 400 250" class="faraday-svg" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Parte de ATRÁS de la bobina (para efecto 3D) -->
+                    <g class="coil-back">
+                        <path d="M 180 100 A 20 50 0 0 1 180 200" class="coil" />
+                        <path d="M 210 100 A 20 50 0 0 1 210 200" class="coil" />
+                        <path d="M 240 100 A 20 50 0 0 1 240 200" class="coil" />
+                        <path d="M 270 100 A 20 50 0 0 1 270 200" class="coil" />
+                    </g>
+
+                    <!-- Imán móvil (pasa entre medio) -->
+                    <g class="magnet-group">
+                        <rect x="20" y="135" width="40" height="30" class="magnet-s" />
+                        <rect x="60" y="135" width="40" height="30" class="magnet-n" />
+                        <text x="40" y="155" font-family="Arial" font-size="14" fill="white" text-anchor="middle"
+                            font-weight="bold">S</text>
+                        <text x="80" y="155" font-family="Arial" font-size="14" fill="white" text-anchor="middle"
+                            font-weight="bold">N</text>
+                    </g>
+
+                    <!-- Parte de ADELANTE de la bobina -->
+                    <g class="coil-front">
+                        <path d="M 180 100 A 20 50 0 0 0 180 200" class="coil" />
+                        <path d="M 210 100 A 20 50 0 0 0 210 200" class="coil" />
+                        <path d="M 240 100 A 20 50 0 0 0 240 200" class="coil" />
+                        <path d="M 270 100 A 20 50 0 0 0 270 200" class="coil" />
+
+                        <!-- Puentes entre espiras (Conexión física y eléctrica) -->
+                        <path d="M 180 100 L 210 100 M 210 200 L 240 200 M 240 100 L 270 100" fill="none"
+                            stroke="#ff9800" stroke-width="4" />
+                    </g>
+
+                    <!-- Cables al circuito (Cerrados y simétricos) -->
+                    <path d="M 180 200 L 180 230 L 320 230 L 320 155" class="wire" />
+                    <path d="M 270 200 L 290 200 L 290 100 L 320 100 L 320 125" class="wire" />
+
+                    <!-- Lámpara -->
+                    <g transform="translate(320, 140)">
+                        <circle r="15" fill="#455a64" />
+                        <circle r="12" class="bulb-glow" />
+                        <!-- Filamento conectado verticalmente -->
+                        <path d="M 0 -15 L 0 -8 L -4 -6 L 4 -3 L -4 0 L 4 3 L -4 6 L 0 8 L 0 15" fill="none"
+                            stroke="white" stroke-width="1.5" stroke-linejoin="round" />
+                    </g>
+
+                    <!-- Etiquetas -->
+                    <text x="60" y="190" font-family="Arial" font-size="12" fill="#90a4ae" text-anchor="middle">Imán en
+                        movimiento</text>
+                    <text x="225" y="70" font-family="Arial" font-size="12" fill="#ff9800" text-anchor="middle">Bobina
+                        circular 3D</text>
+                </svg>
+            </div>
+
+            <div class="key-points">
+                <strong>Conceptos fundamentales:</strong>
+                <ul>
+                    <li><strong>Flujo Magnético ($\Phi$):</strong> La cantidad de magnetismo que pasa por la bobina.
+                    </li>
+                    <li><strong>Movimiento Relativo:</strong> La corriente solo aparece cuando el imán se mueve respecto
+                        a la bobina.</li>
+                    <li><strong>Ley de Lenz:</strong> La corriente inducida siempre se opone al cambio que la produce
+                        (el signo negativo en la ecuación).</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>La Ecuación de Faraday</h2>
+            <p>La fuerza electromotriz inducida ($\varepsilon$) en una bobina es igual a:</p>
+            <div class="equation">
+                $$\varepsilon = -N \frac{\Delta \Phi}{\Delta t}$$
+            </div>
+            <p>
+                Donde $N$ es el número de vueltas de la bobina. Cuanto más rápido muevas el imán ($\Delta t$ pequeño),
+                mayor será el voltaje inducido y más brillará la lámpara.
+            </p>
+        </section>
+
+        <div class="back-button-container">
+            <a href="electricidad.html" class="back-button">← Volver a Electricidad</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Portal de Física para Secundaria</p>
+        </div>
+    </footer>
+    <script src="js/dark-mode.js"></script>
+</body>
+
+</html>
