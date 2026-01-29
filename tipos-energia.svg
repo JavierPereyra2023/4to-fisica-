@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#1b2838"/>
+    </linearGradient>
+    <radialGradient id="fireGlow" cx="50%" cy="70%" r="50%">
+      <stop offset="0%" stop-color="#ff6f00" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#ff6f00" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg)"/>
+
+  <!-- Stars -->
+  <circle cx="40" cy="25" r="1.2" fill="#fff" opacity="0.4"/>
+  <circle cx="120" cy="40" r="1" fill="#fff" opacity="0.3"/>
+  <circle cx="300" cy="20" r="1.5" fill="#fff" opacity="0.5"/>
+  <circle cx="360" cy="55" r="1" fill="#fff" opacity="0.3"/>
+  <circle cx="220" cy="15" r="1.2" fill="#fff" opacity="0.4"/>
+
+  <!-- Ground -->
+  <ellipse cx="200" cy="240" rx="160" ry="15" fill="#2e2e1a" opacity="0.5"/>
+
+  <!-- Fire glow on ground -->
+  <ellipse cx="200" cy="235" rx="80" ry="12" fill="#ff6f00" opacity="0.08">
+    <animate attributeName="opacity" values="0.06;0.12;0.06" dur="1.5s" repeatCount="indefinite"/>
+  </ellipse>
+
+  <!-- Logs -->
+  <!-- Log 1 (left to right, tilted) -->
+  <rect x="145" y="222" width="80" height="14" rx="7" fill="#5d4037" transform="rotate(-12 185 229)"/>
+  <rect x="145" y="222" width="80" height="14" rx="7" fill="#4e342e" transform="rotate(-12 185 229)" opacity="0.5"/>
+  <!-- Wood grain lines -->
+  <line x1="160" y1="228" x2="210" y2="224" stroke="#3e2723" stroke-width="0.8" opacity="0.4" transform="rotate(-12 185 229)"/>
+  <line x1="165" y1="232" x2="215" y2="228" stroke="#3e2723" stroke-width="0.5" opacity="0.3" transform="rotate(-12 185 229)"/>
+
+  <!-- Log 2 (right to left, tilted) -->
+  <rect x="170" y="222" width="80" height="14" rx="7" fill="#6d4c41" transform="rotate(12 210 229)"/>
+  <rect x="170" y="222" width="80" height="14" rx="7" fill="#4e342e" transform="rotate(12 210 229)" opacity="0.4"/>
+  <line x1="185" y1="228" x2="235" y2="232" stroke="#3e2723" stroke-width="0.8" opacity="0.4" transform="rotate(12 210 229)"/>
+
+  <!-- Log 3 (horizontal, front) -->
+  <rect x="160" y="232" width="75" height="12" rx="6" fill="#795548"/>
+  <line x1="170" y1="237" x2="225" y2="237" stroke="#4e342e" stroke-width="0.8" opacity="0.5"/>
+
+  <!-- Large ambient glow -->
+  <circle cx="200" cy="170" r="100" fill="url(#fireGlow)">
+    <animate attributeName="r" values="95;110;95" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Main fire flames -->
+  <!-- Flame outer (large, orange) -->
+  <path d="M200,225 Q175,180 185,140 Q190,120 200,100 Q210,120 215,140 Q225,180 200,225Z" fill="#ff6f00" opacity="0.8">
+    <animate attributeName="d" values="M200,225 Q175,180 185,140 Q190,120 200,100 Q210,120 215,140 Q225,180 200,225Z;M200,225 Q178,185 183,145 Q192,115 200,95 Q208,115 217,145 Q222,185 200,225Z;M200,225 Q175,180 185,140 Q190,120 200,100 Q210,120 215,140 Q225,180 200,225Z" dur="0.8s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- Flame middle (yellow-orange) -->
+  <path d="M200,225 Q182,190 190,155 Q195,135 200,115 Q205,135 210,155 Q218,190 200,225Z" fill="#ff8f00" opacity="0.85">
+    <animate attributeName="d" values="M200,225 Q182,190 190,155 Q195,135 200,115 Q205,135 210,155 Q218,190 200,225Z;M200,225 Q185,192 188,158 Q196,130 200,110 Q204,130 212,158 Q215,192 200,225Z;M200,225 Q182,190 190,155 Q195,135 200,115 Q205,135 210,155 Q218,190 200,225Z" dur="0.7s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- Flame inner (yellow) -->
+  <path d="M200,225 Q188,200 193,170 Q197,150 200,135 Q203,150 207,170 Q212,200 200,225Z" fill="#ffc107" opacity="0.9">
+    <animate attributeName="d" values="M200,225 Q188,200 193,170 Q197,150 200,135 Q203,150 207,170 Q212,200 200,225Z;M200,225 Q190,202 192,173 Q198,148 200,130 Q202,148 208,173 Q210,202 200,225Z;M200,225 Q188,200 193,170 Q197,150 200,135 Q203,150 207,170 Q212,200 200,225Z" dur="0.6s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- Flame core (bright white-yellow) -->
+  <path d="M200,225 Q194,210 196,190 Q198,175 200,165 Q202,175 204,190 Q206,210 200,225Z" fill="#ffecb3" opacity="0.9">
+    <animate attributeName="d" values="M200,225 Q194,210 196,190 Q198,175 200,165 Q202,175 204,190 Q206,210 200,225Z;M200,225 Q195,212 195,192 Q199,172 200,160 Q201,172 205,192 Q205,212 200,225Z;M200,225 Q194,210 196,190 Q198,175 200,165 Q202,175 204,190 Q206,210 200,225Z" dur="0.5s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- Left side flame -->
+  <path d="M190,228 Q172,200 178,170 Q182,155 185,140 Q190,158 192,175 Q196,205 190,228Z" fill="#e65100" opacity="0.6">
+    <animate attributeName="d" values="M190,228 Q172,200 178,170 Q182,155 185,140 Q190,158 192,175 Q196,205 190,228Z;M190,228 Q174,202 176,174 Q183,150 185,135 Q189,155 193,178 Q195,207 190,228Z;M190,228 Q172,200 178,170 Q182,155 185,140 Q190,158 192,175 Q196,205 190,228Z" dur="0.9s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- Right side flame -->
+  <path d="M210,228 Q228,200 222,170 Q218,155 215,140 Q210,158 208,175 Q204,205 210,228Z" fill="#e65100" opacity="0.6">
+    <animate attributeName="d" values="M210,228 Q228,200 222,170 Q218,155 215,140 Q210,158 208,175 Q204,205 210,228Z;M210,228 Q226,202 224,174 Q217,150 215,135 Q211,155 207,178 Q205,207 210,228Z;M210,228 Q228,200 222,170 Q218,155 215,140 Q210,158 208,175 Q204,205 210,228Z" dur="1s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- Sparks / embers -->
+  <circle r="2" fill="#ffab00" opacity="0.8">
+    <animate attributeName="cx" values="195;185;180" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="140;80;40" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.8;0.3;0" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="r" values="2;1.5;0.5" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="1.5" fill="#ff6f00" opacity="0.6">
+    <animate attributeName="cx" values="205;215;220" dur="2.5s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="135;70;25" dur="2.5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.6;0.2;0" dur="2.5s" repeatCount="indefinite"/>
+    <animate attributeName="r" values="1.5;1;0.3" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="1.5" fill="#ffc107" opacity="0.7">
+    <animate attributeName="cx" values="200;192;188" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="130;60;15" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.7;0.3;0" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="r" values="1.5;1;0" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="1" fill="#ffab00" opacity="0.5">
+    <animate attributeName="cx" values="198;210;218" dur="1.8s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="145;90;50" dur="1.8s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.5;0.2;0" dur="1.8s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- E = formula floating -->
+  <text x="60" y="120" fill="#4fc3f7" font-family="Arial" font-size="14" font-weight="bold" opacity="0.5">
+    E = mc2
+    <animate attributeName="opacity" values="0.3;0.7;0.3" dur="4s" repeatCount="indefinite"/>
+  </text>
+  <text x="300" y="100" fill="#ff8a65" font-family="Arial" font-size="12" font-weight="bold" opacity="0.4">
+    Q = m.c.dT
+    <animate attributeName="opacity" values="0.2;0.6;0.2" dur="5s" repeatCount="indefinite"/>
+  </text>
+  <text x="310" y="200" fill="#66bb6a" font-family="Arial" font-size="11" opacity="0.4">
+    W = F.d
+    <animate attributeName="opacity" values="0.2;0.5;0.2" dur="3.5s" repeatCount="indefinite"/>
+  </text>
+
+  <text x="200" y="280" text-anchor="middle" fill="#ff8f00" font-family="Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="2">TIPOS DE ENERGIA</text>
+</svg>

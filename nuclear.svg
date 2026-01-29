@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4fc3f7" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#0a0a2e" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#1b2838"/>
+    </linearGradient>
+    <linearGradient id="towerGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#546e7a"/>
+      <stop offset="100%" stop-color="#37474f"/>
+    </linearGradient>
+    <linearGradient id="domeGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#78909c"/>
+      <stop offset="100%" stop-color="#455a64"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#skyGrad)"/>
+  <!-- Stars -->
+  <circle cx="50" cy="30" r="1.5" fill="#fff" opacity="0.6"/>
+  <circle cx="120" cy="50" r="1" fill="#fff" opacity="0.4"/>
+  <circle cx="300" cy="25" r="1.5" fill="#fff" opacity="0.5"/>
+  <circle cx="350" cy="60" r="1" fill="#fff" opacity="0.3"/>
+  <circle cx="220" cy="15" r="1.2" fill="#fff" opacity="0.5"/>
+  <!-- Ground -->
+  <rect x="0" y="240" width="400" height="60" fill="#263238"/>
+  <!-- Cooling tower 1 -->
+  <path d="M80,240 Q80,160 60,120 L60,110 Q90,130 120,110 L120,120 Q100,160 100,240 Z" fill="url(#towerGrad)" stroke="#546e7a" stroke-width="1"/>
+  <!-- Steam from tower 1 -->
+  <ellipse cx="90" cy="95" rx="20" ry="10" fill="#b0bec5" opacity="0.3">
+    <animate attributeName="ry" values="10;15;10" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.3;0.5;0.3" dur="3s" repeatCount="indefinite"/>
+  </ellipse>
+  <ellipse cx="85" cy="80" rx="15" ry="8" fill="#b0bec5" opacity="0.2">
+    <animate attributeName="cy" values="80;70;80" dur="4s" repeatCount="indefinite"/>
+  </ellipse>
+  <!-- Cooling tower 2 -->
+  <path d="M140,240 Q140,170 125,135 L125,125 Q150,142 175,125 L175,135 Q160,170 160,240 Z" fill="url(#towerGrad)" stroke="#546e7a" stroke-width="1"/>
+  <!-- Steam from tower 2 -->
+  <ellipse cx="150" cy="110" rx="18" ry="9" fill="#b0bec5" opacity="0.25">
+    <animate attributeName="ry" values="9;14;9" dur="3.5s" repeatCount="indefinite"/>
+  </ellipse>
+  <!-- Reactor building (dome) -->
+  <rect x="210" y="190" width="80" height="50" rx="3" fill="url(#domeGrad)"/>
+  <ellipse cx="250" cy="190" rx="40" ry="25" fill="url(#domeGrad)" stroke="#78909c" stroke-width="1"/>
+  <!-- Reactor glow -->
+  <ellipse cx="250" cy="200" rx="50" ry="40" fill="url(#glow)">
+    <animate attributeName="opacity" values="0.4;0.7;0.4" dur="2s" repeatCount="indefinite"/>
+  </ellipse>
+  <!-- Atom symbol -->
+  <g transform="translate(320, 70)">
+    <!-- Nucleus -->
+    <circle cx="0" cy="0" r="5" fill="#4fc3f7">
+      <animate attributeName="r" values="5;6;5" dur="1.5s" repeatCount="indefinite"/>
+    </circle>
+    <!-- Orbits -->
+    <ellipse cx="0" cy="0" rx="25" ry="10" fill="none" stroke="#4fc3f7" stroke-width="1.2" opacity="0.7">
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="4s" repeatCount="indefinite"/>
+    </ellipse>
+    <ellipse cx="0" cy="0" rx="25" ry="10" fill="none" stroke="#4fc3f7" stroke-width="1.2" opacity="0.7" transform="rotate(60)">
+      <animateTransform attributeName="transform" type="rotate" from="60" to="420" dur="5s" repeatCount="indefinite"/>
+    </ellipse>
+    <ellipse cx="0" cy="0" rx="25" ry="10" fill="none" stroke="#4fc3f7" stroke-width="1.2" opacity="0.7" transform="rotate(120)">
+      <animateTransform attributeName="transform" type="rotate" from="120" to="480" dur="6s" repeatCount="indefinite"/>
+    </ellipse>
+    <!-- Electrons -->
+    <circle cx="25" cy="0" r="2.5" fill="#e0f7fa">
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="4s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  <!-- Text -->
+  <text x="200" y="275" text-anchor="middle" fill="#4fc3f7" font-family="Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="3">ENERGÍA NUCLEAR</text>
+</svg>

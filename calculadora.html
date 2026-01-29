@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Física Universal - Portal de Física</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <button class="dark-mode-toggle" id="darkModeToggle" title="Cambiar modo">🌙</button>
+
+    <header>
+        <h1>🧮 Calculadora Física Universal</h1>
+        <p>Herramienta integral para todas las magnitudes del programa</p>
+        <div class="search-container">
+            <div class="search-input-wrapper">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="grokSearch" placeholder="Grokipedia: Busca temas de física...">
+            </div>
+            <div id="searchResults" class="search-results"></div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="tipos-energia.html">Tipos de Energía</a></li>
+                <li><a href="alternativas.html">Energías Alternativas</a></li>
+                <li><a href="calculadora.html" class="active">Calculadora</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="guia.html">Guía</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="calc-hub">
+        <div class="calc-tabs">
+            <button class="calc-tab active" onclick="showTab('energia', this)">⚡ Mecánica</button>
+            <button class="calc-tab" onclick="showTab('calor', this)">🔥 Térmica</button>
+            <button class="calc-tab" onclick="showTab('electricidad', this)">🔌 Eléctrica</button>
+            <button class="calc-tab" onclick="showTab('unidades', this)">📏 Unidades</button>
+        </div>
+
+        <div class="calc-content">
+            <!-- ========================== -->
+            <!-- Módulo: Energía Mecánica   -->
+            <!-- ========================== -->
+            <div id="energia" class="calc-module active">
+                <h2>⚡ Energía Mecánica</h2>
+                <div class="calc-grid">
+                    <div class="calc-inputs" style="grid-template-columns: 1fr;">
+                        <h3 style="font-size: 1rem; color: #1565c0; border-bottom: 2px solid #e3f2fd; padding-bottom: 5px;">
+                            Cinética y Gravitatoria</h3>
+                        <div class="calc-input-group">
+                            <label>Masa (kg):</label>
+                            <input type="number" id="mass-en" value="1" step="0.1" oninput="calcMechanical()">
+                        </div>
+                        <div class="calc-input-group">
+                            <label>Velocidad (m/s):</label>
+                            <input type="number" id="vel-en" value="0" step="0.1" oninput="calcMechanical()">
+                        </div>
+                        <div class="calc-input-group">
+                            <label>Altura (m):</label>
+                            <input type="number" id="h-en" value="0" step="0.1" oninput="calcMechanical()">
+                        </div>
+
+                        <h3 style="font-size: 1rem; color: #1565c0; border-bottom: 2px solid #e3f2fd; padding-bottom: 5px; margin-top: 20px;">
+                            Potencia Mecánica</h3>
+                        <div class="calc-input-group">
+                            <label>Tiempo (s):</label>
+                            <input type="number" id="time-mech" value="10" step="1" oninput="calcMechanical()">
+                        </div>
+
+                        <h3 style="font-size: 1rem; color: #1565c0; border-bottom: 2px solid #e3f2fd; padding-bottom: 5px; margin-top: 20px;">
+                            Energía Elástica</h3>
+                        <div class="calc-input-group">
+                            <label>Constante k (N/m):</label>
+                            <input type="number" id="k-en" value="100" step="1" oninput="calcMechanical()">
+                        </div>
+                        <div class="calc-input-group">
+                            <label>Deformación x (m):</label>
+                            <input type="number" id="x-en" value="0" step="0.01" oninput="calcMechanical()">
+                        </div>
+                    </div>
+                    <div class="calc-result-card">
+                        <div class="calc-result-label">Cálculo de Potencia</div>
+                        <div id="res-em-p" class="calc-result-value" style="font-size: 2rem;">0.98 W</div>
+                        <p id="res-em-p-kw" style="font-size: 0.9rem; opacity: 0.8;">(0.001 kW)</p>
+
+                        <div class="calc-result-label" style="margin-top: 20px;">Energía Mecánica Total</div>
+                        <div id="res-em" class="calc-result-value">9.8 J</div>
+                        <div id="mech-breakdown"
+                            style="text-align: left; font-size: 0.9rem; margin-top: 15px; display: grid; gap: 8px;">
+                            <div style="display: flex; justify-content: space-between;"><span>\(E_{cin}\):</span> <span id="res-ec">0 J</span></div>
+                            <div style="display: flex; justify-content: space-between;"><span>\(E_{pg}\):</span> <span id="res-epg">9.8 J</span></div>
+                            <div style="display: flex; justify-content: space-between;"><span>\(E_{pe}\):</span> <span id="res-epe">0 J</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trabajo mecánico -->
+                <div class="calc-grid" style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">
+                    <div class="calc-inputs">
+                        <h3 style="font-size: 1rem; color: #1565c0; border-bottom: 2px solid #e3f2fd; padding-bottom: 5px;">
+                            🔧 Trabajo Mecánico</h3>
+                        <div class="calc-input-group">
+                            <label>Fuerza F (N):</label>
+                            <input type="number" id="work-f" value="10" step="0.1" oninput="calcWork()">
+                        </div>
+                        <div class="calc-input-group">
+                            <label>Distancia d (m):</label>
+                            <input type="number" id="work-d" value="5" step="0.1" oninput="calcWork()">
+                        </div>
+                        <div class="calc-input-group">
+                            <label>Ángulo θ (grados):</label>
+                            <input type="number" id="work-a" value="0" step="1" min="0" max="360" oninput="calcWork()">
+                        </div>
+                    </div>
+                    <div class="calc-result-card">
+                        <div class="calc-result-label">Trabajo \(W = F \cdot d \cdot \cos\theta\)</div>
+                        <div id="res-work" class="calc-result-value" style="font-size: 2rem;">50.00 J</div>
+                        <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 10px;">
+                            \(\cos\theta\) = <span id="res-cos">1.000</span>
+                        </p>
+                        <p id="res-work-sign" style="font-size: 0.85rem; margin-top: 5px; font-weight: 600; color: #4caf50;">
+                            Trabajo motor (positivo)
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========================== -->
+            <!-- Módulo: Energía Térmica    -->
+            <!-- ========================== -->
+            <div id="calor" class="calc-module">
+                <h2>🔥 Energía Térmica</h2>
+                <div class="calc-grid">
+                    <div class="calc-inputs">
+                        <h3 style="font-size: 1rem; color: #d84315; border-bottom: 2px solid #fbe9e7;">Calor Sensible</h3>
+                        <div class="calc-input-group">
+                            <label>Masa (g):</label>
+                            <input type="number" id="mass-q" value="100" oninput="calcThermal()">
+                        </div>
+                        <div class="calc-input-group">
+                            <label>Calor Esp. (cal/gºC):</label>
+                            <input type="number" id="ce-q" value="1" step="0.01" oninput="calcThermal()">
+                        </div>
+                        <div class="calc-input-group">
+                            <label>\(\Delta T\) (ºC):</label>
+                            <input type="number" id="dt-q" value="10" oninput="calcThermal()">
+                        </div>
+
+                        <h3 style="font-size: 1rem; color: #d84315; border-bottom: 2px solid #fbe9e7; margin-top: 20px;">
+                            Calor Latente</h3>
+                        <div class="calc-input-group">
+                            <label>Calor Latente L (cal/g):</label>
+                            <input type="number" id="lat-l" value="80" step="1" oninput="calcThermal()">
+                        </div>
+                    </div>
+                    <div class="calc-result-card" style="gap: 20px;">
+                        <div>
+                            <div class="calc-result-label">Calor Sensible \(Q_s = m \cdot c \cdot \Delta T\)</div>
+                            <div id="res-qs" class="calc-result-value" style="font-size: 1.8rem;">1000 cal</div>
+                            <p id="res-qs-j" style="font-size: 0.8rem; opacity: 0.7;">(4184 J)</p>
+                        </div>
+                        <div style="border-top: 1px solid rgba(0,0,0,0.1); padding-top: 10px;">
+                            <div class="calc-result-label">Calor Latente \(Q_l = m \cdot L\)</div>
+                            <div id="res-ql" class="calc-result-value" style="font-size: 1.8rem;">8000 cal</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Conversor de escalas -->
+                <div class="calc-grid" style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">
+                    <div>
+                        <h3>🌡️ Conversor Escalas</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 10px;">
+                            <div class="calc-input-group"><label>ºC</label><input type="number" id="temp-c" value="0" oninput="convertScales('c')"></div>
+                            <div class="calc-input-group"><label>ºF</label><input type="number" id="temp-f" value="32" oninput="convertScales('f')"></div>
+                            <div class="calc-input-group"><label>K</label><input type="number" id="temp-k" value="273.15" oninput="convertScales('k')"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dilatación Térmica -->
+                <div class="calc-grid" style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">
+                    <div class="calc-inputs">
+                        <h3 style="font-size: 1rem; color: #d84315; border-bottom: 2px solid #fbe9e7;">
+                            📐 Dilatación Lineal</h3>
+                        <div class="calc-input-group">
+                            <label>Longitud inicial L₀ (m):</label>
+                            <input type="number" id="dil-l0" value="1" step="0.01" oninput="calcDilation()">
+                        </div>
+                        <div class="calc-input-group">
+                            <label>Coeficiente α (×10⁻⁶ /ºC):</label>
+                            <input type="number" id="dil-alpha" value="12" step="0.1" oninput="calcDilation()">
+                        </div>
+                        <div class="calc-input-group">
+                            <label>\(\Delta T\) (ºC):</label>
+                            <input type="number" id="dil-dt" value="50" oninput="calcDilation()">
+                        </div>
+                    </div>
+                    <div class="calc-result-card">
+                        <div class="calc-result-label">\(\Delta L = L_0 \cdot \alpha \cdot \Delta T\)</div>
+                        <div id="res-dil-dl" class="calc-result-value" style="font-size: 1.8rem;">0.0006 m</div>
+                        <p id="res-dil-dl-mm" style="font-size: 0.9rem; opacity: 0.8;">(0.60 mm)</p>
+                        <div style="margin-top: 15px; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 10px;">
+                            <div class="calc-result-label">Longitud Final</div>
+                            <div id="res-dil-lf" class="calc-result-value" style="font-size: 1.5rem;">1.0006 m</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========================== -->
+            <!-- Módulo: Electricidad       -->
+            <!-- ========================== -->
+            <div id="electricidad" class="calc-module">
+                <h2>🔌 Energía Eléctrica</h2>
+                <div class="calc-grid">
+                    <div class="calc-inputs">
+                        <h3 style="font-size: 1rem; color: #f9a825; border-bottom: 2px solid #fff9c4;">Ley de Ohm y Potencia</h3>
+                        <div class="calc-input-group">
+                            <label>Voltaje V (Voltios):</label>
+                            <input type="number" id="elec-v" value="220" oninput="calcElectric()">
+                        </div>
+                        <div class="calc-input-group">
+                            <label>Corriente I (Amperios):</label>
+                            <input type="number" id="elec-i" value="1" step="0.1" oninput="calcElectric()">
+                        </div>
+                        <div class="calc-input-group">
+                            <label>Resistencia R (Ohmios Ω):</label>
+                            <input type="number" id="elec-r" value="220" step="1" oninput="calcElectric('r')">
+                        </div>
+                        <h3 style="font-size: 1rem; color: #f9a825; border-bottom: 2px solid #fff9c4; margin-top: 20px;">
+                            Consumo de Energía</h3>
+                        <div class="calc-input-group">
+                            <label>Tiempo de uso (Horas):</label>
+                            <input type="number" id="elec-t" value="1" step="0.1" oninput="calcElectric()">
+                        </div>
+                    </div>
+                    <div class="calc-result-card">
+                        <div class="calc-result-label">Potencia \(P = V \cdot I\)</div>
+                        <div id="res-elec-p" class="calc-result-value">220 W</div>
+                        <p id="res-elec-kw" style="font-size: 1.1rem; color: #fbc02d; font-weight: 600;">0.22 kW</p>
+
+                        <div style="margin-top: 25px; padding-top: 15px; border-top: 2px dashed #fbc02d;">
+                            <div class="calc-result-label">Consumo en el Tiempo</div>
+                            <div id="res-elec-e" class="calc-result-value" style="color: #fbc02d;">0.220 kWh</div>
+                            <p style="font-size: 0.85rem; opacity: 0.8;">\(E = P(kW) \cdot t(h)\)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resistencias Serie / Paralelo -->
+                <div class="calc-grid" style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">
+                    <div class="calc-inputs">
+                        <h3 style="font-size: 1rem; color: #f9a825; border-bottom: 2px solid #fff9c4;">
+                            🔗 Resistencias en Serie y Paralelo</h3>
+                        <div class="calc-input-group">
+                            <label>R₁ (Ω):</label>
+                            <input type="number" id="res-r1" value="100" step="1" oninput="calcResistors()">
+                        </div>
+                        <div class="calc-input-group">
+                            <label>R₂ (Ω):</label>
+                            <input type="number" id="res-r2" value="200" step="1" oninput="calcResistors()">
+                        </div>
+                        <div class="calc-input-group">
+                            <label>R₃ (Ω) <span style="opacity:0.6">(opcional, 0 para omitir)</span>:</label>
+                            <input type="number" id="res-r3" value="0" step="1" oninput="calcResistors()">
+                        </div>
+                    </div>
+                    <div class="calc-result-card">
+                        <div class="calc-result-label">Serie \(R_T = R_1 + R_2 + R_3\)</div>
+                        <div id="res-serie" class="calc-result-value" style="font-size: 1.8rem;">300 Ω</div>
+
+                        <div style="margin-top: 20px; padding-top: 15px; border-top: 2px dashed #fbc02d;">
+                            <div class="calc-result-label">Paralelo \(\frac{1}{R_T} = \frac{1}{R_1} + \frac{1}{R_2} + \frac{1}{R_3}\)</div>
+                            <div id="res-paralelo" class="calc-result-value" style="font-size: 1.8rem; color: #fbc02d;">66.67 Ω</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========================== -->
+            <!-- Módulo: Unidades           -->
+            <!-- ========================== -->
+            <div id="unidades" class="calc-module">
+                <h2>📏 Conversión de Unidades</h2>
+                <div class="calc-grid">
+                    <div class="calc-inputs" style="gap: 20px;">
+                        <div class="calc-input-group" style="padding: 15px; border-radius: 12px; background: rgba(33, 150, 243, 0.05);">
+                            <label>Potencia (W ↔ kW ↔ CV):</label>
+                            <div style="display: grid; gap: 8px;">
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <input type="number" id="unit-w" value="1000" oninput="convertUnits('w')">
+                                    <span style="font-weight: 600; width: 40px;">W</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <input type="number" id="unit-kw" value="1" oninput="convertUnits('kw')">
+                                    <span style="font-weight: 600; width: 40px;">kW</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <input type="number" id="unit-cv" value="1.36" oninput="convertUnits('cv')">
+                                    <span style="font-weight: 600; width: 40px;">CV</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="calc-input-group" style="padding: 15px; border-radius: 12px; background: rgba(103, 58, 183, 0.05);">
+                            <label>Energía (J ↔ cal ↔ kWh):</label>
+                            <div style="display: grid; gap: 8px;">
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <input type="number" id="unit-j" value="3600000" oninput="convertUnits('j')">
+                                    <span style="font-weight: 600; width: 40px;">J</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <input type="number" id="unit-cal" value="860421" oninput="convertUnits('cal')">
+                                    <span style="font-weight: 600; width: 40px;">cal</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <input type="number" id="unit-kwh" value="1" oninput="convertUnits('kwh')">
+                                    <span style="font-weight: 600; width: 40px;">kWh</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="calc-input-group" style="padding: 15px; border-radius: 12px; background: rgba(76, 175, 80, 0.05);">
+                            <label>Velocidad (km/h ↔ m/s):</label>
+                            <div style="display: grid; gap: 8px;">
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <input type="number" id="unit-kmh" value="100" oninput="convertUnits('kmh')">
+                                    <span style="font-weight: 600; width: 50px;">km/h</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <input type="number" id="unit-ms" value="27.78" oninput="convertUnits('ms')">
+                                    <span style="font-weight: 600; width: 50px;">m/s</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="calc-result-card">
+                        <h3>ℹ️ Equivalencias Útiles</h3>
+                        <ul style="text-align: left; font-size: 0.95rem; margin-top: 15px; line-height: 1.8;">
+                            <li><b>1 J</b> = 0.24 cal</li>
+                            <li><b>1 cal</b> = 4.184 J</li>
+                            <li><b>1 kWh</b> = 3.600.000 J</li>
+                            <li><b>1 km/h</b> = 0.278 m/s</li>
+                            <li><b>1 CV</b> = 735.5 W</li>
+                            <li><b>1 eV</b> = 1.602 × 10⁻¹⁹ J</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="back-button-container">
+            <a href="javascript:history.back()" class="back-button">← Volver</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>📚 Aprende Física</h3>
+                <p>Material educativo para estudiantes de secundaria</p>
+            </div>
+            <div class="footer-section">
+                <h3>👨‍🏫 Creado por</h3>
+                <p>Prof. Javier Pereyra</p>
+            </div>
+            <div class="footer-section">
+                <h3>📧 Contacto</h3>
+                <p>Para dudas y sugerencias</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Portal de Física para Secundaria</p>
+        </div>
+    </footer>
+
+    <script src="js/dark-mode.js"></script>
+    <script src="js/search.js"></script>
+    <script>
+        function showTab(id, btn) {
+            document.querySelectorAll('.calc-module').forEach(m => m.classList.remove('active'));
+            document.querySelectorAll('.calc-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            btn.classList.add('active');
+        }
+
+        // --- Lógica: Mecánica ---
+        function calcMechanical() {
+            const m = parseFloat(document.getElementById('mass-en').value) || 0;
+            const v = parseFloat(document.getElementById('vel-en').value) || 0;
+            const h = parseFloat(document.getElementById('h-en').value) || 0;
+            const k = parseFloat(document.getElementById('k-en').value) || 0;
+            const x = parseFloat(document.getElementById('x-en').value) || 0;
+            const t = parseFloat(document.getElementById('time-mech').value) || 1;
+            const g = 9.8;
+
+            const ec = 0.5 * m * v * v;
+            const epg = m * g * h;
+            const epe = 0.5 * k * x * x;
+            const em = ec + epg + epe;
+            const power = em / t;
+
+            document.getElementById('res-em').textContent = em.toFixed(2) + ' J';
+            document.getElementById('res-ec').textContent = ec.toFixed(2) + ' J';
+            document.getElementById('res-epg').textContent = epg.toFixed(2) + ' J';
+            document.getElementById('res-epe').textContent = epe.toFixed(2) + ' J';
+            document.getElementById('res-em-p').textContent = power.toFixed(2) + ' W';
+            document.getElementById('res-em-p-kw').textContent = `(${(power / 1000).toFixed(4)} kW)`;
+        }
+
+        // --- Lógica: Trabajo ---
+        function calcWork() {
+            const f = parseFloat(document.getElementById('work-f').value) || 0;
+            const d = parseFloat(document.getElementById('work-d').value) || 0;
+            const angle = parseFloat(document.getElementById('work-a').value) || 0;
+            const radians = angle * Math.PI / 180;
+            const cosTheta = Math.cos(radians);
+            const w = f * d * cosTheta;
+
+            document.getElementById('res-work').textContent = w.toFixed(2) + ' J';
+            document.getElementById('res-cos').textContent = cosTheta.toFixed(4);
+
+            const signEl = document.getElementById('res-work-sign');
+            if (w > 0.001) {
+                signEl.textContent = 'Trabajo motor (positivo)';
+                signEl.style.color = '#4caf50';
+            } else if (w < -0.001) {
+                signEl.textContent = 'Trabajo resistente (negativo)';
+                signEl.style.color = '#f44336';
+            } else {
+                signEl.textContent = 'Trabajo nulo (fuerza perpendicular)';
+                signEl.style.color = '#ff9800';
+            }
+        }
+
+        // --- Lógica: Térmica ---
+        function calcThermal() {
+            const m = parseFloat(document.getElementById('mass-q').value) || 0;
+            const c = parseFloat(document.getElementById('ce-q').value) || 0;
+            const dt = parseFloat(document.getElementById('dt-q').value) || 0;
+            const l = parseFloat(document.getElementById('lat-l').value) || 0;
+
+            const qs = m * c * dt;
+            const ql = m * l;
+
+            document.getElementById('res-qs').textContent = qs.toFixed(1) + ' cal';
+            document.getElementById('res-qs-j').textContent = `(${(qs * 4.184).toFixed(1)} J)`;
+            document.getElementById('res-ql').textContent = ql.toFixed(1) + ' cal';
+        }
+
+        // --- Lógica: Dilatación ---
+        function calcDilation() {
+            const l0 = parseFloat(document.getElementById('dil-l0').value) || 0;
+            const alpha = (parseFloat(document.getElementById('dil-alpha').value) || 0) * 1e-6;
+            const dt = parseFloat(document.getElementById('dil-dt').value) || 0;
+
+            const dl = l0 * alpha * dt;
+            const lf = l0 + dl;
+
+            document.getElementById('res-dil-dl').textContent = dl.toFixed(6) + ' m';
+            document.getElementById('res-dil-dl-mm').textContent = `(${(dl * 1000).toFixed(2)} mm)`;
+            document.getElementById('res-dil-lf').textContent = lf.toFixed(6) + ' m';
+        }
+
+        // --- Lógica: Eléctrica ---
+        function calcElectric(origin) {
+            const v = parseFloat(document.getElementById('elec-v').value) || 0;
+            let i = parseFloat(document.getElementById('elec-i').value) || 0;
+            let r = parseFloat(document.getElementById('elec-r').value) || 0;
+            const t = parseFloat(document.getElementById('elec-t').value) || 0;
+
+            if (origin === 'r') {
+                if (r > 0) {
+                    i = v / r;
+                    document.getElementById('elec-i').value = i.toFixed(2);
+                }
+            } else {
+                if (i > 0) {
+                    r = v / i;
+                    document.getElementById('elec-r').value = r.toFixed(1);
+                }
+            }
+
+            const p = v * i;
+            const e = (p * t) / 1000;
+
+            document.getElementById('res-elec-p').textContent = p.toFixed(1) + ' W';
+            document.getElementById('res-elec-kw').textContent = (p / 1000).toFixed(3) + ' kW';
+            document.getElementById('res-elec-e').textContent = e.toFixed(3) + ' kWh';
+        }
+
+        // --- Lógica: Resistencias ---
+        function calcResistors() {
+            const r1 = parseFloat(document.getElementById('res-r1').value) || 0;
+            const r2 = parseFloat(document.getElementById('res-r2').value) || 0;
+            const r3 = parseFloat(document.getElementById('res-r3').value) || 0;
+
+            // Serie
+            let serie = r1 + r2;
+            if (r3 > 0) serie += r3;
+
+            // Paralelo
+            let paralelo = 0;
+            let sumInv = 0;
+            if (r1 > 0) sumInv += 1 / r1;
+            if (r2 > 0) sumInv += 1 / r2;
+            if (r3 > 0) sumInv += 1 / r3;
+            if (sumInv > 0) paralelo = 1 / sumInv;
+
+            document.getElementById('res-serie').textContent = serie.toFixed(2) + ' Ω';
+            document.getElementById('res-paralelo').textContent = paralelo.toFixed(2) + ' Ω';
+        }
+
+        // --- Conversor de escalas ---
+        function convertScales(origin) {
+            const cInput = document.getElementById('temp-c');
+            const fInput = document.getElementById('temp-f');
+            const kInput = document.getElementById('temp-k');
+
+            if (origin === 'c') {
+                const val = parseFloat(cInput.value);
+                fInput.value = ((val * 9 / 5) + 32).toFixed(2);
+                kInput.value = (val + 273.15).toFixed(2);
+            } else if (origin === 'f') {
+                const val = parseFloat(fInput.value);
+                cInput.value = ((val - 32) * 5 / 9).toFixed(2);
+                kInput.value = (((val - 32) * 5 / 9) + 273.15).toFixed(2);
+            } else {
+                const val = parseFloat(kInput.value);
+                cInput.value = (val - 273.15).toFixed(2);
+                fInput.value = (((val - 273.15) * 9 / 5) + 32).toFixed(2);
+            }
+        }
+
+        // --- Conversor de unidades ---
+        function convertUnits(origin) {
+            if (origin === 'w') {
+                const val = parseFloat(document.getElementById('unit-w').value) || 0;
+                document.getElementById('unit-kw').value = (val / 1000).toFixed(4);
+                document.getElementById('unit-cv').value = (val / 735.5).toFixed(4);
+            } else if (origin === 'kw') {
+                const val = parseFloat(document.getElementById('unit-kw').value) || 0;
+                document.getElementById('unit-w').value = (val * 1000).toFixed(0);
+                document.getElementById('unit-cv').value = (val * 1000 / 735.5).toFixed(4);
+            } else if (origin === 'cv') {
+                const val = parseFloat(document.getElementById('unit-cv').value) || 0;
+                document.getElementById('unit-w').value = (val * 735.5).toFixed(1);
+                document.getElementById('unit-kw').value = (val * 0.7355).toFixed(4);
+            } else if (origin === 'j') {
+                const val = parseFloat(document.getElementById('unit-j').value) || 0;
+                document.getElementById('unit-cal').value = (val / 4.184).toFixed(2);
+                document.getElementById('unit-kwh').value = (val / 3600000).toFixed(6);
+            } else if (origin === 'cal') {
+                const val = parseFloat(document.getElementById('unit-cal').value) || 0;
+                document.getElementById('unit-j').value = (val * 4.184).toFixed(2);
+                document.getElementById('unit-kwh').value = (val * 4.184 / 3600000).toFixed(6);
+            } else if (origin === 'kwh') {
+                const val = parseFloat(document.getElementById('unit-kwh').value) || 0;
+                document.getElementById('unit-j').value = (val * 3600000).toFixed(0);
+                document.getElementById('unit-cal').value = (val * 3600000 / 4.184).toFixed(0);
+            } else if (origin === 'kmh') {
+                const val = parseFloat(document.getElementById('unit-kmh').value) || 0;
+                document.getElementById('unit-ms').value = (val / 3.6).toFixed(2);
+            } else if (origin === 'ms') {
+                const val = parseFloat(document.getElementById('unit-ms').value) || 0;
+                document.getElementById('unit-kmh').value = (val * 3.6).toFixed(2);
+            }
+        }
+
+        // Inicializar todos los cálculos
+        window.onload = () => {
+            calcMechanical();
+            calcWork();
+            calcThermal();
+            calcDilation();
+            calcElectric();
+            calcResistors();
+        };
+    </script>
+</body>
+
+</html>

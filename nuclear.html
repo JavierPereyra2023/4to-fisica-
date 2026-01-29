@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Energía Nuclear - Portal de Física</title>
+  <meta name="description" content="Energía nuclear: fisión, fusión y centrales nucleares en Argentina.">
+  <style>
+    :root {
+      --neon-blue: #00e5ff;
+      --neon-glow: rgba(0, 229, 255, 0.3);
+    }
+
+    .hero-section {
+      background: linear-gradient(135deg, #1a237e, #0d47a1, #1565c0);
+      color: white;
+      padding: 80px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(79, 195, 247, 0.2) 0%, transparent 70%);
+      transform: translate(-50%, -50%);
+      animation: pulse-glow 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 1; transform: translate(-50%, -50%) scale(1.3); }
+    }
+
+    body.dark-mode .hero-section {
+      background: linear-gradient(135deg, #0a0a2e, #0d1b3e, #0a1628);
+    }
+
+    .fission-box {
+      border: 2px solid var(--neon-blue);
+      padding: 20px;
+      border-radius: 15px;
+      margin: 20px 0;
+      background: rgba(0, 229, 255, 0.05);
+    }
+
+    body.dark-mode .fission-box {
+      box-shadow: 0 0 15px var(--neon-glow);
+    }
+
+    .fusion-box {
+      border: 2px solid #ff7043;
+      padding: 20px;
+      border-radius: 15px;
+      margin: 20px 0;
+      background: rgba(255, 112, 67, 0.05);
+    }
+
+    body.dark-mode .fusion-box {
+      box-shadow: 0 0 15px rgba(255, 112, 67, 0.3);
+    }
+
+    .argentina-section {
+      background: #f5f5f5;
+      padding: 30px;
+      border-radius: 15px;
+      margin-top: 30px;
+    }
+
+    body.dark-mode .argentina-section {
+      background: #16213e;
+      border: 1px solid var(--neon-blue);
+      box-shadow: 0 0 15px var(--neon-glow);
+    }
+
+    .key-data {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .data-item {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .data-item:hover {
+      transform: translateY(-5px);
+    }
+
+    body.dark-mode .data-item {
+      background: #1a2740;
+      border: 1px solid rgba(0, 229, 255, 0.2);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .data-item strong {
+      display: block;
+      color: #1976d2;
+      font-size: 1.3rem;
+      margin-bottom: 5px;
+    }
+
+    body.dark-mode .data-item strong {
+      color: var(--neon-blue);
+    }
+
+    .data-item .data-power {
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 5px;
+    }
+
+    body.dark-mode .data-item .data-power {
+      color: #90caf9;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .comparison-table th {
+      background: #1976d2;
+      color: white;
+      padding: 12px 15px;
+      text-align: left;
+    }
+
+    body.dark-mode .comparison-table th {
+      background: #0d47a1;
+    }
+
+    .comparison-table td {
+      padding: 10px 15px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    body.dark-mode .comparison-table td {
+      border-bottom-color: #2a3a5c;
+      color: #ccc;
+    }
+
+    .comparison-table tr:nth-child(even) {
+      background: #f5f5f5;
+    }
+
+    body.dark-mode .comparison-table tr:nth-child(even) {
+      background: #1a2740;
+    }
+
+    .safety-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .safety-item {
+      background: #e8f5e9;
+      padding: 15px;
+      border-radius: 10px;
+      border-left: 4px solid #4caf50;
+    }
+
+    body.dark-mode .safety-item {
+      background: #1a2740;
+      border-left-color: #66bb6a;
+    }
+
+    .atom-icon {
+      display: inline-block;
+      width: 60px;
+      height: 60px;
+      margin-bottom: 10px;
+    }
+  </style>
+  <link rel="stylesheet" href="css/index.css">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        packages: ['base', 'ams', 'noerrors', 'noundefined']
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+</head>
+
+<body>
+  <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
+  <header>
+    <h1>⚛️ Energía Nuclear</h1>
+    <p>El poder del átomo al servicio de la humanidad</p>
+    <div class="search-container">
+      <div class="search-input-wrapper">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="grokSearch" placeholder="Grokipedia: Busca temas de física...">
+      </div>
+      <div id="searchResults" class="search-results"></div>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="tipos-energia.html">Tipos de Energía</a></li>
+        <li><a href="alternativas.html">Energías Alternativas</a></li>
+        <li><a href="calculadora.html">Calculadora</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="guia.html">Guía</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="content-main">
+    <section class="hero-section">
+      <h2 style="font-size: 2.5rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); position: relative;">Centrales Nucleares Argentinas</h2>
+      <p style="font-size: 1.2rem; position: relative; opacity: 0.9;">Pioneros en energía nuclear en América Latina desde 1974</p>
+    </section>
+
+    <section class="content-section">
+      <h2>¿Qué es la Energía Nuclear?</h2>
+      <p>
+        La energía nuclear es la energía almacenada en el <strong>núcleo de los átomos</strong>. Se libera mediante
+        reacciones nucleares (fisión o fusión) y puede aprovecharse para generar electricidad, calor y propulsión.
+        Es la fuente de energía más densa que conocemos: un kilogramo de uranio produce tanta energía como
+        <strong>20.000 kg de carbón</strong>.
+      </p>
+      <div class="key-points">
+        <strong>Idea clave:</strong> La relación masa-energía de Einstein, $E = mc^2$, explica por qué
+        pequeñas cantidades de masa liberan enormes cantidades de energía en reacciones nucleares.
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>Fisión vs. Fusión</h2>
+
+      <div class="fission-box">
+        <h3>🔬 Fisión Nuclear</h3>
+        <p>
+          Un núcleo pesado (como el Uranio-235) absorbe un neutrón y se <strong>divide</strong> en dos núcleos
+          más livianos, liberando energía y más neutrones que pueden provocar una <strong>reacción en cadena</strong>.
+        </p>
+        <div class="equation">
+          $$^{235}_{92}\text{U} + ^1_0\text{n} \rightarrow ^{141}_{56}\text{Ba} + ^{92}_{36}\text{Kr} + 3\,^1_0\text{n} + 200\,\text{MeV}$$
+        </div>
+        <p>Este es el proceso que se utiliza en las <strong>centrales nucleares actuales</strong>.</p>
+      </div>
+
+      <div class="fusion-box">
+        <h3>☀️ Fusión Nuclear</h3>
+        <p>
+          Dos núcleos livianos (como deuterio y tritio) se <strong>unen</strong> para formar un núcleo más pesado,
+          liberando aún más energía que la fisión. Es el proceso que alimenta al Sol y las estrellas.
+        </p>
+        <div class="equation">
+          $$^2_1\text{H} + ^3_1\text{H} \rightarrow ^4_2\text{He} + ^1_0\text{n} + 17.6\,\text{MeV}$$
+        </div>
+        <p>Todavía en fase experimental (proyecto ITER), pero promete energía <strong>limpia e ilimitada</strong>.</p>
+      </div>
+
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Característica</th>
+            <th>Fisión</th>
+            <th>Fusión</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Combustible</td>
+            <td>Uranio, Plutonio</td>
+            <td>Deuterio, Tritio</td>
+          </tr>
+          <tr>
+            <td>Temperatura</td>
+            <td>~300 °C</td>
+            <td>~150.000.000 °C</td>
+          </tr>
+          <tr>
+            <td>Residuos</td>
+            <td>Radiactivos (larga vida)</td>
+            <td>Helio (no radiactivo)</td>
+          </tr>
+          <tr>
+            <td>Estado actual</td>
+            <td>Operativa comercialmente</td>
+            <td>En investigación</td>
+          </tr>
+          <tr>
+            <td>Emisiones CO₂</td>
+            <td>Casi cero en operación</td>
+            <td>Cero</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="content-section">
+      <h2>¿Cómo funciona una central nuclear?</h2>
+      <p>Una central nuclear de fisión funciona en etapas:</p>
+      <div class="cards">
+        <div class="card">
+          <h2>1. Reactor</h2>
+          <p>Las barras de combustible (uranio) se someten a fisión controlada. Las barras de control regulan la reacción absorbiendo neutrones.</p>
+        </div>
+        <div class="card">
+          <h2>2. Generación de vapor</h2>
+          <p>El calor generado calienta agua a alta presión, produciendo vapor. En reactores PWR hay un circuito primario y secundario.</p>
+        </div>
+        <div class="card">
+          <h2>3. Turbina y generador</h2>
+          <p>El vapor mueve una turbina conectada a un generador eléctrico, convirtiendo energía térmica en eléctrica.</p>
+        </div>
+      </div>
+      <div class="key-points">
+        <strong>Dato importante:</strong> La potencia térmica se relaciona con la eléctrica mediante el
+        <strong>rendimiento</strong>: $\eta = \frac{P_{eléctrica}}{P_{térmica}} \approx 33\%$
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>Seguridad y medio ambiente</h2>
+      <div class="safety-grid">
+        <div class="safety-item">
+          <h3>🛡️ Barreras de contención</h3>
+          <p>Las centrales tienen múltiples barreras físicas: las pastillas cerámicas, las vainas de zircaloy, el recipiente de presión y el edificio de contención.</p>
+        </div>
+        <div class="safety-item">
+          <h3>🌱 Baja huella de carbono</h3>
+          <p>La energía nuclear emite menos CO₂ por kWh que la solar o eólica considerando todo su ciclo de vida (~12 g CO₂/kWh).</p>
+        </div>
+        <div class="safety-item">
+          <h3>📦 Gestión de residuos</h3>
+          <p>Los residuos radiactivos se almacenan de forma segura. Su volumen es muy pequeño comparado con otras fuentes de energía.</p>
+        </div>
+        <div class="safety-item">
+          <h3>⚙️ Sistemas pasivos</h3>
+          <p>Las centrales modernas incorporan sistemas de seguridad pasiva que funcionan sin intervención humana ni energía externa.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>Energía nuclear en Argentina</h2>
+      <p>
+        Argentina es líder regional en tecnología nuclear. Fue el primer país de América Latina en tener una
+        central nuclear y exporta reactores de investigación a países como Egipto, Argelia y Australia.
+      </p>
+
+      <div class="energy-chart">
+        <p><strong>Aporte nuclear a la red eléctrica</strong></p>
+        <div class="chart-row">
+          <div class="chart-label">Nuclear</div>
+          <div class="chart-bar">
+            <div class="chart-fill" style="width: 7%; background: #ab47bc;"></div>
+          </div>
+          <div class="chart-value">~7%</div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-label">Gas natural</div>
+          <div class="chart-bar">
+            <div class="chart-fill" style="width: 51%; background: #ff7043;"></div>
+          </div>
+          <div class="chart-value">~51%</div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-label">Renovables</div>
+          <div class="chart-bar">
+            <div class="chart-fill" style="width: 29%; background: #66bb6a;"></div>
+          </div>
+          <div class="chart-value">~29%</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="argentina-section">
+        <h2>🇦🇷 Centrales Nucleares Argentinas</h2>
+        <p>El país cuenta con tres centrales nucleares operativas que aportan energía de base estable al sistema interconectado.</p>
+        <div class="key-data">
+          <div class="data-item">
+            <strong>Atucha I</strong>
+            Primera central nuclear de América Latina, inaugurada en 1974 en Lima, Buenos Aires.
+            <div class="data-power">357 MWe</div>
+          </div>
+          <div class="data-item">
+            <strong>Atucha II</strong>
+            La central más grande del país, completada en 2014. Reactor tipo PHWR.
+            <div class="data-power">745 MWe</div>
+          </div>
+          <div class="data-item">
+            <strong>Embalse</strong>
+            Ubicada en Córdoba, tipo CANDU. Extensión de vida útil completada en 2019.
+            <div class="data-power">648 MWe</div>
+          </div>
+        </div>
+        <div class="callout" style="margin-top: 20px;">
+          <strong>CAREM-25:</strong> Argentina desarrolla el primer reactor nuclear modular (SMR) de diseño
+          íntegramente nacional. Es un hito en la tecnología nuclear mundial.
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>Organismos clave</h2>
+      <div class="cards">
+        <div class="card">
+          <h2>CNEA</h2>
+          <p>Comisión Nacional de Energía Atómica. Investiga y desarrolla tecnología nuclear desde 1950.</p>
+        </div>
+        <div class="card">
+          <h2>NA-SA</h2>
+          <p>Nucleoeléctrica Argentina S.A. Opera las tres centrales nucleares del país.</p>
+        </div>
+        <div class="card">
+          <h2>INVAP</h2>
+          <p>Empresa de alta tecnología que diseña y exporta reactores nucleares de investigación al mundo.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="back-button-container">
+      <a href="javascript:history.back()" class="back-button">&larr; Volver</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>📚 Aprende Física</h3>
+        <p>Material educativo para estudiantes de secundaria</p>
+      </div>
+      <div class="footer-section">
+        <h3>👨‍🏫 Creado por</h3>
+        <p>Prof. Javier Pereyra</p>
+      </div>
+      <div class="footer-section">
+        <h3>📧 Contacto</h3>
+        <p>Para dudas y sugerencias</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Portal de Física para Secundaria</p>
+    </div>
+  </footer>
+
+  <script src="js/dark-mode.js"></script>
+  <script src="js/search.js"></script>
+</body>
+
+</html>

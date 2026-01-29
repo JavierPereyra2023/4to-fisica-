@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipos de Energía - Portal de Física</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
+    <header>
+        <h1>⚙️ Tipos de Energía</h1>
+        <p>Conceptos fundamentales, mecánica y termodinámica</p>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="tipos-energia.html" class="active">Tipos de Energía</a></li>
+                <li><a href="alternativas.html">Energías Alternativas</a></li>
+                <li><a href="calculadora.html">Calculadora</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="guia.html">Guía</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="cards">
+            <!-- Definición de Energía -->
+            <div class="card">
+                <h2>🔋 ¿Qué es la Energía?</h2>
+                <p>El concepto fundamental que conecta toda la física</p>
+                <div class="equation">$$E_{\text{total,inicial}} = E_{\text{total,final}}$$</div>
+                <img src="energia_auto.png" alt="Transformación de energía en un auto">
+                <a href="definicion-energia.html" class="read-button">Aprender</a>
+            </div>
+
+            <!-- Trabajo -->
+            <div class="card">
+                <h2>💪 Trabajo</h2>
+                <p>El significado físico del esfuerzo y la distancia</p>
+                <div class="equation">$$W = F \cdot d \cdot \cos(\theta)$$</div>
+                <img src="trabajo.jpg" alt="Imagen de trabajo">
+                <a href="trabajo.html" class="read-button">Explorar más</a>
+            </div>
+
+            <!-- Energía Cinética -->
+            <div class="card">
+                <h2>🏃 Energía Cinética</h2>
+                <p>La energía asociada al movimiento de los cuerpos</p>
+                <div class="equation">$$E_c = \frac{1}{2} m v^2$$</div>
+                <img src="f35.jpg" alt="Imagen del F-35">
+                <a href="cinetica.html" class="read-button">Aprender más</a>
+            </div>
+
+            <!-- Energía Potencial -->
+            <div class="card">
+                <h2>⚡ Energía Potencial</h2>
+                <p>Energía almacenada lista para transformarse</p>
+                <div class="equation">$$E_p = m g h$$</div>
+                <img src="gravitatoria.jpg" alt="Imagen de energía potencial">
+                <a href="gravitatoria.html" class="read-button">Descubrir</a>
+            </div>
+
+            <!-- Energía Mecánica -->
+            <div class="card">
+                <h2>⚙️ Energía Mecánica</h2>
+                <p>La suma de cinemática y potencial en un sistema</p>
+                <div class="equation">$$E_m = E_c + E_p$$</div>
+                <img src="mecanica.webp" alt="Imagen de energía mecánica">
+                <a href="mecanica01.html" class="read-button">Estudiar</a>
+            </div>
+
+            <!-- Conservación -->
+            <div class="card">
+                <h2>🔄 Conservación</h2>
+                <p>El principio de que la energía no desaparece</p>
+                <div class="equation">$$E_{m_i} = E_{m_f}$$</div>
+                <img src="burbuja.webp" alt="Conservación de energía">
+                <a href="mecanica02.html" class="read-button">Comprender</a>
+            </div>
+
+            <!-- Calor -->
+            <div class="card">
+                <h2>🔥 Calor</h2>
+                <p>Transferencia de energía térmica</p>
+                <div class="equation">$$Q = m \cdot c \cdot \Delta T$$</div>
+                <img src="calor.jpg" alt="Transferencia de calor">
+                <a href="calor.html" class="read-button">Explorar</a>
+            </div>
+
+            <!-- Temperatura -->
+            <div class="card">
+                <h2>🌡️ Temperatura</h2>
+                <p>Medición del estado térmico y escalas</p>
+                <div class="equation">$$^{\circ}F = \frac{9}{5} \cdot \,^{\circ}C + 32$$</div>
+                <img src="temperatura.jpg" alt="Escalas de temperatura">
+                <a href="temperatura.html" class="read-button">Descubrir</a>
+            </div>
+
+            <!-- Cambios de Estado -->
+            <div class="card">
+                <h2>🧊 Cambios de Estado</h2>
+                <p>Transiciones entre fases de la materia</p>
+                <div class="equation">$$Q = m \cdot L$$</div>
+                <img src="cambio_estado.jpg" alt="Cambios de estado">
+                <a href="cambios-estado.html" class="read-button">Estudiar</a>
+            </div>
+        </section>
+        <div class="back-button-container" style="text-align: center; margin: 20px 0;">
+            <a href="index.html" class="back-button">← Volver al Inicio</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Portal de Física para Secundaria</p>
+        </div>
+    </footer>
+
+    <script src="js/dark-mode.js"></script>
+</body>
+
+</html>
