@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Videos Explicativos - Física para Secundaria</title>
+  <meta name="description" content="Videos educativos de física en español latino para complementar tu aprendizaje">
+  <link rel="stylesheet" href="css/index.css">
+  <style>
+    /* Estilos para la lista de videos */
+    .video-list {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .video-category {
+      margin-bottom: 40px;
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    body.dark-mode .video-category {
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 0 30px rgba(0, 229, 255, 0.1);
+    }
+
+    .video-category h2 {
+      margin-top: 0;
+      margin-bottom: 20px;
+      color: #2c3e50;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+    }
+
+    body.dark-mode .video-category h2 {
+      color: #00e5ff;
+      border-bottom-color: #00e5ff;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      margin-bottom: 10px;
+      background: #f8f9fa;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .video-item:hover {
+      background: #e9ecef;
+      transform: translateX(10px);
+      box-shadow: 0 4px 15px rgba(52, 152, 219, 0.2);
+    }
+
+    body.dark-mode .video-item {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    body.dark-mode .video-item:hover {
+      background: rgba(0, 229, 255, 0.1);
+      box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+    }
+
+    .video-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #e74c3c, #c0392b);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-right: 20px;
+      flex-shrink: 0;
+    }
+
+    body.dark-mode .video-icon {
+      background: linear-gradient(135deg, #00e5ff, #00b8d4);
+    }
+
+    .video-content {
+      flex: 1;
+    }
+
+    .video-title {
+      font-weight: bold;
+      font-size: 1.1em;
+      margin-bottom: 5px;
+      color: #2c3e50;
+    }
+
+    body.dark-mode .video-title {
+      color: #ffffff;
+    }
+
+    .video-description {
+      font-size: 0.9em;
+      color: #7f8c8d;
+      margin: 0;
+    }
+
+    body.dark-mode .video-description {
+      color: #95a5a6;
+    }
+
+    .external-link-icon {
+      font-size: 20px;
+      color: #3498db;
+      margin-left: 10px;
+    }
+
+    body.dark-mode .external-link-icon {
+      color: #00e5ff;
+    }
+
+    /* ================================ */
+    /* RESPONSIVE DESIGN                */
+    /* ================================ */
+
+    /* Tablets (768px - 1024px) */
+    @media (max-width: 1024px) {
+      .video-list {
+        max-width: 100%;
+        padding: 0 20px;
+      }
+
+      .video-category {
+        padding: 25px;
+      }
+
+      .video-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 22px;
+        margin-right: 15px;
+      }
+
+      .video-title {
+        font-size: 1.05em;
+      }
+
+      .video-description {
+        font-size: 0.85em;
+      }
+    }
+
+    /* Pantallas pequeñas (< 768px) */
+    @media (max-width: 768px) {
+      .video-list {
+        padding: 0 15px;
+      }
+
+      .video-category {
+        padding: 20px;
+        margin-bottom: 30px;
+      }
+
+      .video-category h2 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+      }
+
+      .video-item {
+        padding: 12px;
+        margin-bottom: 8px;
+      }
+
+      .video-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        margin-right: 12px;
+      }
+
+      .video-title {
+        font-size: 1em;
+        margin-bottom: 3px;
+      }
+
+      .video-description {
+        font-size: 0.8em;
+      }
+
+      .external-link-icon {
+        font-size: 18px;
+      }
+    }
+
+    /* Pantallas muy pequeñas (< 480px) */
+    @media (max-width: 480px) {
+      .video-list {
+        padding: 0 10px;
+      }
+
+      .video-category {
+        padding: 15px;
+        margin-bottom: 25px;
+      }
+
+      .video-category h2 {
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+      }
+
+      .video-item {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+        gap: 10px;
+      }
+
+      .video-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+        margin-right: 0;
+        margin-bottom: 5px;
+        align-self: center;
+      }
+
+      .video-content {
+        width: 100%;
+        text-align: center;
+      }
+
+      .video-title {
+        font-size: 1.05em;
+        margin-bottom: 5px;
+      }
+
+      .video-description {
+        font-size: 0.85em;
+      }
+
+      .external-link-icon {
+        align-self: center;
+        margin-left: 0;
+        margin-top: 5px;
+        font-size: 20px;
+      }
+
+      .video-item:hover {
+        transform: translateX(0);
+        transform: scale(1.02);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
+
+  <header>
+    <h1>🎥 Videos Explicativos</h1>
+    <p>Recursos audiovisuales en español latino para complementar tu aprendizaje</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="tipos-energia.html">Tipos de Energía</a></li>
+        <li><a href="alternativas.html">Energías Alternativas</a></li>
+        <li><a href="calculadora.html">Calculadora</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="guia.html">Guía</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro-section">
+      <h2>📺 Aprende con Videos</h2>
+      <p>Estos videos seleccionados en español latino te ayudarán a comprender mejor los conceptos de física de manera visual e interactiva. Haz clic en cualquier video para verlo en YouTube.</p>
+    </section>
+
+    <section class="video-list">
+      <!-- Energía Mecánica -->
+      <div class="video-category">
+        <h2>⚡ Energía Mecánica</h2>
+
+        <a href="https://www.youtube.com/watch?v=xO6JgW0KOUI" target="_blank" class="video-item">
+          <div class="video-icon">▶</div>
+          <div class="video-content">
+            <div class="video-title">Energía Cinética</div>
+            <p class="video-description">Explicación clara de la energía cinética con ejemplos cotidianos</p>
+          </div>
+          <span class="external-link-icon">🔗</span>
+        </a>
+
+        <a href="https://www.youtube.com/watch?v=8vbd3E7MgXQ" target="_blank" class="video-item">
+          <div class="video-icon">▶</div>
+          <div class="video-content">
+            <div class="video-title">Energía Potencial</div>
+            <p class="video-description">Comprende la energía potencial gravitatoria y elástica</p>
+          </div>
+          <span class="external-link-icon">🔗</span>
+        </a>
+
+        <a href="https://www.youtube.com/watch?v=KvW03eNgage" target="_blank" class="video-item">
+          <div class="video-icon">▶</div>
+          <div class="video-content">
+            <div class="video-title">Conservación de la Energía</div>
+            <p class="video-description">Principio de conservación de la energía mecánica explicado paso a paso</p>
+          </div>
+          <span class="external-link-icon">🔗</span>
+        </a>
+      </div>
+
+      <!-- Termodinámica -->
+      <div class="video-category">
+        <h2>🌡️ Termodinámica y Calor</h2>
+
+        <a href="https://www.youtube.com/watch?v=S0jXfD-sStE" target="_blank" class="video-item">
+          <div class="video-icon">▶</div>
+          <div class="video-content">
+            <div class="video-title">Temperatura y Calor</div>
+            <p class="video-description">Diferencia entre temperatura y calor con ejemplos prácticos</p>
+          </div>
+          <span class="external-link-icon">🔗</span>
+        </a>
+
+        <a href="https://www.youtube.com/watch?v=guYu-2N_J1M" target="_blank" class="video-item">
+          <div class="video-icon">▶</div>
+          <div class="video-content">
+            <div class="video-title">Leyes de la Termodinámica</div>
+            <p class="video-description">Las tres leyes de la termodinámica explicadas de forma sencilla</p>
+          </div>
+          <span class="external-link-icon">🔗</span>
+        </a>
+
+        <a href="https://www.youtube.com/watch?v=NpK9AKN9RqI" target="_blank" class="video-item">
+          <div class="video-icon">▶</div>
+          <div class="video-content">
+            <div class="video-title">Calor Específico</div>
+            <p class="video-description">Concepto de calor específico y capacidad calorífica</p>
+          </div>
+          <span class="external-link-icon">🔗</span>
+        </a>
+      </div>
+
+      <!-- Electricidad -->
+      <div class="video-category">
+        <h2>⚡ Electricidad y Circuitos</h2>
+
+        <a href="https://www.youtube.com/watch?v=R5EnSm8ckk0" target="_blank" class="video-item">
+          <div class="video-icon">▶</div>
+          <div class="video-content">
+            <div class="video-title">Ley de Ohm</div>
+            <p class="video-description">Explicación completa de la Ley de Ohm con ejercicios resueltos</p>
+          </div>
+          <span class="external-link-icon">🔗</span>
+        </a>
+
+        <a href="https://www.youtube.com/watch?v=lb6gRj-4vXA" target="_blank" class="video-item">
+          <div class="video-icon">▶</div>
+          <div class="video-content">
+            <div class="video-title">Circuitos Eléctricos</div>
+            <p class="video-description">Introducción a circuitos serie y paralelo</p>
+          </div>
+          <span class="external-link-icon">🔗</span>
+        </a>
+
+        <a href="https://www.youtube.com/watch?v=wZQiguuGmYI" target="_blank" class="video-item">
+          <div class="video-icon">▶</div>
+          <div class="video-content">
+            <div class="video-title">Potencia Eléctrica</div>
+            <p class="video-description">Cálculo de potencia eléctrica y consumo energético</p>
+          </div>
+          <span class="external-link-icon">🔗</span>
+        </a>
+      </div>
+
+      <!-- Energías Renovables -->
+      <div class="video-category">
+        <h2>🌱 Energías Renovables</h2>
+
+        <a href="https://www.youtube.com/watch?v=Ep6yGFhAM88" target="_blank" class="video-item">
+          <div class="video-icon">▶</div>
+          <div class="video-content">
+            <div class="video-title">Energía Solar</div>
+            <p class="video-description">Cómo funciona la energía solar fotovoltaica</p>
+          </div>
+          <span class="external-link-icon">🔗</span>
+        </a>
+
+        <a href="https://www.youtube.com/watch?v=gR8_GHrpbzY" target="_blank" class="video-item">
+          <div class="video-icon">▶</div>
+          <div class="video-content">
+            <div class="video-title">Energía Eólica</div>
+            <p class="video-description">Principios de funcionamiento de los aerogeneradores</p>
+          </div>
+          <span class="external-link-icon">🔗</span>
+        </a>
+
+        <a href="https://www.youtube.com/watch?v=kVPpbF3KZck" target="_blank" class="video-item">
+          <div class="video-icon">▶</div>
+          <div class="video-content">
+            <div class="video-title">Energía Hidráulica</div>
+            <p class="video-description">Generación de energía mediante centrales hidroeléctricas</p>
+          </div>
+          <span class="external-link-icon">🔗</span>
+        </a>
+      </div>
+
+      <!-- Energía Nuclear -->
+      <div class="video-category">
+        <h2>⚛️ Energía Nuclear</h2>
+
+        <a href="https://www.youtube.com/watch?v=rcOFV4y5z8c" target="_blank" class="video-item">
+          <div class="video-icon">▶</div>
+          <div class="video-content">
+            <div class="video-title">Fisión Nuclear</div>
+            <p class="video-description">Proceso de fisión nuclear explicado paso a paso</p>
+          </div>
+          <span class="external-link-icon">🔗</span>
+        </a>
+
+        <a href="https://www.youtube.com/watch?v=1hSF0pAVCQk" target="_blank" class="video-item">
+          <div class="video-icon">▶</div>
+          <div class="video-content">
+            <div class="video-title">Centrales Nucleares</div>
+            <p class="video-description">Funcionamiento de una central nuclear</p>
+          </div>
+          <span class="external-link-icon">🔗</span>
+        </a>
+
+        <a href="https://www.youtube.com/watch?v=AZrwZ3PeSPo" target="_blank" class="video-item">
+          <div class="video-icon">▶</div>
+          <div class="video-content">
+            <div class="video-title">Radiactividad</div>
+            <p class="video-description">¿Qué es la radiactividad? Conceptos básicos</p>
+          </div>
+          <span class="external-link-icon">🔗</span>
+        </a>
+      </div>
+    </section>
+
+    <div class="back-button-container">
+      <a href="index.html" class="back-button">← Volver al Inicio</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>📚 Aprende Física</h3>
+        <p>Material educativo para estudiantes de secundaria</p>
+      </div>
+      <div class="footer-section">
+        <h3>👨‍🏫 Creado por</h3>
+        <p>Prof. Javier Pereyra</p>
+      </div>
+      <div class="footer-section">
+        <h3>📧 Contacto</h3>
+        <p>Para dudas y sugerencias</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Portal de Física para Secundaria - Educación para todos</p>
+    </div>
+  </footer>
+
+  <script src="js/dark-mode.js"></script>
+</body>
+
+</html>

@@ -180,6 +180,7 @@
 
             <div class="controls">
                 <button class="btn-restart" onclick="startSimulation()">💥 Iniciar / Reiniciar Reacción</button>
+                <button class="btn-restart" onclick="location.href='fusion-3d.html'" style="background: #ff6b35; margin-left: 10px;">⚛️ Ver Fusión 3D</button>
             </div>
 
             <div class="key-points" style="margin-top: 40px;">
@@ -329,24 +330,21 @@
 
                 let px = x;
                 let py = y;
-                let opacity = 1;
+                let moveFrames = 0;
+                const maxMoveFrames = 60; // Se mueven durante 60 frames y luego se detienen
 
                 function move() {
-                    px += vx;
-                    py += vy;
-                    c.setAttribute("cx", px);
-                    c.setAttribute("cy", py);
-                    t.setAttribute("x", px);
-                    t.setAttribute("y", py);
-
-                    opacity -= 0.005;
-                    g.style.opacity = opacity;
-
-                    if (px > 0 && px < WIDTH && py > 0 && py < HEIGHT && opacity > 0) {
+                    if (moveFrames < maxMoveFrames) {
+                        px += vx;
+                        py += vy;
+                        c.setAttribute("cx", px);
+                        c.setAttribute("cy", py);
+                        t.setAttribute("x", px);
+                        t.setAttribute("y", py);
+                        moveFrames++;
                         requestAnimationFrame(move);
-                    } else {
-                        if (svg.contains(g)) svg.removeChild(g);
                     }
+                    // Los fragmentos Kr y Ba permanecen visibles indefinidamente
                 }
                 requestAnimationFrame(move);
             }

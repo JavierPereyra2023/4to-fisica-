@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo de Fusión Nuclear - Portal de Física</title>
+    <style>
+        .svg-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 40px auto;
+            background: #050a14;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 0 30px rgba(255, 107, 53, 0.2);
+            border: 2px solid #ff6b35;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .fusion-svg {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Núcleos de hidrógeno */
+        .deuterium {
+            fill: #4fc3f7;
+            stroke: #81d4fa;
+            stroke-width: 2;
+            filter: drop-shadow(0 0 10px rgba(79, 195, 247, 0.6));
+        }
+
+        .tritium {
+            fill: #29b6f6;
+            stroke: #4fc3f7;
+            stroke-width: 2;
+            filter: drop-shadow(0 0 10px rgba(41, 182, 246, 0.6));
+        }
+
+        /* Producto de fusión */
+        .helium {
+            fill: #ffd54f;
+            stroke: #ffecb3;
+            stroke-width: 2;
+            filter: drop-shadow(0 0 12px rgba(255, 213, 79, 0.8));
+        }
+
+        .neutron-product {
+            fill: #00e5ff;
+            filter: drop-shadow(0 0 8px #00e5ff);
+        }
+
+        .atom-label {
+            fill: white;
+            font-family: Arial;
+            font-size: 14px;
+            font-weight: bold;
+            pointer-events: none;
+            text-anchor: middle;
+            dominant-baseline: middle;
+        }
+
+        .small-label {
+            font-size: 8px;
+            fill: #b0bec5;
+        }
+
+        /* Partículas subatómicas */
+        .proton {
+            fill: #ff5252;
+            filter: drop-shadow(0 0 4px #ff5252);
+        }
+
+        .neutron-particle {
+            fill: #448aff;
+            filter: drop-shadow(0 0 4px #448aff);
+        }
+
+        /* Energía */
+        .energy-wave {
+            fill: none;
+            stroke: #ff6b35;
+            stroke-width: 3;
+            opacity: 0;
+        }
+
+        .energy-burst {
+            fill: #ffeb3b;
+            opacity: 0;
+        }
+
+        /* Animaciones */
+        @keyframes approach {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(var(--dx), var(--dy));
+            }
+        }
+
+        @keyframes merge {
+            0% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.5;
+                transform: scale(1.5);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+        }
+
+        @keyframes appear {
+            0% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes energy-wave-anim {
+            0% {
+                opacity: 0;
+                r: 10;
+                stroke-width: 3;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            100% {
+                opacity: 0;
+                r: 100;
+                stroke-width: 0.5;
+            }
+        }
+
+        @keyframes burst {
+            0% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 0.9;
+            }
+            100% {
+                opacity: 0;
+                transform: scale(3);
+            }
+        }
+
+        @keyframes eject {
+            0% {
+                transform: translate(0, 0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--dx), var(--dy));
+                opacity: 1;
+            }
+        }
+
+        .controls {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn-restart {
+            background: #ff6b35;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 50px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-restart:hover {
+            background: #ff8a50;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 107, 53, 0.5);
+        }
+    </style>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
+    <header>
+        <h1>⚛️ Fusión Nuclear</h1>
+        <p>Modelo de fusión Deuterio-Tritio</p>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="nuclear.html">Energía Nuclear</a></li>
+                <li><a href="fision-3d.html">Fisión 3D</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="content-main">
+        <section class="content-section">
+            <h2>Simulación de Fusión Nuclear</h2>
+            <p>
+                La fusión nuclear es el proceso por el cual dos núcleos ligeros se combinan para formar un núcleo más
+                pesado, liberando una enorme cantidad de energía. Esta es la reacción que alimenta al Sol y las
+                estrellas.
+            </p>
+
+            <div class="svg-container">
+                <svg viewBox="0 0 800 400" class="fusion-svg" id="fusion-svg" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Núcleo de Deuterio (izquierda) -->
+                    <g id="deuterium-group" style="--dx: 250px; --dy: 0px;">
+                        <circle cx="150" cy="200" r="30" class="deuterium" />
+                        <circle cx="145" cy="200" r="7" class="proton" />
+                        <circle cx="155" cy="200" r="7" class="neutron-particle" />
+                        <text x="150" y="160" class="atom-label">²H</text>
+                        <text x="150" y="250" class="small-label">Deuterio</text>
+                    </g>
+
+                    <!-- Núcleo de Tritio (derecha) -->
+                    <g id="tritium-group" style="--dx: -250px; --dy: 0px;">
+                        <circle cx="650" cy="200" r="30" class="tritium" />
+                        <circle cx="645" cy="195" r="7" class="proton" />
+                        <circle cx="650" cy="205" r="7" class="neutron-particle" />
+                        <circle cx="655" cy="195" r="7" class="neutron-particle" />
+                        <text x="650" y="160" class="atom-label">³H</text>
+                        <text x="650" y="250" class="small-label">Tritio</text>
+                    </g>
+
+                    <!-- Punto de fusión central (oculto inicialmente) -->
+                    <g id="fusion-point" style="opacity: 0;">
+                        <!-- Ondas de energía -->
+                        <circle cx="400" cy="200" class="energy-wave" id="wave1" />
+                        <circle cx="400" cy="200" class="energy-wave" id="wave2" />
+                        <circle cx="400" cy="200" class="energy-wave" id="wave3" />
+
+                        <!-- Explosión de luz -->
+                        <circle cx="400" cy="200" r="40" class="energy-burst" id="burst" />
+                    </g>
+
+                    <!-- Productos de fusión (ocultos inicialmente) -->
+                    <g id="helium-group" style="opacity: 0;">
+                        <circle cx="400" cy="200" r="35" class="helium" />
+                        <circle cx="390" cy="195" r="6" class="proton" />
+                        <circle cx="410" cy="195" r="6" class="proton" />
+                        <circle cx="395" cy="205" r="6" class="neutron-particle" />
+                        <circle cx="405" cy="205" r="6" class="neutron-particle" />
+                        <text x="400" y="150" class="atom-label">⁴He</text>
+                        <text x="400" y="270" class="small-label">Helio-4</text>
+                    </g>
+
+                    <g id="neutron-eject" style="opacity: 0; --dx: 200px; --dy: -100px;">
+                        <circle cx="400" cy="200" r="10" class="neutron-product" />
+                        <text x="400" y="180" class="atom-label">n</text>
+                    </g>
+
+                    <!-- Etiqueta de energía -->
+                    <text x="400" y="350" class="atom-label" id="energy-label" style="opacity: 0; fill: #ff6b35; font-size: 16px;">
+                        + 17.6 MeV de ENERGÍA
+                    </text>
+                </svg>
+            </div>
+
+            <div class="controls">
+                <button class="btn-restart" onclick="startFusion()">⚛️ Iniciar / Reiniciar Fusión</button>
+                <button class="btn-restart" onclick="location.href='fision-3d.html'" style="background: #00e5ff; color: #050a14; margin-left: 10px;">💥 Ver Fisión 3D</button>
+            </div>
+
+            <div class="key-points" style="margin-top: 40px;">
+                <strong>¿Qué estamos viendo?</strong>
+                <ul>
+                    <li><strong>Acercamiento:</strong> Deuterio (²H) y Tritio (³H) se aproximan a alta velocidad.</li>
+                    <li><strong>Fusión:</strong> Los núcleos se combinan liberando una enorme cantidad de energía.</li>
+                    <li><strong>Productos:</strong> Se forma Helio-4 (⁴He) y un neutrón de alta energía.</li>
+                    <li><strong>Energía:</strong> Se liberan 17.6 MeV, la fuente de energía de las estrellas.</li>
+                </ul>
+            </div>
+
+            <div class="key-points" style="margin-top: 20px;">
+                <strong>Aplicaciones:</strong>
+                <ul>
+                    <li>El Sol y las estrellas generan energía mediante fusión de hidrógeno.</li>
+                    <li>Proyectos como ITER buscan aprovechar la fusión para energía limpia.</li>
+                    <li>Libera 4 veces más energía por masa que la fisión nuclear.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function startFusion() {
+            // Reset todas las animaciones
+            const deuteriumGroup = document.getElementById('deuterium-group');
+            const tritiumGroup = document.getElementById('tritium-group');
+            const fusionPoint = document.getElementById('fusion-point');
+            const heliumGroup = document.getElementById('helium-group');
+            const neutronEject = document.getElementById('neutron-eject');
+            const energyLabel = document.getElementById('energy-label');
+            const waves = [document.getElementById('wave1'), document.getElementById('wave2'), document.getElementById('wave3')];
+            const burst = document.getElementById('burst');
+
+            // Reset posiciones y opacidades
+            deuteriumGroup.style.animation = 'none';
+            tritiumGroup.style.animation = 'none';
+            heliumGroup.style.opacity = '0';
+            neutronEject.style.opacity = '0';
+            fusionPoint.style.opacity = '0';
+            energyLabel.style.opacity = '0';
+
+            waves.forEach(wave => {
+                wave.style.animation = 'none';
+                wave.setAttribute('r', '10');
+            });
+            burst.style.animation = 'none';
+
+            // Forzar reflow
+            void deuteriumGroup.offsetWidth;
+
+            // Fase 1: Acercamiento (0-2s)
+            setTimeout(() => {
+                deuteriumGroup.style.animation = 'approach 2s ease-in forwards';
+                tritiumGroup.style.animation = 'approach 2s ease-in forwards';
+            }, 100);
+
+            // Fase 2: Colisión y fusión (2-2.5s)
+            setTimeout(() => {
+                fusionPoint.style.opacity = '1';
+
+                // Ondas de energía
+                waves.forEach((wave, i) => {
+                    setTimeout(() => {
+                        wave.style.animation = 'energy-wave-anim 1s ease-out forwards';
+                    }, i * 150);
+                });
+
+                // Explosión de luz
+                burst.style.animation = 'burst 0.6s ease-out forwards';
+
+                // Desaparecer reactivos
+                deuteriumGroup.style.animation = 'merge 0.5s ease-out forwards';
+                tritiumGroup.style.animation = 'merge 0.5s ease-out forwards';
+            }, 2000);
+
+            // Fase 3: Aparición de productos (2.5-3.5s)
+            setTimeout(() => {
+                heliumGroup.style.opacity = '1';
+                heliumGroup.style.animation = 'appear 0.8s ease-out forwards';
+
+                neutronEject.style.opacity = '1';
+                neutronEject.style.animation = 'eject 1.5s ease-out forwards';
+
+                energyLabel.style.opacity = '1';
+                energyLabel.style.animation = 'appear 0.5s ease-out forwards';
+            }, 2500);
+        }
+
+        // Iniciar automáticamente al cargar
+        window.onload = () => {
+            setTimeout(startFusion, 500);
+        };
+    </script>
+    <script src="js/dark-mode.js"></script>
+</body>
+
+</html>
