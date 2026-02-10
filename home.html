@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Física para Secundaria - Energía Mecánica</title>
+  <meta name="description"
+    content="Portal educativo de física para estudiantes de secundaria. Aprende sobre energía mecánica, cinética, potencial y más.">
+  <link rel="stylesheet" href="css/index.css">
+
+  <!-- Polyfill y MathJax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        packages: ['base', 'ams', 'noerrors', 'noundefined']
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+</head>
+
+<body>
+  <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">🌙</button>
+  <header>
+    <h1>🔬 Física para Secundaria</h1>
+    <p>Explora los conceptos fundamentales de la física</p>
+    <nav>
+      <ul>
+        <li><a href="home.html" class="active">Inicio</a></li>
+        <li><a href="tipos-energia.html">Tipos de Energía</a></li>
+        <li><a href="alternativas.html">Energías Alternativas</a></li>
+        <li><a href="calculadora.html">Calculadora</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="guia.html">Guía</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro-section">
+      <h2>🌟 Bienvenido al Mundo de la Energía</h2>
+      <p>La energía está presente en todo lo que nos rodea. Explora los diferentes módulos para comprender cómo funciona
+        el universo y las fuentes que impulsan nuestro país.</p>
+    </section>
+
+    <section class="cards portal-cards">
+      <!-- Portal: Tipos de Energía -->
+      <div class="card">
+        <h2>⚙️ Tipos de Energía</h2>
+        <p>Aprende sobre mecánica, calor, termodinámica y los principios fundamentales de la física.</p>
+        <img src="tipos-energia.svg" alt="Mecánica y Energía">
+        <a href="tipos-energia.html" class="read-button">Explorar Conceptos</a>
+      </div>
+
+      <!-- Portal: Energías Alternativas -->
+      <div class="card">
+        <h2>🌱 Energías Alternativas</h2>
+        <p>Descubre las fuentes renovables y cómo Argentina lidera el cambio energético.</p>
+        <img src="alternativas.svg" alt="Energías Renovables">
+        <a href="alternativas.html" class="read-button">Ver Renovables</a>
+      </div>
+
+      <!-- Portal: Electricidad -->
+      <div class="card">
+        <h2>🔌 Electricidad</h2>
+        <p>Circuitos, magnetismo y energía eléctrica. Aprende las leyes fundamentales.</p>
+        <img src="electricidad.svg" alt="Electricidad">
+        <a href="electricidad.html" class="read-button">Ir a Electricidad</a>
+      </div>
+
+      <!-- Portal: Calculadora -->
+      <div class="card">
+        <h2>🧮 Calculadora Física</h2>
+        <p>Resuelve problemas de energía cinética, potencial, calor y circuitos paso a paso.</p>
+        <img src="calculadora.svg" alt="Herramientas de cálculo">
+        <a href="calculadora.html" class="read-button">Usar Calculadora</a>
+      </div>
+
+      <!-- Portal: Quiz -->
+      <div class="card">
+        <h2>🎮 Desafío Quiz</h2>
+        <p>Pon a prueba tus conocimientos con ejercicios interactivos y mide tu progreso.</p>
+        <img src="quiz.svg" alt="Quiz de física">
+        <a href="quiz.html" class="read-button">Comenzar Quiz</a>
+      </div>
+
+      <!-- Portal: Energía Nuclear -->
+      <div class="card">
+        <h2>⚛️ Energía Nuclear</h2>
+        <p>Explora la fisión nuclear y la importancia estratégica de las centrales en Argentina.</p>
+        <img src="nuclear.svg" alt="Energía Nuclear">
+        <a href="nuclear.html" class="read-button">Leer más</a>
+      </div>
+    </section>
+  </main>
+  </main>
+
+  <section class="resources-section">
+    <h2>📚 Recursos Adicionales</h2>
+    <div class="resource-links">
+      <a href="guia.html" class="resource-link">
+        <span class="icon">📖</span>
+        <div>
+          <h3>Guía de estudio</h3>
+          <p>Resumen completo con fórmulas clave</p>
+        </div>
+      </a>
+      <a href="videos.html" class="resource-link">
+        <span class="icon">🎥</span>
+        <div>
+          <h3>Videos explicativos</h3>
+          <p>Tutoriales visuales de conceptos</p>
+        </div>
+      </a>
+      <a href="calculadora.html" class="resource-link">
+        <span class="icon">🧮</span>
+        <div>
+          <h3>Calculadora física</h3>
+          <p>Herramienta para resolver problemas</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>📚 Aprende Física</h3>
+        <p>Material educativo para estudiantes de secundaria</p>
+      </div>
+      <div class="footer-section">
+        <h3>👨‍🏫 Creado por</h3>
+        <p>Prof. Javier Pereyra</p>
+      </div>
+      <div class="footer-section">
+        <h3>📧 Contacto</h3>
+        <p>Para dudas y sugerencias</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Portal de Física para Secundaria - Educación para todos</p>
+    </div>
+  </footer>
+
+  <script src="js/dark-mode.js"></script>
+</body>
+
+</html>
