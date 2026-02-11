@@ -3,14 +3,20 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="theme-color" content="#3498db" />
   <title>Conservación de la Energía</title>
   <meta name="description"
     content="Conservación de la energía mecánica: caída libre, modelo ideal y real con rozamiento.">
+
+  <!-- Preconexión a CDNs para mejorar performance -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="preconnect" href="https://polyfill.io" crossorigin />
+
   <link rel="stylesheet" href="css/index.css" />
 
-  <!-- Polyfill y MathJax -->
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <!-- Polyfill y MathJax (carga asíncrona optimizada) -->
+  <script async src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <script>
     MathJax = {
@@ -61,6 +67,60 @@
     </section>
 
     <section class="content-section">
+      <h2>📊 Gráficos de Energía</h2>
+      <p>
+        Analiza cómo se comportan las diferentes formas de energía con gráficos interactivos y dinámicos.
+        Cada gráfico se animará para mostrar las relaciones fundamentales de la energía mecánica.
+      </p>
+    </section>
+
+    <!-- Gráfico 1: Ep vs h -->
+    <section class="content-section">
+      <h3>1️⃣ Energía Potencial vs. Altura</h3>
+      <p>
+        La energía potencial gravitatoria depende <strong>linealmente</strong> de la altura:
+        $$ E_p = m \cdot g \cdot h $$
+      </p>
+      <div class="highlight-box">
+        <strong>Observa:</strong> A mayor altura, mayor energía potencial. Es una relación directamente proporcional (línea recta).
+      </div>
+      <div style="position: relative; height: 300px; max-width: 100%;">
+        <canvas id="chartEpVsH"></canvas>
+      </div>
+    </section>
+
+    <!-- Gráfico 2: Ec vs v -->
+    <section class="content-section">
+      <h3>2️⃣ Energía Cinética vs. Velocidad</h3>
+      <p>
+        La energía cinética depende del <strong>cuadrado de la velocidad</strong>:
+        $$ E_c = \frac{1}{2} m \cdot v^2 $$
+      </p>
+      <div class="highlight-box">
+        <strong>Observa:</strong> Si duplicas la velocidad, la energía cinética se cuadruplica. Es una relación cuadrática (parábola).
+      </div>
+      <div style="position: relative; height: 300px; max-width: 100%;">
+        <canvas id="chartEcVsV"></canvas>
+      </div>
+    </section>
+
+    <!-- Gráfico 3: Em vs t -->
+    <section class="content-section">
+      <h3>3️⃣ Energía Mecánica vs. Tiempo (Sin Rozamiento)</h3>
+      <p>
+        En un sistema ideal <strong>sin fricción</strong>, la energía mecánica total se conserva:
+        $$ E_m = E_c + E_p = \text{Constante} $$
+      </p>
+      <div class="highlight-box">
+        <strong>Observa:</strong> La línea horizontal demuestra que la energía mecánica no cambia con el tiempo.
+        ¡Este es el principio de conservación de la energía!
+      </div>
+      <div style="position: relative; height: 300px; max-width: 100%;">
+        <canvas id="chartEmVsT"></canvas>
+      </div>
+    </section>
+
+    <section class="content-section">
       <h2>Intercambio de Energía vs. Altura</h2>
       <p>
         Imagina un objeto de \( 1 \, \text{kg} \) que cae desde \( 50 \, \text{m} \). Observa cómo cambian las energías
@@ -74,7 +134,9 @@
           <li>La <strong>Energía Mecánica</strong> (verde) es una línea recta: ¡se conserva!</li>
         </ul>
       </div>
-      <canvas id="chartHeight" width="400" height="250"></canvas>
+      <div style="position: relative; height: 300px; max-width: 100%;">
+        <canvas id="chartHeight"></canvas>
+      </div>
     </section>
 
     <section class="content-section">
@@ -83,7 +145,9 @@
         Analicemos tres momentos clave de la caída: el inicio (arriba), el punto medio (mitad de altura) y el final (el
         suelo).
       </p>
-      <canvas id="chartComparison" width="400" height="250"></canvas>
+      <div style="position: relative; height: 300px; max-width: 100%;">
+        <canvas id="chartComparison"></canvas>
+      </div>
     </section>
 
     <section class="content-section">
@@ -96,7 +160,9 @@
         <strong>Dato curioso:</strong> La energía total del universo sigue siendo la misma, solo que ahora parte de ella
         está en forma de calor en el aire y el objeto.
       </div>
-      <canvas id="chartFriction" width="400" height="250"></canvas>
+      <div style="position: relative; height: 300px; max-width: 100%;">
+        <canvas id="chartFriction"></canvas>
+      </div>
     </section>
 
     <section class="cards">
@@ -268,13 +334,255 @@
   </footer>
 
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Chart.js - carga diferida para optimizar performance -->
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const g = 9.8;
       const m = 1;
       const h0 = 50;
+
+      // ============================================
+      // GRÁFICO 1: Ep vs h (Energía Potencial vs Altura)
+      // ============================================
+      const ctxEpVsH = document.getElementById('chartEpVsH').getContext('2d');
+      const alturas = [];
+      const energiasPotenciales = [];
+
+      for (let h = 0; h <= 50; h += 2.5) {
+        alturas.push(h);
+        energiasPotenciales.push(m * g * h);
+      }
+
+      const chartEpVsH = new Chart(ctxEpVsH, {
+        type: 'line',
+        data: {
+          labels: alturas.map(h => h.toFixed(1)),
+          datasets: [{
+            label: 'Energía Potencial Ep (J)',
+            data: [],
+            borderColor: '#42a5f5',
+            backgroundColor: 'rgba(66, 165, 245, 0.2)',
+            borderWidth: 3,
+            fill: true,
+            tension: 0,
+            pointRadius: 4,
+            pointHoverRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          animation: {
+            duration: 2000,
+            easing: 'easeInOutQuart'
+          },
+          scales: {
+            x: {
+              title: { display: true, text: 'Altura h (m)', font: { size: 14, weight: 'bold' } },
+              grid: { color: 'rgba(0,0,0,0.05)' }
+            },
+            y: {
+              title: { display: true, text: 'Energía Potencial Ep (J)', font: { size: 14, weight: 'bold' } },
+              beginAtZero: true,
+              grid: { color: 'rgba(0,0,0,0.05)' }
+            }
+          },
+          plugins: {
+            title: {
+              display: true,
+              text: 'Ep = m·g·h (Relación Lineal)',
+              font: { size: 16, weight: 'bold' }
+            },
+            legend: { display: true, position: 'top' },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  return `Ep = ${context.parsed.y.toFixed(2)} J`;
+                }
+              }
+            }
+          }
+        }
+      });
+
+      // Animación progresiva
+      setTimeout(() => {
+        chartEpVsH.data.datasets[0].data = energiasPotenciales;
+        chartEpVsH.update();
+      }, 100);
+
+      // ============================================
+      // GRÁFICO 2: Ec vs v (Energía Cinética vs Velocidad)
+      // ============================================
+      const ctxEcVsV = document.getElementById('chartEcVsV').getContext('2d');
+      const velocidades = [];
+      const energiasCineticas = [];
+
+      for (let v = 0; v <= 35; v += 1.5) {
+        velocidades.push(v);
+        energiasCineticas.push(0.5 * m * v * v);
+      }
+
+      const chartEcVsV = new Chart(ctxEcVsV, {
+        type: 'line',
+        data: {
+          labels: velocidades.map(v => v.toFixed(1)),
+          datasets: [{
+            label: 'Energía Cinética Ec (J)',
+            data: [],
+            borderColor: '#ef5350',
+            backgroundColor: 'rgba(239, 83, 80, 0.2)',
+            borderWidth: 3,
+            fill: true,
+            tension: 0.3,
+            pointRadius: 4,
+            pointHoverRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          animation: {
+            duration: 2000,
+            easing: 'easeInOutQuart'
+          },
+          scales: {
+            x: {
+              title: { display: true, text: 'Velocidad v (m/s)', font: { size: 14, weight: 'bold' } },
+              grid: { color: 'rgba(0,0,0,0.05)' }
+            },
+            y: {
+              title: { display: true, text: 'Energía Cinética Ec (J)', font: { size: 14, weight: 'bold' } },
+              beginAtZero: true,
+              grid: { color: 'rgba(0,0,0,0.05)' }
+            }
+          },
+          plugins: {
+            title: {
+              display: true,
+              text: 'Ec = ½·m·v² (Relación Cuadrática)',
+              font: { size: 16, weight: 'bold' }
+            },
+            legend: { display: true, position: 'top' },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  const v = parseFloat(context.label);
+                  return `v = ${v.toFixed(1)} m/s → Ec = ${context.parsed.y.toFixed(2)} J`;
+                }
+              }
+            }
+          }
+        }
+      });
+
+      // Animación progresiva
+      setTimeout(() => {
+        chartEcVsV.data.datasets[0].data = energiasCineticas;
+        chartEcVsV.update();
+      }, 500);
+
+      // ============================================
+      // GRÁFICO 3: Em vs t (Energía Mecánica vs Tiempo)
+      // ============================================
+      const ctxEmVsT = document.getElementById('chartEmVsT').getContext('2d');
+      const tiempos = [];
+      const energiasMecanicas = [];
+      const Em_total = m * g * h0; // 490 J constante
+
+      // Tiempo de caída: t = √(2h/g) ≈ 3.19 s
+      const t_caida = Math.sqrt(2 * h0 / g);
+
+      for (let t = 0; t <= t_caida; t += 0.15) {
+        tiempos.push(t);
+        energiasMecanicas.push(Em_total); // Constante
+      }
+
+      const chartEmVsT = new Chart(ctxEmVsT, {
+        type: 'line',
+        data: {
+          labels: tiempos.map(t => t.toFixed(2)),
+          datasets: [{
+            label: 'Energía Mecánica Em (J)',
+            data: [],
+            borderColor: '#66bb6a',
+            backgroundColor: 'rgba(102, 187, 106, 0.2)',
+            borderWidth: 4,
+            fill: true,
+            tension: 0,
+            pointRadius: 0,
+            borderDash: [10, 5]
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          animation: {
+            duration: 2500,
+            easing: 'linear'
+          },
+          scales: {
+            x: {
+              title: { display: true, text: 'Tiempo t (s)', font: { size: 14, weight: 'bold' } },
+              grid: { color: 'rgba(0,0,0,0.05)' }
+            },
+            y: {
+              title: { display: true, text: 'Energía Mecánica Em (J)', font: { size: 14, weight: 'bold' } },
+              beginAtZero: true,
+              max: Em_total + 50,
+              grid: { color: 'rgba(0,0,0,0.05)' }
+            }
+          },
+          plugins: {
+            title: {
+              display: true,
+              text: 'Em = Ec + Ep = Constante (Conservación)',
+              font: { size: 16, weight: 'bold' }
+            },
+            legend: { display: true, position: 'top' },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  return `Em = ${context.parsed.y.toFixed(2)} J (CONSTANTE)`;
+                }
+              }
+            },
+            annotation: {
+              annotations: {
+                line1: {
+                  type: 'line',
+                  yMin: Em_total,
+                  yMax: Em_total,
+                  borderColor: '#66bb6a',
+                  borderWidth: 2,
+                  label: {
+                    content: '¡Se conserva!',
+                    enabled: true
+                  }
+                }
+              }
+            }
+          }
+        }
+      });
+
+      // Animación progresiva (efecto de dibujo de izquierda a derecha)
+      let currentIndex = 0;
+      const interval = setInterval(() => {
+        if (currentIndex < energiasMecanicas.length) {
+          chartEmVsT.data.datasets[0].data.push(energiasMecanicas[currentIndex]);
+          chartEmVsT.update('none'); // Sin animación interna para suavidad
+          currentIndex++;
+        } else {
+          clearInterval(interval);
+        }
+      }, 30);
+
+      // ============================================
+      // GRÁFICOS ORIGINALES
+      // ============================================
 
       // --- Gráfico de Energía vs Altura ---
       const ctxHeight = document.getElementById('chartHeight').getContext('2d');
@@ -301,6 +609,7 @@
         },
         options: {
           responsive: true,
+          maintainAspectRatio: false,
           scales: {
             x: { title: { display: true, text: 'Altura (m)' }, reverse: true },
             y: { title: { display: true, text: 'Energía (J)' }, beginAtZero: true }
@@ -325,6 +634,7 @@
         },
         options: {
           responsive: true,
+          maintainAspectRatio: false,
           scales: { y: { stacked: true, beginAtZero: true, title: { display: true, text: 'Energía (J)' } }, x: { stacked: true } },
           plugins: { title: { display: true, text: 'Distribución de Energía en 3 Puntos' } }
         }
@@ -350,6 +660,7 @@
         },
         options: {
           responsive: true,
+          maintainAspectRatio: false,
           scales: { x: { reverse: true, title: { display: true, text: 'Altura (m)' } }, y: { beginAtZero: true, title: { display: true, text: 'Energía (J)' } } },
           plugins: { title: { display: true, text: 'Pérdida de Energía por Fricción' } }
         }
@@ -360,7 +671,7 @@
     <a href="javascript:history.back()" class="back-button">← Volver</a>
   </div>
 
-  <script src="js/dark-mode.js"></script>
+  <script defer src="js/dark-mode.js"></script>
 </body>
 
 </html>

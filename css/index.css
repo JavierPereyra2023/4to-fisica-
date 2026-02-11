@@ -2122,3 +2122,56 @@ body.dark-mode .calc-result-label {
     font-size: 0.85rem;
   }
 }
+
+/* ================================ */
+/* OPTIMIZACIÓN DE GRÁFICOS         */
+/* ================================ */
+/* Canvas responsivos para Chart.js */
+canvas {
+  max-width: 100%;
+  height: auto !important;
+}
+
+/* Contenedores de gráficos responsivos */
+.content-section > div[style*="position: relative"] {
+  margin: 20px auto;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .content-section > div[style*="position: relative"] {
+  background: rgba(30, 30, 50, 0.5);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Ajustes responsive para gráficos en tablets */
+@media (max-width: 1024px) {
+  .content-section > div[style*="position: relative"] {
+    height: 280px !important;
+    padding: 8px;
+  }
+}
+
+/* Ajustes responsive para gráficos en móviles */
+@media (max-width: 768px) {
+  .content-section > div[style*="position: relative"] {
+    height: 250px !important;
+    padding: 5px;
+    margin: 15px auto;
+  }
+
+  canvas {
+    touch-action: pan-y;
+  }
+}
+
+/* Ajustes para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .content-section > div[style*="position: relative"] {
+    height: 220px !important;
+    padding: 5px;
+    margin: 10px auto;
+  }
+}
