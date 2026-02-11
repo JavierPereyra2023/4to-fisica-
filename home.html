@@ -36,6 +36,25 @@
   <header>
     <h1>🔬 Física para Secundaria</h1>
     <p>Explora los conceptos fundamentales de la física</p>
+
+    <!-- Widget de Clima -->
+    <div class="weather-widget" id="weatherWidget">
+      <div class="weather-icon" id="weatherIcon">🌤️</div>
+      <div class="weather-info">
+        <span class="weather-temp" id="weatherTemp">--°C</span>
+        <span class="weather-location">Buenos Aires</span>
+      </div>
+    </div>
+
+    <!-- Buscador Grokipedia -->
+    <div class="search-container">
+      <div class="search-input-wrapper">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="grokSearch" placeholder="Busca temas de física...">
+      </div>
+      <div id="searchResults" class="search-results"></div>
+    </div>
+
     <nav>
       <ul>
         <li><a href="home.html" class="active">Inicio</a></li>
@@ -155,6 +174,8 @@
   </footer>
 
   <script defer src="js/dark-mode.js"></script>
+  <script defer src="js/search.js"></script>
+  <script defer src="js/weather.js"></script>
 </body>
 
 </html>

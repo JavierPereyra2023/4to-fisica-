@@ -2175,3 +2175,121 @@ body.dark-mode .content-section > div[style*="position: relative"] {
     margin: 10px auto;
   }
 }
+
+/* ================================ */
+/* WIDGET DE CLIMA                  */
+/* ================================ */
+.weather-widget {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px 20px;
+  margin: 15px auto;
+  max-width: 300px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.weather-widget:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.weather-icon {
+  font-size: 2.5rem;
+  line-height: 1;
+  animation: weatherPulse 3s ease-in-out infinite;
+}
+
+@keyframes weatherPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.weather-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.weather-temp {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.weather-location {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Modo oscuro */
+body.dark-mode .weather-widget {
+  background: rgba(30, 30, 50, 0.4);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+body.dark-mode .weather-widget:hover {
+  background: rgba(30, 30, 50, 0.6);
+}
+
+body.dark-mode .weather-temp {
+  color: #e0e0e0;
+}
+
+body.dark-mode .weather-location {
+  color: #b0b0b0;
+}
+
+/* Responsive para el widget de clima */
+@media (max-width: 768px) {
+  .weather-widget {
+    max-width: 250px;
+    padding: 10px 15px;
+    margin: 12px auto;
+  }
+
+  .weather-icon {
+    font-size: 2rem;
+  }
+
+  .weather-temp {
+    font-size: 1.3rem;
+  }
+
+  .weather-location {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .weather-widget {
+    max-width: 220px;
+    padding: 8px 12px;
+    gap: 8px;
+  }
+
+  .weather-icon {
+    font-size: 1.8rem;
+  }
+
+  .weather-temp {
+    font-size: 1.2rem;
+  }
+
+  .weather-location {
+    font-size: 0.7rem;
+  }
+}
