@@ -312,22 +312,40 @@
             const waves = [document.getElementById('wave1'), document.getElementById('wave2'), document.getElementById('wave3')];
             const burst = document.getElementById('burst');
 
-            // Reset posiciones y opacidades
+            // Reset completo: quitar animaciones y transformaciones
             deuteriumGroup.style.animation = 'none';
             tritiumGroup.style.animation = 'none';
+            deuteriumGroup.style.transform = 'translate(0, 0)';
+            tritiumGroup.style.transform = 'translate(0, 0)';
+            deuteriumGroup.style.opacity = '1';
+            tritiumGroup.style.opacity = '1';
+
             heliumGroup.style.opacity = '0';
+            heliumGroup.style.animation = 'none';
+            heliumGroup.style.transform = 'scale(0)';
+
             neutronEject.style.opacity = '0';
+            neutronEject.style.animation = 'none';
+            neutronEject.style.transform = 'translate(0, 0)';
+
             fusionPoint.style.opacity = '0';
             energyLabel.style.opacity = '0';
+            energyLabel.style.animation = 'none';
+            energyLabel.style.transform = 'scale(1)';
 
             waves.forEach(wave => {
                 wave.style.animation = 'none';
                 wave.setAttribute('r', '10');
+                wave.style.opacity = '0';
             });
-            burst.style.animation = 'none';
 
-            // Forzar reflow
+            burst.style.animation = 'none';
+            burst.style.opacity = '0';
+            burst.style.transform = 'scale(0)';
+
+            // Forzar reflow para asegurar que el reset se aplique
             void deuteriumGroup.offsetWidth;
+            void tritiumGroup.offsetWidth;
 
             // Fase 1: Acercamiento (0-2s)
             setTimeout(() => {
@@ -337,6 +355,10 @@
 
             // Fase 2: Colisión y fusión (2-2.5s)
             setTimeout(() => {
+                // Fijar la posición final antes de fusionar
+                deuteriumGroup.style.transform = 'translate(250px, 0)';
+                tritiumGroup.style.transform = 'translate(-250px, 0)';
+
                 fusionPoint.style.opacity = '1';
 
                 // Ondas de energía
@@ -356,6 +378,10 @@
 
             // Fase 3: Aparición de productos (2.5-3.5s)
             setTimeout(() => {
+                // Ocultar completamente los reactivos después de fusionar
+                deuteriumGroup.style.opacity = '0';
+                tritiumGroup.style.opacity = '0';
+
                 heliumGroup.style.opacity = '1';
                 heliumGroup.style.animation = 'appear 0.8s ease-out forwards';
 
@@ -365,6 +391,21 @@
                 energyLabel.style.opacity = '1';
                 energyLabel.style.animation = 'appear 0.5s ease-out forwards';
             }, 2500);
+
+            // Fase 4: Fijar posiciones finales después de las animaciones (4s)
+            setTimeout(() => {
+                // Fijar el helio en el centro
+                heliumGroup.style.transform = 'scale(1)';
+                heliumGroup.style.animation = 'none';
+
+                // Fijar el neutrón en su posición final
+                neutronEject.style.transform = 'translate(200px, -100px)';
+                neutronEject.style.animation = 'none';
+
+                // Fijar la etiqueta de energía
+                energyLabel.style.transform = 'scale(1)';
+                energyLabel.style.animation = 'none';
+            }, 4500);
         }
 
         // Iniciar automáticamente al cargar
