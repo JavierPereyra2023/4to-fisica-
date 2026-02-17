@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <meta name="theme-color" content="#9c27b0">
+  <meta name="theme-color" content="#1d4ed8">
   <title>Fisica para Secundaria - Quiz Integral</title>
   <meta name="description" content="Quiz general y extenso de fisica con puntaje, medallas, podio y certificado en PDF.">
   <link rel="preconnect" href="https://polyfill.io" crossorigin>
@@ -22,342 +22,192 @@
   <script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
-    body {
-      position: relative;
-      overflow-x: hidden;
-    }
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      background-image:
-        linear-gradient(rgba(56, 189, 248, 0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(56, 189, 248, 0.08) 1px, transparent 1px);
-      background-size: 28px 28px;
-      background-position: -1px -1px;
-    }
-    .graffiti-layer {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-    }
+    /* ── FONDO ── */
+    body { position: relative; overflow-x: hidden; }
+    .graffiti-layer { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
     .graffiti-tag {
-      position: absolute;
-      color: rgba(186, 230, 253, 0.28);
-      font-weight: 700;
-      letter-spacing: 1px;
-      font-family: "Bradley Hand", "Comic Sans MS", cursive;
-      text-shadow:
-        0 0 3px rgba(186, 230, 253, 0.42),
-        0 0 12px rgba(59, 130, 246, 0.22);
-      filter: blur(0.2px);
-      user-select: none;
-      white-space: nowrap;
+      position: absolute; color: rgba(186,230,253,.28); font-weight: 700;
+      font-family: "Bradley Hand","Comic Sans MS",cursive;
+      text-shadow: 0 0 3px rgba(186,230,253,.42), 0 0 12px rgba(59,130,246,.22);
+      filter: blur(.2px); user-select: none; white-space: nowrap;
     }
-    .graffiti-1 { top: 8%; left: 8%; font-size: clamp(24px, 2.7vw, 42px); transform: rotate(-8deg); }
-    .graffiti-2 { top: 15%; right: 10%; font-size: clamp(24px, 2.8vw, 44px); transform: rotate(7deg); }
-    .graffiti-3 { top: 40%; left: 3%; font-size: clamp(22px, 2.3vw, 36px); transform: rotate(-11deg); }
-    .graffiti-4 { top: 62%; right: 6%; font-size: clamp(22px, 2.4vw, 38px); transform: rotate(9deg); }
-    .graffiti-5 { bottom: 8%; left: 24%; font-size: clamp(20px, 2.1vw, 34px); transform: rotate(-5deg); }
-    header, main, footer {
-      position: relative;
-      z-index: 1;
+    .graffiti-1 { top:8%; left:8%; font-size:clamp(24px,2.7vw,42px); transform:rotate(-8deg); }
+    .graffiti-2 { top:15%; right:10%; font-size:clamp(24px,2.8vw,44px); transform:rotate(7deg); }
+    .graffiti-3 { top:40%; left:3%; font-size:clamp(22px,2.3vw,36px); transform:rotate(-11deg); }
+    .graffiti-4 { top:62%; right:6%; font-size:clamp(22px,2.4vw,38px); transform:rotate(9deg); }
+    .graffiti-5 { bottom:8%; left:24%; font-size:clamp(20px,2.1vw,34px); transform:rotate(-5deg); }
+    header, main, footer { position: relative; z-index: 1; }
+
+    /* ── CONTENEDOR PRINCIPAL ── */
+    .quiz-container { max-width: 860px; margin: 0 auto; padding: 1rem; display: grid; gap: 1rem; }
+
+    /* ── TARJETA BASE ── */
+    .q-card {
+      background: rgba(255,255,255,.92);
+      border: 1px solid rgba(30,58,138,.18);
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.07);
+      padding: 1.1rem 1.2rem;
     }
-    .student-card,
-    .quiz-extras,
-    .podium-card,
-    .tracking-card,
-    .certificate-card,
-    .medal-banner {
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(30, 58, 138, 0.22);
-      border-radius: 18px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-      padding: 1.2rem;
-      margin-bottom: 1rem;
-    }
-    .student-card h2,
-    .certificate-card h3,
-    .podium-card h3,
-    .tracking-card h3 {
-      font-family: Georgia, "Times New Roman", serif;
-      letter-spacing: 0.3px;
-      margin-bottom: 0.45rem;
-    }
-    .student-card > p,
-    .certificate-card > p,
-    .podium-card > p,
-    .tracking-card > p {
-      color: #334155;
-      margin-bottom: 0.7rem;
-    }
-    .student-grid {
+    .q-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: .6rem; color: #1e3a8a; }
+
+    /* ── STATS ROW ── */
+    .stats-row {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.7rem 0.9rem;
-      margin-top: 0.8rem;
+      grid-template-columns: repeat(4, 1fr);
+      gap: .6rem;
     }
-    .form-field {
-      display: grid;
-      gap: 0.35rem;
-    }
-    .form-field label {
-      font-weight: 700;
-      color: #1e293b;
-    }
-    .topic-row {
-      grid-column: 1 / -1;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 0.8rem;
-      align-items: end;
-    }
-    .topic-selector-panel {
-      border: 1px solid rgba(59, 130, 246, 0.28);
+    .stat-box {
+      background: rgba(255,255,255,.92);
+      border: 1px solid rgba(30,58,138,.18);
       border-radius: 14px;
-      padding: 0.8rem;
-      margin-bottom: 0.9rem;
-      background: rgba(239, 246, 255, 0.65);
+      padding: .75rem 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+      display: flex; flex-direction: column; gap: .1rem;
     }
-    .topic-selector-panel h3 {
-      margin: 0 0 0.5rem;
-      font-size: 1rem;
-      color: #1e3a8a;
+    .stat-label { font-size: .78rem; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: .4px; }
+    .stat-value { font-size: 1.35rem; font-weight: 800; color: #1e293b; }
+    .stat-value.premio { color: #16a34a; }
+
+    /* ── SELECTOR DE TEMA ── */
+    .topic-section label { font-weight: 700; font-size: .9rem; color: #1e3a8a; display: block; margin-bottom: .4rem; }
+    .topic-section select {
+      width: 100%; border: 1px solid #b8c8dd; border-radius: 10px;
+      padding: .65rem .8rem; font-size: .95rem; background: #f8fbff;
+      margin-bottom: .7rem; appearance: auto;
     }
-    .topic-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
+    .topic-actions { display: flex; gap: .6rem; flex-wrap: wrap; }
+    .btn-primary, .btn-secondary, .btn-danger {
+      border: none; border-radius: 10px; padding: .6rem 1.1rem;
+      cursor: pointer; font-weight: 700; font-size: .9rem;
+      box-shadow: inset 0 -2px 0 rgba(0,0,0,.22);
+      transition: transform .15s, opacity .15s, box-shadow .15s;
     }
-    .topic-chip {
-      border: 1px solid #93c5fd;
-      background: #e0f2fe;
-      color: #0f172a;
-      border-radius: 999px;
-      padding: 0.45rem 0.75rem;
-      font-weight: 700;
-      cursor: pointer;
+    .btn-primary { background: #1e3a8a; color: #fff; }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: inset 0 -2px 0 rgba(0,0,0,.22), 0 5px 12px rgba(30,58,138,.3); }
+    .btn-secondary { background: #e2e8f0; color: #1e293b; }
+    .btn-secondary:hover { transform: translateY(-1px); box-shadow: inset 0 -2px 0 rgba(0,0,0,.15), 0 5px 10px rgba(0,0,0,.12); }
+    .btn-danger { background: #dc2626; color: #fff; }
+    .btn-danger:hover { transform: translateY(-1px); box-shadow: inset 0 -2px 0 rgba(0,0,0,.22), 0 5px 12px rgba(220,38,38,.3); }
+    .btn-primary:disabled, .btn-danger:disabled { opacity: .45; cursor: not-allowed; transform: none; }
+
+    /* ── BARRA DE PROGRESO ── */
+    .progress-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: .35rem; font-size: .85rem; color: #475569; font-weight: 600; }
+    .progress-bar { background: #e2e8f0; border-radius: 999px; height: 8px; overflow: hidden; }
+    .progress { background: linear-gradient(90deg, #1d4ed8, #38bdf8); height: 100%; transition: width .3s; }
+
+    /* ── PREGUNTA ── */
+    .question-block { padding-top: .5rem; }
+    .question-topic { font-size: .8rem; font-weight: 700; color: #475569; margin-bottom: .35rem; text-transform: uppercase; letter-spacing: .4px; }
+    .question-text { font-size: 1.15rem; font-weight: 700; color: #1e3a8a; margin-bottom: .9rem; line-height: 1.4; }
+    .options-list { display: grid; gap: .45rem; }
+    .option-button {
+      width: 100%; text-align: left; background: #fff;
+      border: 1px solid #cbd5e1; border-radius: 10px;
+      padding: .7rem 1rem; font-size: .95rem; cursor: pointer;
+      transition: background .15s, border-color .15s, transform .1s;
+      font-family: inherit; color: #1e293b;
     }
-    .topic-chip.active {
-      background: #1d4ed8;
-      color: #fff;
-      border-color: #1d4ed8;
+    .option-button:hover:not(:disabled) { background: #eff6ff; border-color: #93c5fd; transform: translateX(3px); }
+    .option-button.correct { background: #dcfce7; border-color: #16a34a; color: #14532d; font-weight: 700; }
+    .option-button.incorrect { background: #fee2e2; border-color: #dc2626; color: #7f1d1d; }
+    .explanation-box {
+      margin-top: .8rem; background: #eff6ff; border-left: 4px solid #1d4ed8;
+      border-radius: 0 10px 10px 0; padding: .7rem .9rem; font-size: .9rem; color: #1e3a8a;
     }
-    .topic-badge {
-      grid-column: 1 / -1;
-      margin-top: 0.3rem;
-      font-weight: 700;
-      color: #1e3a8a;
-      background: rgba(191, 219, 254, 0.45);
-      border: 1px solid rgba(59, 130, 246, 0.35);
-      border-radius: 10px;
-      padding: 0.45rem 0.7rem;
+    .question-equation { font-size: 1rem; margin-bottom: .3rem; }
+    .nav-row { margin-top: .8rem; display: flex; justify-content: flex-end; }
+
+    /* ── RESULTADOS ── */
+    .results-block { text-align: center; padding: .5rem 0; }
+    .score-circle {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 90px; height: 90px; border-radius: 50%;
+      border: 5px solid #1d4ed8; margin: .5rem auto;
     }
-    .student-grid input,
-    .student-grid select {
-      width: 100%;
-      border: 1px solid #b8c8dd;
-      border-radius: 12px;
-      padding: 0.7rem;
-      font-size: 0.95rem;
-      background: #f8fbff;
+    .score-percentage { font-size: 1.6rem; font-weight: 800; color: #1e3a8a; }
+    .result-message { margin-top: .7rem; font-size: .95rem; line-height: 1.6; color: #334155; }
+    .result-actions { display: flex; gap: .6rem; justify-content: center; margin-top: .9rem; flex-wrap: wrap; }
+
+    /* ── CERTIFICADO ── */
+    .cert-form {
+      display: grid; grid-template-columns: 1fr 1fr; gap: .6rem .9rem; margin-bottom: .7rem;
     }
-    .medal-banner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.8rem;
-      border-left: 8px solid #cd7f32;
+    .cert-form label { font-weight: 700; font-size: .85rem; color: #1e293b; display: block; margin-bottom: .2rem; }
+    .cert-form input {
+      width: 100%; border: 1px solid #cbd5e1; border-radius: 9px;
+      padding: .6rem .8rem; font-size: .9rem; background: #f8fbff;
     }
-    .medal-info {
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
+    .cert-form input::placeholder { color: #94a3b8; }
+    .cert-status { font-weight: 700; color: #16a34a; font-size: .9rem; margin-bottom: .6rem; min-height: 1.2rem; }
+    .cert-actions { display: flex; gap: .6rem; flex-wrap: wrap; margin-bottom: .8rem; }
+    .cert-preview {
+      background: linear-gradient(120deg,#fffdf5,#f9f4e1 60%,#f4e6bb);
+      border: 1px solid #d9bf6b; border-radius: 12px;
+      padding: .85rem 1rem; font-size: .9rem; color: #5a3b10; line-height: 1.7;
     }
-    .medal-banner strong { display: block; font-size: 1.05rem; }
-    .medal-pill {
-      font-weight: 700;
-      border-radius: 999px;
-      padding: 0.3rem 0.7rem;
-      color: #111;
-      background: #e5e7eb;
-      white-space: nowrap;
+    .cert-preview-title {
+      font-family: Georgia,"Times New Roman",serif;
+      font-size: 1.1rem; font-weight: 700; color: #92400e;
+      border-bottom: 1px solid #d9bf6b; padding-bottom: .4rem; margin-bottom: .5rem;
     }
-    .medal-bronce { background: #d8a07d; color: #3f220e; }
-    .medal-plata { background: #cfd4dc; color: #222b36; }
-    .medal-oro { background: #f6d44a; color: #4a3b00; }
-    .quiz-tools {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-top: 1rem;
+    .cert-preview-label { font-weight: 700; color: #1d4ed8; }
+    .cert-section-label {
+      font-size: .75rem; font-weight: 700; color: #64748b;
+      text-transform: uppercase; letter-spacing: .5px; margin-bottom: .3rem;
     }
-    .quiz-tools button,
-    .student-card button,
-    .tracking-card button,
-    .quiz-extras button {
-      border: none;
-      border-radius: 11px;
-      padding: 0.65rem 1rem;
-      cursor: pointer;
-      font-weight: 700;
-      background: #1d4ed8;
-      color: #fff;
-      box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.28);
-      transition: transform 0.15s ease, opacity 0.15s ease, box-shadow 0.15s ease;
+
+    /* ── PODIO ── */
+    .podio-list { list-style: none; padding: 0; margin: .5rem 0 0; display: grid; gap: .4rem; }
+    .podio-list li {
+      background: #f8fafc; border-radius: 9px; padding: .5rem .8rem;
+      font-size: .88rem; border: 1px solid #e2e8f0; color: #334155;
     }
-    .quiz-tools button:hover,
-    .student-card button:hover,
-    .tracking-card button:hover,
-    .quiz-extras button:hover {
-      transform: translateY(-1px);
-      opacity: 0.95;
-      box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.28), 0 6px 12px rgba(29, 78, 216, 0.25);
+    .podio-list li:first-child { border-color: #fbbf24; background: #fefce8; }
+    .podio-list li:nth-child(2) { border-color: #94a3b8; background: #f8fafc; }
+    .podio-list li:nth-child(3) { border-color: #d97706; background: #fff7ed; }
+
+    /* ── SEGUIMIENTO ── */
+    .tracking-list { list-style: none; padding: 0; margin: .5rem 0 0; display: grid; gap: .35rem; }
+    .tracking-list li {
+      background: #f8fafc; border-radius: 9px; padding: .45rem .8rem;
+      font-size: .83rem; color: #475569; border: 1px solid #e2e8f0;
     }
-    .quiz-tools button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-    .danger-button { background: #cc2f2f !important; }
-    .question-points { font-weight: 700; color: #1f6feb; margin-bottom: 0.5rem; }
-    .quiz-layout {
-      position: relative;
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 1rem;
-      align-items: start;
-      border: 1px solid rgba(59, 130, 246, 0.35);
-      border-radius: 18px;
-      padding: 1rem;
-      background: linear-gradient(180deg, rgba(239, 246, 255, 0.85), rgba(248, 250, 252, 0.9));
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
-      overflow: hidden;
+
+    /* ── MODO OSCURO ── */
+    body.dark-mode .q-card,
+    body.dark-mode .stat-box {
+      background: #1f2430; color: #ececec;
+      border-color: rgba(96,165,250,.2);
+      box-shadow: 0 6px 20px rgba(0,0,0,.25);
     }
-    .frame-ticker {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 34px;
-      border-bottom: 1px dashed rgba(37, 99, 235, 0.32);
-      background: rgba(255, 255, 255, 0.8);
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      z-index: 2;
-      backdrop-filter: blur(2px);
-    }
-    .frame-ticker span {
-      white-space: nowrap;
-      font-weight: 700;
-      color: #1e3a8a;
-      padding-left: 100%;
-      animation: tickerMove 16s linear infinite;
-    }
-    @keyframes tickerMove {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-120%); }
-    }
-    .quiz-main-panel {
-      border: 1px solid rgba(56, 189, 248, 0.28);
-      border-radius: 14px;
-      padding: 3rem 0.9rem 0.9rem;
-      background: rgba(255, 255, 255, 0.78);
-    }
-    .quiz-sidebar-panel {
-      border: 1px solid rgba(56, 189, 248, 0.22);
-      border-radius: 14px;
-      padding: 3rem 0.9rem 0.9rem;
-      background: rgba(255, 255, 255, 0.72);
-    }
-    .list-clean { list-style: none; padding: 0; margin: 0.5rem 0 0; display: grid; gap: 0.45rem; }
-    .list-clean li { background: #f5f6fa; border-radius: 10px; padding: 0.55rem 0.7rem; font-size: 0.92rem; }
-    .certificate-preview {
-      margin-top: 0.6rem;
-      background: linear-gradient(120deg, #fffdf5 0%, #f9f4e1 60%, #f4e6bb 100%);
-      border: 1px solid #d9bf6b;
-      border-radius: 14px;
-      padding: 0.85rem;
-      font-size: 0.93rem;
-      color: #5a3b10;
-    }
-    .score-meta { margin-top: 0.45rem; font-weight: 700; color: #303d4c; }
-    .flow-steps {
-      background: #eef6ff;
-      border-left: 6px solid #1f6feb;
-      border-radius: 10px;
-      padding: 0.8rem;
-      margin-top: 0.7rem;
-      font-size: 0.94rem;
-    }
-    body.dark-mode .student-card,
-    body.dark-mode .quiz-extras,
-    body.dark-mode .podium-card,
-    body.dark-mode .tracking-card,
-    body.dark-mode .certificate-card,
-    body.dark-mode .medal-banner {
-      background: #1f2430;
-      color: #ececec;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    }
-    body.dark-mode .student-grid input,
-    body.dark-mode .student-grid select,
-    body.dark-mode .list-clean li,
-    body.dark-mode .certificate-preview {
-      background: #131720;
-      color: #f0f0f0;
-      border-color: #3a4252;
-    }
-    body.dark-mode .form-field label { color: #dbeafe; }
-    body.dark-mode .topic-badge {
-      color: #dbeafe;
-      background: rgba(30, 58, 138, 0.32);
-      border-color: rgba(96, 165, 250, 0.4);
-    }
-    body.dark-mode .topic-selector-panel {
-      background: rgba(30, 58, 138, 0.2);
-      border-color: rgba(96, 165, 250, 0.35);
-    }
-    body.dark-mode .topic-selector-panel h3 { color: #dbeafe; }
-    body.dark-mode .topic-chip {
-      background: #1e293b;
-      color: #dbeafe;
-      border-color: #475569;
-    }
-    body.dark-mode .topic-chip.active {
-      background: #2563eb;
-      color: #fff;
-      border-color: #2563eb;
-    }
-    body.dark-mode .score-meta { color: #d7deea; }
-    body.dark-mode .flow-steps { background: #141e2b; border-left-color: #4c91ff; }
-    body.dark-mode::before {
-      background-image:
-        linear-gradient(rgba(56, 189, 248, 0.12) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(56, 189, 248, 0.12) 1px, transparent 1px);
-    }
-    body.dark-mode .graffiti-tag {
-      color: rgba(191, 219, 254, 0.36);
-      text-shadow:
-        0 0 4px rgba(191, 219, 254, 0.55),
-        0 0 16px rgba(37, 99, 235, 0.32);
-    }
-    body.dark-mode .quiz-layout {
-      background: linear-gradient(180deg, rgba(20, 28, 55, 0.55), rgba(17, 24, 39, 0.35));
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.16), inset 0 0 0 1px rgba(255, 255, 255, 0.03);
-    }
-    body.dark-mode .quiz-main-panel { background: rgba(15, 23, 42, 0.35); }
-    body.dark-mode .quiz-sidebar-panel { background: rgba(15, 23, 42, 0.24); }
-    body.dark-mode .frame-ticker {
-      background: rgba(15, 23, 42, 0.72);
-      border-bottom-color: rgba(56, 189, 248, 0.35);
-    }
-    body.dark-mode .frame-ticker span { color: #93c5fd; }
-    @media (max-width: 960px) {
-      .quiz-layout { grid-template-columns: 1fr; }
-      .medal-banner { align-items: flex-start; flex-direction: column; }
-      .student-grid { grid-template-columns: 1fr; }
+    body.dark-mode .q-card h3 { color: #93c5fd; }
+    body.dark-mode .stat-label { color: #94a3b8; }
+    body.dark-mode .stat-value { color: #e2e8f0; }
+    body.dark-mode .topic-section label { color: #93c5fd; }
+    body.dark-mode .topic-section select,
+    body.dark-mode .cert-form input { background: #131720; color: #f0f0f0; border-color: #3a4252; }
+    body.dark-mode .option-button { background: #111827; color: #e2e8f0; border-color: #374151; }
+    body.dark-mode .option-button:hover:not(:disabled) { background: #1e3a8a; border-color: #60a5fa; }
+    body.dark-mode .option-button.correct { background: #14532d; border-color: #16a34a; color: #dcfce7; }
+    body.dark-mode .option-button.incorrect { background: #7f1d1d; border-color: #dc2626; color: #fee2e2; }
+    body.dark-mode .explanation-box { background: #141e2b; border-left-color: #4c91ff; color: #93c5fd; }
+    body.dark-mode .progress-bar { background: #1e293b; }
+    body.dark-mode .progress-meta { color: #94a3b8; }
+    body.dark-mode .question-topic { color: #94a3b8; }
+    body.dark-mode .question-text { color: #93c5fd; }
+    body.dark-mode .podio-list li,
+    body.dark-mode .tracking-list li { background: #131720; border-color: #2d3748; color: #cbd5e1; }
+    body.dark-mode .podio-list li:first-child { background: #1a1800; border-color: #d97706; }
+    body.dark-mode .cert-form label { color: #dbeafe; }
+    body.dark-mode .cert-status { color: #4ade80; }
+    body.dark-mode .btn-secondary { background: #334155; color: #e2e8f0; }
+    body.dark-mode .graffiti-tag { color: rgba(191,219,254,.36); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .cert-form { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -370,6 +220,7 @@
     <span class="graffiti-tag graffiti-5">(Movimiento Circular Uniforme)</span>
   </div>
   <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Modo oscuro">&#127769;</button>
+
   <header>
     <h1>Quiz Integral de Fisica</h1>
     <p>Acumula hasta 100 puntos y obten tu medalla</p>
@@ -386,105 +237,122 @@
   </header>
 
   <main class="quiz-container">
-    <section class="student-card">
-      <h2>Datos del estudiante</h2>
-      <p>Completa los datos para generar certificado y registrar puntaje.</p>
-      <div class="student-grid">
-        <div class="form-field">
+
+    <!-- STATS ROW -->
+    <div class="stats-row">
+      <div class="stat-box">
+        <span class="stat-label">Puntos</span>
+        <span class="stat-value" id="stat-points">0</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">Aciertos</span>
+        <span class="stat-value" id="stat-correct">0</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">Intentos</span>
+        <span class="stat-value" id="stat-attempts">0</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">Premio</span>
+        <span class="stat-value premio" id="stat-medal">—</span>
+      </div>
+    </div>
+
+    <!-- SELECTOR DE TEMA -->
+    <div class="q-card topic-section">
+      <p style="font-size:.82rem;color:#64748b;margin-bottom:.5rem;">
+        Temas con puntaje: <span id="topics-done">0</span> / <span id="topics-total">0</span>
+        &middot; 10 puntos por tema acertado por primera vez.
+      </p>
+      <label for="topicSelect">Seleccionar tema</label>
+      <select id="topicSelect"></select>
+      <div class="topic-actions">
+        <button class="btn-primary" id="applyTopicBtn" type="button">Siguiente tema</button>
+        <button class="btn-secondary" id="resetScoreBtn" type="button">Reiniciar puntaje</button>
+      </div>
+    </div>
+
+    <!-- PANEL DE PREGUNTA -->
+    <div class="q-card" id="question-card">
+      <!-- Progreso -->
+      <div class="progress-meta">
+        <span id="topic-badge-inline">Fisica</span>
+        <span>Pregunta <span id="current-question">1</span> / <span id="total-questions">10</span></span>
+      </div>
+      <div class="progress-bar"><div class="progress" id="progress-bar" style="width:10%"></div></div>
+
+      <!-- Contenido de la pregunta -->
+      <div id="quiz-content" class="question-block"></div>
+
+      <!-- Resultados -->
+      <div id="quiz-results" style="display:none;" class="results-block">
+        <div class="score-circle"><span class="score-percentage" id="score-percentage">0%</span></div>
+        <p style="font-size:.9rem;color:#64748b;">Respuestas correctas: <span id="correct-count">0</span> de <span id="total-count">10</span></p>
+        <div class="result-message" id="result-message"></div>
+        <div class="result-actions">
+          <button class="btn-primary" onclick="restartQuiz()">Intentar de nuevo</button>
+          <button class="btn-secondary" onclick="window.location.href='guia.html'">Repasar guia</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CERTIFICADO DE LOGRO -->
+    <div class="q-card">
+      <h3>Certificado de logro</h3>
+      <p style="font-size:.85rem;color:#64748b;margin-bottom:.7rem;">Completa tus datos para emitir el certificado cuando el sistema lo habilite por puntaje.</p>
+      <div class="cert-form">
+        <div>
           <label for="firstName">Nombre</label>
           <input id="firstName" type="text" placeholder="Ej: Ana">
         </div>
-        <div class="form-field">
+        <div>
           <label for="lastName">Apellido</label>
           <input id="lastName" type="text" placeholder="Ej: Perez">
         </div>
-        <div class="form-field">
+        <div>
           <label for="course">Curso</label>
-          <input id="course" type="text" placeholder="Ej: 4to 1ra">
+          <input id="course" type="text" placeholder="Ej: 1°1">
         </div>
-        <div class="form-field">
-          <label for="school">Colegio</label>
-          <input id="school" type="text" placeholder="Ej: Escuela N 34">
+        <div>
+          <label for="school">Colegio (opcional)</label>
+          <input id="school" type="text" placeholder="Ej: Colegio N° 34">
         </div>
-        <div class="topic-row">
-          <div class="form-field">
-            <label for="topicSelect">Tema del quiz</label>
-            <select id="topicSelect"></select>
-          </div>
-          <button id="applyTopicBtn" type="button">Cargar tema</button>
-        </div>
-        <div class="topic-badge" id="topicBadge">Tema actual: Energia cinetica</div>
       </div>
-      <div class="quiz-tools"><button id="saveStudentBtn" type="button">Guardar datos del estudiante</button></div>
-      <div class="flow-steps">Paso 1: carga tus datos. Paso 2: elige tema. Paso 3: resuelve 10 preguntas del tema. Paso 4: genera certificado PDF y registra el podio.</div>
-    </section>
-
-    <section class="medal-banner" id="medalBanner">
-      <div class="medal-info">
-        <strong id="studentBarName">Estudiante: Sin datos</strong>
-        <span id="studentBarScore">Puntaje actual: 0 de 100 puntos</span>
-      </div>
-      <span class="medal-pill" id="medalPill">Sin medalla</span>
-    </section>
-
-    <div class="quiz-layout">
-      <div class="frame-ticker"><span id="frameTickerText">Estudiante sin datos | Medalla Sin medalla | Puntaje 0 de 100</span></div>
-      <div class="quiz-main-panel">
-        <section class="topic-selector-panel">
-          <h3>Elegi el tema del quiz</h3>
-          <div class="topic-buttons" id="topicButtons"></div>
-        </section>
-        <section class="quiz-header">
-          <h2>Progreso del Quiz</h2>
-          <div class="progress-bar"><div class="progress" id="progress-bar" style="width: 0%"></div></div>
-          <p class="progress-text">Pregunta <span id="current-question">1</span> de <span id="total-questions">10</span></p>
-          <p class="score-meta">Puntaje acumulado: <span id="current-points">0</span> / 100</p>
-        </section>
-
-        <section class="quiz-content" id="quiz-content"></section>
-
-        <section class="quiz-results" id="quiz-results" style="display:none;">
-          <h2>Quiz Completado</h2>
-          <div class="score-display">
-            <div class="score-circle"><span class="score-percentage" id="score-percentage">0%</span></div>
-            <p class="score-text">Respuestas correctas: <span id="correct-count">0</span> de <span id="total-count">10</span></p>
-          </div>
-          <div class="result-message" id="result-message"></div>
-          <div class="action-buttons">
-            <button class="retry-button" onclick="restartQuiz()">Intentar de nuevo</button>
-            <button class="study-button" onclick="window.location.href='guia.html'">Repasar guia</button>
-          </div>
-        </section>
-
-        <section class="quiz-extras">
-          <h3>Acciones finales</h3>
-          <div class="quiz-tools">
-            <button id="generatePdfBtn" type="button">Generar un certificado pdf</button>
-            <button id="registerPodiumBtn" type="button">Registrar puntaje en podio</button>
-            <button id="clearDataBtn" type="button" class="danger-button">Borra mis datos</button>
-          </div>
-        </section>
-
-        <section class="certificate-card">
-          <h3>Vista previa del certificado</h3>
-          <div class="certificate-preview" id="certificatePreview">Completa el quiz y guarda datos del estudiante para habilitar el certificado.</div>
-        </section>
+      <div class="cert-status" id="cert-status"></div>
+      <div class="cert-actions">
+        <button class="btn-primary" id="generatePdfBtn" type="button" disabled>Generar certificado PDF</button>
+        <button class="btn-primary" id="registerPodiumBtn" type="button" disabled>Registrar puntaje en podio</button>
+        <button class="btn-danger" id="clearDataBtn" type="button">Borrar mis datos</button>
       </div>
 
-      <aside class="quiz-sidebar-panel">
-        <section class="podium-card">
-          <h3>Podio personal</h3>
-          <p>Muestra tus mejores marcas; si no hay datos, muestra el ranking general.</p>
-          <ul class="list-clean" id="podiumList"></ul>
-        </section>
+      <div class="cert-section-label">Vista previa</div>
+      <div class="cert-preview" id="certificatePreview">
+        <div class="cert-preview-title">Certificado de Logro</div>
+        <div>Otorgado a <span class="cert-preview-label" id="prev-name">Nombre y apellido</span></div>
+        <div>Curso: <span class="cert-preview-label" id="prev-course">Curso</span></div>
+        <div>Colegio: <span class="cert-preview-label" id="prev-school">No informado</span></div>
+        <div>Nivel: <span class="cert-preview-label" id="prev-medal">Sin medalla</span></div>
+        <div>Puntaje acumulado: <span class="cert-preview-label" id="prev-score">0</span></div>
+      </div>
+    </div>
 
-        <section class="tracking-card">
-          <h3>Seguimiento de fecha</h3>
-          <p>Intentos guardados con fecha y medalla.</p>
-          <ul class="list-clean" id="trackingList"></ul>
-          <div class="quiz-tools"><button id="clearTrackingBtn" type="button" class="danger-button">Limpiar seguimiento</button></div>
-        </section>
-      </aside>
+    <!-- PODIO TOP 3 -->
+    <div class="q-card">
+      <h3>Podio Top 3</h3>
+      <p style="font-size:.85rem;color:#64748b;margin-bottom:.4rem;">Los tres mejores puntajes registrados en este dispositivo reciben medalla.</p>
+      <ul class="podio-list" id="podiumList">
+        <li>Aun no hay puntajes registrados en este dispositivo.</li>
+      </ul>
+    </div>
+
+    <!-- SEGUIMIENTO CON FECHA -->
+    <div class="q-card">
+      <h3>Seguimiento con fecha</h3>
+      <p style="font-size:.85rem;color:#64748b;margin-bottom:.4rem;">Registro local de actividad del estudiante: intentos por tema y certificados emitidos.</p>
+      <button class="btn-danger" id="clearTrackingBtn" type="button" style="margin-bottom:.5rem;">Limpiar seguimiento</button>
+      <ul class="tracking-list" id="trackingList">
+        <li>Aun no hay registros. Cuando respondas o emitas certificado, aparecera aqui.</li>
+      </ul>
     </div>
 
     <div class="back-button-container"><a href="javascript:history.back()" class="back-button">Volver</a></div>
@@ -508,7 +376,7 @@
       cinetica: {
         label: 'Energia cinetica',
         questions: [
-          { question: 'La energia cinetica depende directamente de:', options: ['La masa y el cuadrado de la velocidad', 'Solo la altura', 'Solo la temperatura', 'La carga electrica'], correct: 0, explanation: 'Ec = 1/2 m v^2.', equation: '$$E_c = \\\\frac{1}{2}mv^2$$' },
+          { question: 'La energia cinetica depende directamente de:', options: ['La masa y el cuadrado de la velocidad', 'Solo la altura', 'Solo la temperatura', 'La carga electrica'], correct: 0, explanation: 'Ec = 1/2 m v^2.', equation: '$$E_c = \\frac{1}{2}mv^2$$' },
           { question: 'Si la velocidad se duplica, la energia cinetica:', options: ['Se duplica', 'Se triplica', 'Se cuadruplica', 'No cambia'], correct: 2, explanation: 'Depende de v^2.', equation: '' },
           { question: 'Unidad SI de la energia cinetica:', options: ['Newton', 'Joule', 'Watt', 'Pascal'], correct: 1, explanation: 'La energia se mide en Joule.', equation: '' },
           { question: 'Un cuerpo de 2 kg a 3 m/s tiene Ec aproximada de:', options: ['3 J', '6 J', '9 J', '18 J'], correct: 2, explanation: 'Ec = 1/2 * 2 * 3^2 = 9 J.', equation: '' },
@@ -523,10 +391,10 @@
       electricidad: {
         label: 'Electricidad',
         questions: [
-          { question: 'La ley de Ohm se expresa como:', options: ['V = I * R', 'P = V/I', 'Q = mcΔT', 'F = ma'], correct: 0, explanation: 'Relacion entre voltaje, corriente y resistencia.', equation: '$$V = I \\\\cdot R$$' },
+          { question: 'La ley de Ohm se expresa como:', options: ['V = I * R', 'P = V/I', 'Q = mcΔT', 'F = ma'], correct: 0, explanation: 'Relacion entre voltaje, corriente y resistencia.', equation: '$$V = I \\cdot R$$' },
           { question: 'Si V = 12 V y R = 4 ohm, I es:', options: ['0.33 A', '2 A', '3 A', '48 A'], correct: 2, explanation: 'I = V/R = 12/4 = 3 A.', equation: '' },
           { question: 'Unidad SI de corriente electrica:', options: ['Volt', 'Ohm', 'Ampere', 'Watt'], correct: 2, explanation: 'Corriente se mide en A.', equation: '' },
-          { question: 'Potencia electrica basica:', options: ['P = V * I', 'P = I/R', 'P = Q*m', 'P = F*d'], correct: 0, explanation: 'Producto de voltaje y corriente.', equation: '$$P = V \\\\cdot I$$' },
+          { question: 'Potencia electrica basica:', options: ['P = V * I', 'P = I/R', 'P = Q*m', 'P = F*d'], correct: 0, explanation: 'Producto de voltaje y corriente.', equation: '$$P = V \\cdot I$$' },
           { question: 'En serie, la corriente en cada elemento ideal es:', options: ['Distinta', 'La misma', 'Cero', 'El doble'], correct: 1, explanation: 'Circuito serie: misma corriente.', equation: '' },
           { question: 'En paralelo, el voltaje en cada rama ideal es:', options: ['La mitad', 'Distinto', 'El mismo', 'Cero'], correct: 2, explanation: 'Todas las ramas tienen mismo voltaje.', equation: '' },
           { question: 'Si duplicas la resistencia manteniendo V constante, I:', options: ['Se duplica', 'Se reduce a la mitad', 'No cambia', 'Se cuadruplica'], correct: 1, explanation: 'I = V/R.', equation: '' },
@@ -538,12 +406,12 @@
       termodinamica: {
         label: 'Termodinamica',
         questions: [
-          { question: 'Calor sensible se calcula con:', options: ['Q = mcΔT', 'Q = mgh', 'Q = VIt', 'Q = pV'], correct: 0, explanation: 'Masa, calor especifico y cambio de temperatura.', equation: '$$Q=m\\\\cdot c\\\\cdot\\\\Delta T$$' },
+          { question: 'Calor sensible se calcula con:', options: ['Q = mcΔT', 'Q = mgh', 'Q = VIt', 'Q = pV'], correct: 0, explanation: 'Masa, calor especifico y cambio de temperatura.', equation: '$$Q=m\\cdot c\\cdot\\Delta T$$' },
           { question: 'El calor fluye espontaneamente de:', options: ['Frio a caliente', 'Caliente a frio', 'Mayor masa a menor masa', 'Alta presion a baja'], correct: 1, explanation: 'Segunda ley.', equation: '' },
           { question: 'En fusion pura a presion constante, T:', options: ['Sube', 'Baja', 'Se mantiene', 'Oscila'], correct: 2, explanation: 'Se usa calor latente.', equation: '' },
           { question: 'Unidad SI de energia termica:', options: ['Joule', 'Newton', 'Ampere', 'Volt'], correct: 0, explanation: 'Energia en J.', equation: '' },
           { question: 'Si ΔT aumenta al doble (m y c constantes), Q:', options: ['No cambia', 'Se reduce', 'Se duplica', 'Se cuadruplica'], correct: 2, explanation: 'Q proporcional a ΔT.', equation: '' },
-          { question: 'Un sistema absorbe calor y no hace trabajo, ΔU:', options: ['Disminuye', 'Aumenta', 'Es cero', 'No se puede saber'], correct: 1, explanation: 'Primera ley: ΔU = Q - W.', equation: '$$\\\\Delta U=Q-W$$' },
+          { question: 'Un sistema absorbe calor y no hace trabajo, ΔU:', options: ['Disminuye', 'Aumenta', 'Es cero', 'No se puede saber'], correct: 1, explanation: 'Primera ley: ΔU = Q - W.', equation: '$$\\Delta U=Q-W$$' },
           { question: 'Proceso adiabatico ideal implica:', options: ['Q = 0', 'W = 0', 'ΔU = 0 siempre', 'T constante'], correct: 0, explanation: 'No hay intercambio de calor.', equation: '' },
           { question: 'El equilibrio termico ocurre cuando:', options: ['Igual presion', 'Igual masa', 'Igual temperatura', 'Igual volumen'], correct: 2, explanation: 'No hay flujo neto de calor.', equation: '' },
           { question: 'Calor especifico alto significa:', options: ['Se calienta rapido', 'Necesita mas energia para subir T', 'No cambia temperatura', 'Pierde calor instantaneo'], correct: 1, explanation: 'Mayor c, mayor energia requerida.', equation: '' },
@@ -560,7 +428,7 @@
           { question: 'En caida libre sin rozamiento, la energia mecanica total:', options: ['Aumenta', 'Disminuye', 'Se conserva', 'Se anula'], correct: 2, explanation: 'Se transforma entre Ep y Ec.', equation: '' },
           { question: 'En una montania rusa, la Ep es maxima en:', options: ['Punto mas bajo', 'Punto mas alto', 'Punto medio', 'Siempre igual'], correct: 1, explanation: 'Mayor altura, mayor Ep.', equation: '' },
           { question: 'Si la masa se reduce a la mitad (h y g constantes), Ep:', options: ['Se duplica', 'No cambia', 'Se reduce a la mitad', 'Se cuadruplica'], correct: 2, explanation: 'Ep proporcional a m.', equation: '' },
-          { question: 'La fuerza gravitatoria entre dos masas depende de:', options: ['Solo del tiempo', 'De sus masas y distancia', 'Solo de la temperatura', 'De la corriente'], correct: 1, explanation: 'Ley de gravitacion universal.', equation: '$$F = G\\\\frac{m_1m_2}{r^2}$$' },
+          { question: 'La fuerza gravitatoria entre dos masas depende de:', options: ['Solo del tiempo', 'De sus masas y distancia', 'Solo de la temperatura', 'De la corriente'], correct: 1, explanation: 'Ley de gravitacion universal.', equation: '$$F = G\\frac{m_1m_2}{r^2}$$' },
           { question: 'Si la distancia entre masas se duplica, F gravitatoria:', options: ['Se duplica', 'Se reduce a la mitad', 'Se reduce a la cuarta parte', 'No cambia'], correct: 2, explanation: 'Depende inversamente de r^2.', equation: '' },
           { question: 'Para elevar un objeto se realiza trabajo que se almacena como:', options: ['Energia termica', 'Energia potencial gravitatoria', 'Energia nuclear', 'Energia sonora'], correct: 1, explanation: 'El trabajo contra gravedad aumenta Ep.', equation: '' }
         ]
@@ -568,23 +436,23 @@
       mecanica: {
         label: 'Mecanica',
         questions: [
-          { question: 'La segunda ley de Newton indica que:', options: ['F = m * a', 'F = m / a', 'F = v / t', 'F = p * V'], correct: 0, explanation: 'Relaciona fuerza, masa y aceleracion.', equation: '$$F = m\\\\cdot a$$' },
+          { question: 'La segunda ley de Newton indica que:', options: ['F = m * a', 'F = m / a', 'F = v / t', 'F = p * V'], correct: 0, explanation: 'Relaciona fuerza, masa y aceleracion.', equation: '$$F = m\\cdot a$$' },
           { question: 'Si una fuerza neta es cero, un cuerpo:', options: ['Siempre acelera', 'Mantiene su estado de movimiento', 'Se detiene siempre', 'Duplica su velocidad'], correct: 1, explanation: 'Primera ley de Newton.', equation: '' },
-          { question: 'Trabajo mecanico se calcula como:', options: ['W = F * d * cos(theta)', 'W = m * g', 'W = V * I', 'W = p / t'], correct: 0, explanation: 'Fuerza por desplazamiento en su direccion.', equation: '$$W = Fd\\\\cos(\\\\theta)$$' },
+          { question: 'Trabajo mecanico se calcula como:', options: ['W = F * d * cos(theta)', 'W = m * g', 'W = V * I', 'W = p / t'], correct: 0, explanation: 'Fuerza por desplazamiento en su direccion.', equation: '$$W = Fd\\cos(\\theta)$$' },
           { question: 'Unidad SI de trabajo y energia:', options: ['Newton', 'Joule', 'Pascal', 'Ampere'], correct: 1, explanation: 'La energia se mide en Joule.', equation: '' },
           { question: 'Si duplicas la fuerza y mantienes distancia, el trabajo:', options: ['No cambia', 'Se reduce', 'Se duplica', 'Se cuadruplica'], correct: 2, explanation: 'W es proporcional a F.', equation: '' },
-          { question: 'La cantidad de movimiento lineal es:', options: ['p = m * v', 'p = F / a', 'p = m * g * h', 'p = V * I'], correct: 0, explanation: 'Momento lineal: masa por velocidad.', equation: '$$p = m\\\\cdot v$$' },
+          { question: 'La cantidad de movimiento lineal es:', options: ['p = m * v', 'p = F / a', 'p = m * g * h', 'p = V * I'], correct: 0, explanation: 'Momento lineal: masa por velocidad.', equation: '$$p = m\\cdot v$$' },
           { question: 'Una maquina simple ideal (sin perdidas) conserva:', options: ['La masa', 'El trabajo', 'La velocidad', 'El volumen'], correct: 1, explanation: 'Trabajo de entrada = trabajo de salida.', equation: '' },
           { question: 'Si un auto frena, su energia cinetica:', options: ['Aumenta', 'Disminuye', 'No cambia', 'Se vuelve negativa'], correct: 1, explanation: 'Disminuye por accion de fuerzas resistivas.', equation: '' },
           { question: 'En MRU la aceleracion es:', options: ['Constante positiva', 'Constante negativa', 'Cero', 'Variable'], correct: 2, explanation: 'Velocidad constante implica a = 0.', equation: '' },
-          { question: 'La potencia mecanica es:', options: ['P = W / t', 'P = F * d', 'P = m * a', 'P = Q * t'], correct: 0, explanation: 'Trabajo realizado por unidad de tiempo.', equation: '$$P = \\\\frac{W}{t}$$' }
+          { question: 'La potencia mecanica es:', options: ['P = W / t', 'P = F * d', 'P = m * a', 'P = Q * t'], correct: 0, explanation: 'Trabajo realizado por unidad de tiempo.', equation: '$$P = \\frac{W}{t}$$' }
         ]
       },
       elastica: {
         label: 'Energia elastica',
         questions: [
           { question: 'La ley de Hooke se expresa como:', options: ['F = k * x', 'F = m * a', 'F = q * E', 'F = p * V'], correct: 0, explanation: 'Fuerza elastica proporcional a deformacion.', equation: '$$F = kx$$' },
-          { question: 'La energia potencial elastica de un resorte es:', options: ['Ee = 1/2 k x^2', 'Ee = mgh', 'Ee = V I t', 'Ee = c m ΔT'], correct: 0, explanation: 'Depende del cuadrado de la deformacion.', equation: '$$E_e = \\\\frac{1}{2}kx^2$$' },
+          { question: 'La energia potencial elastica de un resorte es:', options: ['Ee = 1/2 k x^2', 'Ee = mgh', 'Ee = V I t', 'Ee = c m ΔT'], correct: 0, explanation: 'Depende del cuadrado de la deformacion.', equation: '$$E_e = \\frac{1}{2}kx^2$$' },
           { question: 'Si x se duplica, Ee:', options: ['Se duplica', 'Se cuadruplica', 'No cambia', 'Se reduce a la mitad'], correct: 1, explanation: 'Ee depende de x^2.', equation: '' },
           { question: 'Si k aumenta y x constante, Ee:', options: ['Disminuye', 'No cambia', 'Aumenta', 'Se hace cero'], correct: 2, explanation: 'Ee es proporcional a k.', equation: '' },
           { question: 'Unidad de la constante elastica k:', options: ['N/m', 'J/s', 'kg/m', 'Pa'], correct: 0, explanation: 'k se mide en N por metro.', equation: '' },
@@ -598,14 +466,14 @@
       nuclear: {
         label: 'Energia nuclear',
         questions: [
-          { question: 'La fisión nuclear consiste en:', options: ['Unir nucleos livianos', 'Dividir un nucleo pesado', 'Enfriar el nucleo', 'Cargar electrones'], correct: 1, explanation: 'En reactores se divide un nucleo pesado.', equation: '' },
+          { question: 'La fisión nuclear consiste en:', options: ['Unir nucleos livianos', 'Dividir un nucleo pesado', 'Enfriar el nucleo', 'Cargar electrones'], correct: 1, explanation: 'En reactores se divide un nucleo pesado.', equation: '' },
           { question: 'La fusion nuclear ocurre cuando:', options: ['Dos nucleos livianos se unen', 'Un nucleo se parte', 'Se enfria un plasma', 'Se descarga una bateria'], correct: 0, explanation: 'Ejemplo: reacciones en el Sol.', equation: '' },
           { question: 'La relacion energia-masa es:', options: ['E = mc^2', 'E = mgh', 'E = 1/2 mv^2', 'E = VIt'], correct: 0, explanation: 'Expresa conversion masa-energia.', equation: '$$E = mc^2$$' },
           { question: 'En una central nuclear, el calor del reactor se usa para:', options: ['Mover autos', 'Generar vapor y mover turbinas', 'Enfriar el aire', 'Almacenar electricidad directa'], correct: 1, explanation: 'El vapor impulsa turbina-generador.', equation: '' },
           { question: 'La radiacion alfa corresponde a:', options: ['Electrones', 'Nucleos de helio', 'Fotones gamma', 'Neutrones libres'], correct: 1, explanation: 'Particulas alfa: 2p + 2n.', equation: '' },
           { question: 'La vida media de un isotopo es el tiempo en que:', options: ['Duplica su masa', 'Se desintegra todo', 'Se reduce a la mitad la cantidad inicial', 'No cambia'], correct: 2, explanation: 'Concepto de decaimiento radiactivo.', equation: '' },
           { question: 'Ventaja de energia nuclear:', options: ['Bajas emisiones directas de CO2 en operacion', 'No requiere tecnologia', 'No genera residuos', 'Es renovable infinita'], correct: 0, explanation: 'Tiene baja emision en operacion, con desafios de residuos.', equation: '' },
-          { question: 'El moderador en un reactor sirve para:', options: ['Acelerar neutrones', 'Frenar neutrones', 'Aumentar voltaje', 'Eliminar radiacion'], correct: 1, explanation: 'Facilita reacciones de fisión controladas.', equation: '' },
+          { question: 'El moderador en un reactor sirve para:', options: ['Acelerar neutrones', 'Frenar neutrones', 'Aumentar voltaje', 'Eliminar radiacion'], correct: 1, explanation: 'Facilita reacciones de fisión controladas.', equation: '' },
           { question: 'Si aumenta la reactividad sin control, el reactor:', options: ['Se apaga solo siempre', 'Puede sobrecalentarse', 'Produce menos calor', 'No cambia'], correct: 1, explanation: 'Se requiere control estricto de barras y refrigeracion.', equation: '' },
           { question: 'Medida de actividad radiactiva SI:', options: ['Becquerel', 'Joule', 'Newton', 'Tesla'], correct: 0, explanation: 'Bq = desintegraciones por segundo.', equation: '' }
         ]
@@ -630,18 +498,14 @@
     let selectedTopicKey = 'cinetica';
     let selectedTopicLabel = QUIZ_TOPICS[selectedTopicKey].label;
     let quizData = [];
-    Object.entries(QUIZ_TOPICS).forEach(([key, topic]) => {
-      if (topic.questions.length !== REQUIRED_QUESTIONS) {
-        console.warn(`El tema ${key} debe tener ${REQUIRED_QUESTIONS} preguntas y tiene ${topic.questions.length}.`);
-      }
-    });
-
     let currentQuestion = 0;
     let score = 0;
     let answered = false;
     let correctAnswers = 0;
     let quizFinished = false;
+    let totalAttempts = 0;
 
+    /* ── DATOS ESTUDIANTE ── */
     function getStudentData() {
       return {
         firstName: document.getElementById('firstName').value.trim(),
@@ -650,9 +514,7 @@
         course: document.getElementById('course').value.trim()
       };
     }
-
     function getStoredStudentData() { return JSON.parse(localStorage.getItem(STORAGE_KEYS.student) || 'null'); }
-
     function getResolvedStudentData() {
       const form = getStudentData();
       const saved = getStoredStudentData() || {};
@@ -663,9 +525,7 @@
         course: form.course || saved.course || ''
       };
     }
-
-    function hasCompleteStudentData(d) { return !!(d.firstName && d.lastName && d.school && d.course); }
-
+    function hasCompleteStudentData(d) { return !!(d.firstName && d.lastName && d.course); }
     function loadStudentData() {
       const s = getStoredStudentData();
       if (!s) return;
@@ -675,118 +535,134 @@
       document.getElementById('course').value = s.course || '';
     }
 
-    function saveStudentData() {
-      const d = getStudentData();
-      if (!hasCompleteStudentData(d)) return alert('Completa nombre, apellido, colegio y curso antes de guardar.');
-      localStorage.setItem(STORAGE_KEYS.student, JSON.stringify(d));
-      enableFinalButtonsIfPossible();
-      updateCertificatePreview();
-      updateMedalBanner();
-      alert('Datos del estudiante guardados.');
-    }
-
+    /* ── MEDALLA ── */
     function getMedalByScore(points) {
-      if (points >= 90) return { name: 'Oro', className: 'medal-oro', icon: '🥇' };
-      if (points >= 75) return { name: 'Plata', className: 'medal-plata', icon: '🥈' };
-      if (points >= 60) return { name: 'Bronce', className: 'medal-bronce', icon: '🥉' };
-      return { name: 'Sin medalla', className: '', icon: '🎯' };
+      if (points >= 90) return { name: 'Premio Oro', className: 'medal-oro' };
+      if (points >= 75) return { name: 'Premio Plata', className: 'medal-plata' };
+      if (points >= 60) return { name: 'Premio Bronce', className: 'medal-bronce' };
+      return { name: 'Sin premio', className: '' };
     }
 
-    function updateMedalBanner() {
-      const d = getResolvedStudentData();
-      const fullName = `${d.firstName} ${d.lastName}`.trim();
-      document.getElementById('studentBarName').textContent = `Estudiante: ${fullName || 'Sin datos'}`;
-      document.getElementById('studentBarScore').textContent = `Puntaje actual: ${score} de ${MAX_POINTS} puntos`;
+    /* ── ACTUALIZAR STATS ── */
+    function updateStats() {
+      document.getElementById('stat-points').textContent = score;
+      document.getElementById('stat-correct').textContent = correctAnswers;
+      document.getElementById('stat-attempts').textContent = totalAttempts;
       const medal = getMedalByScore(score);
-      const pill = document.getElementById('medalPill');
-      pill.className = `medal-pill ${medal.className}`.trim();
-      pill.textContent = `${medal.icon} ${medal.name}`;
-      const ticker = document.getElementById('frameTickerText');
-      if (ticker) {
-        ticker.textContent = `${fullName || 'Estudiante sin datos'} | Tema ${selectedTopicLabel} | Medalla ${medal.name} ${medal.icon} | Puntaje ${score} de ${MAX_POINTS} puntos`;
+      document.getElementById('stat-medal').textContent = medal.name;
+      updateCertPreview();
+      updateCertStatus();
+    }
+
+    function updateTopicsCounter() {
+      const attempts = getAttempts().map(normalizeAttempt);
+      const doneTopics = new Set(attempts.filter(a => a.score >= POINTS_PER_QUESTION).map(a => a.topicKey));
+      document.getElementById('topics-done').textContent = doneTopics.size;
+      document.getElementById('topics-total').textContent = Object.keys(QUIZ_TOPICS).length;
+    }
+
+    /* ── CERT STATUS ── */
+    function updateCertStatus() {
+      const el = document.getElementById('cert-status');
+      const student = getResolvedStudentData();
+      if (quizFinished && hasCompleteStudentData(student)) {
+        el.textContent = 'Certificado habilitado. Puedes generarlo en PDF.';
+      } else if (!quizFinished) {
+        el.textContent = '';
+      } else {
+        el.textContent = 'Completa nombre, apellido y curso para habilitar el certificado.';
+        el.style.color = '#b45309';
       }
     }
 
+    /* ── CERT PREVIEW ── */
+    function updateCertPreview() {
+      const student = getResolvedStudentData();
+      const medal = getMedalByScore(score);
+      document.getElementById('prev-name').textContent =
+        (student.firstName || student.lastName) ? `${student.firstName} ${student.lastName}`.trim() : 'Nombre y apellido';
+      document.getElementById('prev-course').textContent = student.course || 'Curso';
+      document.getElementById('prev-school').textContent = student.school || 'No informado';
+      document.getElementById('prev-medal').textContent = medal.name;
+      document.getElementById('prev-score').textContent = score;
+    }
+
+    /* ── TEMA ── */
     function setTopic(topicKey, resetQuiz = true) {
       if (!QUIZ_TOPICS[topicKey]) return;
       selectedTopicKey = topicKey;
       selectedTopicLabel = QUIZ_TOPICS[topicKey].label;
       quizData = QUIZ_TOPICS[topicKey].questions.slice(0, REQUIRED_QUESTIONS);
-      document.getElementById('topicBadge').textContent = `Tema actual: ${selectedTopicLabel}`;
       document.getElementById('topicSelect').value = selectedTopicKey;
-      document.querySelectorAll('.topic-chip').forEach(chip => {
-        chip.classList.toggle('active', chip.dataset.topic === selectedTopicKey);
-      });
+      document.getElementById('topic-badge-inline').textContent = selectedTopicLabel;
       document.getElementById('total-questions').textContent = quizData.length;
       document.getElementById('total-count').textContent = quizData.length;
       if (resetQuiz) restartQuiz();
       renderPodium();
       renderTracking();
-      updateMedalBanner();
-      updateCertificatePreview();
+      updateTopicsCounter();
     }
 
     function populateTopicControls() {
       const select = document.getElementById('topicSelect');
-      const buttons = document.getElementById('topicButtons');
       select.innerHTML = '';
-      buttons.innerHTML = '';
-
       Object.entries(QUIZ_TOPICS).forEach(([key, topic]) => {
         const option = document.createElement('option');
         option.value = key;
         option.textContent = topic.label;
         select.appendChild(option);
-
-        const chip = document.createElement('button');
-        chip.type = 'button';
-        chip.className = 'topic-chip';
-        chip.dataset.topic = key;
-        chip.textContent = topic.label;
-        chip.addEventListener('click', () => setTopic(key, true));
-        buttons.appendChild(chip);
       });
     }
 
+    function goToNextTopic() {
+      const keys = Object.keys(QUIZ_TOPICS);
+      const idx = keys.indexOf(selectedTopicKey);
+      const next = keys[(idx + 1) % keys.length];
+      setTopic(next, true);
+    }
+
+    /* ── INIT ── */
     function initQuiz() {
       populateTopicControls();
       document.getElementById('registerPodiumBtn').addEventListener('click', registerPodiumScore);
       document.getElementById('generatePdfBtn').addEventListener('click', generateCertificatePDF);
       document.getElementById('clearDataBtn').addEventListener('click', clearMyData);
       document.getElementById('clearTrackingBtn').addEventListener('click', clearTracking);
-      document.getElementById('saveStudentBtn').addEventListener('click', saveStudentData);
-      document.getElementById('applyTopicBtn').addEventListener('click', () => {
-        const topic = document.getElementById('topicSelect').value;
-        setTopic(topic, true);
+      document.getElementById('applyTopicBtn').addEventListener('click', goToNextTopic);
+      document.getElementById('resetScoreBtn').addEventListener('click', () => {
+        score = 0; correctAnswers = 0; totalAttempts = 0;
+        quizFinished = false;
+        updateStats();
+        enableFinalButtons();
+        restartQuiz();
       });
+      document.getElementById('topicSelect').addEventListener('change', e => setTopic(e.target.value, true));
       loadStudentData();
       setTopic(selectedTopicKey, true);
     }
 
+    /* ── MOSTRAR PREGUNTA ── */
     function showQuestion() {
       answered = false;
       if (!quizData.length) {
-        document.getElementById('quiz-content').innerHTML = '<div class="question-card"><p>Selecciona un tema para comenzar.</p></div>';
+        document.getElementById('quiz-content').innerHTML = '<p style="padding:.5rem 0;color:#64748b;">Selecciona un tema para comenzar.</p>';
         return;
       }
       const q = quizData[currentQuestion];
-      const quizContent = document.getElementById('quiz-content');
-      quizContent.innerHTML = `
-        <div class="question-card">
-          <h3>Pregunta ${currentQuestion + 1}</h3>
-          <p class="question-points">Valor de esta pregunta: ${POINTS_PER_QUESTION} puntos</p>
-          <p class="question-text">${q.question}</p>
-          <div class="options-grid">
-            ${q.options.map((option, index) => `<button class="option-button" onclick="selectOption(${index})">${option}</button>`).join('')}
-          </div>
-          <div class="explanation" id="explanation" style="display:none;">
-            <h4>Explicacion:</h4>
-            ${q.equation ? `<div class="question-equation">${q.equation}</div>` : ''}
-            <p>${q.explanation}</p>
-          </div>
-          <div class="navigation-buttons" id="navigation-buttons" style="display:none;">
-            ${currentQuestion < quizData.length - 1 ? '<button class="nav-button" onclick="nextQuestion()">Siguiente -></button>' : '<button class="nav-button" onclick="showResults()">Ver resultados -></button>'}
-          </div>
+      document.getElementById('quiz-content').innerHTML = `
+        <div class="question-topic">${selectedTopicLabel}</div>
+        <div class="question-text">${q.question}</div>
+        <div class="options-list">
+          ${q.options.map((opt, i) => `<button class="option-button" onclick="selectOption(${i})">${opt}</button>`).join('')}
+        </div>
+        <div class="explanation-box" id="explanation" style="display:none;">
+          ${q.equation ? `<div class="question-equation">${q.equation}</div>` : ''}
+          <div>${q.explanation}</div>
+        </div>
+        <div class="nav-row" id="navigation-buttons" style="display:none;">
+          ${currentQuestion < quizData.length - 1
+            ? '<button class="btn-primary" onclick="nextQuestion()">Siguiente &rarr;</button>'
+            : '<button class="btn-primary" onclick="showResults()">Ver resultados &rarr;</button>'}
         </div>
       `;
       updateProgress();
@@ -801,50 +677,57 @@
     function selectOption(optionIndex) {
       if (answered) return;
       answered = true;
+      totalAttempts++;
       const q = quizData[currentQuestion];
       const buttons = document.querySelectorAll('.option-button');
-      const explanation = document.getElementById('explanation');
-      const navigationButtons = document.getElementById('navigation-buttons');
       buttons[q.correct].classList.add('correct');
-      if (optionIndex !== q.correct) buttons[optionIndex].classList.add('incorrect');
-      else { score += POINTS_PER_QUESTION; correctAnswers += 1; }
-      explanation.style.display = 'block';
-      navigationButtons.style.display = 'flex';
-      buttons.forEach(button => button.disabled = true);
-      document.getElementById('current-points').textContent = score;
-      updateMedalBanner();
+      if (optionIndex !== q.correct) {
+        buttons[optionIndex].classList.add('incorrect');
+      } else {
+        score += POINTS_PER_QUESTION;
+        correctAnswers++;
+      }
+      document.getElementById('explanation').style.display = 'block';
+      document.getElementById('navigation-buttons').style.display = 'flex';
+      buttons.forEach(b => b.disabled = true);
+      updateStats();
     }
 
-    function nextQuestion() { currentQuestion += 1; if (currentQuestion < quizData.length) showQuestion(); }
+    function nextQuestion() { currentQuestion++; if (currentQuestion < quizData.length) showQuestion(); }
 
     function updateProgress() {
-      const progress = ((currentQuestion + 1) / quizData.length) * 100;
-      document.getElementById('progress-bar').style.width = progress + '%';
+      const pct = ((currentQuestion + 1) / quizData.length) * 100;
+      document.getElementById('progress-bar').style.width = pct + '%';
       document.getElementById('current-question').textContent = currentQuestion + 1;
     }
 
     function getResultMessage(medalName) {
-      if (medalName === 'Oro') return 'Dominio sobresaliente del contenido. Premio sugerido: reconocimiento mayor del curso.';
-      if (medalName === 'Plata') return 'Muy buen desempeno. Premio sugerido: mencion destacada.';
-      if (medalName === 'Bronce') return 'Buen desempeno. Premio sugerido: incentivo academico simple.';
+      if (medalName === 'Premio Oro') return 'Dominio sobresaliente del contenido. Premio sugerido: reconocimiento mayor del curso.';
+      if (medalName === 'Premio Plata') return 'Muy buen desempeno. Premio sugerido: mencion destacada.';
+      if (medalName === 'Premio Bronce') return 'Buen desempeno. Premio sugerido: incentivo academico simple.';
       return 'Aun sin medalla. Repasa y vuelve a intentarlo para subir de categoria.';
     }
 
     function showResults() {
       quizFinished = true;
-      const percentage = Math.round((score / MAX_POINTS) * 100);
+      const pct = Math.round((score / MAX_POINTS) * 100);
       const medal = getMedalByScore(score);
       document.getElementById('quiz-content').style.display = 'none';
       document.getElementById('quiz-results').style.display = 'block';
-      document.getElementById('score-percentage').textContent = `${percentage}%`;
+      document.getElementById('score-percentage').textContent = `${pct}%`;
       document.getElementById('correct-count').textContent = correctAnswers;
-      document.getElementById('result-message').innerHTML = `<p>Tema evaluado: <strong>${selectedTopicLabel}</strong></p><p>Medalla: <strong>${medal.name}</strong></p><p>${getResultMessage(medal.name)}</p><p>Puntaje final: <strong>${score} de ${MAX_POINTS} puntos</strong> (${percentage}%)</p>`;
-      enableFinalButtonsIfPossible();
+      document.getElementById('result-message').innerHTML =
+        `<p>Tema: <strong>${selectedTopicLabel}</strong></p>
+         <p>Nivel alcanzado: <strong>${medal.name}</strong></p>
+         <p>${getResultMessage(medal.name)}</p>
+         <p>Puntaje: <strong>${score} de ${MAX_POINTS} puntos</strong> (${pct}%)</p>`;
+      enableFinalButtons();
       saveAttempt();
       registerPodiumScore(true);
       renderTracking();
-      updateCertificatePreview();
-      updateMedalBanner();
+      renderPodium();
+      updateStats();
+      updateTopicsCounter();
     }
 
     function formatDate(v) {
@@ -852,7 +735,7 @@
     }
 
     function getAttempts() { return JSON.parse(localStorage.getItem(STORAGE_KEYS.attempts) || '[]'); }
-    function setAttempts(attempts) { localStorage.setItem(STORAGE_KEYS.attempts, JSON.stringify(attempts)); }
+    function setAttempts(a) { localStorage.setItem(STORAGE_KEYS.attempts, JSON.stringify(a)); }
 
     function normalizeAttempt(entry) {
       const baseMax = Number(entry.maxPoints) > 0 ? Number(entry.maxPoints) : MAX_POINTS;
@@ -866,8 +749,7 @@
         maxPoints: MAX_POINTS,
         medal: getMedalByScore(Math.max(0, Math.min(MAX_POINTS, normalizedScore))).name,
         studentKey: entry.studentKey || '',
-        topicKey,
-        topicLabel
+        topicKey, topicLabel
       };
     }
 
@@ -875,24 +757,16 @@
       const student = getResolvedStudentData();
       const studentKey = hasCompleteStudentData(student) ? getStudentKey(student) : 'anon';
       const current = normalizeAttempt({
-        date: new Date().toISOString(),
-        score,
-        maxPoints: MAX_POINTS,
-        medal: getMedalByScore(score).name,
-        studentKey,
-        topicKey: selectedTopicKey,
-        topicLabel: selectedTopicLabel
+        date: new Date().toISOString(), score, maxPoints: MAX_POINTS,
+        medal: getMedalByScore(score).name, studentKey,
+        topicKey: selectedTopicKey, topicLabel: selectedTopicLabel
       });
-
       const attempts = getAttempts().map(normalizeAttempt);
-      const duplicateIndex = attempts.findIndex(a =>
-        a.studentKey === current.studentKey &&
-        a.score === current.score &&
-        a.medal === current.medal &&
-        a.topicKey === current.topicKey
+      const dupIdx = attempts.findIndex(a =>
+        a.studentKey === current.studentKey && a.score === current.score &&
+        a.medal === current.medal && a.topicKey === current.topicKey
       );
-
-      if (duplicateIndex >= 0) attempts.splice(duplicateIndex, 1);
+      if (dupIdx >= 0) attempts.splice(dupIdx, 1);
       attempts.unshift(current);
       setAttempts(attempts.slice(0, 20));
     }
@@ -904,50 +778,42 @@
       const seen = new Set();
       attempts.forEach(a => {
         const key = `${a.studentKey}|${a.score}|${a.medal}|${a.topicKey}`;
-        if (!seen.has(key)) {
-          seen.add(key);
-          unique.push(a);
-        }
+        if (!seen.has(key)) { seen.add(key); unique.push(a); }
       });
       setAttempts(unique.slice(0, 20));
-      if (!attempts.length) return trackingList.innerHTML = '<li>Sin intentos registrados.</li>';
-      trackingList.innerHTML = unique.map(i => `<li>${formatDate(i.date)} | Tema ${i.topicLabel} | Puntaje ${i.score} de ${i.maxPoints} | Medalla ${i.medal}</li>`).join('');
+      if (!unique.length) {
+        trackingList.innerHTML = '<li>Aun no hay registros. Cuando respondas o emitas certificado, aparecera aqui.</li>';
+        return;
+      }
+      trackingList.innerHTML = unique.map(i =>
+        `<li>${formatDate(i.date)} &middot; ${i.topicLabel} &middot; ${i.score}/${i.maxPoints} &middot; ${i.medal}</li>`
+      ).join('');
     }
 
     function clearTracking() { localStorage.removeItem(STORAGE_KEYS.attempts); renderTracking(); }
+
     function getPodium() { return JSON.parse(localStorage.getItem(STORAGE_KEYS.podium) || '[]'); }
-    function setPodium(podium) { localStorage.setItem(STORAGE_KEYS.podium, JSON.stringify(podium)); }
+    function setPodium(p) { localStorage.setItem(STORAGE_KEYS.podium, JSON.stringify(p)); }
     function getStudentKey(s) { return `${s.firstName}|${s.lastName}|${s.school}|${s.course}`.toLowerCase(); }
 
     function registerPodiumScore(silent = false) {
-      if (!quizFinished) {
-        if (!silent) alert('Primero completa el quiz para registrar puntaje en el podio.');
-        return;
-      }
+      if (!quizFinished) { if (!silent) alert('Primero completa el quiz.'); return; }
       const student = getResolvedStudentData();
       if (!hasCompleteStudentData(student)) {
-        if (!silent) alert('Completa y guarda los datos del estudiante antes de registrar en podio.');
-        if (!silent) guideToStudentData();
+        if (!silent) alert('Completa nombre, apellido y curso para registrar en podio.');
         return;
       }
       const entry = {
         fullName: `${student.firstName} ${student.lastName}`,
-        school: student.school,
-        course: student.course,
-        studentKey: getStudentKey(student),
-        score,
+        school: student.school, course: student.course,
+        studentKey: getStudentKey(student), score,
         medal: getMedalByScore(score).name,
-        topicKey: selectedTopicKey,
-        topicLabel: selectedTopicLabel,
+        topicKey: selectedTopicKey, topicLabel: selectedTopicLabel,
         date: new Date().toISOString()
       };
       const podium = getPodium();
-      const duplicate = podium.find(p => p.studentKey === entry.studentKey && p.score === entry.score && p.topicKey === entry.topicKey);
-      if (duplicate) {
-        if (!silent) alert('Ese puntaje ya esta registrado en tu podio.');
-        renderPodium();
-        return;
-      }
+      const dup = podium.find(p => p.studentKey === entry.studentKey && p.score === entry.score && p.topicKey === entry.topicKey);
+      if (dup) { if (!silent) alert('Ese puntaje ya esta registrado.'); renderPodium(); return; }
       podium.push(entry);
       podium.sort((a, b) => b.score - a.score);
       setPodium(podium.slice(0, 30));
@@ -958,180 +824,298 @@
     function renderPodium() {
       const list = document.getElementById('podiumList');
       const podium = getPodium();
-      if (!podium.length) return list.innerHTML = '<li>No hay puntajes en podio todavia.</li>';
-
+      if (!podium.length) { list.innerHTML = '<li>Aun no hay puntajes registrados en este dispositivo.</li>'; return; }
       const student = getResolvedStudentData();
       const hasStudent = hasCompleteStudentData(student);
       const studentKey = hasStudent ? getStudentKey(student) : '';
       const personal = hasStudent ? podium.filter(i => i.studentKey === studentKey) : [];
       const source = personal.length ? personal : podium;
-
-      list.innerHTML = source
-        .slice(0, 5)
-        .map((i, idx) => {
-          const owner = personal.length ? 'Mi marca' : i.fullName;
-          return `<li>#${idx + 1} ${owner} - ${i.score} de ${MAX_POINTS} (${i.medal}) | Tema ${i.topicLabel || 'No informado'}</li>`;
-        })
-        .join('');
+      const medals = ['🥇', '🥈', '🥉'];
+      list.innerHTML = source.slice(0, 3).map((i, idx) => {
+        const owner = personal.length ? 'Mi marca' : i.fullName;
+        return `<li>${medals[idx] || '#' + (idx+1)} ${owner} &mdash; ${i.score}/${MAX_POINTS} (${i.medal}) &middot; ${i.topicLabel || 'No informado'}</li>`;
+      }).join('');
     }
 
-    function updateCertificatePreview() {
-      const student = getResolvedStudentData();
-      const medal = getMedalByScore(score);
-      const now = formatDate(new Date().toISOString());
-      const ready = quizFinished && hasCompleteStudentData(student);
-      const preview = document.getElementById('certificatePreview');
-      if (!ready) return preview.textContent = 'Completa el quiz y guarda datos del estudiante para habilitar el certificado.';
-      preview.innerHTML = `Certificado listo para: <strong>${student.firstName} ${student.lastName}</strong><br>Colegio: ${student.school} | Curso: ${student.course}<br>Tema evaluado: ${selectedTopicLabel}<br>Fecha: ${now}<br>Puntaje: ${score} de ${MAX_POINTS} puntos<br>Categoria alcanzada: ${medal.name}<br>Medalla: ${medal.name}`;
+    function enableFinalButtons() {
+      document.getElementById('generatePdfBtn').disabled = !quizFinished;
+      document.getElementById('registerPodiumBtn').disabled = !quizFinished;
     }
 
-    function enableFinalButtonsIfPossible() {
-      const enabled = quizFinished;
-      document.getElementById('generatePdfBtn').disabled = !enabled;
-      document.getElementById('registerPodiumBtn').disabled = !enabled;
+    function clearMyData() {
+      localStorage.removeItem(STORAGE_KEYS.student);
+      ['firstName','lastName','school','course'].forEach(id => document.getElementById(id).value = '');
+      updateStats();
+      updateCertPreview();
+      updateCertStatus();
     }
 
-    function guideToStudentData() {
-      const section = document.querySelector('.student-card');
-      if (!section) return;
-      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      const firstEmpty = STUDENT_INPUT_IDS.map(id => document.getElementById(id)).find(i => i && !i.value.trim());
-      if (firstEmpty) firstEmpty.focus();
+    function restartQuiz() {
+      currentQuestion = 0; score = 0; answered = false;
+      correctAnswers = 0; quizFinished = false; totalAttempts = 0;
+      document.getElementById('quiz-content').style.display = 'block';
+      document.getElementById('quiz-results').style.display = 'none';
+      enableFinalButtons();
+      updateStats();
+      showQuestion();
     }
 
+    /* ── PDF ── */
     function generateCertificatePDF() {
       if (!quizFinished) return alert('Primero completa el quiz.');
       const student = getResolvedStudentData();
-      if (!hasCompleteStudentData(student)) { alert('Completa y guarda los datos del estudiante para generar el certificado.'); return guideToStudentData(); }
+      if (!hasCompleteStudentData(student)) { alert('Completa nombre, apellido y curso para generar el certificado.'); return; }
       if (!window.jspdf || !window.jspdf.jsPDF) return alert('No se pudo cargar el generador de PDF.');
 
       const medal = getMedalByScore(score);
       const dateLabel = new Date().toLocaleDateString('es-AR');
       const { jsPDF } = window.jspdf;
-      const doc = new jsPDF();
+      const doc = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
+      // Dimensiones A4 horizontal: 297 x 210
 
-      const medalColor = medal.name === 'Oro' ? [214, 167, 16] : medal.name === 'Plata' ? [156, 163, 175] : medal.name === 'Bronce' ? [176, 112, 64] : [107, 114, 128];
+      // ── Paleta según medalla ──
+      const isOro    = medal.name.includes('Oro');
+      const isPlata  = medal.name.includes('Plata');
+      const isBronce = medal.name.includes('Bronce');
 
-      const drawMedalBadge = (cx, cy) => {
-        doc.setFillColor(30, 64, 175);
-        doc.triangle(cx - 11, cy + 3, cx - 2, cy + 3, cx - 7, cy + 20, 'F');
-        doc.setFillColor(3, 105, 161);
-        doc.triangle(cx + 2, cy + 3, cx + 11, cy + 3, cx + 7, cy + 20, 'F');
-        doc.setFillColor(medalColor[0], medalColor[1], medalColor[2]);
-        doc.circle(cx, cy, 11, 'F');
-        doc.setDrawColor(120, 80, 10);
-        doc.setLineWidth(0.8);
-        doc.circle(cx, cy, 11, 'S');
-        doc.setTextColor(255, 255, 255);
-        doc.setFontSize(10);
-        doc.setFont('helvetica', 'bold');
-        doc.text('FIS', cx, cy + 1.5, { align: 'center' });
-      };
+      // Colores primario / acento / texto de insignia
+      const C = isOro    ? { p:[15,76,129],   a:[212,160,10],  at:[255,255,255], label:'ORO',    emoji:'★' }
+              : isPlata  ? { p:[55,65,81],     a:[148,163,184], at:[15,23,42],   label:'PLATA',  emoji:'◆' }
+              : isBronce ? { p:[120,53,15],    a:[180,105,50],  at:[255,255,255], label:'BRONCE', emoji:'●' }
+              :            { p:[30,58,138],    a:[99,102,241],  at:[255,255,255], label:'LOGRO',  emoji:'✦' };
 
-      doc.setFillColor(252, 250, 245);
-      doc.rect(0, 0, 210, 297, 'F');
-      doc.setDrawColor(15, 76, 129);
-      doc.setLineWidth(1.6);
-      doc.rect(10, 10, 190, 277, 'S');
-      doc.setDrawColor(180, 180, 180);
-      doc.setLineWidth(0.5);
-      doc.rect(14, 14, 182, 269, 'S');
+      const W = 297, H = 210;
 
-      doc.setFillColor(15, 76, 129);
-      doc.rect(14, 14, 182, 26, 'F');
-      doc.setTextColor(255, 255, 255);
-      doc.setFont('times', 'bold');
-      doc.setFontSize(24);
-      doc.text('CERTIFICADO', 105, 26, { align: 'center' });
-      doc.setFontSize(13);
-      doc.text('Portal de Fisica para Secundaria', 105, 34, { align: 'center' });
+      // ── 1. Fondo blanco ──
+      doc.setFillColor(250,251,253);
+      doc.rect(0,0,W,H,'F');
 
-      doc.setTextColor(40, 40, 40);
-      doc.setFont('times', 'italic');
-      doc.setFontSize(14);
-      doc.text('Se otorga el presente reconocimiento a:', 105, 58, { align: 'center' });
+      // ── 2. Barra lateral izquierda ──
+      doc.setFillColor(...C.p);
+      doc.rect(0,0,18,H,'F');
 
-      doc.setFont('times', 'bold');
-      doc.setTextColor(15, 76, 129);
-      doc.setFontSize(28);
-      doc.text(`${student.firstName} ${student.lastName}`.toUpperCase(), 105, 74, { align: 'center' });
-      doc.setDrawColor(15, 76, 129);
-      doc.setLineWidth(0.7);
-      doc.line(40, 78, 170, 78);
+      // Texto vertical en barra lateral
+      doc.setTextColor(255,255,255);
+      doc.setFont('helvetica','bold');
+      doc.setFontSize(7.5);
+      doc.text('CERTIFICADO DE LOGRO · FISICA PARA SECUNDARIA', 9, H-8, { angle: 90, align:'left' });
 
-      doc.setFont('times', 'normal');
-      doc.setTextColor(45, 45, 45);
-      doc.setFontSize(13);
-      doc.text(`Colegio: ${student.school}`, 30, 92);
-      doc.text(`Curso: ${student.course}`, 130, 92);
-      doc.text(`por completar satisfactoriamente el quiz de ${selectedTopicLabel}.`, 105, 104, { align: 'center' });
+      // ── 3. Franja superior ──
+      doc.setFillColor(...C.p);
+      doc.rect(18,0,W-18,38,'F');
 
-      doc.setFillColor(239, 246, 255);
-      doc.roundedRect(24, 114, 162, 42, 3, 3, 'F');
-      doc.setTextColor(17, 24, 39);
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(13);
-      doc.text(`Puntaje obtenido: ${score} de ${MAX_POINTS} puntos`, 30, 128);
-      doc.text(`Tema evaluado: ${selectedTopicLabel}`, 30, 139);
-      doc.text(`Categoria alcanzada: ${medal.name}`, 30, 148);
-      doc.text(`Medalla: ${medal.name}`, 30, 157);
-      doc.setFont('helvetica', 'normal');
-      doc.text(`Fecha: ${dateLabel}`, 30, 166);
+      // Círculos decorativos en franja superior
+      doc.setFillColor(255,255,255,0.07);
+      doc.setDrawColor(255,255,255); doc.setLineWidth(0.3);
+      for (let i = 0; i < 5; i++) {
+        doc.setFillColor(255,255,255);
+        doc.setGState && doc.setGState(doc.GState ? doc.GState({opacity:0.06}) : {});
+        doc.circle(240 + i*14, -8, 18, 'S');
+      }
+      doc.circle(260, 48, 30, 'S');
 
-      drawMedalBadge(172, 134);
+      // Ícono de átomo (simplificado con círculos)
+      const ax = 35, ay = 19;
+      doc.setDrawColor(255,255,255); doc.setLineWidth(0.6);
+      doc.circle(ax, ay, 7, 'S');
+      doc.circle(ax, ay, 3.5, 'S');
+      doc.setFillColor(255,255,255); doc.circle(ax, ay, 1.5, 'F');
 
-      doc.setDrawColor(120, 120, 120);
-      doc.setLineWidth(0.4);
-      doc.line(38, 198, 88, 198);
-      doc.line(122, 198, 172, 198);
-      doc.setFont('helvetica', 'normal');
-      doc.setTextColor(65, 65, 65);
+      // Título principal
+      doc.setTextColor(255,255,255);
+      doc.setFont('helvetica','bold');
+      doc.setFontSize(26);
+      doc.text('CERTIFICADO DE LOGRO', 53, 18);
+
+      doc.setFont('helvetica','normal');
       doc.setFontSize(10);
-      doc.text('Firma docente', 63, 204, { align: 'center' });
-      doc.text('Sello institucional', 147, 204, { align: 'center' });
+      doc.setTextColor(200,220,255);
+      doc.text('Portal de Fisica para Secundaria  ·  Prof. Javier Pereyra', 53, 27);
 
-      doc.setFontSize(11);
-      doc.text('Premio sugerido: reconocimiento academico simple.', 105, 228, { align: 'center' });
+      // Chip de nivel en franja
+      const chipX = W - 55, chipY = 8, chipW = 32, chipH = 10;
+      doc.setFillColor(...C.a);
+      doc.roundedRect(chipX, chipY, chipW, chipH, 2, 2, 'F');
+      doc.setFont('helvetica','bold');
       doc.setFontSize(9);
-      doc.setTextColor(100, 100, 100);
-      doc.text(`Codigo de validacion: FIS-${new Date().getFullYear()}-${score}-${student.lastName.toUpperCase()}`, 105, 272, { align: 'center' });
+      doc.setTextColor(...C.at);
+      doc.text(`${C.emoji} ${C.label}`, chipX + chipW/2, chipY + 6.5, { align:'center' });
 
-      const fileName = `certificado_${student.firstName}_${student.lastName}.pdf`.replace(/\s+/g, '_');
+      // ── 4. Cuerpo ──
+
+      // Frase introductoria
+      doc.setFont('helvetica','normal');
+      doc.setFontSize(10);
+      doc.setTextColor(100,110,130);
+      doc.text('Este certificado acredita que', 30, 54);
+
+      // Nombre del estudiante
+      doc.setFont('helvetica','bold');
+      doc.setFontSize(28);
+      doc.setTextColor(...C.p);
+      const fullName = `${student.firstName} ${student.lastName}`.toUpperCase();
+      doc.text(fullName, 30, 70);
+
+      // Línea bajo nombre
+      doc.setDrawColor(...C.a);
+      doc.setLineWidth(1);
+      doc.line(30, 73, Math.min(30 + doc.getTextWidth(fullName), W - 30), 73);
+
+      // Subtítulo de logro
+      doc.setFont('helvetica','normal');
+      doc.setFontSize(10.5);
+      doc.setTextColor(55,65,81);
+      doc.text(`completó exitosamente el quiz de`, 30, 83);
+      doc.setFont('helvetica','bold');
+      doc.setTextColor(...C.p);
+      doc.text(selectedTopicLabel, 30 + doc.getStringUnitWidth('completó exitosamente el quiz de') * 10.5 * 0.352 + 2, 83);
+
+      // ── 5. Chips de datos (puntaje / curso / colegio / fecha) ──
+      const chips = [
+        { icon:'◎', label:'Puntaje',  val: `${score} / ${MAX_POINTS} pts` },
+        { icon:'▣', label:'Curso',    val: student.course },
+        { icon:'◉', label:'Colegio',  val: student.school || 'No informado' },
+        { icon:'◷', label:'Fecha',    val: dateLabel },
+      ];
+
+      const chipStartX = 30, chipStartY = 96, chipGap = 60, cH = 16;
+      chips.forEach((ch, i) => {
+        const cx = chipStartX + i * chipGap;
+        // Fondo chip
+        doc.setFillColor(242,245,252);
+        doc.roundedRect(cx, chipStartY, 54, cH, 3, 3, 'F');
+        doc.setDrawColor(...C.p); doc.setLineWidth(0.3);
+        doc.roundedRect(cx, chipStartY, 54, cH, 3, 3, 'S');
+        // Label
+        doc.setFont('helvetica','bold'); doc.setFontSize(6.5);
+        doc.setTextColor(...C.p);
+        doc.text(`${ch.icon} ${ch.label}`, cx + 4, chipStartY + 5.5);
+        // Valor
+        doc.setFont('helvetica','bold'); doc.setFontSize(8.5);
+        doc.setTextColor(17,24,39);
+        doc.text(ch.val, cx + 4, chipStartY + 12.5);
+      });
+
+      // ── 6. Barra de puntaje visual ──
+      const barX = 30, barY = 123, barW = 230, barH = 7;
+      doc.setFillColor(226,232,240);
+      doc.roundedRect(barX, barY, barW, barH, 3, 3, 'F');
+      const fill = Math.round((score / MAX_POINTS) * barW);
+      // Gradiente simulado con rectángulos
+      const steps = 20;
+      for (let s = 0; s < steps; s++) {
+        const t = s / steps;
+        const r = Math.round(C.p[0] + (C.a[0] - C.p[0]) * t);
+        const g = Math.round(C.p[1] + (C.a[1] - C.p[1]) * t);
+        const b = Math.round(C.p[2] + (C.a[2] - C.p[2]) * t);
+        doc.setFillColor(r, g, b);
+        const sx = barX + (fill * s / steps);
+        const sw = fill / steps + 0.5;
+        doc.rect(sx, barY, sw, barH, 'F');
+      }
+      // Redondeado izquierdo y derecho del fill
+      doc.setFillColor(...C.p);
+      doc.roundedRect(barX, barY, 6, barH, 3, 3, 'F');
+      doc.setFillColor(...C.a);
+      doc.roundedRect(barX + fill - 6, barY, 6, barH, 3, 3, 'F');
+
+      doc.setFont('helvetica','bold'); doc.setFontSize(7.5);
+      doc.setTextColor(...C.p);
+      doc.text(`${score}%`, barX + fill + 2, barY + 5.5);
+      doc.setTextColor(150,160,175);
+      doc.text('Puntaje alcanzado', barX, barY - 3);
+
+      // ── 7. Sección firmas ──
+      const sigY = 148;
+      // Línea firma docente
+      doc.setDrawColor(180,190,210); doc.setLineWidth(0.5);
+      doc.line(30, sigY, 100, sigY);
+      doc.setFont('helvetica','normal'); doc.setFontSize(8);
+      doc.setTextColor(100,110,130);
+      doc.text('Firma del docente', 65, sigY + 5, { align:'center' });
+      doc.setFont('helvetica','bold'); doc.setFontSize(9);
+      doc.setTextColor(55,65,81);
+      doc.text('Prof. Javier Pereyra', 65, sigY + 11, { align:'center' });
+
+      // Línea sello
+      doc.setDrawColor(180,190,210);
+      doc.line(120, sigY, 190, sigY);
+      doc.setFont('helvetica','normal'); doc.setFontSize(8);
+      doc.setTextColor(100,110,130);
+      doc.text('Sello institucional', 155, sigY + 5, { align:'center' });
+
+      // Recuadro decorativo de sello
+      doc.setDrawColor(...C.a); doc.setLineWidth(0.4);
+      doc.roundedRect(122, sigY + 8, 65, 20, 4, 4, 'S');
+      doc.setFont('helvetica','bold'); doc.setFontSize(7);
+      doc.setTextColor(...C.p);
+      doc.text('FISICA SECUNDARIA', 154.5, sigY + 16, { align:'center' });
+      doc.setFont('helvetica','normal'); doc.setFontSize(6);
+      doc.setTextColor(130,140,160);
+      doc.text('Educacion para todos · 2026', 154.5, sigY + 22, { align:'center' });
+
+      // ── 8. Insignia circular de medalla ──
+      const mx = W - 42, my = 95;
+      // Sombra
+      doc.setFillColor(200,205,215);
+      doc.circle(mx+1, my+1, 22, 'F');
+      // Cinta izquierda
+      doc.setFillColor(...C.p);
+      doc.triangle(mx-14, my+4, mx-5, my+4, mx-10, my+26, 'F');
+      // Cinta derecha
+      doc.setFillColor(C.p[0]-20 < 0 ? 0 : C.p[0]-20, C.p[1], C.p[2]);
+      doc.triangle(mx+5, my+4, mx+14, my+4, mx+10, my+26, 'F');
+      // Círculo exterior
+      doc.setFillColor(255,255,255);
+      doc.circle(mx, my, 22, 'F');
+      // Anillo
+      doc.setFillColor(...C.a);
+      doc.circle(mx, my, 21, 'F');
+      // Círculo interior
+      doc.setFillColor(...C.p);
+      doc.circle(mx, my, 17, 'F');
+      // Ícono central
+      doc.setFont('helvetica','bold'); doc.setFontSize(18);
+      doc.setTextColor(255,255,255);
+      doc.text(C.emoji, mx, my+3.5, { align:'center' });
+      // Texto bajo el ícono
+      doc.setFontSize(5.5);
+      doc.text(C.label, mx, my+10, { align:'center' });
+      // Puntos decorativos en anillo
+      for (let a = 0; a < 360; a += 30) {
+        const rad = (a * Math.PI) / 180;
+        const px = mx + 19 * Math.cos(rad);
+        const py = my + 19 * Math.sin(rad);
+        doc.setFillColor(255,255,255);
+        doc.circle(px, py, 0.8, 'F');
+      }
+
+      // ── 9. Franja inferior ──
+      doc.setFillColor(...C.p);
+      doc.rect(18, H-18, W-18, 18, 'F');
+
+      // Código de validación
+      doc.setFont('helvetica','normal'); doc.setFontSize(7);
+      doc.setTextColor(180,200,230);
+      const codigo = `FIS-${new Date().getFullYear()}-${score}-${student.lastName.toUpperCase().replace(/\s/g,'')}`;
+      doc.text(`Codigo: ${codigo}`, 26, H-10);
+
+      // Puntos decorativos derechos
+      doc.setFillColor(...C.a);
+      for (let i = 0; i < 6; i++) {
+        doc.circle(W - 15 - i*8, H-9, 2, 'F');
+      }
+
+      // Guardar
+      const fileName = `certificado_${student.firstName}_${student.lastName}.pdf`.replace(/\s+/g,'_');
       doc.save(fileName);
-    }
-
-    function clearMyData() {
-      localStorage.removeItem(STORAGE_KEYS.student);
-      document.getElementById('firstName').value = '';
-      document.getElementById('lastName').value = '';
-      document.getElementById('school').value = '';
-      document.getElementById('course').value = '';
-      enableFinalButtonsIfPossible();
-      updateCertificatePreview();
-      updateMedalBanner();
-    }
-
-    function restartQuiz() {
-      currentQuestion = 0;
-      score = 0;
-      answered = false;
-      correctAnswers = 0;
-      quizFinished = false;
-      document.getElementById('quiz-content').style.display = 'block';
-      document.getElementById('quiz-results').style.display = 'none';
-      document.getElementById('current-points').textContent = '0';
-      enableFinalButtonsIfPossible();
-      updateCertificatePreview();
-      showQuestion();
-      updateMedalBanner();
     }
 
     document.addEventListener('input', event => {
       if (STUDENT_INPUT_IDS.includes(event.target.id)) {
         localStorage.setItem(STORAGE_KEYS.student, JSON.stringify(getStudentData()));
-        enableFinalButtonsIfPossible();
-        updateCertificatePreview();
-        updateMedalBanner();
+        updateStats();
+        updateCertStatus();
       }
     });
 
